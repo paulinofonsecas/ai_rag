@@ -3,6 +3,11 @@ WORKDIR /app
 COPY package*.json ./
 RUN npm install --no-fund --no-audit
 
+FROM base AS development
+ENV NODE_ENV=development
+COPY tsconfig.json tsconfig.build.json nest-cli.json ./
+EXPOSE 3000
+
 FROM base AS build
 COPY tsconfig.json tsconfig.build.json nest-cli.json ./
 COPY src ./src

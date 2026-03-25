@@ -1,10 +1,10 @@
 export type ProductCreatedEvent = {
-  productId: string;
-  name: string;
-  description: string;
-  category: string;
+    productId: string;
+    name: string;
+    description: string;
+    category: string;
 };
 
 export interface ProductIngestionJobPublisher {
-  publishProductCreated(event: ProductCreatedEvent): Promise<void>;
+    publishProductCreated(event: ProductCreatedEvent): Promise<void>;
 }

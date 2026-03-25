@@ -1,0 +1,58 @@
+@startuml
+skinparam shadowing false
+skinparam componentStyle rectangle
+skinparam packageStyle rectangle
+left to right direction
+
+actor "Client" as client
+
+package "API Process (NestJS)" {
+  [ProductController] as productController
+  [SearchController] as searchController
+  [IngestProductUseCase] as ingestUseCase
+  [SearchProductsUseCase] as searchUseCase
+  [HybridSearchOrchestrator] as orchestrator
+  [RrfService] as rrf
+}
+
+package "Worker Process (NestJS)" {
+  [ProductIngestionProcessor] as workerProcessor
+}
+
+package "Infrastructure Adapters" {
+  [ProductWriteAdapter] as productWrite
+  [PostgresFTSAdapter] as ftsAdapter
+  [PgVectorAdapter] as vectorAdapter
+  [EmbeddingAPIAdapter] as embeddingAdapter
+  [ProductIngestionPublisher] as publisher
+}
+
+queue "Redis / BullMQ\nproduct-ingestion" as queue
+database "PostgreSQL + pgvector" as postgres
+cloud "Google Gemini\nEmbedding API" as gemini
+
+client --> productController : POST /products
+client --> searchController : GET /search
+
+productController --> ingestUseCase
+ingestUseCase --> productWrite : createProduct
+ingestUseCase --> publisher : publishProductCreated
+publisher --> queue
+
+queue --> workerProcessor : ProductCreatedEvent
+workerProcessor --> embeddingAdapter : generateProductEmbedding
+embeddingAdapter --> gemini : embedContent
+workerProcessor --> productWrite : updateProductEmbedding
+productWrite --> postgres
+
+searchController --> searchUseCase
+searchUseCase --> orchestrator
+orchestrator --> embeddingAdapter : generateQueryEmbedding
+orchestrator --> ftsAdapter : lexicalSearch
+orchestrator --> vectorAdapter : vectorSearch
+orchestrator --> rrf : fuse
+
+ftsAdapter --> postgres
+vectorAdapter --> postgres
+
+@enduml

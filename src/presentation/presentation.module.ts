@@ -5,7 +5,7 @@ import { ProductController } from 'src/presentation/controllers/product.controll
 import { SearchController } from 'src/presentation/controllers/search.controller';
 
 @Module({
-  imports: [InfrastructureModule],
-  controllers: [SearchController, ProductController],
+    imports: [InfrastructureModule],
+    controllers: [SearchController, ProductController],
 })
-export class PresentationModule {}
+export class PresentationModule { }

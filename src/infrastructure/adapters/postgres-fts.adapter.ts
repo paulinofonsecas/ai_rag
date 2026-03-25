@@ -6,24 +6,24 @@ import { PostgresService } from 'src/infrastructure/database/postgres.service';
 import { toProductEntity } from './row-mapper';
 
 type FtsSearchRow = {
-  id: string;
-  name: string;
-  description: string;
-  category: string;
-  embedding: number[] | null;
-  created_at: Date;
-  updated_at: Date;
-  lexical_score: number;
-  rank: number;
+    id: string;
+    name: string;
+    description: string;
+    category: string;
+    embedding: number[] | null;
+    created_at: Date;
+    updated_at: Date;
+    lexical_score: number;
+    rank: number;
 };
 
 @Injectable()
 export class PostgresFTSAdapter implements LexicalSearchPort {
-  constructor(private readonly postgres: PostgresService) {}
+    constructor(private readonly postgres: PostgresService) { }
 
-  async lexicalSearch(query: string, limit: number, offset: number) {
-    const { rows } = await this.postgres.query<FtsSearchRow>(
-      `
+    async lexicalSearch(query: string, limit: number, offset: number) {
+        const { rows } = await this.postgres.query<FtsSearchRow>(
+            `
       WITH ranked AS (
         SELECT
           p.id,
@@ -44,13 +44,13 @@ export class PostgresFTSAdapter implements LexicalSearchPort {
       ORDER BY ranked.lexical_score DESC, ranked.created_at DESC
       LIMIT $2 OFFSET $3
       `,
-      [query, limit, offset],
-    );
+            [query, limit, offset],
+        );
 
-    return rows.map((row: FtsSearchRow) => ({
-      product: toProductEntity(row),
-      rank: Number(row.rank),
-      score: Number(row.lexical_score),
-    }));
-  }
+        return rows.map((row: FtsSearchRow) => ({
+            product: toProductEntity(row),
+            rank: Number(row.rank),
+            score: Number(row.lexical_score),
+        }));
+    }
 }

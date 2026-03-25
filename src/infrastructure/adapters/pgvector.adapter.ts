@@ -6,25 +6,26 @@ import { PostgresService } from 'src/infrastructure/database/postgres.service';
 import { toProductEntity } from './row-mapper';
 
 type VectorSearchRow = {
-  id: string;
-  name: string;
-  description: string;
-  category: string;
-  embedding: number[] | null;
-  created_at: Date;
-  updated_at: Date;
-  distance: number;
-  rank: number;
+    id: string;
+    name: string;
+    description: string;
+    category: string;
+    embedding: number[] | null;
+    created_at: Date;
+    updated_at: Date;
+    distance: number;
+    rank: number;
 };
 
 @Injectable()
 export class PgVectorAdapter implements VectorSearchPort {
-  constructor(private readonly postgres: PostgresService) {}
+    constructor(private readonly postgres: PostgresService) { }
 
-  async vectorSearch(queryEmbedding: number[], limit: number, offset: number) {
-    const queryVector = `[${queryEmbedding.join(',')}]`;
-    const { rows } = await this.postgres.query<VectorSearchRow>(
-      `
+    async vectorSearch(queryEmbedding: number[], limit: number, offset: number) {
+        const queryVector = `[${queryEmbedding.join(',')}]`;
+
+        const { rows } = await this.postgres.query<VectorSearchRow>(
+            `
       SELECT
         p.id,
         p.name,
@@ -40,13 +41,13 @@ export class PgVectorAdapter implements VectorSearchPort {
       ORDER BY p.embedding <=> $1::vector ASC
       LIMIT $2 OFFSET $3
       `,
-      [queryVector, limit, offset],
-    );
+            [queryVector, limit, offset],
+        );
 
-    return rows.map((row: VectorSearchRow) => ({
-      product: toProductEntity(row),
-      rank: Number(row.rank),
-      score: 1 - Number(row.distance),
-    }));
-  }
+        return rows.map((row: VectorSearchRow) => ({
+            product: toProductEntity(row),
+            rank: Number(row.rank),
+            score: 1 - Number(row.distance),
+        }));
+    }
 }

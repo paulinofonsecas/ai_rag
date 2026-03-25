@@ -1,0 +1,67 @@
+@startuml
+skinparam shadowing false
+
+title E2E Flow - Product Ingestion and Hybrid Search
+
+autonumber
+
+actor Client
+participant "ProductController" as ProductController
+participant "IngestProductUseCase" as IngestProductUseCase
+participant "ProductWriteAdapter" as ProductWriteAdapter
+participant "ProductIngestionPublisher" as ProductIngestionPublisher
+queue "BullMQ Queue" as Queue
+participant "ProductIngestionProcessor" as ProductIngestionProcessor
+
+participant "EmbeddingAPIAdapter" as EmbeddingAPIAdapter
+database "PostgreSQL" as PostgreSQL
+participant "SearchController" as SearchController
+participant "SearchProductsUseCase" as SearchProductsUseCase
+participant "HybridSearchOrchestrator" as HybridSearchOrchestrator
+participant "PostgresFTSAdapter" as PostgresFTSAdapter
+participant "PgVectorAdapter" as PgVectorAdapter
+participant "RrfService" as RrfService
+
+== Ingestion ==
+Client -> ProductController: POST /products
+ProductController -> IngestProductUseCase: execute(input)
+IngestProductUseCase -> ProductWriteAdapter: createProduct(input)
+ProductWriteAdapter -> PostgreSQL: INSERT product
+PostgreSQL --> ProductWriteAdapter: product(id)
+ProductWriteAdapter --> IngestProductUseCase: product
+IngestProductUseCase -> ProductIngestionPublisher: publishProductCreated(event)
+ProductIngestionPublisher -> Queue: enqueue ProductCreatedEvent
+IngestProductUseCase --> ProductController: product queued
+ProductController --> Client: 201 Created
+
+== Async Embedding Worker ==
+Queue -> ProductIngestionProcessor: consume ProductCreatedEvent
+ProductIngestionProcessor -> EmbeddingAPIAdapter: generateProductEmbedding(text)
+EmbeddingAPIAdapter --> ProductIngestionProcessor: embedding vector
+ProductIngestionProcessor -> ProductWriteAdapter: updateProductEmbedding(productId, vector)
+ProductWriteAdapter -> PostgreSQL: UPDATE embedding
+PostgreSQL --> ProductWriteAdapter: ok
+ProductWriteAdapter --> ProductIngestionProcessor: ok
+ProductIngestionProcessor --> Queue: complete job
+
+== Search ==
+Client -> SearchController: GET /search?q=...
+SearchController -> SearchProductsUseCase: execute(query)
+SearchProductsUseCase -> HybridSearchOrchestrator: search(input)
+HybridSearchOrchestrator -> PostgresFTSAdapter: lexicalSearch(query)
+PostgresFTSAdapter -> PostgreSQL: FTS query
+PostgreSQL --> PostgresFTSAdapter: lexicalResults
+PostgresFTSAdapter --> HybridSearchOrchestrator: lexicalResults
+HybridSearchOrchestrator -> EmbeddingAPIAdapter: generateQueryEmbedding(query)
+EmbeddingAPIAdapter --> HybridSearchOrchestrator: query vector
+HybridSearchOrchestrator -> PgVectorAdapter: vectorSearch(vector)
+PgVectorAdapter -> PostgreSQL: pgvector similarity
+PostgreSQL --> PgVectorAdapter: semanticResults
+PgVectorAdapter --> HybridSearchOrchestrator: semanticResults
+HybridSearchOrchestrator -> RrfService: fuse(semantic, lexical)
+RrfService --> HybridSearchOrchestrator: fusedResults
+HybridSearchOrchestrator --> SearchProductsUseCase: results
+SearchProductsUseCase --> SearchController: results
+SearchController --> Client: 200 OK
+
+@enduml

@@ -1,31 +1,44 @@
-# Hybrid Search Backend (NestJS + PostgreSQL + pgvector + BullMQ)
+# Hybrid Search Backend
 
-## Prerequisites
+Production-oriented backend for product ingestion and hybrid retrieval using:
+- NestJS
+- PostgreSQL + pgvector
+- PostgreSQL FTS
+- BullMQ workers
 
-- Node.js 20+
-- PostgreSQL 15+ with pgvector extension
-- Redis 7+
+## Documentation Portal
 
-## Setup
+See the complete system docs in:
+- `docs/INDEX.md`
+- `docs/pt-br/INDEX.md` (versao em PT-BR)
 
-1. Install dependencies:
-   npm install
-2. Copy environment:
-   cp .env.example .env
-3. Run SQL migration:
-   psql -h localhost -U postgres -d hybrid_search -f sql/001_init_hybrid_search.sql
-4. Start API:
-   npm run start:dev
-5. Start worker:
-   npm run start:worker
+Quick links:
+- Architecture: `docs/architecture.md`
+- Setup: `docs/setup.md`
+- Docker: `docs/docker.md`
+- API: `docs/api.md`
+- Hybrid Search and RRF: `docs/hybrid-search.md`
+- Workers: `docs/workers.md`
+- Testing: `docs/testing.md`
+- CLI Playground: `docs/cli-playground.md`
+- Operations Runbook: `docs/operations-runbook.md`
 
-## Endpoints
+## Fast Start (Local)
 
-- `POST /products`
-- `GET /search?q=wireless+headphones&limit=10&offset=0&rrfK=60`
+1. `npm install`
+2. PowerShell: `Copy-Item .env.example .env`
+3. `psql -h localhost -U postgres -d hybrid_search -f sql/001_init_hybrid_search.sql`
+4. API: `npm run start:dev`
+5. Worker: `npm run start:worker`
 
-## Notes
+## Fast Start (Docker)
 
-- Product creation is synchronous for base row insert and async for embedding generation.
-- Search falls back to lexical-only when embedding generation fails.
-- Top-k is constrained per retrieval method before RRF merge for performance.
+1. Set `EMBEDDING_API_KEY` in your environment
+2. `docker compose up --build`
+
+## Useful Commands
+
+- Tests: `npm test`
+- Coverage: `npm run test:coverage`
+- CLI ingest: `npm run playground -- ingest --name "..." --description "..." --category "..."`
+- CLI search: `npm run playground -- search --query "..." --limit 5 --offset 0 --rrfk 60`

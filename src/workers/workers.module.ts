@@ -7,14 +7,14 @@ import { InfrastructureModule } from 'src/infrastructure/infrastructure.module';
 import { ProductIngestionProcessor } from 'src/workers/product-ingestion.processor';
 
 @Module({
-  imports: [
-    ConfigModule.forRoot({
-      isGlobal: true,
-      load: [configuration],
-      validate: validateEnv,
-    }),
-    InfrastructureModule,
-  ],
-  providers: [ProductIngestionProcessor],
+    imports: [
+        ConfigModule.forRoot({
+            isGlobal: true,
+            load: [configuration],
+            validate: validateEnv,
+        }),
+        InfrastructureModule,
+    ],
+    providers: [ProductIngestionProcessor],
 })
-export class WorkersModule {}
+export class WorkersModule { }

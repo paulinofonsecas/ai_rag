@@ -6,13 +6,13 @@ import { validateEnv } from 'src/config/env.validation';
 import { PresentationModule } from 'src/presentation/presentation.module';
 
 @Module({
-  imports: [
-    ConfigModule.forRoot({
-      isGlobal: true,
-      load: [configuration],
-      validate: validateEnv,
-    }),
-    PresentationModule,
-  ],
+    imports: [
+        ConfigModule.forRoot({
+            isGlobal: true,
+            load: [configuration],
+            validate: validateEnv,
+        }),
+        PresentationModule,
+    ],
 })
-export class AppModule {}
+export class AppModule { }
