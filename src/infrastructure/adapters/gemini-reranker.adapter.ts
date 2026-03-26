@@ -61,7 +61,6 @@ export class GeminiRerankerAdapter implements ResultReranker {
             id: item.product.id,
             index: index + 1,
             name: item.product.name,
-            category: item.product.category,
             description: item.product.description,
         }));
 
@@ -79,7 +78,7 @@ export class GeminiRerankerAdapter implements ResultReranker {
         const url = `https://generativelanguage.googleapis.com/v1beta/models/${this.model}:generateContent`;
         const prompt = [
             'You are a strict ranking engine for e-commerce search.',
-            'Task: reorder product IDs by relevance to the user query.',
+            'Task: return only product IDs that are genuinely relevant to the query, ordered by relevance.',
             'Rules:',
             '- Return JSON only.',
             '- Output format: {"orderedIds": ["id1", "id2", "id3"]}.',
@@ -90,7 +89,12 @@ export class GeminiRerankerAdapter implements ResultReranker {
             '- Never include explanations, comments, or markdown fences.',
             '- Include only IDs from the candidate list.',
             '- Do not invent IDs.',
-            '- Rank by intent match, specificity, and semantic alignment.',
+            '- Rank by user intent match, specificity, and semantic alignment.',
+            '- Use only query meaning plus candidate text (name and description).',
+            '- Prioritize contextual intent over superficial lexical overlap.',
+            '- If a candidate shares words but does not fit intent context, rank it lower.',
+            '- Exclude candidates that have no meaningful correlation with the query.',
+            '- It is allowed to return fewer IDs than candidates, including an empty list when nothing is relevant.',
             `Query: ${query}`,
             `Candidates: ${JSON.stringify(truncatedCandidates)}`,
         ].join('\n');

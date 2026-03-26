@@ -48,4 +48,25 @@ describe('SearchController', () => {
         expect(output.items[0].id).toBe('p1');
         expect(output.items[0].scores.rrf).toBe(0.2);
     });
+
+    it('returns items ordered by ranking', async () => {
+        const now = new Date('2026-01-01T00:00:00.000Z');
+        const productA = new Product('p-a', 'A', 'A', 'bebidas', now, now);
+        const productB = new Product('p-b', 'B', 'B', 'bebidas', now, now);
+        const productC = new Product('p-c', 'C', 'C', 'bebidas', now, now);
+
+        const useCase: jest.Mocked<SearchProductsUseCase> = {
+            execute: jest.fn().mockResolvedValue([
+                { product: productA, semanticRank: 4 },
+                { product: productB, semanticRank: 1 },
+                { product: productC, semanticRank: 2 },
+            ]),
+        } as unknown as jest.Mocked<SearchProductsUseCase>;
+
+        const controller = new SearchController(useCase);
+
+        const output = await controller.search({ q: 'coisas para ficar bebado' }, 'cid-999');
+
+        expect(output.items.map((item) => item.id)).toEqual(['p-b', 'p-c', 'p-a']);
+    });
 });

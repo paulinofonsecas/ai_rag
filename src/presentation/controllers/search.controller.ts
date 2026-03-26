@@ -51,10 +51,8 @@ export class SearchController {
             resultCount: results.length,
         });
 
-        return {
-            query: query.q,
-            count: results.length,
-            items: results.map((item) => ({
+        const items = results
+            .map((item) => ({
                 id: item.product.id,
                 name: item.product.name,
                 description: item.product.description,
@@ -68,7 +66,27 @@ export class SearchController {
                     semantic: item.semanticRank,
                     lexical: item.lexicalRank,
                 },
-            })),
+            }))
+            .sort((left, right) => {
+                const leftSemantic = left.ranks.semantic ?? Number.MAX_SAFE_INTEGER;
+                const rightSemantic = right.ranks.semantic ?? Number.MAX_SAFE_INTEGER;
+                if (leftSemantic !== rightSemantic) {
+                    return leftSemantic - rightSemantic;
+                }
+
+                const leftLexical = left.ranks.lexical ?? Number.MAX_SAFE_INTEGER;
+                const rightLexical = right.ranks.lexical ?? Number.MAX_SAFE_INTEGER;
+                if (leftLexical !== rightLexical) {
+                    return leftLexical - rightLexical;
+                }
+
+                return left.id.localeCompare(right.id);
+            });
+
+        return {
+            query: query.q,
+            count: items.length,
+            items,
         };
     }
 }

@@ -94,4 +94,27 @@ describe('HybridSearchOrchestrator', () => {
         expect(result[0].product.id).toBe('p2');
         expect(result[1].product.id).toBe('p1');
     });
+
+    it('returns empty result when AI reranker filters all candidates', async () => {
+        repository.vectorSearch.mockResolvedValue([
+            { product: p1, rank: 1, score: 0.8 },
+            { product: p2, rank: 2, score: 0.9 }
+        ]);
+        embeddingService.generateQueryEmbedding.mockResolvedValue([0.1, 0.2]);
+        reranker.rerank.mockResolvedValue([]);
+
+        const orchestrator = new HybridSearchOrchestrator(repository, embeddingService, reranker);
+        const result = await orchestrator.search({
+            query: 'query sem correlacao',
+            limit: 10,
+            offset: 0,
+            rrfK: 60,
+            perMethodLimit: 25,
+            rerank: true,
+            rerankCandidates: 25,
+        });
+
+        expect(reranker.rerank).toHaveBeenCalledTimes(1);
+        expect(result).toEqual([]);
+    });
 });

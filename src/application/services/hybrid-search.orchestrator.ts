@@ -121,7 +121,13 @@ export class HybridSearchOrchestrator {
         const rerankedIds = await this.reranker.rerank(input.query, candidates);
 
         if (rerankedIds.length === 0) {
-            return semanticResults.slice(0, input.limit);
+            this.logger.log({
+                msg: 'ai-search.rerank_filtered_all',
+                query: input.query,
+                candidateCount: candidates.length,
+            });
+
+            return [];
         }
 
         const byId = new Map(semanticResults.map((item) => [item.product.id, item]));
