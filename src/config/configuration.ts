@@ -17,5 +17,16 @@ export default () => ({
         apiKey: process.env.EMBEDDING_API_KEY,
         model: process.env.EMBEDDING_MODEL ?? 'gemini-embedding-001',
         dimensions: Number(process.env.EMBEDDING_DIMENSIONS ?? 1536),
+        maxRetries: Number(process.env.EMBEDDING_MAX_RETRIES ?? 6),
+        backoffMs: Number(process.env.EMBEDDING_BACKOFF_MS ?? 1000),
+        cooldownMs: Number(process.env.EMBEDDING_COOLDOWN_MS ?? 15000),
+    },
+    reranker: {
+        model: process.env.RERANK_MODEL ?? 'gemini-2.5-flash',
+        maxCandidates: Number(process.env.RERANK_MAX_CANDIDATES ?? 40),
+        maxRetries: Number(process.env.RERANK_MAX_RETRIES ?? 2),
+        backoffMs: Number(process.env.RERANK_BACKOFF_MS ?? 400),
+        cooldownMs: Number(process.env.RERANK_COOLDOWN_MS ?? 10000),
+        cacheTtlMs: Number(process.env.RERANK_CACHE_TTL_MS ?? 30000),
     },
 });

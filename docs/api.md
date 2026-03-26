@@ -1,9 +1,11 @@
 # HTTP API
 
 ## POST /products
+
 Create product and enqueue async embedding job.
 
 ### Request Body
+
 ```json
 {
   "name": "MX Master 3",
@@ -13,11 +15,13 @@ Create product and enqueue async embedding job.
 ```
 
 ### Validation
+
 - `name`: string, min 2, max 255
 - `description`: string, min 2, max 5000
 - `category`: string, min 2, max 120
 
 ### Response
+
 ```json
 {
   "id": "uuid",
@@ -31,18 +35,24 @@ Create product and enqueue async embedding job.
 ```
 
 ## GET /search
+
 Hybrid search endpoint.
 
 ### Query Params
+
 - `q` (required): natural language query
 - `limit` (optional, default 10)
 - `offset` (optional, default 0)
 - `rrfK` (optional, default 60)
+- `rerank` (optional, default true): uses Gemini to rerank the fused candidates
+- `rerankCandidates` (optional, default 40): how many fused candidates are sent to Gemini reranker
 
 ### Example
-`GET /search?q=ergonomic+wireless+mouse&limit=10&offset=0&rrfK=60`
+
+`GET /search?q=ergonomic+wireless+mouse&limit=10&offset=0&rrfK=60&rerank=true&rerankCandidates=40`
 
 ### Response
+
 ```json
 {
   "query": "ergonomic wireless mouse",
@@ -68,5 +78,6 @@ Hybrid search endpoint.
 ```
 
 ## Correlation ID
+
 - Request header `x-correlation-id` is accepted.
 - If missing, middleware generates one and echoes it in response headers.

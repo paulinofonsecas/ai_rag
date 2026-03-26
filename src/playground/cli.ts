@@ -73,6 +73,8 @@ async function run() {
             const limit = Number(args.get('limit') ?? '10');
             const offset = Number(args.get('offset') ?? '0');
             const rrfK = Number(args.get('rrfk') ?? '60');
+            const rerank = args.get('rerank') !== 'false';
+            const rerankCandidates = Number(args.get('rerank-candidates') ?? '40');
 
             if (!query) {
                 throw new Error('Missing required arg for search: --query');
@@ -83,6 +85,8 @@ async function run() {
                 limit,
                 offset,
                 rrfK,
+                rerank,
+                rerankCandidates,
             });
 
             logger.log({
@@ -101,7 +105,7 @@ async function run() {
         }
 
         logger.log(
-            'Usage: npm run playground -- ingest --name "..." --description "..." --category "..." | search --query "..." [--limit 10] [--offset 0] [--rrfk 60]',
+            'Usage: npm run playground -- ingest --name "..." --description "..." --category "..." | search --query "..." [--limit 10] [--offset 0] [--rrfk 60] [--rerank true|false] [--rerank-candidates 40]',
         );
     } finally {
         await app.close();

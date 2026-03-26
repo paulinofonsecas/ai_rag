@@ -7,6 +7,7 @@ import { RrfService } from 'src/application/services/rrf.service';
 import { IngestProductUseCase } from 'src/application/use-cases/ingest-product.use-case';
 import { SearchProductsUseCase } from 'src/application/use-cases/search-products.use-case';
 import { EmbeddingAPIAdapter } from 'src/infrastructure/adapters/embedding-api.adapter';
+import { GeminiRerankerAdapter } from 'src/infrastructure/adapters/gemini-reranker.adapter';
 import { HybridSearchRepositoryAdapter } from 'src/infrastructure/adapters/hybrid-search.repository.adapter';
 import { PgVectorAdapter } from 'src/infrastructure/adapters/pgvector.adapter';
 import { PostgresFTSAdapter } from 'src/infrastructure/adapters/postgres-fts.adapter';
@@ -41,6 +42,7 @@ import { TOKENS } from 'src/infrastructure/tokens';
         ProductWriteAdapter,
         ProductIngestionPublisher,
         EmbeddingAPIAdapter,
+        GeminiRerankerAdapter,
         RrfService,
         {
             provide: TOKENS.SearchRepository,
@@ -56,14 +58,21 @@ import { TOKENS } from 'src/infrastructure/tokens';
             useExisting: EmbeddingAPIAdapter,
         },
         {
+            provide: TOKENS.ResultReranker,
+            useExisting: GeminiRerankerAdapter,
+        },
+        {
             provide: TOKENS.ProductIngestionPublisher,
             useExisting: ProductIngestionPublisher,
         },
         {
             provide: TOKENS.HybridSearchOrchestrator,
-            inject: [TOKENS.SearchRepository, TOKENS.EmbeddingService, RrfService],
-            useFactory: (repository: HybridSearchRepositoryAdapter, embeddingService: EmbeddingAPIAdapter, rrfService: RrfService) =>
-                new HybridSearchOrchestrator(repository, embeddingService, rrfService),
+            inject: [TOKENS.SearchRepository, TOKENS.EmbeddingService, TOKENS.ResultReranker],
+            useFactory: (
+                repository: HybridSearchRepositoryAdapter,
+                embeddingService: EmbeddingAPIAdapter,
+                reranker: GeminiRerankerAdapter,
+            ) => new HybridSearchOrchestrator(repository, embeddingService, reranker),
         },
         {
             provide: TOKENS.SearchProductsUseCase,

@@ -8,7 +8,7 @@ export type RankedSearchResult = {
 
 export type HybridSearchResult = {
     product: Product;
-    rrfScore: number;
+    rrfScore?: number;
     semanticRank?: number;
     lexicalRank?: number;
     semanticScore?: number;

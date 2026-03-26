@@ -29,6 +29,8 @@ describe('SearchController', () => {
             limit: 10,
             offset: 0,
             rrfK: 60,
+            rerank: true,
+            rerankCandidates: 30,
         };
 
         const output = await controller.search(query, 'cid-123');
@@ -38,6 +40,8 @@ describe('SearchController', () => {
             limit: 10,
             offset: 0,
             rrfK: 60,
+            rerank: true,
+            rerankCandidates: 30,
         });
         expect(output.query).toBe('headphones');
         expect(output.count).toBe(1);

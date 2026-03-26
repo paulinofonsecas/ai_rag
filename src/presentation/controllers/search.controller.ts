@@ -29,6 +29,8 @@ export class SearchController {
             limit: query.limit ?? 10,
             offset: query.offset ?? 0,
             rrfK: query.rrfK ?? 60,
+            rerank: query.rerank ?? true,
+            rerankCandidates: query.rerankCandidates,
             correlationId: correlationId ?? 'n/a',
         });
 
@@ -37,6 +39,8 @@ export class SearchController {
             limit: query.limit,
             offset: query.offset,
             rrfK: query.rrfK,
+            rerank: query.rerank,
+            rerankCandidates: query.rerankCandidates,
         });
 
         this.logger.log({

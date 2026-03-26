@@ -9,6 +9,8 @@
         "start:worker": "ts-node -r tsconfig-paths/register src/workers/main.worker.ts",
         "start:worker:dev": "node --watch --require ts-node/register --require tsconfig-paths/register src/workers/main.worker.ts",
         "playground": "ts-node -r tsconfig-paths/register src/playground/cli.ts",
+        "seed:products": "ts-node -r tsconfig-paths/register src/seeds/products.seed.ts",
+        "seed:products:files": "ts-node -r tsconfig-paths/register src/seeds/products-files.seed.ts",
         "lint": "eslint \"src/**/*.ts\"",
         "test": "jest --runInBand",
         "test:watch": "jest --watch",

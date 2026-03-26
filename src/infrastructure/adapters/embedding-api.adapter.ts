@@ -16,11 +16,18 @@ export class EmbeddingAPIAdapter implements EmbeddingService {
     private readonly apiKey: string;
     private readonly model: string;
     private readonly dimensions: number;
+    private readonly maxRetries: number;
+    private readonly backoffMs: number;
+    private readonly cooldownMs: number;
+    private rateLimitedUntil = 0;
 
     constructor(private readonly configService: ConfigService) {
         this.apiKey = this.configService.getOrThrow<string>('embedding.apiKey');
         this.model = this.configService.get<string>('embedding.model', 'gemini-embedding-001');
         this.dimensions = this.configService.get<number>('embedding.dimensions', 1536);
+        this.maxRetries = this.configService.get<number>('embedding.maxRetries', 6);
+        this.backoffMs = this.configService.get<number>('embedding.backoffMs', 1000);
+        this.cooldownMs = this.configService.get<number>('embedding.cooldownMs', 15000);
     }
 
     async generateProductEmbedding(input: string): Promise<number[]> {
@@ -38,7 +45,7 @@ export class EmbeddingAPIAdapter implements EmbeddingService {
             return cached;
         }
 
-        const url = `https://generativelanguage.googleapis.com/v1beta/models/${this.model}:embedContent?key=${this.apiKey}`;
+        const url = `https://generativelanguage.googleapis.com/v1beta/models/${this.model}:embedContent`;
 
         const requestBody = {
             model: `models/${this.model}`,
@@ -53,21 +60,7 @@ export class EmbeddingAPIAdapter implements EmbeddingService {
         };
 
         try {
-            const response = await fetch(url, {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json',
-                },
-                body: JSON.stringify(requestBody),
-            });
-
-            if (!response.ok) {
-                const errorData = await response.text();
-                this.logger.error(`Google Gemini API error: ${response.status} - ${errorData}`);
-                throw new Error(
-                    `Google Gemini Embedding API request failed with status ${response.status}`,
-                );
-            }
+            const response = await this.sendWithRetry(url, requestBody, normalized);
 
             const payload = (await response.json()) as GoogleGeminiEmbeddingResponse;
             const vector = payload.embedding?.values;
@@ -113,5 +106,102 @@ export class EmbeddingAPIAdapter implements EmbeddingService {
         throw new Error(
             `Embedding dimensions are too small: expected ${this.dimensions}, received ${vector.length}`,
         );
+    }
+
+    private async sendWithRetry(url: string, body: object, input: string): Promise<Response> {
+        for (let attempt = 0; attempt <= this.maxRetries; attempt += 1) {
+            if (Date.now() < this.rateLimitedUntil) {
+                const cooldownRemainingMs = this.rateLimitedUntil - Date.now();
+                this.logger.warn({
+                    msg: 'embedding.cooldown_active',
+                    input,
+                    cooldownRemainingMs,
+                });
+                await this.sleep(cooldownRemainingMs);
+            }
+
+            const response = await fetch(url, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'x-goog-api-key': this.apiKey,
+                },
+                body: JSON.stringify(body),
+            });
+
+            if (response.ok) {
+                return response;
+            }
+
+            const errorText = await response.text();
+            const isRetriable = response.status === 429 || response.status === 500 || response.status === 503 || response.status === 504;
+
+            if (!isRetriable || attempt === this.maxRetries) {
+                this.logger.error({
+                    msg: 'embedding.request_failed',
+                    input,
+                    status: response.status,
+                    attempt,
+                    error: errorText,
+                });
+                throw new Error(`Google Gemini Embedding API request failed with status ${response.status}`);
+            }
+
+            const retryAfterMs = this.parseRetryAfterMs(response.headers.get('retry-after'));
+            const retryInfoMs = this.parseRetryInfoDelayMs(errorText);
+            const backoffWithJitter = Math.round(this.backoffMs * 2 ** attempt + Math.random() * this.backoffMs);
+            const delayMs = Math.max(retryAfterMs, retryInfoMs, backoffWithJitter);
+
+            if (response.status === 429) {
+                this.rateLimitedUntil = Date.now() + Math.max(this.cooldownMs, delayMs);
+            }
+
+            this.logger.warn({
+                msg: 'embedding.retrying',
+                input,
+                status: response.status,
+                attempt,
+                delayMs,
+            });
+
+            await this.sleep(delayMs);
+        }
+
+        throw new Error('Google Gemini Embedding API request failed after retries');
+    }
+
+    private parseRetryAfterMs(retryAfterHeader: string | null): number {
+        if (!retryAfterHeader) {
+            return 0;
+        }
+
+        const seconds = Number(retryAfterHeader);
+        if (Number.isFinite(seconds) && seconds > 0) {
+            return Math.round(seconds * 1000);
+        }
+
+        return 0;
+    }
+
+    private parseRetryInfoDelayMs(errorText: string): number {
+        if (!errorText) {
+            return 0;
+        }
+
+        const match = errorText.match(/"retryDelay"\s*:\s*"(\d+)s"/);
+        if (!match) {
+            return 0;
+        }
+
+        const seconds = Number(match[1]);
+        if (!Number.isFinite(seconds) || seconds <= 0) {
+            return 0;
+        }
+
+        return Math.round(seconds * 1000);
+    }
+
+    private sleep(ms: number): Promise<void> {
+        return new Promise((resolve) => setTimeout(resolve, ms));
     }
 }

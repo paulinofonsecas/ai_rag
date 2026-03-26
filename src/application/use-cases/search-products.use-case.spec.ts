@@ -17,7 +17,9 @@ describe('SearchProductsUseCase', () => {
             limit: 10,
             offset: 0,
             rrfK: 60,
-            perMethodLimit: 25,
+            perMethodLimit: 50,
+            rerank: true,
+            rerankCandidates: 40,
         });
     });
 });

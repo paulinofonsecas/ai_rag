@@ -1,0 +1,4322 @@
+[
+    {
+        "id": "9418",
+        "title": "SUMO RICO 200ML MORANGO",
+        "description": "SUMO RICO 200ML MORANGO",
+        "url": "https://www.kibabo.co.ao/pt/rico/sumo-rico-200ml-morango_p9418.html?id=225&cat=237&pc=1",
+        "price": {
+            "value": "80",
+            "valueOriginal": "80.00",
+            "currency": {
+                "description": "AOA",
+                "code": "AOA"
+            }
+        },
+        "featured_image": {
+            "alt": "Sumo rico 200ml morango",
+            "source": "https://www.kibabo.co.ao/pt/images_prods_static/SKU/30033160.jpg?1665572625"
+        }
+    },
+    {
+        "id": "9419",
+        "title": "SUMO RICO 200ML COCO/ANANAS",
+        "description": "SUMO RICO 200ML COCO/ANANAS",
+        "url": "https://www.kibabo.co.ao/pt/rico/sumo-rico-200ml-cocoananas_p9419.html?id=225&cat=237&pc=1",
+        "price": {
+            "value": "80",
+            "valueOriginal": "80.00",
+            "currency": {
+                "description": "AOA",
+                "code": "AOA"
+            }
+        },
+        "featured_image": {
+            "alt": "Sumo rico 200ml coco/ananas",
+            "source": "https://www.kibabo.co.ao/pt/images_prods_static/SKU/30033161.jpg?1665572636"
+        }
+    },
+    {
+        "id": "9420",
+        "title": "SUMO RICO 200ML LARANJA",
+        "description": "SUMO RICO 200ML LARANJA",
+        "url": "https://www.kibabo.co.ao/pt/rico/sumo-rico-200ml-laranja_p9420.html?id=225&cat=237&pc=1",
+        "price": {
+            "value": "80",
+            "valueOriginal": "80.00",
+            "currency": {
+                "description": "AOA",
+                "code": "AOA"
+            }
+        },
+        "featured_image": {
+            "alt": "Sumo rico 200ml laranja",
+            "source": "https://www.kibabo.co.ao/pt/images_prods_static/SKU/30033162.jpg?1665572635"
+        }
+    },
+    {
+        "id": "9195",
+        "title": "SUMO RICO 200ML TROPICAL",
+        "description": "SUMO RICO 200ML TROPICAL",
+        "url": "https://www.kibabo.co.ao/pt/rico/sumo-rico-200ml-tropical_p9195.html?id=225&cat=237&pc=1",
+        "price": {
+            "value": "80",
+            "valueOriginal": "80.00",
+            "currency": {
+                "description": "AOA",
+                "code": "AOA"
+            }
+        },
+        "featured_image": {
+            "alt": "Sumo rico 200ml tropical",
+            "source": "https://www.kibabo.co.ao/pt/images_prods_static/SKU/30033164.jpg?1665572653"
+        }
+    },
+    {
+        "id": "10238",
+        "title": "AGUA MINERAL PERLA 0,40L",
+        "description": "AGUA MINERAL PERLA 0,40L",
+        "url": "https://www.kibabo.co.ao/pt/perla/agua-mineral-perla-040l_p10238.html?id=225&cat=237&pc=1",
+        "price": {
+            "value": "100",
+            "valueOriginal": "100.00",
+            "currency": {
+                "description": "AOA",
+                "code": "AOA"
+            }
+        },
+        "featured_image": {
+            "alt": "Agua mineral perla 0,40l",
+            "source": "https://www.kibabo.co.ao/pt/images_prods_static/SKU/30038489.jpg?1638353543"
+        }
+    },
+    {
+        "id": "2489",
+        "title": "AGUA MESA ORION PET 0,40L",
+        "description": "AGUA MESA ORION PET 0,40L",
+        "url": "https://www.kibabo.co.ao/pt/orion/agua-mesa-orion-pet-040l_p2489.html?id=225&cat=237&pc=1",
+        "price": {
+            "value": "110",
+            "valueOriginal": "110.00",
+            "currency": {
+                "description": "AOA",
+                "code": "AOA"
+            }
+        },
+        "featured_image": {
+            "alt": "Agua mesa orion pet 0,40l",
+            "source": "https://www.kibabo.co.ao/pt/images_prods_static/SKU/30023477.jpg?1638952995"
+        }
+    },
+    {
+        "id": "4177",
+        "title": "AGUA MINERAL PERLA 0,60L",
+        "description": "AGUA MINERAL PERLA 0,60L",
+        "url": "https://www.kibabo.co.ao/pt/perla/agua-mineral-perla-060l_p4177.html?id=225&cat=237&pc=1",
+        "price": {
+            "value": "115",
+            "valueOriginal": "115.00",
+            "currency": {
+                "description": "AOA",
+                "code": "AOA"
+            }
+        },
+        "featured_image": {
+            "alt": "Agua mineral perla 0,60l",
+            "source": "https://www.kibabo.co.ao/pt/images_prods_static/SKU/30029426.jpg?1634550862"
+        }
+    },
+    {
+        "id": "1229",
+        "title": "AGUA MESA PURA PET 0,5L",
+        "description": "AGUA MESA PURA PET 0,5L",
+        "url": "https://www.kibabo.co.ao/pt/pura/agua-mesa-pura-pet-05l_p1229.html?id=225&cat=237&pc=1",
+        "price": {
+            "value": "120",
+            "valueOriginal": "120.00",
+            "currency": {
+                "description": "AOA",
+                "code": "AOA"
+            }
+        },
+        "featured_image": {
+            "alt": "Agua mesa pura pet 0,5l",
+            "source": "https://www.kibabo.co.ao/pt/images_prods_static/SKU/30005615.jpg?1641309766"
+        }
+    },
+    {
+        "id": "1524",
+        "title": "AGUA MESA AQUACITA 0,5L",
+        "description": "AGUA MESA AQUACITA 0,5L",
+        "url": "https://www.kibabo.co.ao/pt/aquacita/agua-mesa-aquacita-05l_p1524.html?id=225&cat=237&pc=1",
+        "price": {
+            "value": "130",
+            "valueOriginal": "130.00",
+            "currency": {
+                "description": "AOA",
+                "code": "AOA"
+            }
+        },
+        "featured_image": {
+            "alt": "Agua mesa aquacita 0,5l",
+            "source": "https://www.kibabo.co.ao/pt/images_prods_static/SKU/30011306.jpg?1641310176"
+        }
+    },
+    {
+        "id": "5732",
+        "title": "AGUA BOM JESUS 0,33L",
+        "description": "AGUA BOM JESUS 0,33L",
+        "url": "https://www.kibabo.co.ao/pt/bom-jesus/agua-bom-jesus-033l_p5732.html?id=225&cat=237&pc=1",
+        "price": {
+            "value": "135",
+            "valueOriginal": "135.00",
+            "currency": {
+                "description": "AOA",
+                "code": "AOA"
+            }
+        },
+        "featured_image": {
+            "alt": "Agua bom jesus 0,33l",
+            "source": "https://www.kibabo.co.ao/pt/images_prods_static/SKU/30034490.jpg?1634550974"
+        }
+    },
+    {
+        "id": "2151",
+        "title": "SUMO TAMTAM 200ML MANGA",
+        "description": "SUMO TAMTAM 200ML MANGA",
+        "url": "https://www.kibabo.co.ao/pt/tamtam/sumo-tamtam-200ml-manga_p2151.html?id=225&cat=237&pc=1",
+        "price": {
+            "value": "140",
+            "valueOriginal": "140.00",
+            "currency": {
+                "description": "AOA",
+                "code": "AOA"
+            }
+        },
+        "featured_image": {
+            "alt": "Sumo tamtam 200ml manga",
+            "source": "https://www.kibabo.co.ao/pt/images_prods_static/SKU/30021522.jpg?1634550743"
+        }
+    },
+    {
+        "id": "2152",
+        "title": "SUMO TAMTAM 200ML COCKTAIL",
+        "description": "SUMO TAMTAM 200ML COCKTAIL",
+        "url": "https://www.kibabo.co.ao/pt/tamtam/sumo-tamtam-200ml-cocktail_p2152.html?id=225&cat=237&pc=1",
+        "price": {
+            "value": "140",
+            "valueOriginal": "140.00",
+            "currency": {
+                "description": "AOA",
+                "code": "AOA"
+            }
+        },
+        "featured_image": {
+            "alt": "Sumo tamtam 200ml cocktail",
+            "source": "https://www.kibabo.co.ao/pt/images_prods_static/SKU/30021523.jpg?1634550743"
+        }
+    },
+    {
+        "id": "2154",
+        "title": "SUMO TAMTAM 200ML LARANJA",
+        "description": "SUMO TAMTAM 200ML LARANJA",
+        "url": "https://www.kibabo.co.ao/pt/tamtam/sumo-tamtam-200ml-laranja_p2154.html?id=225&cat=237&pc=2",
+        "price": {
+            "value": "140",
+            "valueOriginal": "140.00",
+            "currency": {
+                "description": "AOA",
+                "code": "AOA"
+            }
+        },
+        "featured_image": {
+            "alt": "Sumo tamtam 200ml laranja",
+            "source": "https://www.kibabo.co.ao/pt/images_prods_static/SKU/30021525.jpg?1639039733"
+        }
+    },
+    {
+        "id": "2155",
+        "title": "SUMO TAMTAM 200ML ANANAS",
+        "description": "SUMO TAMTAM 200ML ANANAS",
+        "url": "https://www.kibabo.co.ao/pt/tamtam/sumo-tamtam-200ml-ananas_p2155.html?id=225&cat=237&pc=2",
+        "price": {
+            "value": "140",
+            "valueOriginal": "140.00",
+            "currency": {
+                "description": "AOA",
+                "code": "AOA"
+            }
+        },
+        "featured_image": {
+            "alt": "Sumo tamtam 200ml ananas",
+            "source": "https://www.kibabo.co.ao/pt/images_prods_static/SKU/30021526.jpg?1639039736"
+        }
+    },
+    {
+        "id": "2156",
+        "title": "SUMO TAMTAM 200ML MAÇA",
+        "description": "SUMO TAMTAM 200ML MAÇA",
+        "url": "https://www.kibabo.co.ao/pt/tamtam/sumo-tamtam-200ml-maca_p2156.html?id=225&cat=237&pc=2",
+        "price": {
+            "value": "140",
+            "valueOriginal": "140.00",
+            "currency": {
+                "description": "AOA",
+                "code": "AOA"
+            }
+        },
+        "featured_image": {
+            "alt": "Sumo tamtam 200ml maça",
+            "source": "https://www.kibabo.co.ao/pt/images_prods_static/SKU/30021527.jpg?1634550743"
+        }
+    },
+    {
+        "id": "2157",
+        "title": "SUMO TAMTAM 200ML MORANGO",
+        "description": "SUMO TAMTAM 200ML MORANGO",
+        "url": "https://www.kibabo.co.ao/pt/tamtam/sumo-tamtam-200ml-morango_p2157.html?id=225&cat=237&pc=2",
+        "price": {
+            "value": "140",
+            "valueOriginal": "140.00",
+            "currency": {
+                "description": "AOA",
+                "code": "AOA"
+            }
+        },
+        "featured_image": {
+            "alt": "Sumo tamtam 200ml morango",
+            "source": "https://www.kibabo.co.ao/pt/images_prods_static/SKU/30021528.jpg?1639039738"
+        }
+    },
+    {
+        "id": "5733",
+        "title": "AGUA BOM JESUS 0,5L",
+        "description": "AGUA BOM JESUS 0,5L",
+        "url": "https://www.kibabo.co.ao/pt/bom-jesus/agua-bom-jesus-05l_p5733.html?id=225&cat=237&pc=2",
+        "price": {
+            "value": "140",
+            "valueOriginal": "140.00",
+            "currency": {
+                "description": "AOA",
+                "code": "AOA"
+            }
+        },
+        "featured_image": {
+            "alt": "Agua bom jesus 0,5l",
+            "source": "https://www.kibabo.co.ao/pt/images_prods_static/SKU/30034491.jpg?1634550974"
+        }
+    },
+    {
+        "id": "6920",
+        "title": "AGUA MESA AURA 0,5L",
+        "description": "AGUA MESA AURA 0,5L",
+        "url": "https://www.kibabo.co.ao/pt/aura/agua-mesa-aura-05l_p6920.html?id=225&cat=237&pc=2",
+        "price": {
+            "value": "140",
+            "valueOriginal": "140.00",
+            "currency": {
+                "description": "AOA",
+                "code": "AOA"
+            }
+        },
+        "featured_image": {
+            "alt": "Agua mesa aura 0,5l",
+            "source": "https://www.kibabo.co.ao/pt/images_prods_static/SKU/30037434.jpg?1632506989"
+        }
+    },
+    {
+        "id": "3706",
+        "title": "REFRIG. BLUE PET 0,25L LARANJA",
+        "description": "REFRIG. BLUE PET 0,25L LARANJA",
+        "url": "https://www.kibabo.co.ao/pt/blue/refrig.-blue-pet-025l-laranja_p3706.html?id=225&cat=237&pc=2",
+        "price": {
+            "value": "145",
+            "valueOriginal": "145.00",
+            "currency": {
+                "description": "AOA",
+                "code": "AOA"
+            }
+        },
+        "featured_image": {
+            "alt": "Refrig. blue pet 0,25l laranja",
+            "source": "https://www.kibabo.co.ao/pt/images_prods_static/SKU/30028227.jpg?1584620070"
+        }
+    },
+    {
+        "id": "2875",
+        "title": "REFRIG. RED COLA PET 250ML CLASSICA",
+        "description": "REFRIG. RED COLA PET 250ML CLASSICA",
+        "url": "https://www.kibabo.co.ao/pt/red-cola/refrig.-red-cola-pet-250ml-classica_p2875.html?id=225&cat=237&pc=2",
+        "price": {
+            "value": "155",
+            "valueOriginal": "155.00",
+            "currency": {
+                "description": "AOA",
+                "code": "AOA"
+            }
+        },
+        "featured_image": {
+            "alt": "Refrig. red cola pet 250ml classica",
+            "source": "https://www.kibabo.co.ao/pt/images_prods_static/SKU/30025784.jpg?1634550787"
+        }
+    },
+    {
+        "id": "2876",
+        "title": "REFRIG. RED COLA PET 250ML COCO",
+        "description": "REFRIG. RED COLA PET 250ML COCO",
+        "url": "https://www.kibabo.co.ao/pt/red-cola/refrig.-red-cola-pet-250ml-coco_p2876.html?id=225&cat=237&pc=2",
+        "price": {
+            "value": "155",
+            "valueOriginal": "155.00",
+            "currency": {
+                "description": "AOA",
+                "code": "AOA"
+            }
+        },
+        "featured_image": {
+            "alt": "Refrig. red cola pet 250ml coco",
+            "source": "https://www.kibabo.co.ao/pt/images_prods_static/SKU/30025785.jpg?1634550787"
+        }
+    },
+    {
+        "id": "1749",
+        "title": "SUMO GARDENIA 200ML MANGA",
+        "description": "SUMO GARDENIA 200ML MANGA",
+        "url": "https://www.kibabo.co.ao/pt/gardenia/sumo-gardenia-200ml-manga_p1749.html?id=225&cat=237&pc=2",
+        "price": {
+            "value": "165",
+            "valueOriginal": "165.00",
+            "currency": {
+                "description": "AOA",
+                "code": "AOA"
+            }
+        },
+        "featured_image": {
+            "alt": "Sumo gardenia 200ml manga",
+            "source": "https://www.kibabo.co.ao/pt/images_prods_static/SKU/30016254.jpg?1639039727"
+        }
+    },
+    {
+        "id": "3705",
+        "title": "REFRIG. BLUE PET 0,25L MARACUJA",
+        "description": "REFRIG. BLUE PET 0,25L MARACUJA",
+        "url": "https://www.kibabo.co.ao/pt/blue/refrig.-blue-pet-025l-maracuja_p3705.html?id=225&cat=237&pc=2",
+        "price": {
+            "value": "165",
+            "valueOriginal": "165.00",
+            "currency": {
+                "description": "AOA",
+                "code": "AOA"
+            }
+        },
+        "featured_image": {
+            "alt": "Refrig. blue pet 0,25l maracuja",
+            "source": "https://www.kibabo.co.ao/pt/images_prods_static/SKU/30028225.jpg?1634550830"
+        }
+    },
+    {
+        "id": "8431",
+        "title": "REFRIG. BLUE PET 0,25L LIMAO/GENGIBRE",
+        "description": "REFRIG. BLUE PET 0,25L LIMAO/GENGIBRE",
+        "url": "https://www.kibabo.co.ao/pt/blue/refrig.-blue-pet-025l-limaogengibre_p8431.html?id=225&cat=237&pc=2",
+        "price": {
+            "value": "165",
+            "valueOriginal": "165.00",
+            "currency": {
+                "description": "AOA",
+                "code": "AOA"
+            }
+        },
+        "featured_image": {
+            "alt": "Refrig. blue pet 0,25l limao/gengibre",
+            "source": "https://www.kibabo.co.ao/pt/images_prods_static/SKU/30028226.jpg?1639649591"
+        }
+    },
+    {
+        "id": "3707",
+        "title": "REFRIG. BLUE PET 0,25L COCO/ANANAS",
+        "description": "REFRIG. BLUE PET 0,25L COCO/ANANAS",
+        "url": "https://www.kibabo.co.ao/pt/blue/refrig.-blue-pet-025l-cocoananas_p3707.html?id=225&cat=237&pc=3",
+        "price": {
+            "value": "165",
+            "valueOriginal": "165.00",
+            "currency": {
+                "description": "AOA",
+                "code": "AOA"
+            }
+        },
+        "featured_image": {
+            "alt": "Refrig. blue pet 0,25l coco/ananas",
+            "source": "https://www.kibabo.co.ao/pt/images_prods_static/SKU/30028228.jpg?1639039758"
+        }
+    },
+    {
+        "id": "1677",
+        "title": "SUMO LULU 200ML MANGA",
+        "description": "SUMO LULU 200ML MANGA",
+        "url": "https://www.kibabo.co.ao/pt/lulu/sumo-lulu-200ml-manga_p1677.html?id=225&cat=237&pc=3",
+        "price": {
+            "value": "175",
+            "valueOriginal": "175.00",
+            "currency": {
+                "description": "AOA",
+                "code": "AOA"
+            }
+        },
+        "featured_image": {
+            "alt": "Sumo lulu 200ml manga",
+            "source": "https://www.kibabo.co.ao/pt/images_prods_static/SKU/30014535.jpg?1641310468"
+        }
+    },
+    {
+        "id": "1678",
+        "title": "SUMO LULU 200ML LARANJA",
+        "description": "SUMO LULU 200ML LARANJA",
+        "url": "https://www.kibabo.co.ao/pt/lulu/sumo-lulu-200ml-laranja_p1678.html?id=225&cat=237&pc=3",
+        "price": {
+            "value": "175",
+            "valueOriginal": "175.00",
+            "currency": {
+                "description": "AOA",
+                "code": "AOA"
+            }
+        },
+        "featured_image": {
+            "alt": "Sumo lulu 200ml laranja",
+            "source": "https://www.kibabo.co.ao/pt/images_prods_static/SKU/30014536.jpg?1641310468"
+        }
+    },
+    {
+        "id": "1679",
+        "title": "SUMO LULU 200ML GOIABA",
+        "description": "SUMO LULU 200ML GOIABA",
+        "url": "https://www.kibabo.co.ao/pt/lulu/sumo-lulu-200ml-goiaba_p1679.html?id=225&cat=237&pc=3",
+        "price": {
+            "value": "175",
+            "valueOriginal": "175.00",
+            "currency": {
+                "description": "AOA",
+                "code": "AOA"
+            }
+        },
+        "featured_image": {
+            "alt": "Sumo lulu 200ml goiaba",
+            "source": "https://www.kibabo.co.ao/pt/images_prods_static/SKU/30014537.jpg?1641310468"
+        }
+    },
+    {
+        "id": "1680",
+        "title": "SUMO LULU 200ML 12FRUTAS",
+        "description": "SUMO LULU 200ML 12FRUTAS",
+        "url": "https://www.kibabo.co.ao/pt/lulu/sumo-lulu-200ml-12frutas_p1680.html?id=225&cat=237&pc=3",
+        "price": {
+            "value": "175",
+            "valueOriginal": "175.00",
+            "currency": {
+                "description": "AOA",
+                "code": "AOA"
+            }
+        },
+        "featured_image": {
+            "alt": "Sumo lulu 200ml 12frutas",
+            "source": "https://www.kibabo.co.ao/pt/images_prods_static/SKU/30014538.jpg?1641310468"
+        }
+    },
+    {
+        "id": "1681",
+        "title": "SUMO LULU 200ML TUTTI FRUTTI",
+        "description": "SUMO LULU 200ML TUTTI FRUTTI",
+        "url": "https://www.kibabo.co.ao/pt/lulu/sumo-lulu-200ml-tutti-frutti_p1681.html?id=225&cat=237&pc=3",
+        "price": {
+            "value": "175",
+            "valueOriginal": "175.00",
+            "currency": {
+                "description": "AOA",
+                "code": "AOA"
+            }
+        },
+        "featured_image": {
+            "alt": "Sumo lulu 200ml tutti frutti",
+            "source": "https://www.kibabo.co.ao/pt/images_prods_static/SKU/30014539.jpg?1641310469"
+        }
+    },
+    {
+        "id": "8458",
+        "title": "SUMO MANGA-MUCUA KIFRESCO 200ML",
+        "description": "SUMO MANGA-MUCUA KIFRESCO 200ML",
+        "url": "https://www.kibabo.co.ao/pt/kifresco/sumo-manga-mucua-kifresco-200ml_p8458.html?id=225&cat=237&pc=3",
+        "price": {
+            "value": "175",
+            "valueOriginal": "175.00",
+            "currency": {
+                "description": "AOA",
+                "code": "AOA"
+            }
+        },
+        "featured_image": {
+            "alt": "Sumo manga-mucua kifresco 200ml",
+            "source": "https://www.kibabo.co.ao/pt/images_prods_static/SKU/30038536.jpg?1650383940"
+        }
+    },
+    {
+        "id": "6054",
+        "title": "SUMO NECTAR VITA 200ML ANANAS",
+        "description": "SUMO NECTAR VITA 200ML ANANAS",
+        "url": "https://www.kibabo.co.ao/pt/vita/sumo-nectar-vita-200ml-ananas_p6054.html?id=225&cat=237&pc=3",
+        "price": {
+            "value": "185",
+            "valueOriginal": "185.00",
+            "currency": {
+                "description": "AOA",
+                "code": "AOA"
+            }
+        },
+        "featured_image": {
+            "alt": "Sumo nectar vita 200ml ananas",
+            "source": "https://www.kibabo.co.ao/pt/images_prods_static/SKU/30035281.jpg?1649840862"
+        }
+    },
+    {
+        "id": "6055",
+        "title": "SUMO NECTAR VITA 200ML MANGA",
+        "description": "SUMO NECTAR VITA 200ML MANGA",
+        "url": "https://www.kibabo.co.ao/pt/vita/sumo-nectar-vita-200ml-manga_p6055.html?id=225&cat=237&pc=3",
+        "price": {
+            "value": "185",
+            "valueOriginal": "185.00",
+            "currency": {
+                "description": "AOA",
+                "code": "AOA"
+            }
+        },
+        "featured_image": {
+            "alt": "Sumo nectar vita 200ml manga",
+            "source": "https://www.kibabo.co.ao/pt/images_prods_static/SKU/30035282.jpg?1637604408"
+        }
+    },
+    {
+        "id": "10728",
+        "title": "SUMO NECTAR VITA 200ML MAÇA",
+        "description": "SUMO NECTAR VITA 200ML MAÇA",
+        "url": "https://www.kibabo.co.ao/pt/vita/sumo-nectar-vita-200ml-maca_p10728.html?id=225&cat=237&pc=3",
+        "price": {
+            "value": "185",
+            "valueOriginal": "185.00",
+            "currency": {
+                "description": "AOA",
+                "code": "AOA"
+            }
+        },
+        "featured_image": {
+            "alt": "Sumo nectar vita 200ml maça",
+            "source": "https://www.kibabo.co.ao/pt/images_prods_static/SKU/30035283.jpg?1623786027"
+        }
+    },
+    {
+        "id": "6056",
+        "title": "SUMO NECTAR VITA 200ML LARANJA",
+        "description": "SUMO NECTAR VITA 200ML LARANJA",
+        "url": "https://www.kibabo.co.ao/pt/vita/sumo-nectar-vita-200ml-laranja_p6056.html?id=225&cat=237&pc=3",
+        "price": {
+            "value": "185",
+            "valueOriginal": "185.00",
+            "currency": {
+                "description": "AOA",
+                "code": "AOA"
+            }
+        },
+        "featured_image": {
+            "alt": "Sumo nectar vita 200ml laranja",
+            "source": "https://www.kibabo.co.ao/pt/images_prods_static/SKU/30035284.jpg?1637604251"
+        }
+    },
+    {
+        "id": "8455",
+        "title": "SUMO PAPAIA KISSUMO 200ML",
+        "description": "SUMO PAPAIA KISSUMO 200ML",
+        "url": "https://www.kibabo.co.ao/pt/kissumo/sumo-papaia-kissumo-200ml_p8455.html?id=225&cat=237&pc=3",
+        "price": {
+            "value": "195",
+            "valueOriginal": "195.00",
+            "currency": {
+                "description": "AOA",
+                "code": "AOA"
+            }
+        },
+        "featured_image": {
+            "alt": "Sumo papaia kissumo 200ml",
+            "source": "https://www.kibabo.co.ao/pt/images_prods_static/SKU/30038533.jpg?1639665526"
+        }
+    },
+    {
+        "id": "8457",
+        "title": "SUMO GOIABA KISSUMO 200ML",
+        "description": "SUMO GOIABA KISSUMO 200ML",
+        "url": "https://www.kibabo.co.ao/pt/kissumo/sumo-goiaba-kissumo-200ml_p8457.html?id=225&cat=237&pc=4",
+        "price": {
+            "value": "195",
+            "valueOriginal": "195.00",
+            "currency": {
+                "description": "AOA",
+                "code": "AOA"
+            }
+        },
+        "featured_image": {
+            "alt": "Sumo goiaba kissumo 200ml",
+            "source": "https://www.kibabo.co.ao/pt/images_prods_static/SKU/30038535.jpg?1639664690"
+        }
+    },
+    {
+        "id": "8472",
+        "title": "SUMO KISSUMO 200ML MANGA",
+        "description": "SUMO KISSUMO 200ML MANGA",
+        "url": "https://www.kibabo.co.ao/pt/kissumo/sumo-kissumo-200ml-manga_p8472.html?id=225&cat=237&pc=4",
+        "price": {
+            "value": "215",
+            "valueOriginal": "215.00",
+            "currency": {
+                "description": "AOA",
+                "code": "AOA"
+            }
+        },
+        "featured_image": {
+            "alt": "Sumo kissumo 200ml manga",
+            "source": "https://www.kibabo.co.ao/pt/images_prods_static/SKU/30014106.jpg?1641310407"
+        }
+    },
+    {
+        "id": "3267",
+        "title": "SUMO TUTTI 200ML MANGA",
+        "description": "SUMO TUTTI 200ML MANGA",
+        "url": "https://www.kibabo.co.ao/pt/tutti/sumo-tutti-200ml-manga_p3267.html?id=225&cat=237&pc=4",
+        "price": {
+            "value": "215",
+            "valueOriginal": "215.00",
+            "currency": {
+                "description": "AOA",
+                "code": "AOA"
+            }
+        },
+        "featured_image": {
+            "alt": "Sumo tutti 200ml manga",
+            "source": "https://www.kibabo.co.ao/pt/images_prods_static/SKU/30026932.jpg?1639039756"
+        }
+    },
+    {
+        "id": "3639",
+        "title": "SUMO SUPER CUIA PRISMA 0,20L TUTTI-FRUTTI",
+        "description": "SUMO SUPER CUIA PRISMA 0,20L TUTTI-FRUTTI",
+        "url": "https://www.kibabo.co.ao/pt/super-cuia/sumo-super-cuia-prisma-020l-tutti-frutti_p3639.html?id=225&cat=237&pc=4",
+        "price": {
+            "value": "215",
+            "valueOriginal": "215.00",
+            "currency": {
+                "description": "AOA",
+                "code": "AOA"
+            }
+        },
+        "featured_image": {
+            "alt": "Sumo super cuia prisma 0,20l tutti-frutti",
+            "source": "https://www.kibabo.co.ao/pt/images_prods_static/SKU/30028068.jpg?1638449031"
+        }
+    },
+    {
+        "id": "3640",
+        "title": "SUMO SUPER CUIA PRISMA 0,20L MANGA",
+        "description": "SUMO SUPER CUIA PRISMA 0,20L MANGA",
+        "url": "https://www.kibabo.co.ao/pt/super-cuia/sumo-super-cuia-prisma-020l-manga_p3640.html?id=225&cat=237&pc=4",
+        "price": {
+            "value": "215",
+            "valueOriginal": "215.00",
+            "currency": {
+                "description": "AOA",
+                "code": "AOA"
+            }
+        },
+        "featured_image": {
+            "alt": "Sumo super cuia prisma 0,20l manga",
+            "source": "https://www.kibabo.co.ao/pt/images_prods_static/SKU/30028069.jpg?1638448996"
+        }
+    },
+    {
+        "id": "5264",
+        "title": "REFRIG. ASTRO PET 400ML COLA",
+        "description": "REFRIG. ASTRO PET 400ML COLA",
+        "url": "https://www.kibabo.co.ao/pt/astro/refrig.-astro-pet-400ml-cola_p5264.html?id=225&cat=237&pc=4",
+        "price": {
+            "value": "215",
+            "valueOriginal": "215.00",
+            "currency": {
+                "description": "AOA",
+                "code": "AOA"
+            }
+        },
+        "featured_image": {
+            "alt": "Refrig. astro pet 400ml cola",
+            "source": "https://www.kibabo.co.ao/pt/images_prods_static/SKU/30033237.jpg?1634550941"
+        }
+    },
+    {
+        "id": "5265",
+        "title": "REFRIG. ASTRO PET 400ML LIMAO",
+        "description": "REFRIG. ASTRO PET 400ML LIMAO",
+        "url": "https://www.kibabo.co.ao/pt/astro/refrig.-astro-pet-400ml-limao_p5265.html?id=225&cat=237&pc=4",
+        "price": {
+            "value": "215",
+            "valueOriginal": "215.00",
+            "currency": {
+                "description": "AOA",
+                "code": "AOA"
+            }
+        },
+        "featured_image": {
+            "alt": "Refrig. astro pet 400ml limao",
+            "source": "https://www.kibabo.co.ao/pt/images_prods_static/SKU/30033238.jpg?1638953019"
+        }
+    },
+    {
+        "id": "5267",
+        "title": "REFRIG. ASTRO PET 400ML PINACOLADA",
+        "description": "REFRIG. ASTRO PET 400ML PINACOLADA",
+        "url": "https://www.kibabo.co.ao/pt/astro/refrig.-astro-pet-400ml-pinacolada_p5267.html?id=225&cat=237&pc=4",
+        "price": {
+            "value": "215",
+            "valueOriginal": "215.00",
+            "currency": {
+                "description": "AOA",
+                "code": "AOA"
+            }
+        },
+        "featured_image": {
+            "alt": "Refrig. astro pet 400ml pinacolada",
+            "source": "https://www.kibabo.co.ao/pt/images_prods_static/SKU/30033240.jpg?1645695059"
+        }
+    },
+    {
+        "id": "8456",
+        "title": "SUMO MUCUA KISSUMO 200ML",
+        "description": "SUMO MUCUA KISSUMO 200ML",
+        "url": "https://www.kibabo.co.ao/pt/kissumo/sumo-mucua-kissumo-200ml_p8456.html?id=225&cat=237&pc=4",
+        "price": {
+            "value": "215",
+            "valueOriginal": "215.00",
+            "currency": {
+                "description": "AOA",
+                "code": "AOA"
+            }
+        },
+        "featured_image": {
+            "alt": "Sumo mucua kissumo 200ml",
+            "source": "https://www.kibabo.co.ao/pt/images_prods_static/SKU/30038534.jpg?1639664678"
+        }
+    },
+    {
+        "id": "2066",
+        "title": "REFRIG. ZIPP PET 350ML LIMA/LIMAO",
+        "description": "REFRIG. ZIPP PET 350ML LIMA/LIMAO",
+        "url": "https://www.kibabo.co.ao/pt/zipp/refrig.-zipp-pet-350ml-limalimao_p2066.html?id=225&cat=237&pc=4",
+        "price": {
+            "value": "225",
+            "valueOriginal": "225.00",
+            "currency": {
+                "description": "AOA",
+                "code": "AOA"
+            }
+        },
+        "featured_image": {
+            "alt": "Refrig. zipp pet 350ml lima/limao",
+            "source": "https://www.kibabo.co.ao/pt/images_prods_static/SKU/30020161.jpg?1634550737"
+        }
+    },
+    {
+        "id": "2067",
+        "title": "REFRIG. ZIPP PET 350ML COCO/ANANAS",
+        "description": "REFRIG. ZIPP PET 350ML COCO/ANANAS",
+        "url": "https://www.kibabo.co.ao/pt/zipp/refrig.-zipp-pet-350ml-cocoananas_p2067.html?id=225&cat=237&pc=4",
+        "price": {
+            "value": "225",
+            "valueOriginal": "225.00",
+            "currency": {
+                "description": "AOA",
+                "code": "AOA"
+            }
+        },
+        "featured_image": {
+            "alt": "Refrig. zipp pet 350ml coco/ananas",
+            "source": "https://www.kibabo.co.ao/pt/images_prods_static/SKU/30020163.jpg?1634550737"
+        }
+    },
+    {
+        "id": "2068",
+        "title": "REFRIG. ZIPP PET 350ML MARACUJA",
+        "description": "REFRIG. ZIPP PET 350ML MARACUJA",
+        "url": "https://www.kibabo.co.ao/pt/zipp/refrig.-zipp-pet-350ml-maracuja_p2068.html?id=225&cat=237&pc=4",
+        "price": {
+            "value": "225",
+            "valueOriginal": "225.00",
+            "currency": {
+                "description": "AOA",
+                "code": "AOA"
+            }
+        },
+        "featured_image": {
+            "alt": "Refrig. zipp pet 350ml maracuja",
+            "source": "https://www.kibabo.co.ao/pt/images_prods_static/SKU/30020164.jpg?1634550737"
+        }
+    },
+    {
+        "id": "126",
+        "title": "REFRIG. ZIPP PET 350ML LARANJA",
+        "description": "REFRIG. ZIPP PET 350ML LARANJA",
+        "url": "https://www.kibabo.co.ao/pt/zipp/refrig.-zipp-pet-350ml-laranja_p126.html?id=225&cat=237&pc=5",
+        "price": {
+            "value": "225",
+            "valueOriginal": "225.00",
+            "currency": {
+                "description": "AOA",
+                "code": "AOA"
+            }
+        },
+        "featured_image": {
+            "alt": "Refrig. zipp pet 350ml laranja",
+            "source": "https://www.kibabo.co.ao/pt/images_prods_static/SKU/30020165.jpg?1634550738"
+        }
+    },
+    {
+        "id": "3503",
+        "title": "AGUA MINERAL CHELA GARRAFA 0,5L",
+        "description": "AGUA MINERAL CHELA GARRAFA 0,5L",
+        "url": "https://www.kibabo.co.ao/pt/chela/agua-mineral-chela-garrafa-05l_p3503.html?id=225&cat=237&pc=5",
+        "price": {
+            "value": "225",
+            "valueOriginal": "225.00",
+            "currency": {
+                "description": "AOA",
+                "code": "AOA"
+            }
+        },
+        "featured_image": {
+            "alt": "Agua mineral chela garrafa 0,5l",
+            "source": "https://www.kibabo.co.ao/pt/images_prods_static/SKU/30027635.jpg?1591353469"
+        }
+    },
+    {
+        "id": "4176",
+        "title": "AGUA MINERAL PERLA 1,5L",
+        "description": "AGUA MINERAL PERLA 1,5L",
+        "url": "https://www.kibabo.co.ao/pt/perla/agua-mineral-perla-15l_p4176.html?id=225&cat=237&pc=5",
+        "price": {
+            "value": "225",
+            "valueOriginal": "225.00",
+            "currency": {
+                "description": "AOA",
+                "code": "AOA"
+            }
+        },
+        "featured_image": {
+            "alt": "Agua mineral perla 1,5l",
+            "source": "https://www.kibabo.co.ao/pt/images_prods_static/SKU/30029424.jpg?1634550861"
+        }
+    },
+    {
+        "id": "10740",
+        "title": "REFRIG. PLANET PET 350ML COLA",
+        "description": "REFRIG. PLANET PET 350ML COLA",
+        "url": "https://www.kibabo.co.ao/pt/planet/refrig.-planet-pet-350ml-cola_p10740.html?id=225&cat=237&pc=5",
+        "price": {
+            "value": "225",
+            "valueOriginal": "225.00",
+            "currency": {
+                "description": "AOA",
+                "code": "AOA"
+            }
+        },
+        "featured_image": {
+            "alt": "Refrig. planet pet 350ml cola",
+            "source": "https://www.kibabo.co.ao/pt/images_prods_static/SKU/30040094.jpg?1665573793"
+        }
+    },
+    {
+        "id": "10741",
+        "title": "REFRIG. PLANET PET 350ML COCO/ANANAS",
+        "description": "REFRIG. PLANET PET 350ML COCO/ANANAS",
+        "url": "https://www.kibabo.co.ao/pt/planet/refrig.-planet-pet-350ml-cocoananas_p10741.html?id=225&cat=237&pc=5",
+        "price": {
+            "value": "225",
+            "valueOriginal": "225.00",
+            "currency": {
+                "description": "AOA",
+                "code": "AOA"
+            }
+        },
+        "featured_image": {
+            "alt": "Refrig. planet pet 350ml coco/ananas",
+            "source": "https://www.kibabo.co.ao/pt/images_prods_static/SKU/30040095.jpg?1665573794"
+        }
+    },
+    {
+        "id": "10743",
+        "title": "REFRIG. PLANET PET 350ML ANANAS",
+        "description": "REFRIG. PLANET PET 350ML ANANAS",
+        "url": "https://www.kibabo.co.ao/pt/planet/refrig.-planet-pet-350ml-ananas_p10743.html?id=225&cat=237&pc=5",
+        "price": {
+            "value": "225",
+            "valueOriginal": "225.00",
+            "currency": {
+                "description": "AOA",
+                "code": "AOA"
+            }
+        },
+        "featured_image": {
+            "alt": "Refrig. planet pet 350ml ananas",
+            "source": "https://www.kibabo.co.ao/pt/images_prods_static/SKU/30040097.jpg?1665573800"
+        }
+    },
+    {
+        "id": "10782",
+        "title": "REFRIG. PLANET PET 350ML LARANJA",
+        "description": "REFRIG. PLANET PET 350ML LARANJA",
+        "url": "https://www.kibabo.co.ao/pt/planet/refrig.-planet-pet-350ml-laranja_p10782.html?id=225&cat=237&pc=5",
+        "price": {
+            "value": "225",
+            "valueOriginal": "225.00",
+            "currency": {
+                "description": "AOA",
+                "code": "AOA"
+            }
+        },
+        "featured_image": {
+            "alt": "Refrig. planet pet 350ml laranja",
+            "source": "https://www.kibabo.co.ao/pt/images_prods_static/SKU/30040098.jpg?1665573799"
+        }
+    },
+    {
+        "id": "10783",
+        "title": "REFRIG. PLANET PET 350ML MANGA",
+        "description": "REFRIG. PLANET PET 350ML MANGA",
+        "url": "https://www.kibabo.co.ao/pt/planet/refrig.-planet-pet-350ml-manga_p10783.html?id=225&cat=237&pc=5",
+        "price": {
+            "value": "225",
+            "valueOriginal": "225.00",
+            "currency": {
+                "description": "AOA",
+                "code": "AOA"
+            }
+        },
+        "featured_image": {
+            "alt": "Refrig. planet pet 350ml manga",
+            "source": "https://www.kibabo.co.ao/pt/images_prods_static/SKU/30040099.jpg?1665573802"
+        }
+    },
+    {
+        "id": "10785",
+        "title": "REFRIG. BUBBLE UP PET 350ML LIMA/LIMAO",
+        "description": "REFRIG. BUBBLE UP PET 350ML LIMA/LIMAO",
+        "url": "https://www.kibabo.co.ao/pt/bubble-up/refrig.-bubble-up-pet-350ml-limalimao_p10785.html?id=225&cat=237&pc=5",
+        "price": {
+            "value": "225",
+            "valueOriginal": "225.00",
+            "currency": {
+                "description": "AOA",
+                "code": "AOA"
+            }
+        },
+        "featured_image": {
+            "alt": "Refrig. bubble up pet 350ml lima/limao",
+            "source": "https://www.kibabo.co.ao/pt/images_prods_static/SKU/30040101.jpg?1665573809"
+        }
+    },
+    {
+        "id": "3766",
+        "title": "SUMO EM PO AMILA 45GR MANGA",
+        "description": "SUMO EM PO AMILA 45GR MANGA",
+        "url": "https://www.kibabo.co.ao/pt/amila/sumo-em-po-amila-45gr-manga_p3766.html?id=225&cat=237&pc=5",
+        "price": {
+            "value": "245",
+            "valueOriginal": "245.00",
+            "currency": {
+                "description": "AOA",
+                "code": "AOA"
+            }
+        },
+        "featured_image": {
+            "alt": "Sumo em po amila 45gr manga",
+            "source": "https://www.kibabo.co.ao/pt/images_prods_static/SKU/30028301.jpg?1637831382"
+        }
+    },
+    {
+        "id": "3767",
+        "title": "SUMO EM PO AMILA 45GR LARANJA",
+        "description": "SUMO EM PO AMILA 45GR LARANJA",
+        "url": "https://www.kibabo.co.ao/pt/amila/sumo-em-po-amila-45gr-laranja_p3767.html?id=225&cat=237&pc=5",
+        "price": {
+            "value": "245",
+            "valueOriginal": "245.00",
+            "currency": {
+                "description": "AOA",
+                "code": "AOA"
+            }
+        },
+        "featured_image": {
+            "alt": "Sumo em po amila 45gr laranja",
+            "source": "https://www.kibabo.co.ao/pt/images_prods_static/SKU/30028302.jpg?1637831464"
+        }
+    },
+    {
+        "id": "3768",
+        "title": "SUMO EM PO AMILA 45GR TROPICAL",
+        "description": "SUMO EM PO AMILA 45GR TROPICAL",
+        "url": "https://www.kibabo.co.ao/pt/amila/sumo-em-po-amila-45gr-tropical_p3768.html?id=225&cat=237&pc=5",
+        "price": {
+            "value": "245",
+            "valueOriginal": "245.00",
+            "currency": {
+                "description": "AOA",
+                "code": "AOA"
+            }
+        },
+        "featured_image": {
+            "alt": "Sumo em po amila 45gr tropical",
+            "source": "https://www.kibabo.co.ao/pt/images_prods_static/SKU/30028303.jpg?1637831582"
+        }
+    },
+    {
+        "id": "3769",
+        "title": "SUMO EM PO AMILA 45GR ANANAS",
+        "description": "SUMO EM PO AMILA 45GR ANANAS",
+        "url": "https://www.kibabo.co.ao/pt/amila/sumo-em-po-amila-45gr-ananas_p3769.html?id=225&cat=237&pc=6",
+        "price": {
+            "value": "245",
+            "valueOriginal": "245.00",
+            "currency": {
+                "description": "AOA",
+                "code": "AOA"
+            }
+        },
+        "featured_image": {
+            "alt": "Sumo em po amila 45gr ananas",
+            "source": "https://www.kibabo.co.ao/pt/images_prods_static/SKU/30028304.jpg?1637831728"
+        }
+    },
+    {
+        "id": "5219",
+        "title": "BEBIDA ENERGETICA SPEED PET 250ML",
+        "description": "BEBIDA ENERGETICA SPEED PET 250ML",
+        "url": "https://www.kibabo.co.ao/pt/speed/bebida-energetica-speed-pet-250ml_p5219.html?id=225&cat=237&pc=6",
+        "price": {
+            "value": "250",
+            "valueOriginal": "250.00",
+            "currency": {
+                "description": "AOA",
+                "code": "AOA"
+            }
+        },
+        "featured_image": {
+            "alt": "Bebida energetica speed pet 250ml",
+            "source": "https://www.kibabo.co.ao/pt/images_prods_static/SKU/30033111.jpg?1634550939"
+        }
+    },
+    {
+        "id": "1235",
+        "title": "REFRIG. BLUE LATA 0,33L LIMA LIMAO",
+        "description": "REFRIG. BLUE LATA 0,33L LIMA LIMAO",
+        "url": "https://www.kibabo.co.ao/pt/blue/refrig.-blue-lata-033l-lima-limao_p1235.html?id=225&cat=237&pc=6",
+        "price": {
+            "value": "305",
+            "valueOriginal": "305.00",
+            "currency": {
+                "description": "AOA",
+                "code": "AOA"
+            }
+        },
+        "featured_image": {
+            "alt": "Refrig. blue lata 0,33l lima limao",
+            "source": "https://www.kibabo.co.ao/pt/images_prods_static/SKU/30005637.jpg?1641309772"
+        }
+    },
+    {
+        "id": "1236",
+        "title": "REFRIG. BLUE LATA 0,33L COCO/ANANAS",
+        "description": "REFRIG. BLUE LATA 0,33L COCO/ANANAS",
+        "url": "https://www.kibabo.co.ao/pt/blue/refrig.-blue-lata-033l-cocoananas_p1236.html?id=225&cat=237&pc=6",
+        "price": {
+            "value": "305",
+            "valueOriginal": "305.00",
+            "currency": {
+                "description": "AOA",
+                "code": "AOA"
+            }
+        },
+        "featured_image": {
+            "alt": "Refrig. blue lata 0,33l coco/ananas",
+            "source": "https://www.kibabo.co.ao/pt/images_prods_static/SKU/30005639.jpg?1641309773"
+        }
+    },
+    {
+        "id": "1628",
+        "title": "CERVEJA TIGRA SACA FACIL 0,25L",
+        "description": "CERVEJA TIGRA SACA FACIL 0,25L",
+        "url": "https://www.kibabo.co.ao/pt/tigra/cerveja-tigra-saca-facil-025l_p1628.html?id=225&cat=237&pc=6",
+        "price": {
+            "value": "305",
+            "valueOriginal": "305.00",
+            "currency": {
+                "description": "AOA",
+                "code": "AOA"
+            }
+        },
+        "featured_image": {
+            "alt": "Cerveja tigra saca facil 0,25l",
+            "source": "https://www.kibabo.co.ao/pt/images_prods_static/SKU/30013317.jpg?1641310356"
+        }
+    },
+    {
+        "id": "1233",
+        "title": "REFRIG. BLUE LATA 0,33L MARACUJA",
+        "description": "REFRIG. BLUE LATA 0,33L MARACUJA",
+        "url": "https://www.kibabo.co.ao/pt/blue/refrig.-blue-lata-033l-maracuja_p1233.html?id=225&cat=237&pc=6",
+        "price": {
+            "value": "315",
+            "valueOriginal": "315.00",
+            "currency": {
+                "description": "AOA",
+                "code": "AOA"
+            }
+        },
+        "featured_image": {
+            "alt": "Refrig. blue lata 0,33l maracuja",
+            "source": "https://www.kibabo.co.ao/pt/images_prods_static/SKU/30005635.jpg?1641309771"
+        }
+    },
+    {
+        "id": "1234",
+        "title": "REFRIG. BLUE LATA 0,33L LARANJA",
+        "description": "REFRIG. BLUE LATA 0,33L LARANJA",
+        "url": "https://www.kibabo.co.ao/pt/blue/refrig.-blue-lata-033l-laranja_p1234.html?id=225&cat=237&pc=6",
+        "price": {
+            "value": "315",
+            "valueOriginal": "315.00",
+            "currency": {
+                "description": "AOA",
+                "code": "AOA"
+            }
+        },
+        "featured_image": {
+            "alt": "Refrig. blue lata 0,33l laranja",
+            "source": "https://www.kibabo.co.ao/pt/images_prods_static/SKU/30005636.jpg?1641309771"
+        }
+    },
+    {
+        "id": "1762",
+        "title": "REFRIG. BLUE LATA 0,33L LIMAO GENGIBRE",
+        "description": "REFRIG. BLUE LATA 0,33L LIMAO GENGIBRE",
+        "url": "https://www.kibabo.co.ao/pt/blue/refrig.-blue-lata-033l-limao-gengibre_p1762.html?id=225&cat=237&pc=6",
+        "price": {
+            "value": "315",
+            "valueOriginal": "315.00",
+            "currency": {
+                "description": "AOA",
+                "code": "AOA"
+            }
+        },
+        "featured_image": {
+            "alt": "Refrig. blue lata 0,33l limao gengibre",
+            "source": "https://www.kibabo.co.ao/pt/images_prods_static/SKU/30016297.jpg?1634550726"
+        }
+    },
+    {
+        "id": "1294",
+        "title": "CERVEJA CUCA GFA 0,25L SACA FACIL",
+        "description": "CERVEJA CUCA GFA 0,25L SACA FACIL",
+        "url": "https://www.kibabo.co.ao/pt/cuca/cerveja-cuca-gfa-025l-saca-facil_p1294.html?id=225&cat=237&pc=6",
+        "price": {
+            "value": "345",
+            "valueOriginal": "345.00",
+            "currency": {
+                "description": "AOA",
+                "code": "AOA"
+            }
+        },
+        "featured_image": {
+            "alt": "Cerveja cuca gfa 0,25l saca facil",
+            "source": "https://www.kibabo.co.ao/pt/images_prods_static/SKU/30006197.jpg?1641309840"
+        }
+    },
+    {
+        "id": "12357",
+        "title": "CERVEJA DOPPEL MINI 0,25L",
+        "description": "CERVEJA DOPPEL MINI 0,25L",
+        "url": "https://www.kibabo.co.ao/pt/masculino/doppel/cerveja-doppel-mini-025l_p12357.html?id=225&cat=237&pc=6",
+        "price": {
+            "value": "345",
+            "valueOriginal": "345.00",
+            "currency": {
+                "description": "AOA",
+                "code": "AOA"
+            }
+        },
+        "featured_image": {
+            "alt": "Cerveja doppel mini 0,25l",
+            "source": "https://www.kibabo.co.ao/pt/images_prods_static/SKU/30010550.jpg?1641310134"
+        }
+    },
+    {
+        "id": "86",
+        "title": "CERVEJA EKA MINI 0,25L",
+        "description": "CERVEJA EKA MINI 0,25L",
+        "url": "https://www.kibabo.co.ao/pt/eka/cerveja-eka-mini-025l_p86.html?id=225&cat=237&pc=6",
+        "price": {
+            "value": "345",
+            "valueOriginal": "345.00",
+            "currency": {
+                "description": "AOA",
+                "code": "AOA"
+            }
+        },
+        "featured_image": {
+            "alt": "Cerveja eka mini 0,25l",
+            "source": "https://www.kibabo.co.ao/pt/images_prods_static/SKU/30010551.jpg?1641310135"
+        }
+    },
+    {
+        "id": "2027",
+        "title": "CERVEJA CRISTAL MINI TP SACA FACIL 0,25L",
+        "description": "CERVEJA CRISTAL MINI TP SACA FACIL 0,25L",
+        "url": "https://www.kibabo.co.ao/pt/cristal/cerveja-cristal-mini-tp-saca-facil-025l_p2027.html?id=225&cat=237&pc=6",
+        "price": {
+            "value": "345",
+            "valueOriginal": "345.00",
+            "currency": {
+                "description": "AOA",
+                "code": "AOA"
+            }
+        },
+        "featured_image": {
+            "alt": "Cerveja cristal mini tp saca facil 0,25l",
+            "source": "https://www.kibabo.co.ao/pt/images_prods_static/SKU/30019927.jpg?1633709506"
+        }
+    },
+    {
+        "id": "4842",
+        "title": "REFRIG. FANTA PET 0,5L LARANJA",
+        "description": "REFRIG. FANTA PET 0,5L LARANJA",
+        "url": "https://www.kibabo.co.ao/pt/fanta/refrig.-fanta-pet-05l-laranja_p4842.html?id=225&cat=237&pc=7",
+        "price": {
+            "value": "360",
+            "valueOriginal": "360.00",
+            "currency": {
+                "description": "AOA",
+                "code": "AOA"
+            }
+        },
+        "featured_image": {
+            "alt": "Refrig. fanta pet 0,5l laranja",
+            "source": "https://www.kibabo.co.ao/pt/images_prods_static/SKU/30031746.jpg?1634550911"
+        }
+    },
+    {
+        "id": "4843",
+        "title": "REFRIG. SPRITE PET 0,5L",
+        "description": "REFRIG. SPRITE PET 0,5L",
+        "url": "https://www.kibabo.co.ao/pt/sprite/refrig.-sprite-pet-05l_p4843.html?id=225&cat=237&pc=7",
+        "price": {
+            "value": "360",
+            "valueOriginal": "360.00",
+            "currency": {
+                "description": "AOA",
+                "code": "AOA"
+            }
+        },
+        "featured_image": {
+            "alt": "Refrig. sprite pet 0,5l",
+            "source": "https://www.kibabo.co.ao/pt/images_prods_static/SKU/30031747.jpg?1634550911"
+        }
+    },
+    {
+        "id": "3502",
+        "title": "AGUA MINERAL CHELA GARRAFA 1,5L",
+        "description": "AGUA MINERAL CHELA GARRAFA 1,5L",
+        "url": "https://www.kibabo.co.ao/pt/chela/agua-mineral-chela-garrafa-15l_p3502.html?id=225&cat=237&pc=7",
+        "price": {
+            "value": "365",
+            "valueOriginal": "365.00",
+            "currency": {
+                "description": "AOA",
+                "code": "AOA"
+            }
+        },
+        "featured_image": {
+            "alt": "Agua mineral chela garrafa 1,5l",
+            "source": "https://www.kibabo.co.ao/pt/images_prods_static/SKU/30027634.jpg?1637603752"
+        }
+    },
+    {
+        "id": "5228",
+        "title": "REFRIG. LA VITA 0,33L MANGA",
+        "description": "REFRIG. LA VITA 0,33L MANGA",
+        "url": "https://www.kibabo.co.ao/pt/la-vita/refrig.-la-vita-033l-manga_p5228.html?id=225&cat=237&pc=7",
+        "price": {
+            "value": "365",
+            "valueOriginal": "365.00",
+            "currency": {
+                "description": "AOA",
+                "code": "AOA"
+            }
+        },
+        "featured_image": {
+            "alt": "Refrig. la vita 0,33l manga",
+            "source": "https://www.kibabo.co.ao/pt/images_prods_static/SKU/30033144.jpg?1634550940"
+        }
+    },
+    {
+        "id": "5229",
+        "title": "REFRIG. LA VITA 0,33L MARACUJA",
+        "description": "REFRIG. LA VITA 0,33L MARACUJA",
+        "url": "https://www.kibabo.co.ao/pt/la-vita/refrig.-la-vita-033l-maracuja_p5229.html?id=225&cat=237&pc=7",
+        "price": {
+            "value": "365",
+            "valueOriginal": "365.00",
+            "currency": {
+                "description": "AOA",
+                "code": "AOA"
+            }
+        },
+        "featured_image": {
+            "alt": "Refrig. la vita 0,33l maracuja",
+            "source": "https://www.kibabo.co.ao/pt/images_prods_static/SKU/30033145.jpg?1637598421"
+        }
+    },
+    {
+        "id": "5230",
+        "title": "REFRIG. LA VITA 0,33L LIMAO/GENGIBRE",
+        "description": "REFRIG. LA VITA 0,33L LIMAO/GENGIBRE",
+        "url": "https://www.kibabo.co.ao/pt/la-vita/refrig.-la-vita-033l-limaogengibre_p5230.html?id=225&cat=237&pc=7",
+        "price": {
+            "value": "365",
+            "valueOriginal": "365.00",
+            "currency": {
+                "description": "AOA",
+                "code": "AOA"
+            }
+        },
+        "featured_image": {
+            "alt": "Refrig. la vita 0,33l limao/gengibre",
+            "source": "https://www.kibabo.co.ao/pt/images_prods_static/SKU/30033146.jpg?1637599873"
+        }
+    },
+    {
+        "id": "5231",
+        "title": "REFRIG. LA VITA 0,33L GOIABA",
+        "description": "REFRIG. LA VITA 0,33L GOIABA",
+        "url": "https://www.kibabo.co.ao/pt/la-vita/refrig.-la-vita-033l-goiaba_p5231.html?id=225&cat=237&pc=7",
+        "price": {
+            "value": "365",
+            "valueOriginal": "365.00",
+            "currency": {
+                "description": "AOA",
+                "code": "AOA"
+            }
+        },
+        "featured_image": {
+            "alt": "Refrig. la vita 0,33l goiaba",
+            "source": "https://www.kibabo.co.ao/pt/images_prods_static/SKU/30033147.jpg?1634550939"
+        }
+    },
+    {
+        "id": "5232",
+        "title": "REFRIG. LA VITA 0,33L ANANAS",
+        "description": "REFRIG. LA VITA 0,33L ANANAS",
+        "url": "https://www.kibabo.co.ao/pt/la-vita/refrig.-la-vita-033l-ananas_p5232.html?id=225&cat=237&pc=7",
+        "price": {
+            "value": "365",
+            "valueOriginal": "365.00",
+            "currency": {
+                "description": "AOA",
+                "code": "AOA"
+            }
+        },
+        "featured_image": {
+            "alt": "Refrig. la vita 0,33l ananas",
+            "source": "https://www.kibabo.co.ao/pt/images_prods_static/SKU/30033148.jpg?1637598679"
+        }
+    },
+    {
+        "id": "5233",
+        "title": "REFRIG. LA VITA 0,33L LARANJA",
+        "description": "REFRIG. LA VITA 0,33L LARANJA",
+        "url": "https://www.kibabo.co.ao/pt/la-vita/refrig.-la-vita-033l-laranja_p5233.html?id=225&cat=237&pc=7",
+        "price": {
+            "value": "365",
+            "valueOriginal": "365.00",
+            "currency": {
+                "description": "AOA",
+                "code": "AOA"
+            }
+        },
+        "featured_image": {
+            "alt": "Refrig. la vita 0,33l laranja",
+            "source": "https://www.kibabo.co.ao/pt/images_prods_static/SKU/30033149.jpg?1637599596"
+        }
+    },
+    {
+        "id": "5234",
+        "title": "REFRIG. LA VITA 0,33L COCO/ANANAS",
+        "description": "REFRIG. LA VITA 0,33L COCO/ANANAS",
+        "url": "https://www.kibabo.co.ao/pt/la-vita/refrig.-la-vita-033l-cocoananas_p5234.html?id=225&cat=237&pc=7",
+        "price": {
+            "value": "365",
+            "valueOriginal": "365.00",
+            "currency": {
+                "description": "AOA",
+                "code": "AOA"
+            }
+        },
+        "featured_image": {
+            "alt": "Refrig. la vita 0,33l coco/ananas",
+            "source": "https://www.kibabo.co.ao/pt/images_prods_static/SKU/30033150.jpg?1634550940"
+        }
+    },
+    {
+        "id": "5235",
+        "title": "REFRIG. LA VITA 0,33L UVA",
+        "description": "REFRIG. LA VITA 0,33L UVA",
+        "url": "https://www.kibabo.co.ao/pt/la-vita/refrig.-la-vita-033l-uva_p5235.html?id=225&cat=237&pc=7",
+        "price": {
+            "value": "365",
+            "valueOriginal": "365.00",
+            "currency": {
+                "description": "AOA",
+                "code": "AOA"
+            }
+        },
+        "featured_image": {
+            "alt": "Refrig. la vita 0,33l uva",
+            "source": "https://www.kibabo.co.ao/pt/images_prods_static/SKU/30033151.jpg?1651577863"
+        }
+    },
+    {
+        "id": "5237",
+        "title": "REFRIG. LA VITA 0,33L EXOTICO",
+        "description": "REFRIG. LA VITA 0,33L EXOTICO",
+        "url": "https://www.kibabo.co.ao/pt/la-vita/refrig.-la-vita-033l-exotico_p5237.html?id=225&cat=237&pc=7",
+        "price": {
+            "value": "365",
+            "valueOriginal": "365.00",
+            "currency": {
+                "description": "AOA",
+                "code": "AOA"
+            }
+        },
+        "featured_image": {
+            "alt": "Refrig. la vita 0,33l exotico",
+            "source": "https://www.kibabo.co.ao/pt/images_prods_static/SKU/30033153.jpg?1638953018"
+        }
+    },
+    {
+        "id": "1295",
+        "title": "CERVEJA CUCA LATA 0,33L",
+        "description": "CERVEJA CUCA LATA 0,33L",
+        "url": "https://www.kibabo.co.ao/pt/cuca/cerveja-cuca-lata-033l_p1295.html?id=225&cat=237&pc=8",
+        "price": {
+            "value": "370",
+            "valueOriginal": "370.00",
+            "currency": {
+                "description": "AOA",
+                "code": "AOA"
+            }
+        },
+        "featured_image": {
+            "alt": "Cerveja cuca lata 0,33l",
+            "source": "https://www.kibabo.co.ao/pt/images_prods_static/SKU/30006198.jpg?1641309840"
+        }
+    },
+    {
+        "id": "1241",
+        "title": "REFRIG. RED COLA LATA 0,33L CLASSICO",
+        "description": "REFRIG. RED COLA LATA 0,33L CLASSICO",
+        "url": "https://www.kibabo.co.ao/pt/red-cola/refrig.-red-cola-lata-033l-classico_p1241.html?id=225&cat=237&pc=8",
+        "price": {
+            "value": "375",
+            "valueOriginal": "375.00",
+            "currency": {
+                "description": "AOA",
+                "code": "AOA"
+            }
+        },
+        "featured_image": {
+            "alt": "Refrig. red cola lata 0,33l classico",
+            "source": "https://www.kibabo.co.ao/pt/images_prods_static/SKU/30005651.jpg?1641309775"
+        }
+    },
+    {
+        "id": "1763",
+        "title": "REFRIG. RED COLA LATA 0,33L COCO",
+        "description": "REFRIG. RED COLA LATA 0,33L COCO",
+        "url": "https://www.kibabo.co.ao/pt/red-cola/refrig.-red-cola-lata-033l-coco_p1763.html?id=225&cat=237&pc=8",
+        "price": {
+            "value": "375",
+            "valueOriginal": "375.00",
+            "currency": {
+                "description": "AOA",
+                "code": "AOA"
+            }
+        },
+        "featured_image": {
+            "alt": "Refrig. red cola lata 0,33l coco",
+            "source": "https://www.kibabo.co.ao/pt/images_prods_static/SKU/30016299.jpg?1634550726"
+        }
+    },
+    {
+        "id": "1621",
+        "title": "CERVEJA NOCAL LATA 0,33L",
+        "description": "CERVEJA NOCAL LATA 0,33L",
+        "url": "https://www.kibabo.co.ao/pt/nocal/cerveja-nocal-lata-033l_p1621.html?id=225&cat=237&pc=8",
+        "price": {
+            "value": "395",
+            "valueOriginal": "395.00",
+            "currency": {
+                "description": "AOA",
+                "code": "AOA"
+            }
+        },
+        "featured_image": {
+            "alt": "Cerveja nocal lata 0,33l",
+            "source": "https://www.kibabo.co.ao/pt/images_prods_static/SKU/30013205.jpg?1665572537"
+        }
+    },
+    {
+        "id": "1629",
+        "title": "CERVEJA TIGRA LATA 0,33L",
+        "description": "CERVEJA TIGRA LATA 0,33L",
+        "url": "https://www.kibabo.co.ao/pt/tigra/cerveja-tigra-lata-033l_p1629.html?id=225&cat=237&pc=8",
+        "price": {
+            "value": "395",
+            "valueOriginal": "395.00",
+            "currency": {
+                "description": "AOA",
+                "code": "AOA"
+            }
+        },
+        "featured_image": {
+            "alt": "Cerveja tigra lata 0,33l",
+            "source": "https://www.kibabo.co.ao/pt/images_prods_static/SKU/30013318.jpg?1641310357"
+        }
+    },
+    {
+        "id": "3181",
+        "title": "CERVEJA EKA LATA 0,33L",
+        "description": "CERVEJA EKA LATA 0,33L",
+        "url": "https://www.kibabo.co.ao/pt/eka/cerveja-eka-lata-033l_p3181.html?id=225&cat=237&pc=8",
+        "price": {
+            "value": "395",
+            "valueOriginal": "395.00",
+            "currency": {
+                "description": "AOA",
+                "code": "AOA"
+            }
+        },
+        "featured_image": {
+            "alt": "Cerveja eka lata 0,33l",
+            "source": "https://www.kibabo.co.ao/pt/images_prods_static/SKU/30026747.jpg?1638871528"
+        }
+    },
+    {
+        "id": "3268",
+        "title": "SUMO NUTRY 200ML MANGA",
+        "description": "SUMO NUTRY 200ML MANGA",
+        "url": "https://www.kibabo.co.ao/pt/nutry/sumo-nutry-200ml-manga_p3268.html?id=225&cat=237&pc=8",
+        "price": {
+            "value": "395",
+            "valueOriginal": "395.00",
+            "currency": {
+                "description": "AOA",
+                "code": "AOA"
+            }
+        },
+        "featured_image": {
+            "alt": "Sumo nutry 200ml manga",
+            "source": "https://www.kibabo.co.ao/pt/images_prods_static/SKU/30026933.jpg?1638953005"
+        }
+    },
+    {
+        "id": "12361",
+        "title": "CERVEJA SUPER BOCK MINI TP SACA FACIL 0,25L",
+        "description": "CERVEJA SUPER BOCK MINI TP SACA FACIL 0,25L",
+        "url": "https://www.kibabo.co.ao/pt/masculino/super-bock/cerveja-super-bock-mini-tp-saca-facil-025l_p12361.html?id=225&cat=237&pc=8",
+        "price": {
+            "value": "405",
+            "valueOriginal": "405.00",
+            "currency": {
+                "description": "AOA",
+                "code": "AOA"
+            }
+        },
+        "featured_image": {
+            "alt": "Cerveja super bock mini tp saca facil 0,25l",
+            "source": "https://www.kibabo.co.ao/pt/images_prods_static/SKU/30019926.jpg?1513715272"
+        }
+    },
+    {
+        "id": "10736",
+        "title": "REFRIG. MIRINDA LATA 0,33L LARANJA",
+        "description": "REFRIG. MIRINDA LATA 0,33L LARANJA",
+        "url": "https://www.kibabo.co.ao/pt/mirinda/refrig.-mirinda-lata-033l-laranja_p10736.html?id=225&cat=237&pc=8",
+        "price": {
+            "value": "425",
+            "valueOriginal": "425.00",
+            "currency": {
+                "description": "AOA",
+                "code": "AOA"
+            }
+        },
+        "featured_image": {
+            "alt": "Refrig. mirinda lata 0,33l laranja",
+            "source": "https://www.kibabo.co.ao/pt/images_prods_static/SKU/30040078.jpg?1665573780"
+        }
+    },
+    {
+        "id": "10781",
+        "title": "REFRIG. 7UP LATA 330ML",
+        "description": "REFRIG. 7UP LATA 330ML",
+        "url": "https://www.kibabo.co.ao/pt/7up/refrig.-7up-lata-330ml_p10781.html?id=225&cat=237&pc=8",
+        "price": {
+            "value": "425",
+            "valueOriginal": "425.00",
+            "currency": {
+                "description": "AOA",
+                "code": "AOA"
+            }
+        },
+        "featured_image": {
+            "alt": "Refrig. 7up lata 330ml",
+            "source": "https://www.kibabo.co.ao/pt/images_prods_static/SKU/30040079.jpg?1665573789"
+        }
+    },
+    {
+        "id": "10737",
+        "title": "REFRIG. PEPSI COLA LATA 0,33L",
+        "description": "REFRIG. PEPSI COLA LATA 0,33L",
+        "url": "https://www.kibabo.co.ao/pt/pepsi/refrig.-pepsi-cola-lata-033l_p10737.html?id=225&cat=237&pc=8",
+        "price": {
+            "value": "425",
+            "valueOriginal": "425.00",
+            "currency": {
+                "description": "AOA",
+                "code": "AOA"
+            }
+        },
+        "featured_image": {
+            "alt": "Refrig. pepsi cola lata 0,33l",
+            "source": "https://www.kibabo.co.ao/pt/images_prods_static/SKU/30040080.jpg?1665573791"
+        }
+    },
+    {
+        "id": "10880",
+        "title": "AGUA NATYVA PET 1,5L",
+        "description": "AGUA NATYVA PET 1,5L",
+        "url": "https://www.kibabo.co.ao/pt/natyva/agua-natyva-pet-15l_p10880.html?id=225&cat=237&pc=8",
+        "price": {
+            "value": "425",
+            "valueOriginal": "425.00",
+            "currency": {
+                "description": "AOA",
+                "code": "AOA"
+            }
+        },
+        "featured_image": {
+            "alt": "Agua natyva pet 1,5l",
+            "source": "https://www.kibabo.co.ao/pt/images_prods_static/SKU/30040900.jpg?1665573839"
+        }
+    },
+    {
+        "id": "1300",
+        "title": "BEBIDA ENERGETICA XXL LATA 0,33L",
+        "description": "BEBIDA ENERGETICA XXL LATA 0,33L",
+        "url": "https://www.kibabo.co.ao/pt/xxl/bebida-energetica-xxl-lata-033l_p1300.html?id=225&cat=237&pc=9",
+        "price": {
+            "value": "445",
+            "valueOriginal": "445.00",
+            "currency": {
+                "description": "AOA",
+                "code": "AOA"
+            }
+        },
+        "featured_image": {
+            "alt": "Bebida energetica xxl lata 0,33l",
+            "source": "https://www.kibabo.co.ao/pt/images_prods_static/SKU/30006207.jpg?1641309844"
+        }
+    },
+    {
+        "id": "1853",
+        "title": "COCKTAIL BOOSTER LATA 0,33L CIDRA",
+        "description": "COCKTAIL BOOSTER LATA 0,33L CIDRA",
+        "url": "https://www.kibabo.co.ao/pt/booster/cocktail-booster-lata-033l-cidra_p1853.html?id=225&cat=237&pc=9",
+        "price": {
+            "value": "445",
+            "valueOriginal": "445.00",
+            "currency": {
+                "description": "AOA",
+                "code": "AOA"
+            }
+        },
+        "featured_image": {
+            "alt": "Cocktail booster lata 0,33l cidra",
+            "source": "https://www.kibabo.co.ao/pt/images_prods_static/SKU/30018197.jpg?1617795101"
+        }
+    },
+    {
+        "id": "4514",
+        "title": "REFRIG. COCA-COLA ZERO LATA 0,33L",
+        "description": "REFRIG. COCA-COLA ZERO LATA 0,33L",
+        "url": "https://www.kibabo.co.ao/pt/coca-cola/refrig.-coca-cola-zero-lata-033l_p4514.html?id=225&cat=237&pc=9",
+        "price": {
+            "value": "445",
+            "valueOriginal": "445.00",
+            "currency": {
+                "description": "AOA",
+                "code": "AOA"
+            }
+        },
+        "featured_image": {
+            "alt": "Refrig. coca-cola zero lata 0,33l",
+            "source": "https://www.kibabo.co.ao/pt/images_prods_static/SKU/30030824.jpg?1612284424"
+        }
+    },
+    {
+        "id": "6941",
+        "title": "COCKTAIL BOOSTER LATA 0,33L MANGA/LARANJA",
+        "description": "COCKTAIL BOOSTER LATA 0,33L MANGA/LARANJA",
+        "url": "https://www.kibabo.co.ao/pt/booster/cocktail-booster-lata-033l-mangalaranja_p6941.html?id=225&cat=237&pc=9",
+        "price": {
+            "value": "445",
+            "valueOriginal": "445.00",
+            "currency": {
+                "description": "AOA",
+                "code": "AOA"
+            }
+        },
+        "featured_image": {
+            "alt": "Cocktail booster lata 0,33l manga/laranja",
+            "source": "https://www.kibabo.co.ao/pt/images_prods_static/SKU/30037466.jpg?1638871552"
+        }
+    },
+    {
+        "id": "8022",
+        "title": "CERVEJA SUPER BOCK LATA 0,33L",
+        "description": "CERVEJA SUPER BOCK LATA 0,33L",
+        "url": "https://www.kibabo.co.ao/pt/super-bock/cerveja-super-bock-lata-033l_p8022.html?id=225&cat=237&pc=9",
+        "price": {
+            "value": "445",
+            "valueOriginal": "445.00",
+            "currency": {
+                "description": "AOA",
+                "code": "AOA"
+            }
+        },
+        "featured_image": {
+            "alt": "Cerveja super bock lata 0,33l",
+            "source": "https://www.kibabo.co.ao/pt/images_prods_static/SKU/30037628.jpg?1650103129"
+        }
+    },
+    {
+        "id": "1710",
+        "title": "REFRIG. SUMOL LATA 0,33L ANANAS",
+        "description": "REFRIG. SUMOL LATA 0,33L ANANAS",
+        "url": "https://www.kibabo.co.ao/pt/sumol/refrig.-sumol-lata-033l-ananas_p1710.html?id=225&cat=237&pc=9",
+        "price": {
+            "value": "465",
+            "valueOriginal": "465.00",
+            "currency": {
+                "description": "AOA",
+                "code": "AOA"
+            }
+        },
+        "featured_image": {
+            "alt": "Refrig. sumol lata 0,33l ananas",
+            "source": "https://www.kibabo.co.ao/pt/images_prods_static/SKU/30015110.jpg?1641310519"
+        }
+    },
+    {
+        "id": "1711",
+        "title": "REFRIG. SUMOL LATA 0,33L LARANJA",
+        "description": "REFRIG. SUMOL LATA 0,33L LARANJA",
+        "url": "https://www.kibabo.co.ao/pt/sumol/refrig.-sumol-lata-033l-laranja_p1711.html?id=225&cat=237&pc=9",
+        "price": {
+            "value": "465",
+            "valueOriginal": "465.00",
+            "currency": {
+                "description": "AOA",
+                "code": "AOA"
+            }
+        },
+        "featured_image": {
+            "alt": "Refrig. sumol lata 0,33l laranja",
+            "source": "https://www.kibabo.co.ao/pt/images_prods_static/SKU/30015111.jpg?1641310519"
+        }
+    },
+    {
+        "id": "1296",
+        "title": "REFRIG. COCA-COLA LATA 0,33L",
+        "description": "REFRIG. COCA-COLA LATA 0,33L",
+        "url": "https://www.kibabo.co.ao/pt/coca-cola/refrig.-coca-cola-lata-033l_p1296.html?id=225&cat=237&pc=9",
+        "price": {
+            "value": "470",
+            "valueOriginal": "470.00",
+            "currency": {
+                "description": "AOA",
+                "code": "AOA"
+            }
+        },
+        "featured_image": {
+            "alt": "Refrig. coca-cola lata 0,33l",
+            "source": "https://www.kibabo.co.ao/pt/images_prods_static/SKU/30006199.jpg?1641309840"
+        }
+    },
+    {
+        "id": "1297",
+        "title": "REFRIG. FANTA LATA 0,33L LARANJA",
+        "description": "REFRIG. FANTA LATA 0,33L LARANJA",
+        "url": "https://www.kibabo.co.ao/pt/fanta/refrig.-fanta-lata-033l-laranja_p1297.html?id=225&cat=237&pc=9",
+        "price": {
+            "value": "470",
+            "valueOriginal": "470.00",
+            "currency": {
+                "description": "AOA",
+                "code": "AOA"
+            }
+        },
+        "featured_image": {
+            "alt": "Refrig. fanta lata 0,33l laranja",
+            "source": "https://www.kibabo.co.ao/pt/images_prods_static/SKU/30006200.jpg?1641309841"
+        }
+    },
+    {
+        "id": "1298",
+        "title": "REFRIG. SPRITE LATA 0,33L",
+        "description": "REFRIG. SPRITE LATA 0,33L",
+        "url": "https://www.kibabo.co.ao/pt/sprite/refrig.-sprite-lata-033l_p1298.html?id=225&cat=237&pc=9",
+        "price": {
+            "value": "470",
+            "valueOriginal": "470.00",
+            "currency": {
+                "description": "AOA",
+                "code": "AOA"
+            }
+        },
+        "featured_image": {
+            "alt": "Refrig. sprite lata 0,33l",
+            "source": "https://www.kibabo.co.ao/pt/images_prods_static/SKU/30006202.jpg?1641309841"
+        }
+    },
+    {
+        "id": "1242",
+        "title": "AGUA TONICA WELWITSCHIA LATA 0,33L",
+        "description": "AGUA TONICA WELWITSCHIA LATA 0,33L",
+        "url": "https://www.kibabo.co.ao/pt/welwitschia/agua-tonica-welwitschia-lata-033l_p1242.html?id=225&cat=237&pc=9",
+        "price": {
+            "value": "495",
+            "valueOriginal": "495.00",
+            "currency": {
+                "description": "AOA",
+                "code": "AOA"
+            }
+        },
+        "featured_image": {
+            "alt": "Agua tonica welwitschia lata 0,33l",
+            "source": "https://www.kibabo.co.ao/pt/images_prods_static/SKU/30005652.jpg?1641309775"
+        }
+    },
+    {
+        "id": "10414",
+        "title": "SUMO NECTAR FRUTTY 0,33L MANGA",
+        "description": "SUMO NECTAR FRUTTY 0,33L MANGA",
+        "url": "https://www.kibabo.co.ao/pt/frutty/sumo-nectar-frutty-033l-manga_p10414.html?id=225&cat=237&pc=9",
+        "price": {
+            "value": "565",
+            "valueOriginal": "565.00",
+            "currency": {
+                "description": "AOA",
+                "code": "AOA"
+            }
+        },
+        "featured_image": {
+            "alt": "Sumo nectar frutty 0,33l manga",
+            "source": "https://www.kibabo.co.ao/pt/images_prods_static/SKU/30033156.jpg?1611873468"
+        }
+    },
+    {
+        "id": "9221",
+        "title": "SUMO NECTAR FRUTTY 0,33L TROPICAL",
+        "description": "SUMO NECTAR FRUTTY 0,33L TROPICAL",
+        "url": "https://www.kibabo.co.ao/pt/frutty/sumo-nectar-frutty-033l-tropical_p9221.html?id=225&cat=237&pc=10",
+        "price": {
+            "value": "565",
+            "valueOriginal": "565.00",
+            "currency": {
+                "description": "AOA",
+                "code": "AOA"
+            }
+        },
+        "featured_image": {
+            "alt": "Sumo nectar frutty 0,33l tropical",
+            "source": "https://www.kibabo.co.ao/pt/images_prods_static/SKU/30033157.jpg?1611873442"
+        }
+    },
+    {
+        "id": "10940",
+        "title": "SUMO NECTAR FRUTTY 0,33L 12 FRUTAS",
+        "description": "SUMO NECTAR FRUTTY 0,33L 12 FRUTAS",
+        "url": "https://www.kibabo.co.ao/pt/frutty/sumo-nectar-frutty-033l-12-frutas_p10940.html?id=225&cat=237&pc=10",
+        "price": {
+            "value": "565",
+            "valueOriginal": "565.00",
+            "currency": {
+                "description": "AOA",
+                "code": "AOA"
+            }
+        },
+        "featured_image": {
+            "alt": "Sumo nectar frutty 0,33l 12 frutas",
+            "source": "https://www.kibabo.co.ao/pt/images_prods_static/SKU/30033159.jpg?1611873396"
+        }
+    },
+    {
+        "id": "1854",
+        "title": "NECTAR COMPAL CLASSICO 0,33L MANGA",
+        "description": "NECTAR COMPAL CLASSICO 0,33L MANGA",
+        "url": "https://www.kibabo.co.ao/pt/compal/nectar-compal-classico-033l-manga_p1854.html?id=225&cat=237&pc=10",
+        "price": {
+            "value": "575",
+            "valueOriginal": "575.00",
+            "currency": {
+                "description": "AOA",
+                "code": "AOA"
+            }
+        },
+        "featured_image": {
+            "alt": "Nectar compal classico 0,33l manga",
+            "source": "https://www.kibabo.co.ao/pt/images_prods_static/SKU/30018254.jpg?1637930131"
+        }
+    },
+    {
+        "id": "8335",
+        "title": "SUMO NUTRY LATA 0,33L VIDA+ 10 FRUTAS",
+        "description": "SUMO NUTRY LATA 0,33L VIDA+ 10 FRUTAS",
+        "url": "https://www.kibabo.co.ao/pt/nutry/sumo-nutry-lata-033l-vida+-10-frutas_p8335.html?id=225&cat=237&pc=10",
+        "price": {
+            "value": "575",
+            "valueOriginal": "575.00",
+            "currency": {
+                "description": "AOA",
+                "code": "AOA"
+            }
+        },
+        "featured_image": {
+            "alt": "Sumo nutry lata 0,33l vida+ 10 frutas",
+            "source": "https://www.kibabo.co.ao/pt/images_prods_static/SKU/30023428.jpg?1639665235"
+        }
+    },
+    {
+        "id": "2481",
+        "title": "SUMO NUTRY LATA 0,33L MANGA",
+        "description": "SUMO NUTRY LATA 0,33L MANGA",
+        "url": "https://www.kibabo.co.ao/pt/nutry/sumo-nutry-lata-033l-manga_p2481.html?id=225&cat=237&pc=10",
+        "price": {
+            "value": "575",
+            "valueOriginal": "575.00",
+            "currency": {
+                "description": "AOA",
+                "code": "AOA"
+            }
+        },
+        "featured_image": {
+            "alt": "Sumo nutry lata 0,33l manga",
+            "source": "https://www.kibabo.co.ao/pt/images_prods_static/SKU/30023430.jpg?1637603946"
+        }
+    },
+    {
+        "id": "408",
+        "title": "AGUA MINERAL PERLA 5L",
+        "description": "AGUA MINERAL PERLA 5L",
+        "url": "https://www.kibabo.co.ao/pt/perla/agua-mineral-perla-5l_p408.html?id=225&cat=237&pc=10",
+        "price": {
+            "value": "585",
+            "valueOriginal": "585.00",
+            "currency": {
+                "description": "AOA",
+                "code": "AOA"
+            }
+        },
+        "featured_image": {
+            "alt": "Agua mineral perla 5l",
+            "source": "https://www.kibabo.co.ao/pt/images_prods_static/SKU/30029425.jpg?1640029758"
+        }
+    },
+    {
+        "id": "688",
+        "title": "COCKTAIL YOLO 250ML WHISKEY COLA",
+        "description": "COCKTAIL YOLO 250ML WHISKEY COLA",
+        "url": "https://www.kibabo.co.ao/pt/yolo/cocktail-yolo-250ml-whiskey-cola_p688.html?id=225&cat=237&pc=10",
+        "price": {
+            "value": "595",
+            "valueOriginal": "595.00",
+            "currency": {
+                "description": "AOA",
+                "code": "AOA"
+            }
+        },
+        "featured_image": {
+            "alt": "Cocktail yolo 250ml whiskey cola",
+            "source": "https://www.kibabo.co.ao/pt/images_prods_static/SKU/30033744.jpg?1634550959"
+        }
+    },
+    {
+        "id": "11936",
+        "title": "AGUA TONICA WELWITSCHIA&GORDONS PINK LATA 0,33L",
+        "description": "AGUA TONICA WELWITSCHIA&GORDONS PINK LATA 0,33L",
+        "url": "https://www.kibabo.co.ao/pt/welwitschia/agua-tonica-welwitschiaegordons-pink-lata-033l_p11936.html?id=225&cat=237&pc=10",
+        "price": {
+            "value": "625",
+            "valueOriginal": "625.00",
+            "currency": {
+                "description": "AOA",
+                "code": "AOA"
+            }
+        },
+        "featured_image": {
+            "alt": "Agua tonica welwitschia&gordons pink lata 0,33l",
+            "source": "https://www.kibabo.co.ao/pt/images_prods_static/SKU/30038217.jpg?1640029828"
+        }
+    },
+    {
+        "id": "1244",
+        "title": "BEBIDA ENERGETICA SPEED LATA 0,33L",
+        "description": "BEBIDA ENERGETICA SPEED LATA 0,33L",
+        "url": "https://www.kibabo.co.ao/pt/speed/bebida-energetica-speed-lata-033l_p1244.html?id=225&cat=237&pc=10",
+        "price": {
+            "value": "670",
+            "valueOriginal": "670.00",
+            "currency": {
+                "description": "AOA",
+                "code": "AOA"
+            }
+        },
+        "featured_image": {
+            "alt": "Bebida energetica speed lata 0,33l",
+            "source": "https://www.kibabo.co.ao/pt/images_prods_static/SKU/30005654.jpg?1641309776"
+        }
+    },
+    {
+        "id": "1299",
+        "title": "AGUA TONICA SCHWEPPES LATA 0,33L",
+        "description": "AGUA TONICA SCHWEPPES LATA 0,33L",
+        "url": "https://www.kibabo.co.ao/pt/schweppes/agua-tonica-schweppes-lata-033l_p1299.html?id=225&cat=237&pc=10",
+        "price": {
+            "value": "670",
+            "valueOriginal": "670.00",
+            "currency": {
+                "description": "AOA",
+                "code": "AOA"
+            }
+        },
+        "featured_image": {
+            "alt": "Agua tonica schweppes lata 0,33l",
+            "source": "https://www.kibabo.co.ao/pt/images_prods_static/SKU/30006203.jpg?1641309842"
+        }
+    },
+    {
+        "id": "2140",
+        "title": "COCKTAIL SMIRNOFF ICE LATA 0,33L ORIGINAL",
+        "description": "COCKTAIL SMIRNOFF ICE LATA 0,33L ORIGINAL",
+        "url": "https://www.kibabo.co.ao/pt/smirnoff/cocktail-smirnoff-ice-lata-033l-original_p2140.html?id=225&cat=237&pc=10",
+        "price": {
+            "value": "680",
+            "valueOriginal": "680.00",
+            "currency": {
+                "description": "AOA",
+                "code": "AOA"
+            }
+        },
+        "featured_image": {
+            "alt": "Cocktail smirnoff ice lata 0,33l original",
+            "source": "https://www.kibabo.co.ao/pt/images_prods_static/SKU/30021219.jpg?1525775081"
+        }
+    },
+    {
+        "id": "2141",
+        "title": "COCKTAIL SMIRNOFF ICE LATA 0,33L GUARANA",
+        "description": "COCKTAIL SMIRNOFF ICE LATA 0,33L GUARANA",
+        "url": "https://www.kibabo.co.ao/pt/smirnoff/cocktail-smirnoff-ice-lata-033l-guarana_p2141.html?id=225&cat=237&pc=10",
+        "price": {
+            "value": "680",
+            "valueOriginal": "680.00",
+            "currency": {
+                "description": "AOA",
+                "code": "AOA"
+            }
+        },
+        "featured_image": {
+            "alt": "Cocktail smirnoff ice lata 0,33l guarana",
+            "source": "https://www.kibabo.co.ao/pt/images_prods_static/SKU/30021220.jpg?1634651601"
+        }
+    },
+    {
+        "id": "2313",
+        "title": "AGUA MESA DONA D`AGUA 6L",
+        "description": "AGUA MESA DONA D`AGUA 6L",
+        "url": "https://www.kibabo.co.ao/pt/dona-dagua/agua-mesa-dona-dagua-6l_p2313.html?id=225&cat=237&pc=11",
+        "price": {
+            "value": "720",
+            "valueOriginal": "720.00",
+            "currency": {
+                "description": "AOA",
+                "code": "AOA"
+            }
+        },
+        "featured_image": {
+            "alt": "Agua mesa dona d`agua 6l",
+            "source": "https://www.kibabo.co.ao/pt/images_prods_static/SKU/30022483.jpg?1637058202"
+        }
+    },
+    {
+        "id": "5734",
+        "title": "AGUA BOM JESUS 5L",
+        "description": "AGUA BOM JESUS 5L",
+        "url": "https://www.kibabo.co.ao/pt/bom-jesus/agua-bom-jesus-5l_p5734.html?id=225&cat=237&pc=11",
+        "price": {
+            "value": "720",
+            "valueOriginal": "720.00",
+            "currency": {
+                "description": "AOA",
+                "code": "AOA"
+            }
+        },
+        "featured_image": {
+            "alt": "Agua bom jesus 5l",
+            "source": "https://www.kibabo.co.ao/pt/images_prods_static/SKU/30034492.jpg?1634550974"
+        }
+    },
+    {
+        "id": "239",
+        "title": "VINHO TINTO FORTE TPAK 0,25L",
+        "description": "VINHO TINTO FORTE TPAK 0,25L",
+        "url": "https://www.kibabo.co.ao/pt/*/vinho-tinto-forte-tpak-025l_p239.html?id=225&cat=237&pc=11",
+        "price": {
+            "value": "760",
+            "valueOriginal": "760.00",
+            "currency": {
+                "description": "AOA",
+                "code": "AOA"
+            }
+        },
+        "featured_image": {
+            "alt": "Vinho tinto forte tpak 0,25l",
+            "source": "https://www.kibabo.co.ao/pt/images_prods_static/SKU/30025704.jpg?1634550784"
+        }
+    },
+    {
+        "id": "9653",
+        "title": "REFRIG. BLUE PET 1,5L MARACUJA",
+        "description": "REFRIG. BLUE PET 1,5L MARACUJA",
+        "url": "https://www.kibabo.co.ao/pt/blue/refrig.-blue-pet-15l-maracuja_p9653.html?id=225&cat=237&pc=11",
+        "price": {
+            "value": "840",
+            "valueOriginal": "840.00",
+            "currency": {
+                "description": "AOA",
+                "code": "AOA"
+            }
+        },
+        "featured_image": {
+            "alt": "Refrig. blue pet 1,5l maracuja",
+            "source": "https://www.kibabo.co.ao/pt/images_prods_static/SKU/30005650.jpg?1641309774"
+        }
+    },
+    {
+        "id": "68",
+        "title": "AGUA MESA PURA PET 5L",
+        "description": "AGUA MESA PURA PET 5L",
+        "url": "https://www.kibabo.co.ao/pt/pura/agua-mesa-pura-pet-5l_p68.html?id=225&cat=237&pc=11",
+        "price": {
+            "value": "840",
+            "valueOriginal": "840.00",
+            "currency": {
+                "description": "AOA",
+                "code": "AOA"
+            }
+        },
+        "featured_image": {
+            "alt": "Agua mesa pura pet 5l",
+            "source": "https://www.kibabo.co.ao/pt/images_prods_static/SKU/30007726.jpg?1641309960"
+        }
+    },
+    {
+        "id": "1682",
+        "title": "SUMO LULU 1L MANGA",
+        "description": "SUMO LULU 1L MANGA",
+        "url": "https://www.kibabo.co.ao/pt/lulu/sumo-lulu-1l-manga_p1682.html?id=225&cat=237&pc=11",
+        "price": {
+            "value": "885",
+            "valueOriginal": "885.00",
+            "currency": {
+                "description": "AOA",
+                "code": "AOA"
+            }
+        },
+        "featured_image": {
+            "alt": "Sumo lulu 1l manga",
+            "source": "https://www.kibabo.co.ao/pt/images_prods_static/SKU/30014540.jpg?1641310469"
+        }
+    },
+    {
+        "id": "1685",
+        "title": "SUMO LULU 1L 12FRUTAS",
+        "description": "SUMO LULU 1L 12FRUTAS",
+        "url": "https://www.kibabo.co.ao/pt/lulu/sumo-lulu-1l-12frutas_p1685.html?id=225&cat=237&pc=11",
+        "price": {
+            "value": "885",
+            "valueOriginal": "885.00",
+            "currency": {
+                "description": "AOA",
+                "code": "AOA"
+            }
+        },
+        "featured_image": {
+            "alt": "Sumo lulu 1l 12frutas",
+            "source": "https://www.kibabo.co.ao/pt/images_prods_static/SKU/30014543.jpg?1641310471"
+        }
+    },
+    {
+        "id": "1686",
+        "title": "SUMO LULU 1L TUTTI FRUTTI",
+        "description": "SUMO LULU 1L TUTTI FRUTTI",
+        "url": "https://www.kibabo.co.ao/pt/lulu/sumo-lulu-1l-tutti-frutti_p1686.html?id=225&cat=237&pc=11",
+        "price": {
+            "value": "885",
+            "valueOriginal": "885.00",
+            "currency": {
+                "description": "AOA",
+                "code": "AOA"
+            }
+        },
+        "featured_image": {
+            "alt": "Sumo lulu 1l tutti frutti",
+            "source": "https://www.kibabo.co.ao/pt/images_prods_static/SKU/30014544.jpg?1641310471"
+        }
+    },
+    {
+        "id": "3943",
+        "title": "SUMO CANAJOY 1L MANGA",
+        "description": "SUMO CANAJOY 1L MANGA",
+        "url": "https://www.kibabo.co.ao/pt/canajoy/sumo-canajoy-1l-manga_p3943.html?id=225&cat=237&pc=11",
+        "price": {
+            "value": "940",
+            "valueOriginal": "940.00",
+            "currency": {
+                "description": "AOA",
+                "code": "AOA"
+            }
+        },
+        "featured_image": {
+            "alt": "Sumo canajoy 1l manga",
+            "source": "https://www.kibabo.co.ao/pt/images_prods_static/SKU/30028691.jpg?1634550844"
+        }
+    },
+    {
+        "id": "9794",
+        "title": "SUMO CANAJOY 1L GOIABA",
+        "description": "SUMO CANAJOY 1L GOIABA",
+        "url": "https://www.kibabo.co.ao/pt/canajoy/sumo-canajoy-1l-goiaba_p9794.html?id=225&cat=237&pc=11",
+        "price": {
+            "value": "940",
+            "valueOriginal": "940.00",
+            "currency": {
+                "description": "AOA",
+                "code": "AOA"
+            }
+        },
+        "featured_image": {
+            "alt": "Sumo canajoy 1l goiaba",
+            "source": "https://www.kibabo.co.ao/pt/images_prods_static/SKU/30028692.jpg?1602670908"
+        }
+    },
+    {
+        "id": "9783",
+        "title": "SUMO CANAJOY 1L TUTTI-FRUTTI",
+        "description": "SUMO CANAJOY 1L TUTTI-FRUTTI",
+        "url": "https://www.kibabo.co.ao/pt/canajoy/sumo-canajoy-1l-tutti-frutti_p9783.html?id=225&cat=237&pc=11",
+        "price": {
+            "value": "940",
+            "valueOriginal": "940.00",
+            "currency": {
+                "description": "AOA",
+                "code": "AOA"
+            }
+        },
+        "featured_image": {
+            "alt": "Sumo canajoy 1l tutti-frutti",
+            "source": "https://www.kibabo.co.ao/pt/images_prods_static/SKU/30037433.jpg?1665572713"
+        }
+    },
+    {
+        "id": "1753",
+        "title": "SUMO GARDENIA 1L MANGA",
+        "description": "SUMO GARDENIA 1L MANGA",
+        "url": "https://www.kibabo.co.ao/pt/gardenia/sumo-gardenia-1l-manga_p1753.html?id=225&cat=237&pc=11",
+        "price": {
+            "value": "990",
+            "valueOriginal": "990.00",
+            "currency": {
+                "description": "AOA",
+                "code": "AOA"
+            }
+        },
+        "featured_image": {
+            "alt": "Sumo gardenia 1l manga",
+            "source": "https://www.kibabo.co.ao/pt/images_prods_static/SKU/30016259.jpg?1504116842"
+        }
+    },
+    {
+        "id": "9764",
+        "title": "SUMO GARDENIA 1L MARACUJA",
+        "description": "SUMO GARDENIA 1L MARACUJA",
+        "url": "https://www.kibabo.co.ao/pt/gardenia/sumo-gardenia-1l-maracuja_p9764.html?id=225&cat=237&pc=12",
+        "price": {
+            "value": "990",
+            "valueOriginal": "990.00",
+            "currency": {
+                "description": "AOA",
+                "code": "AOA"
+            }
+        },
+        "featured_image": {
+            "alt": "Sumo gardenia 1l maracuja",
+            "source": "https://www.kibabo.co.ao/pt/images_prods_static/SKU/30016260.jpg?1504116346"
+        }
+    },
+    {
+        "id": "1754",
+        "title": "SUMO GARDENIA 1L MISTO FRUTAS",
+        "description": "SUMO GARDENIA 1L MISTO FRUTAS",
+        "url": "https://www.kibabo.co.ao/pt/gardenia/sumo-gardenia-1l-misto-frutas_p1754.html?id=225&cat=237&pc=12",
+        "price": {
+            "value": "990",
+            "valueOriginal": "990.00",
+            "currency": {
+                "description": "AOA",
+                "code": "AOA"
+            }
+        },
+        "featured_image": {
+            "alt": "Sumo gardenia 1l misto frutas",
+            "source": "https://www.kibabo.co.ao/pt/images_prods_static/SKU/30016261.jpg?1504116127"
+        }
+    },
+    {
+        "id": "9765",
+        "title": "SUMO GARDENIA 1L ANANAS",
+        "description": "SUMO GARDENIA 1L ANANAS",
+        "url": "https://www.kibabo.co.ao/pt/gardenia/sumo-gardenia-1l-ananas_p9765.html?id=225&cat=237&pc=12",
+        "price": {
+            "value": "990",
+            "valueOriginal": "990.00",
+            "currency": {
+                "description": "AOA",
+                "code": "AOA"
+            }
+        },
+        "featured_image": {
+            "alt": "Sumo gardenia 1l ananas",
+            "source": "https://www.kibabo.co.ao/pt/images_prods_static/SKU/30016262.jpg?1504116942"
+        }
+    },
+    {
+        "id": "7908",
+        "title": "AGUA MESA ANGOLE 7L",
+        "description": "AGUA MESA ANGOLE 7L",
+        "url": "https://www.kibabo.co.ao/pt/angole/agua-mesa-angole-7l_p7908.html?id=225&cat=237&pc=12",
+        "price": {
+            "value": "990",
+            "valueOriginal": "990.00",
+            "currency": {
+                "description": "AOA",
+                "code": "AOA"
+            }
+        },
+        "featured_image": {
+            "alt": "Agua mesa angole 7l",
+            "source": "https://www.kibabo.co.ao/pt/images_prods_static/SKU/30035012.jpg?1640768431"
+        }
+    },
+    {
+        "id": "5528",
+        "title": "CERVEJA MUSTANG NRB 0,25L",
+        "description": "CERVEJA MUSTANG NRB 0,25L",
+        "url": "https://www.kibabo.co.ao/pt/mustang/cerveja-mustang-nrb-025l_p5528.html?id=225&cat=237&pc=12",
+        "price": {
+            "value": "1040",
+            "valueOriginal": "1040.00",
+            "currency": {
+                "description": "AOA",
+                "code": "AOA"
+            }
+        },
+        "featured_image": {
+            "alt": "Cerveja mustang nrb 0,25l",
+            "source": "https://www.kibabo.co.ao/pt/images_prods_static/SKU/30033800.jpg?1665572643"
+        }
+    },
+    {
+        "id": "10434",
+        "title": "CERVEJA HUNTER`S GOLD NRB 0,25L",
+        "description": "CERVEJA HUNTER`S GOLD NRB 0,25L",
+        "url": "https://www.kibabo.co.ao/pt/hunters/cerveja-hunters-gold-nrb-025l_p10434.html?id=225&cat=237&pc=12",
+        "price": {
+            "value": "1090",
+            "valueOriginal": "1090.00",
+            "currency": {
+                "description": "AOA",
+                "code": "AOA"
+            }
+        },
+        "featured_image": {
+            "alt": "Cerveja hunter`s gold nrb 0,25l",
+            "source": "https://www.kibabo.co.ao/pt/images_prods_static/SKU/30033796.jpg?1616171787"
+        }
+    },
+    {
+        "id": "8596",
+        "title": "CERVEJA ESPRIT NRB 0,25L",
+        "description": "CERVEJA ESPRIT NRB 0,25L",
+        "url": "https://www.kibabo.co.ao/pt/espirit/cerveja-esprit-nrb-025l_p8596.html?id=225&cat=237&pc=12",
+        "price": {
+            "value": "1140",
+            "valueOriginal": "1140.00",
+            "currency": {
+                "description": "AOA",
+                "code": "AOA"
+            }
+        },
+        "featured_image": {
+            "alt": "Cerveja esprit nrb 0,25l",
+            "source": "https://www.kibabo.co.ao/pt/images_prods_static/SKU/30033798.jpg?1640029778"
+        }
+    },
+    {
+        "id": "4883",
+        "title": "PALINHAS S/REVESTIMENTO 6MM 100UN",
+        "description": "PALINHAS S/REVESTIMENTO 6MM 100UN",
+        "url": "https://www.kibabo.co.ao/pt/*/palinhas-srevestimento-6mm-100un_p4883.html?id=225&cat=237&pc=12",
+        "price": {
+            "value": "1245",
+            "valueOriginal": "1245.00",
+            "currency": {
+                "description": "AOA",
+                "code": "AOA"
+            }
+        },
+        "featured_image": {
+            "alt": "Palinhas s/revestimento 6mm 100un",
+            "source": "https://www.kibabo.co.ao/pt/images_prods_static/SKU/30031880.jpg?1637223117"
+        }
+    },
+    {
+        "id": "1231",
+        "title": "SUMO NUTRY TETRA 1L MANGA",
+        "description": "SUMO NUTRY TETRA 1L MANGA",
+        "url": "https://www.kibabo.co.ao/pt/nutry/sumo-nutry-tetra-1l-manga_p1231.html?id=225&cat=237&pc=12",
+        "price": {
+            "value": "1385",
+            "valueOriginal": "1385.00",
+            "currency": {
+                "description": "AOA",
+                "code": "AOA"
+            }
+        },
+        "featured_image": {
+            "alt": "Sumo nutry tetra 1l manga",
+            "source": "https://www.kibabo.co.ao/pt/images_prods_static/SKU/30005619.jpg?1665572519"
+        }
+    },
+    {
+        "id": "1336",
+        "title": "BEBIDA ENERGETICA RED BULL LATA 250ML",
+        "description": "BEBIDA ENERGETICA RED BULL LATA 250ML",
+        "url": "https://www.kibabo.co.ao/pt/redbull/bebida-energetica-red-bull-lata-250ml_p1336.html?id=225&cat=237&pc=12",
+        "price": {
+            "value": "1680",
+            "valueOriginal": "1680.00",
+            "currency": {
+                "description": "AOA",
+                "code": "AOA"
+            }
+        },
+        "featured_image": {
+            "alt": "Bebida energetica red bull lata 250ml",
+            "source": "https://www.kibabo.co.ao/pt/images_prods_static/SKU/30006602.jpg?1641309888"
+        }
+    },
+    {
+        "id": "11857",
+        "title": "VINHO BRANCO GAIVOTA TETRA 1L",
+        "description": "VINHO BRANCO GAIVOTA TETRA 1L",
+        "url": "https://www.kibabo.co.ao/pt/gaivota/vinho-branco-gaivota-tetra-1l_p11857.html?id=225&cat=237&pc=12",
+        "price": {
+            "value": "2000",
+            "valueOriginal": "2000.00",
+            "currency": {
+                "description": "AOA",
+                "code": "AOA"
+            }
+        },
+        "featured_image": {
+            "alt": "Vinho branco gaivota tetra 1l",
+            "source": "https://www.kibabo.co.ao/pt/images_prods_static/SKU/30005657.jpg?1641309777"
+        }
+    },
+    {
+        "id": "4403",
+        "title": "VINHO TINTO FRESCO PACOTE 1L",
+        "description": "VINHO TINTO FRESCO PACOTE 1L",
+        "url": "https://www.kibabo.co.ao/pt/fresco/vinho-tinto-fresco-pacote-1l_p4403.html?id=225&cat=237&pc=12",
+        "price": {
+            "value": "2130",
+            "valueOriginal": "2130.00",
+            "currency": {
+                "description": "AOA",
+                "code": "AOA"
+            }
+        },
+        "featured_image": {
+            "alt": "Vinho tinto fresco pacote 1l",
+            "source": "https://www.kibabo.co.ao/pt/images_prods_static/SKU/30030401.jpg?1634550874"
+        }
+    },
+    {
+        "id": "3447",
+        "title": "VINHO TINTO DON SIMON PACOTE 1L",
+        "description": "VINHO TINTO DON SIMON PACOTE 1L",
+        "url": "https://www.kibabo.co.ao/pt/don-simon/vinho-tinto-don-simon-pacote-1l_p3447.html?id=225&cat=237&pc=13",
+        "price": {
+            "value": "2175",
+            "valueOriginal": "2175.00",
+            "currency": {
+                "description": "AOA",
+                "code": "AOA"
+            }
+        },
+        "featured_image": {
+            "alt": "Vinho tinto don simon pacote 1l",
+            "source": "https://www.kibabo.co.ao/pt/images_prods_static/SKU/30027431.jpg?1634550813"
+        }
+    },
+    {
+        "id": "238",
+        "title": "VINHO TINTO FORTE TPAK 1L",
+        "description": "VINHO TINTO FORTE TPAK 1L",
+        "url": "https://www.kibabo.co.ao/pt/forte/vinho-tinto-forte-tpak-1l_p238.html?id=225&cat=237&pc=13",
+        "price": {
+            "value": "2215",
+            "valueOriginal": "2215.00",
+            "currency": {
+                "description": "AOA",
+                "code": "AOA"
+            }
+        },
+        "featured_image": {
+            "alt": "Vinho tinto forte tpak 1l",
+            "source": "https://www.kibabo.co.ao/pt/images_prods_static/SKU/30025703.jpg?1634550784"
+        }
+    },
+    {
+        "id": "236",
+        "title": "VINHO BRANCO ENCOSTA DO MOINHO TPAK 1L",
+        "description": "VINHO BRANCO ENCOSTA DO MOINHO TPAK 1L",
+        "url": "https://www.kibabo.co.ao/pt/*/vinho-branco-encosta-do-moinho-tpak-1l_p236.html?id=225&cat=237&pc=13",
+        "price": {
+            "value": "2255",
+            "valueOriginal": "2255.00",
+            "currency": {
+                "description": "AOA",
+                "code": "AOA"
+            }
+        },
+        "featured_image": {
+            "alt": "Vinho branco encosta do moinho tpak 1l",
+            "source": "https://www.kibabo.co.ao/pt/images_prods_static/SKU/30025707.jpg?1634550784"
+        }
+    },
+    {
+        "id": "9192",
+        "title": "VINHO TINTO DA VILA TPACK 1L",
+        "description": "VINHO TINTO DA VILA TPACK 1L",
+        "url": "https://www.kibabo.co.ao/pt/vila/vinho-tinto-da-vila-tpack-1l_p9192.html?id=225&cat=237&pc=13",
+        "price": {
+            "value": "2315",
+            "valueOriginal": "2315.00",
+            "currency": {
+                "description": "AOA",
+                "code": "AOA"
+            }
+        },
+        "featured_image": {
+            "alt": "Vinho tinto da vila tpack 1l",
+            "source": "https://www.kibabo.co.ao/pt/images_prods_static/SKU/30016331.jpg?1650381046"
+        }
+    },
+    {
+        "id": "7647",
+        "title": "VINHO BRANCO PLANICIE ALTA 0,75L",
+        "description": "VINHO BRANCO PLANICIE ALTA 0,75L",
+        "url": "https://www.kibabo.co.ao/pt/p.alta/vinho-branco-planicie-alta-075l_p7647.html?id=225&cat=237&pc=13",
+        "price": {
+            "value": "2525",
+            "valueOriginal": "2525.00",
+            "currency": {
+                "description": "AOA",
+                "code": "AOA"
+            }
+        },
+        "featured_image": {
+            "alt": "Vinho branco planicie alta 0,75l",
+            "source": "https://www.kibabo.co.ao/pt/images_prods_static/SKU/30024574.jpg?1591353477"
+        }
+    },
+    {
+        "id": "424",
+        "title": "VINHO TINTO GAIVOTA TETRA 1L",
+        "description": "VINHO TINTO GAIVOTA TETRA 1L",
+        "url": "https://www.kibabo.co.ao/pt/gaivota/vinho-tinto-gaivota-tetra-1l_p424.html?id=225&cat=237&pc=13",
+        "price": {
+            "value": "2790",
+            "valueOriginal": "2790.00",
+            "currency": {
+                "description": "AOA",
+                "code": "AOA"
+            }
+        },
+        "featured_image": {
+            "alt": "Vinho tinto gaivota tetra 1l",
+            "source": "https://www.kibabo.co.ao/pt/images_prods_static/SKU/30030036.jpg?1634550869"
+        }
+    },
+    {
+        "id": "172",
+        "title": "VINHO TINTO O TINTO 0,75L",
+        "description": "VINHO TINTO O TINTO 0,75L",
+        "url": "https://www.kibabo.co.ao/pt/*/vinho-tinto-o-tinto-075l_p172.html?id=225&cat=237&pc=13",
+        "price": {
+            "value": "3215",
+            "valueOriginal": "3215.00",
+            "currency": {
+                "description": "AOA",
+                "code": "AOA"
+            }
+        },
+        "featured_image": {
+            "alt": "Vinho tinto o tinto 0,75l",
+            "source": "https://www.kibabo.co.ao/pt/images_prods_static/SKU/30023354.jpg?1634550759"
+        }
+    },
+    {
+        "id": "3830",
+        "title": "VINHO TINTO SAMARRA 0,75L",
+        "description": "VINHO TINTO SAMARRA 0,75L",
+        "url": "https://www.kibabo.co.ao/pt/samarra/vinho-tinto-samarra-075l_p3830.html?id=225&cat=237&pc=13",
+        "price": {
+            "value": "3535",
+            "valueOriginal": "3535.00",
+            "currency": {
+                "description": "AOA",
+                "code": "AOA"
+            }
+        },
+        "featured_image": {
+            "alt": "Vinho tinto samarra 0,75l",
+            "source": "https://www.kibabo.co.ao/pt/images_prods_static/SKU/30028459.jpg?1637603473"
+        }
+    },
+    {
+        "id": "9566",
+        "title": "VINHO TINTO AH PIAS 0,75L",
+        "description": "VINHO TINTO AH PIAS 0,75L",
+        "url": "https://www.kibabo.co.ao/pt/ah-pias/vinho-tinto-ah-pias-075l_p9566.html?id=225&cat=237&pc=13",
+        "price": {
+            "value": "3740",
+            "valueOriginal": "3740.00",
+            "currency": {
+                "description": "AOA",
+                "code": "AOA"
+            }
+        },
+        "featured_image": {
+            "alt": "Vinho tinto ah pias 0,75l",
+            "source": "https://www.kibabo.co.ao/pt/images_prods_static/SKU/30035473.jpg?1650383884"
+        }
+    },
+    {
+        "id": "4553",
+        "title": "ESPUMANTE FESTAO 0,75L",
+        "description": "ESPUMANTE FESTAO 0,75L",
+        "url": "https://www.kibabo.co.ao/pt/festao/espumante-festao-075l_p4553.html?id=225&cat=237&pc=13",
+        "price": {
+            "value": "3960",
+            "valueOriginal": "3960.00",
+            "currency": {
+                "description": "AOA",
+                "code": "AOA"
+            }
+        },
+        "featured_image": {
+            "alt": "Espumante festao 0,75l",
+            "source": "https://www.kibabo.co.ao/pt/images_prods_static/SKU/30030997.jpg?1634550887"
+        }
+    },
+    {
+        "id": "609",
+        "title": "VINHO TINTO ERMELINDA MJ FREITAS 0,75L",
+        "description": "VINHO TINTO ERMELINDA MJ FREITAS 0,75L",
+        "url": "https://www.kibabo.co.ao/pt/mj-freitas/vinho-tinto-ermelinda-mj-freitas-075l_p609.html?id=225&cat=237&pc=13",
+        "price": {
+            "value": "3960",
+            "valueOriginal": "3960.00",
+            "currency": {
+                "description": "AOA",
+                "code": "AOA"
+            }
+        },
+        "featured_image": {
+            "alt": "Vinho tinto ermelinda mj freitas 0,75l",
+            "source": "https://www.kibabo.co.ao/pt/images_prods_static/SKU/30032585.jpg?1634550929"
+        }
+    },
+    {
+        "id": "10671",
+        "title": "VINHO TINTO MARIA DA SERRA 0,75L",
+        "description": "VINHO TINTO MARIA DA SERRA 0,75L",
+        "url": "https://www.kibabo.co.ao/pt/maria-da-serra/vinho-tinto-maria-da-serra-075l_p10671.html?id=225&cat=237&pc=13",
+        "price": {
+            "value": "3960",
+            "valueOriginal": "3960.00",
+            "currency": {
+                "description": "AOA",
+                "code": "AOA"
+            }
+        },
+        "featured_image": {
+            "alt": "Vinho tinto maria da serra 0,75l",
+            "source": "https://www.kibabo.co.ao/pt/images_prods_static/SKU/30039980.jpg?1665573778"
+        }
+    },
+    {
+        "id": "9763",
+        "title": "VINHO TINTO ALENTEJO INTIMISTA 0,75L",
+        "description": "VINHO TINTO ALENTEJO INTIMISTA 0,75L",
+        "url": "https://www.kibabo.co.ao/pt/intimista/vinho-tinto-alentejo-intimista-075l_p9763.html?id=225&cat=237&pc=14",
+        "price": {
+            "value": "4155",
+            "valueOriginal": "4155.00",
+            "currency": {
+                "description": "AOA",
+                "code": "AOA"
+            }
+        },
+        "featured_image": {
+            "alt": "Vinho tinto alentejo intimista 0,75l",
+            "source": "https://www.kibabo.co.ao/pt/images_prods_static/SKU/30039142.jpg?1651577876"
+        }
+    },
+    {
+        "id": "1309",
+        "title": "VINHO TINTO ADEGA C. DE MURÇA 0,75L",
+        "description": "VINHO TINTO ADEGA C. DE MURÇA 0,75L",
+        "url": "https://www.kibabo.co.ao/pt/caves-de-murca/vinho-tinto-adega-c.-de-murca-075l_p1309.html?id=225&cat=237&pc=14",
+        "price": {
+            "value": "4195",
+            "valueOriginal": "4195.00",
+            "currency": {
+                "description": "AOA",
+                "code": "AOA"
+            }
+        },
+        "featured_image": {
+            "alt": "Vinho tinto adega c. de murça 0,75l",
+            "source": "https://www.kibabo.co.ao/pt/images_prods_static/SKU/30006225.jpg?1641309850"
+        }
+    },
+    {
+        "id": "4681",
+        "title": "VINHO TINTO ALENTEJO COURELAS D`ALQUEVA 0,75L",
+        "description": "VINHO TINTO ALENTEJO COURELAS D`ALQUEVA 0,75L",
+        "url": "https://www.kibabo.co.ao/pt/granja-amareleja/vinho-tinto-alentejo-courelas-dalqueva-075l_p4681.html?id=225&cat=237&pc=14",
+        "price": {
+            "value": "4475",
+            "valueOriginal": "4475.00",
+            "currency": {
+                "description": "AOA",
+                "code": "AOA"
+            }
+        },
+        "featured_image": {
+            "alt": "Vinho tinto alentejo courelas d`alqueva 0,75l",
+            "source": "https://www.kibabo.co.ao/pt/images_prods_static/SKU/30031341.jpg?1665572591"
+        }
+    },
+    {
+        "id": "2809",
+        "title": "WHISKY INDICA RED 0,75L",
+        "description": "WHISKY INDICA RED 0,75L",
+        "url": "https://www.kibabo.co.ao/pt/indica-red/whisky-indica-red-075l_p2809.html?id=225&cat=237&pc=14",
+        "price": {
+            "value": "4555",
+            "valueOriginal": "4555.00",
+            "currency": {
+                "description": "AOA",
+                "code": "AOA"
+            }
+        },
+        "featured_image": {
+            "alt": "Whisky indica red 0,75l",
+            "source": "https://www.kibabo.co.ao/pt/images_prods_static/SKU/30025547.jpg?1634550781"
+        }
+    },
+    {
+        "id": "8062",
+        "title": "VINHO BRANCO BV. BOM VINHO 0,75L",
+        "description": "VINHO BRANCO BV. BOM VINHO 0,75L",
+        "url": "https://www.kibabo.co.ao/pt/*/vinho-branco-bv.-bom-vinho-075l_p8062.html?id=225&cat=237&pc=14",
+        "price": {
+            "value": "4555",
+            "valueOriginal": "4555.00",
+            "currency": {
+                "description": "AOA",
+                "code": "AOA"
+            }
+        },
+        "featured_image": {
+            "alt": "Vinho branco bv. bom vinho 0,75l",
+            "source": "https://www.kibabo.co.ao/pt/images_prods_static/SKU/30038152.jpg?1635505954"
+        }
+    },
+    {
+        "id": "9629",
+        "title": "ESPUMANTE MEIO SECO REQUINTE 75CL",
+        "description": "ESPUMANTE MEIO SECO REQUINTE 75CL",
+        "url": "https://www.kibabo.co.ao/pt/ja-pias/espumante-meio-seco-requinte-75cl_p9629.html?id=225&cat=237&pc=14",
+        "price": {
+            "value": "4610",
+            "valueOriginal": "4610.00",
+            "currency": {
+                "description": "AOA",
+                "code": "AOA"
+            }
+        },
+        "featured_image": {
+            "alt": "Espumante meio seco requinte 75cl",
+            "source": "https://www.kibabo.co.ao/pt/images_prods_static/SKU/30038543.jpg?1665572748"
+        }
+    },
+    {
+        "id": "5082",
+        "title": "VINHO TINTO GALITOS 0,75L",
+        "description": "VINHO TINTO GALITOS 0,75L",
+        "url": "https://www.kibabo.co.ao/pt/galitos/vinho-tinto-galitos-075l_p5082.html?id=225&cat=237&pc=14",
+        "price": {
+            "value": "4680",
+            "valueOriginal": "4680.00",
+            "currency": {
+                "description": "AOA",
+                "code": "AOA"
+            }
+        },
+        "featured_image": {
+            "alt": "Vinho tinto galitos 0,75l",
+            "source": "https://www.kibabo.co.ao/pt/images_prods_static/SKU/30032584.jpg?1634550929"
+        }
+    },
+    {
+        "id": "610",
+        "title": "VINHO TINTO CONVENTO DA VILA 0,75L",
+        "description": "VINHO TINTO CONVENTO DA VILA 0,75L",
+        "url": "https://www.kibabo.co.ao/pt/convento-da-vila/vinho-tinto-convento-da-vila-075l_p610.html?id=225&cat=237&pc=14",
+        "price": {
+            "value": "4890",
+            "valueOriginal": "4890.00",
+            "currency": {
+                "description": "AOA",
+                "code": "AOA"
+            }
+        },
+        "featured_image": {
+            "alt": "Vinho tinto convento da vila 0,75l",
+            "source": "https://www.kibabo.co.ao/pt/images_prods_static/SKU/30032600.jpg?1634550930"
+        }
+    },
+    {
+        "id": "4711",
+        "title": "VINHO TINTO VINHA DO ROSARIO 0,75L",
+        "description": "VINHO TINTO VINHA DO ROSARIO 0,75L",
+        "url": "https://www.kibabo.co.ao/pt/vinha-do-rosario/vinho-tinto-vinha-do-rosario-075l_p4711.html?id=225&cat=237&pc=14",
+        "price": {
+            "value": "4950",
+            "valueOriginal": "4950.00",
+            "currency": {
+                "description": "AOA",
+                "code": "AOA"
+            }
+        },
+        "featured_image": {
+            "alt": "Vinho tinto vinha do rosario 0,75l",
+            "source": "https://www.kibabo.co.ao/pt/images_prods_static/SKU/30031377.jpg?1634550898"
+        }
+    },
+    {
+        "id": "6397",
+        "title": "VINHO TINTO ALENTEJO CATRAIO 0,75L",
+        "description": "VINHO TINTO ALENTEJO CATRAIO 0,75L",
+        "url": "https://www.kibabo.co.ao/pt/catraio/vinho-tinto-alentejo-catraio-075l_p6397.html?id=225&cat=237&pc=14",
+        "price": {
+            "value": "4950",
+            "valueOriginal": "4950.00",
+            "currency": {
+                "description": "AOA",
+                "code": "AOA"
+            }
+        },
+        "featured_image": {
+            "alt": "Vinho tinto alentejo catraio 0,75l",
+            "source": "https://www.kibabo.co.ao/pt/images_prods_static/SKU/30036180.jpg?1628088653"
+        }
+    },
+    {
+        "id": "4455",
+        "title": "VINHO TINTO DOURO CABEÇA DO POTE 0,75L",
+        "description": "VINHO TINTO DOURO CABEÇA DO POTE 0,75L",
+        "url": "https://www.kibabo.co.ao/pt/cadao/vinho-tinto-douro-cabeca-do-pote-075l_p4455.html?id=225&cat=237&pc=14",
+        "price": {
+            "value": "5195",
+            "valueOriginal": "5195.00",
+            "currency": {
+                "description": "AOA",
+                "code": "AOA"
+            }
+        },
+        "featured_image": {
+            "alt": "Vinho tinto douro cabeça do pote 0,75l",
+            "source": "https://www.kibabo.co.ao/pt/images_prods_static/SKU/30030573.jpg?1634550881"
+        }
+    },
+    {
+        "id": "10664",
+        "title": "VINHO TINTO MONTASOLO 0,75L",
+        "description": "VINHO TINTO MONTASOLO 0,75L",
+        "url": "https://www.kibabo.co.ao/pt/montosolo/vinho-tinto-montasolo-075l_p10664.html?id=225&cat=237&pc=14",
+        "price": {
+            "value": "5195",
+            "valueOriginal": "5195.00",
+            "currency": {
+                "description": "AOA",
+                "code": "AOA"
+            }
+        },
+        "featured_image": {
+            "alt": "Vinho tinto montasolo 0,75l",
+            "source": "https://www.kibabo.co.ao/pt/images_prods_static/SKU/30032608.jpg?1608038223"
+        }
+    },
+    {
+        "id": "1254",
+        "title": "GIN GORDON`S 0,75L",
+        "description": "GIN GORDON`S 0,75L",
+        "url": "https://www.kibabo.co.ao/pt/gordons/gin-gordons-075l_p1254.html?id=225&cat=237&pc=15",
+        "price": {
+            "value": "5445",
+            "valueOriginal": "5445.00",
+            "currency": {
+                "description": "AOA",
+                "code": "AOA"
+            }
+        },
+        "featured_image": {
+            "alt": "Gin gordon`s 0,75l",
+            "source": "https://www.kibabo.co.ao/pt/images_prods_static/SKU/30006046.jpg?1641309787"
+        }
+    },
+    {
+        "id": "9572",
+        "title": "VINHO TINTO ESPORAO PE TINTO 0,75L",
+        "description": "VINHO TINTO ESPORAO PE TINTO 0,75L",
+        "url": "https://www.kibabo.co.ao/pt/pe-tinto/vinho-tinto-esporao-pe-tinto-075l_p9572.html?id=225&cat=237&pc=15",
+        "price": {
+            "value": "5445",
+            "valueOriginal": "5445.00",
+            "currency": {
+                "description": "AOA",
+                "code": "AOA"
+            }
+        },
+        "featured_image": {
+            "alt": "Vinho tinto esporao pe tinto 0,75l",
+            "source": "https://www.kibabo.co.ao/pt/images_prods_static/SKU/30033354.jpg?1613087310"
+        }
+    },
+    {
+        "id": "11305",
+        "title": "VINHO BRANCO ESPORAO PE BRANCO 0,75L",
+        "description": "VINHO BRANCO ESPORAO PE BRANCO 0,75L",
+        "url": "https://www.kibabo.co.ao/pt/pe-tinto/vinho-branco-esporao-pe-branco-075l_p11305.html?id=225&cat=237&pc=15",
+        "price": {
+            "value": "5445",
+            "valueOriginal": "5445.00",
+            "currency": {
+                "description": "AOA",
+                "code": "AOA"
+            }
+        },
+        "featured_image": {
+            "alt": "Vinho branco esporao pe branco 0,75l",
+            "source": "https://www.kibabo.co.ao/pt/images_prods_static/SKU/30033355.jpg?1613087397"
+        }
+    },
+    {
+        "id": "6217",
+        "title": "VINHO TINTO SENTIDO UNICO 0,75L",
+        "description": "VINHO TINTO SENTIDO UNICO 0,75L",
+        "url": "https://www.kibabo.co.ao/pt/*/vinho-tinto-sentido-unico-075l_p6217.html?id=225&cat=237&pc=15",
+        "price": {
+            "value": "5495",
+            "valueOriginal": "5495.00",
+            "currency": {
+                "description": "AOA",
+                "code": "AOA"
+            }
+        },
+        "featured_image": {
+            "alt": "Vinho tinto sentido unico 0,75l",
+            "source": "https://www.kibabo.co.ao/pt/images_prods_static/SKU/30035725.jpg?1638525816"
+        }
+    },
+    {
+        "id": "175",
+        "title": "GIN HAVELOCK 700ML",
+        "description": "GIN HAVELOCK 700ML",
+        "url": "https://www.kibabo.co.ao/pt/havelock/gin-havelock-700ml_p175.html?id=225&cat=237&pc=15",
+        "price": {
+            "value": "5720",
+            "valueOriginal": "5720.00",
+            "currency": {
+                "description": "AOA",
+                "code": "AOA"
+            }
+        },
+        "featured_image": {
+            "alt": "Gin havelock 700ml",
+            "source": "https://www.kibabo.co.ao/pt/images_prods_static/SKU/30023417.jpg?1634550760"
+        }
+    },
+    {
+        "id": "612",
+        "title": "VINHO TINTO RESERVA DO MONTE 0,75L",
+        "description": "VINHO TINTO RESERVA DO MONTE 0,75L",
+        "url": "https://www.kibabo.co.ao/pt/reserva-do-monte/vinho-tinto-reserva-do-monte-075l_p612.html?id=225&cat=237&pc=15",
+        "price": {
+            "value": "5720",
+            "valueOriginal": "5720.00",
+            "currency": {
+                "description": "AOA",
+                "code": "AOA"
+            }
+        },
+        "featured_image": {
+            "alt": "Vinho tinto reserva do monte 0,75l",
+            "source": "https://www.kibabo.co.ao/pt/images_prods_static/SKU/30032616.jpg?1634550930"
+        }
+    },
+    {
+        "id": "1293",
+        "title": "VINHO TINTO ALENTEJO CAIADO 0,75L",
+        "description": "VINHO TINTO ALENTEJO CAIADO 0,75L",
+        "url": "https://www.kibabo.co.ao/pt/caiado/vinho-tinto-alentejo-caiado-075l_p1293.html?id=225&cat=237&pc=15",
+        "price": {
+            "value": "5940",
+            "valueOriginal": "5940.00",
+            "currency": {
+                "description": "AOA",
+                "code": "AOA"
+            }
+        },
+        "featured_image": {
+            "alt": "Vinho tinto alentejo caiado 0,75l",
+            "source": "https://www.kibabo.co.ao/pt/images_prods_static/SKU/30006179.jpg?1641309838"
+        }
+    },
+    {
+        "id": "383",
+        "title": "VINHO TINTO BACALHOA JP AZEITAO 0,75L",
+        "description": "VINHO TINTO BACALHOA JP AZEITAO 0,75L",
+        "url": "https://www.kibabo.co.ao/pt/jp-azeitao/vinho-tinto-bacalhoa-jp-azeitao-075l_p383.html?id=225&cat=237&pc=15",
+        "price": {
+            "value": "5940",
+            "valueOriginal": "5940.00",
+            "currency": {
+                "description": "AOA",
+                "code": "AOA"
+            }
+        },
+        "featured_image": {
+            "alt": "Vinho tinto bacalhoa jp azeitao 0,75l",
+            "source": "https://www.kibabo.co.ao/pt/images_prods_static/SKU/30028903.jpg?1634550850"
+        }
+    },
+    {
+        "id": "5083",
+        "title": "VINHO TINTO VALMADURO 0,75L",
+        "description": "VINHO TINTO VALMADURO 0,75L",
+        "url": "https://www.kibabo.co.ao/pt/valmaduro/vinho-tinto-valmaduro-075l_p5083.html?id=225&cat=237&pc=15",
+        "price": {
+            "value": "5940",
+            "valueOriginal": "5940.00",
+            "currency": {
+                "description": "AOA",
+                "code": "AOA"
+            }
+        },
+        "featured_image": {
+            "alt": "Vinho tinto valmaduro 0,75l",
+            "source": "https://www.kibabo.co.ao/pt/images_prods_static/SKU/30032588.jpg?1634550930"
+        }
+    },
+    {
+        "id": "6916",
+        "title": "ESPUMANTE INFANTIL TOMMY DRINK 0,75L",
+        "description": "ESPUMANTE INFANTIL TOMMY DRINK 0,75L",
+        "url": "https://www.kibabo.co.ao/pt/tommy/espumante-infantil-tommy-drink-075l_p6916.html?id=225&cat=237&pc=15",
+        "price": {
+            "value": "5940",
+            "valueOriginal": "5940.00",
+            "currency": {
+                "description": "AOA",
+                "code": "AOA"
+            }
+        },
+        "featured_image": {
+            "alt": "Espumante infantil tommy drink 0,75l",
+            "source": "https://www.kibabo.co.ao/pt/images_prods_static/SKU/30037429.jpg?1632506576"
+        }
+    },
+    {
+        "id": "6917",
+        "title": "ESPUMANTE INFANTIL SUZY DRINK 0,75L",
+        "description": "ESPUMANTE INFANTIL SUZY DRINK 0,75L",
+        "url": "https://www.kibabo.co.ao/pt/suzy/espumante-infantil-suzy-drink-075l_p6917.html?id=225&cat=237&pc=15",
+        "price": {
+            "value": "5940",
+            "valueOriginal": "5940.00",
+            "currency": {
+                "description": "AOA",
+                "code": "AOA"
+            }
+        },
+        "featured_image": {
+            "alt": "Espumante infantil suzy drink 0,75l",
+            "source": "https://www.kibabo.co.ao/pt/images_prods_static/SKU/30037430.jpg?1632506618"
+        }
+    },
+    {
+        "id": "4494",
+        "title": "VINHO TINTO ALENTEJO TERRAS D`EL REI 0,75L",
+        "description": "VINHO TINTO ALENTEJO TERRAS D`EL REI 0,75L",
+        "url": "https://www.kibabo.co.ao/pt/terras-del-rei/vinho-tinto-alentejo-terras-del-rei-075l_p4494.html?id=225&cat=237&pc=15",
+        "price": {
+            "value": "6235",
+            "valueOriginal": "6235.00",
+            "currency": {
+                "description": "AOA",
+                "code": "AOA"
+            }
+        },
+        "featured_image": {
+            "alt": "Vinho tinto alentejo terras d`el rei 0,75l",
+            "source": "https://www.kibabo.co.ao/pt/images_prods_static/SKU/30030663.jpg?1642404728"
+        }
+    },
+    {
+        "id": "4683",
+        "title": "VINHO TINTO FLOR D`PENALVA COLHEITA SELEC. 0,75L",
+        "description": "VINHO TINTO FLOR D`PENALVA COLHEITA SELEC. 0,75L",
+        "url": "https://www.kibabo.co.ao/pt/flor-de-penalva/vinho-tinto-flor-dpenalva-colheita-selec.-075l_p4683.html?id=225&cat=237&pc=16",
+        "price": {
+            "value": "6235",
+            "valueOriginal": "6235.00",
+            "currency": {
+                "description": "AOA",
+                "code": "AOA"
+            }
+        },
+        "featured_image": {
+            "alt": "Vinho tinto flor d`penalva colheita selec. 0,75l",
+            "source": "https://www.kibabo.co.ao/pt/images_prods_static/SKU/30031344.jpg?1634550896"
+        }
+    },
+    {
+        "id": "5086",
+        "title": "VINHO TINTO ERMELINDA TERRAS DO PO 0,75L",
+        "description": "VINHO TINTO ERMELINDA TERRAS DO PO 0,75L",
+        "url": "https://www.kibabo.co.ao/pt/terras-do-po/vinho-tinto-ermelinda-terras-do-po-075l_p5086.html?id=225&cat=237&pc=16",
+        "price": {
+            "value": "6235",
+            "valueOriginal": "6235.00",
+            "currency": {
+                "description": "AOA",
+                "code": "AOA"
+            }
+        },
+        "featured_image": {
+            "alt": "Vinho tinto ermelinda terras do po 0,75l",
+            "source": "https://www.kibabo.co.ao/pt/images_prods_static/SKU/30032618.jpg?1634550930"
+        }
+    },
+    {
+        "id": "2567",
+        "title": "VINHO BRANCO VILA BIB 3L",
+        "description": "VINHO BRANCO VILA BIB 3L",
+        "url": "https://www.kibabo.co.ao/pt/vila/vinho-branco-vila-bib-3l_p2567.html?id=225&cat=237&pc=16",
+        "price": {
+            "value": "6285",
+            "valueOriginal": "6285.00",
+            "currency": {
+                "description": "AOA",
+                "code": "AOA"
+            }
+        },
+        "featured_image": {
+            "alt": "Vinho branco vila bib 3l",
+            "source": "https://www.kibabo.co.ao/pt/images_prods_static/SKU/30024575.jpg?1634550767"
+        }
+    },
+    {
+        "id": "2802",
+        "title": "ESPUMANTE DON LUCIANO SEMI-SECO 0,75L",
+        "description": "ESPUMANTE DON LUCIANO SEMI-SECO 0,75L",
+        "url": "https://www.kibabo.co.ao/pt/d.luciano/espumante-don-luciano-semi-seco-075l_p2802.html?id=225&cat=237&pc=16",
+        "price": {
+            "value": "6285",
+            "valueOriginal": "6285.00",
+            "currency": {
+                "description": "AOA",
+                "code": "AOA"
+            }
+        },
+        "featured_image": {
+            "alt": "Espumante don luciano semi-seco 0,75l",
+            "source": "https://www.kibabo.co.ao/pt/images_prods_static/SKU/30025534.jpg?1634550780"
+        }
+    },
+    {
+        "id": "2803",
+        "title": "ESPUMANTE DON LUCIANO ROSADO 0,75L",
+        "description": "ESPUMANTE DON LUCIANO ROSADO 0,75L",
+        "url": "https://www.kibabo.co.ao/pt/d.luciano/espumante-don-luciano-rosado-075l_p2803.html?id=225&cat=237&pc=16",
+        "price": {
+            "value": "6285",
+            "valueOriginal": "6285.00",
+            "currency": {
+                "description": "AOA",
+                "code": "AOA"
+            }
+        },
+        "featured_image": {
+            "alt": "Espumante don luciano rosado 0,75l",
+            "source": "https://www.kibabo.co.ao/pt/images_prods_static/SKU/30025535.jpg?1634550781"
+        }
+    },
+    {
+        "id": "6233",
+        "title": "VINHO TINTO CASAL CASTELAO SYRAH 0,75L",
+        "description": "VINHO TINTO CASAL CASTELAO SYRAH 0,75L",
+        "url": "https://www.kibabo.co.ao/pt/*/vinho-tinto-casal-castelao-syrah-075l_p6233.html?id=225&cat=237&pc=16",
+        "price": {
+            "value": "6285",
+            "valueOriginal": "6285.00",
+            "currency": {
+                "description": "AOA",
+                "code": "AOA"
+            }
+        },
+        "featured_image": {
+            "alt": "Vinho tinto casal castelao syrah 0,75l",
+            "source": "https://www.kibabo.co.ao/pt/images_prods_static/SKU/30035741.jpg?1626361974"
+        }
+    },
+    {
+        "id": "2473",
+        "title": "VODKA ESCAPE 700ML GREEN APPLE",
+        "description": "VODKA ESCAPE 700ML GREEN APPLE",
+        "url": "https://www.kibabo.co.ao/pt/escape/vodka-escape-700ml-green-apple_p2473.html?id=225&cat=237&pc=16",
+        "price": {
+            "value": "6435",
+            "valueOriginal": "6435.00",
+            "currency": {
+                "description": "AOA",
+                "code": "AOA"
+            }
+        },
+        "featured_image": {
+            "alt": "Vodka escape 700ml green apple",
+            "source": "https://www.kibabo.co.ao/pt/images_prods_static/SKU/30023419.jpg?1641306448"
+        }
+    },
+    {
+        "id": "4709",
+        "title": "VINHO TINTO DOM CAMPOS 0,75L",
+        "description": "VINHO TINTO DOM CAMPOS 0,75L",
+        "url": "https://www.kibabo.co.ao/pt/dom-campos/vinho-tinto-dom-campos-075l_p4709.html?id=225&cat=237&pc=16",
+        "price": {
+            "value": "6555",
+            "valueOriginal": "6555.00",
+            "currency": {
+                "description": "AOA",
+                "code": "AOA"
+            }
+        },
+        "featured_image": {
+            "alt": "Vinho tinto dom campos 0,75l",
+            "source": "https://www.kibabo.co.ao/pt/images_prods_static/SKU/30031375.jpg?1603132269"
+        }
+    },
+    {
+        "id": "9759",
+        "title": "VINHO TINTO SEGREDOS DE SAO MIGUEL 0,75L",
+        "description": "VINHO TINTO SEGREDOS DE SAO MIGUEL 0,75L",
+        "url": "https://www.kibabo.co.ao/pt/segredos-de-sao-miguel/vinho-tinto-segredos-de-sao-miguel-075l_p9759.html?id=225&cat=237&pc=16",
+        "price": {
+            "value": "6555",
+            "valueOriginal": "6555.00",
+            "currency": {
+                "description": "AOA",
+                "code": "AOA"
+            }
+        },
+        "featured_image": {
+            "alt": "Vinho tinto segredos de sao miguel 0,75l",
+            "source": "https://www.kibabo.co.ao/pt/images_prods_static/SKU/30039138.jpg?1651577870"
+        }
+    },
+    {
+        "id": "1253",
+        "title": "WHISKY VAT 69 0,75L",
+        "description": "WHISKY VAT 69 0,75L",
+        "url": "https://www.kibabo.co.ao/pt/vat69/whisky-vat-69-075l_p1253.html?id=225&cat=237&pc=16",
+        "price": {
+            "value": "6630",
+            "valueOriginal": "6630.00",
+            "currency": {
+                "description": "AOA",
+                "code": "AOA"
+            }
+        },
+        "featured_image": {
+            "alt": "Whisky vat 69 0,75l",
+            "source": "https://www.kibabo.co.ao/pt/images_prods_static/SKU/30006045.jpg?1644477649"
+        }
+    },
+    {
+        "id": "2475",
+        "title": "VODKA ESCAPE 700ML LEMONGRASS & GINGER",
+        "description": "VODKA ESCAPE 700ML LEMONGRASS & GINGER",
+        "url": "https://www.kibabo.co.ao/pt/escape/vodka-escape-700ml-lemongrass-e-ginger_p2475.html?id=225&cat=237&pc=16",
+        "price": {
+            "value": "6630",
+            "valueOriginal": "6630.00",
+            "currency": {
+                "description": "AOA",
+                "code": "AOA"
+            }
+        },
+        "featured_image": {
+            "alt": "Vodka escape 700ml lemongrass & ginger",
+            "source": "https://www.kibabo.co.ao/pt/images_prods_static/SKU/30023422.jpg?1641306442"
+        }
+    },
+    {
+        "id": "478",
+        "title": "VINHO TINTO ALENTEJO REAL LAVRADOR 0,75L",
+        "description": "VINHO TINTO ALENTEJO REAL LAVRADOR 0,75L",
+        "url": "https://www.kibabo.co.ao/pt/*/vinho-tinto-alentejo-real-lavrador-075l_p478.html?id=225&cat=237&pc=16",
+        "price": {
+            "value": "6630",
+            "valueOriginal": "6630.00",
+            "currency": {
+                "description": "AOA",
+                "code": "AOA"
+            }
+        },
+        "featured_image": {
+            "alt": "Vinho tinto alentejo real lavrador 0,75l",
+            "source": "https://www.kibabo.co.ao/pt/images_prods_static/SKU/30030661.jpg?1634550882"
+        }
+    },
+    {
+        "id": "176",
+        "title": "VODKA ESCAPE 700ML CHOCOLATE",
+        "description": "VODKA ESCAPE 700ML CHOCOLATE",
+        "url": "https://www.kibabo.co.ao/pt/escape/vodka-escape-700ml-chocolate_p176.html?id=225&cat=237&pc=17",
+        "price": {
+            "value": "6730",
+            "valueOriginal": "6730.00",
+            "currency": {
+                "description": "AOA",
+                "code": "AOA"
+            }
+        },
+        "featured_image": {
+            "alt": "Vodka escape 700ml chocolate",
+            "source": "https://www.kibabo.co.ao/pt/images_prods_static/SKU/30023418.jpg?1641306440"
+        }
+    },
+    {
+        "id": "545",
+        "title": "GIN HAVELOCK 700ML ROSE",
+        "description": "GIN HAVELOCK 700ML ROSE",
+        "url": "https://www.kibabo.co.ao/pt/havelok/gin-havelock-700ml-rose_p545.html?id=225&cat=237&pc=17",
+        "price": {
+            "value": "6930",
+            "valueOriginal": "6930.00",
+            "currency": {
+                "description": "AOA",
+                "code": "AOA"
+            }
+        },
+        "featured_image": {
+            "alt": "Gin havelock 700ml rose",
+            "source": "https://www.kibabo.co.ao/pt/images_prods_static/SKU/30031469.jpg?1634550902"
+        }
+    },
+    {
+        "id": "2804",
+        "title": "ESPUMANTE DON LUCIANO PINK MOSCATO 0,75L",
+        "description": "ESPUMANTE DON LUCIANO PINK MOSCATO 0,75L",
+        "url": "https://www.kibabo.co.ao/pt/d.luciano/espumante-don-luciano-pink-moscato-075l_p2804.html?id=225&cat=237&pc=17",
+        "price": {
+            "value": "7125",
+            "valueOriginal": "7125.00",
+            "currency": {
+                "description": "AOA",
+                "code": "AOA"
+            }
+        },
+        "featured_image": {
+            "alt": "Espumante don luciano pink moscato 0,75l",
+            "source": "https://www.kibabo.co.ao/pt/images_prods_static/SKU/30025537.jpg?1634550781"
+        }
+    },
+    {
+        "id": "2805",
+        "title": "ESPUMANTE DON LUCIANO GOLD MOSCATO 0,75L",
+        "description": "ESPUMANTE DON LUCIANO GOLD MOSCATO 0,75L",
+        "url": "https://www.kibabo.co.ao/pt/d.luciano/espumante-don-luciano-gold-moscato-075l_p2805.html?id=225&cat=237&pc=17",
+        "price": {
+            "value": "7125",
+            "valueOriginal": "7125.00",
+            "currency": {
+                "description": "AOA",
+                "code": "AOA"
+            }
+        },
+        "featured_image": {
+            "alt": "Espumante don luciano gold moscato 0,75l",
+            "source": "https://www.kibabo.co.ao/pt/images_prods_static/SKU/30025538.jpg?1634550781"
+        }
+    },
+    {
+        "id": "177",
+        "title": "VODKA ESCAPE 700ML BLACK",
+        "description": "VODKA ESCAPE 700ML BLACK",
+        "url": "https://www.kibabo.co.ao/pt/escape/vodka-escape-700ml-black_p177.html?id=225&cat=237&pc=17",
+        "price": {
+            "value": "7425",
+            "valueOriginal": "7425.00",
+            "currency": {
+                "description": "AOA",
+                "code": "AOA"
+            }
+        },
+        "featured_image": {
+            "alt": "Vodka escape 700ml black",
+            "source": "https://www.kibabo.co.ao/pt/images_prods_static/SKU/30023421.jpg?1634550761"
+        }
+    },
+    {
+        "id": "2635",
+        "title": "VINHO TINTO CASALEIRO COLHEITA 0.75L",
+        "description": "VINHO TINTO CASALEIRO COLHEITA 0.75L",
+        "url": "https://www.kibabo.co.ao/pt/casa-burmester/vinho-tinto-casaleiro-colheita-0.75l_p2635.html?id=225&cat=237&pc=17",
+        "price": {
+            "value": "7515",
+            "valueOriginal": "7515.00",
+            "currency": {
+                "description": "AOA",
+                "code": "AOA"
+            }
+        },
+        "featured_image": {
+            "alt": "Vinho tinto casaleiro colheita 0.75l",
+            "source": "https://www.kibabo.co.ao/pt/images_prods_static/SKU/30024713.jpg?1634550771"
+        }
+    },
+    {
+        "id": "10905",
+        "title": "VINHO ROSE JMF PERIQUITA 0,75L",
+        "description": "VINHO ROSE JMF PERIQUITA 0,75L",
+        "url": "https://www.kibabo.co.ao/pt/periquita/vinho-rose-jmf-periquita-075l_p10905.html?id=225&cat=237&pc=17",
+        "price": {
+            "value": "7525",
+            "valueOriginal": "7525.00",
+            "currency": {
+                "description": "AOA",
+                "code": "AOA"
+            }
+        },
+        "featured_image": {
+            "alt": "Vinho rose jmf periquita 0,75l",
+            "source": "https://www.kibabo.co.ao/pt/images_prods_static/SKU/30032613.jpg?1665572609"
+        }
+    },
+    {
+        "id": "3262",
+        "title": "WHISQUE W.HORSE FINE OLD 0,75L",
+        "description": "WHISQUE W.HORSE FINE OLD 0,75L",
+        "url": "https://www.kibabo.co.ao/pt/w.horse/whisque-w.horse-fine-old-075l_p3262.html?id=225&cat=237&pc=17",
+        "price": {
+            "value": "7590",
+            "valueOriginal": "7590.00",
+            "currency": {
+                "description": "AOA",
+                "code": "AOA"
+            }
+        },
+        "featured_image": {
+            "alt": "Whisque w.horse fine old 0,75l",
+            "source": "https://www.kibabo.co.ao/pt/images_prods_static/SKU/30026926.jpg?1634550804"
+        }
+    },
+    {
+        "id": "9761",
+        "title": "VINHO TINTO DOURO ANIMUS 0,75L",
+        "description": "VINHO TINTO DOURO ANIMUS 0,75L",
+        "url": "https://www.kibabo.co.ao/pt/animus/vinho-tinto-douro-animus-075l_p9761.html?id=225&cat=237&pc=17",
+        "price": {
+            "value": "7590",
+            "valueOriginal": "7590.00",
+            "currency": {
+                "description": "AOA",
+                "code": "AOA"
+            }
+        },
+        "featured_image": {
+            "alt": "Vinho tinto douro animus 0,75l",
+            "source": "https://www.kibabo.co.ao/pt/images_prods_static/SKU/30039140.jpg?1651577876"
+        }
+    },
+    {
+        "id": "6826",
+        "title": "VINHO TINTO VINHA DA FOZ 0,75L",
+        "description": "VINHO TINTO VINHA DA FOZ 0,75L",
+        "url": "https://www.kibabo.co.ao/pt/vinha-da-foz/vinho-tinto-vinha-da-foz-075l_p6826.html?id=225&cat=237&pc=17",
+        "price": {
+            "value": "7620",
+            "valueOriginal": "7620.00",
+            "currency": {
+                "description": "AOA",
+                "code": "AOA"
+            }
+        },
+        "featured_image": {
+            "alt": "Vinho tinto vinha da foz 0,75l",
+            "source": "https://www.kibabo.co.ao/pt/images_prods_static/SKU/30037169.jpg?1631645922"
+        }
+    },
+    {
+        "id": "382",
+        "title": "VINHO TINTO ALENTEJO PORTA DA RAVESSA 0,75L",
+        "description": "VINHO TINTO ALENTEJO PORTA DA RAVESSA 0,75L",
+        "url": "https://www.kibabo.co.ao/pt/porta-da-ravessa/vinho-tinto-alentejo-porta-da-ravessa-075l_p382.html?id=225&cat=237&pc=17",
+        "price": {
+            "value": "7670",
+            "valueOriginal": "7670.00",
+            "currency": {
+                "description": "AOA",
+                "code": "AOA"
+            }
+        },
+        "featured_image": {
+            "alt": "Vinho tinto alentejo porta da ravessa 0,75l",
+            "source": "https://www.kibabo.co.ao/pt/images_prods_static/SKU/30028902.jpg?1634550850"
+        }
+    },
+    {
+        "id": "7632",
+        "title": "VINHO TINTO VILA BIB 3L",
+        "description": "VINHO TINTO VILA BIB 3L",
+        "url": "https://www.kibabo.co.ao/pt/vila/vinho-tinto-vila-bib-3l_p7632.html?id=225&cat=237&pc=17",
+        "price": {
+            "value": "7770",
+            "valueOriginal": "7770.00",
+            "currency": {
+                "description": "AOA",
+                "code": "AOA"
+            }
+        },
+        "featured_image": {
+            "alt": "Vinho tinto vila bib 3l",
+            "source": "https://www.kibabo.co.ao/pt/images_prods_static/SKU/30023351.jpg?1549899693"
+        }
+    },
+    {
+        "id": "4493",
+        "title": "VINHO TINTO ALENTEJO REGUENGOS 0,75L",
+        "description": "VINHO TINTO ALENTEJO REGUENGOS 0,75L",
+        "url": "https://www.kibabo.co.ao/pt/carmim/vinho-tinto-alentejo-reguengos-075l_p4493.html?id=225&cat=237&pc=18",
+        "price": {
+            "value": "7800",
+            "valueOriginal": "7800.00",
+            "currency": {
+                "description": "AOA",
+                "code": "AOA"
+            }
+        },
+        "featured_image": {
+            "alt": "Vinho tinto alentejo reguengos 0,75l",
+            "source": "https://www.kibabo.co.ao/pt/images_prods_static/SKU/30030662.jpg?1634550882"
+        }
+    },
+    {
+        "id": "5088",
+        "title": "VINHO TINTO CASA ERMELINDA FREITAS 0,75L",
+        "description": "VINHO TINTO CASA ERMELINDA FREITAS 0,75L",
+        "url": "https://www.kibabo.co.ao/pt/casa-ermelinda/vinho-tinto-casa-ermelinda-freitas-075l_p5088.html?id=225&cat=237&pc=18",
+        "price": {
+            "value": "7800",
+            "valueOriginal": "7800.00",
+            "currency": {
+                "description": "AOA",
+                "code": "AOA"
+            }
+        },
+        "featured_image": {
+            "alt": "Vinho tinto casa ermelinda freitas 0,75l",
+            "source": "https://www.kibabo.co.ao/pt/images_prods_static/SKU/30032622.jpg?1634550930"
+        }
+    },
+    {
+        "id": "9756",
+        "title": "VINHO ROSE SEGREDOS DE SAO MIGUEL 0,75L",
+        "description": "VINHO ROSE SEGREDOS DE SAO MIGUEL 0,75L",
+        "url": "https://www.kibabo.co.ao/pt/segredos-de-sao-miguel/vinho-rose-segredos-de-sao-miguel-075l_p9756.html?id=225&cat=237&pc=18",
+        "price": {
+            "value": "7800",
+            "valueOriginal": "7800.00",
+            "currency": {
+                "description": "AOA",
+                "code": "AOA"
+            }
+        },
+        "featured_image": {
+            "alt": "Vinho rose segredos de sao miguel 0,75l",
+            "source": "https://www.kibabo.co.ao/pt/images_prods_static/SKU/30039135.jpg?1665572880"
+        }
+    },
+    {
+        "id": "2865",
+        "title": "VINHO TINTO PATA NEGRA APASIONADA 0,75L",
+        "description": "VINHO TINTO PATA NEGRA APASIONADA 0,75L",
+        "url": "https://www.kibabo.co.ao/pt/pata-negra/vinho-tinto-pata-negra-apasionada-075l_p2865.html?id=225&cat=237&pc=18",
+        "price": {
+            "value": "7920",
+            "valueOriginal": "7920.00",
+            "currency": {
+                "description": "AOA",
+                "code": "AOA"
+            }
+        },
+        "featured_image": {
+            "alt": "Vinho tinto pata negra apasionada 0,75l",
+            "source": "https://www.kibabo.co.ao/pt/images_prods_static/SKU/30025746.jpg?1591353517"
+        }
+    },
+    {
+        "id": "5085",
+        "title": "VINHO TINTO BACALHOA SERRAS DE AZEITAO 0,75L",
+        "description": "VINHO TINTO BACALHOA SERRAS DE AZEITAO 0,75L",
+        "url": "https://www.kibabo.co.ao/pt/serra-de-azeitao/vinho-tinto-bacalhoa-serras-de-azeitao-075l_p5085.html?id=225&cat=237&pc=18",
+        "price": {
+            "value": "8315",
+            "valueOriginal": "8315.00",
+            "currency": {
+                "description": "AOA",
+                "code": "AOA"
+            }
+        },
+        "featured_image": {
+            "alt": "Vinho tinto bacalhoa serras de azeitao 0,75l",
+            "source": "https://www.kibabo.co.ao/pt/images_prods_static/SKU/30032602.jpg?1634550930"
+        }
+    },
+    {
+        "id": "1807",
+        "title": "VINHO TINTO CAVES DE MURÇA 0,75L",
+        "description": "VINHO TINTO CAVES DE MURÇA 0,75L",
+        "url": "https://www.kibabo.co.ao/pt/caves-de-murca/vinho-tinto-caves-de-murca-075l_p1807.html?id=225&cat=237&pc=18",
+        "price": {
+            "value": "8455",
+            "valueOriginal": "8455.00",
+            "currency": {
+                "description": "AOA",
+                "code": "AOA"
+            }
+        },
+        "featured_image": {
+            "alt": "Vinho tinto caves de murça 0,75l",
+            "source": "https://www.kibabo.co.ao/pt/images_prods_static/SKU/30016787.jpg?1524149027"
+        }
+    },
+    {
+        "id": "8447",
+        "title": "GIN GORDON`S ORANGE 0,70L",
+        "description": "GIN GORDON`S ORANGE 0,70L",
+        "url": "https://www.kibabo.co.ao/pt/gordons/gin-gordons-orange-070l_p8447.html?id=225&cat=237&pc=18",
+        "price": {
+            "value": "8900",
+            "valueOriginal": "8900.00",
+            "currency": {
+                "description": "AOA",
+                "code": "AOA"
+            }
+        },
+        "featured_image": {
+            "alt": "Gin gordon`s orange 0,70l",
+            "source": "https://www.kibabo.co.ao/pt/images_prods_static/SKU/30038216.jpg?1640092273"
+        }
+    },
+    {
+        "id": "5327",
+        "title": "VINHO TINTO CAVALO BRANCO SELECÇAO 0,75L",
+        "description": "VINHO TINTO CAVALO BRANCO SELECÇAO 0,75L",
+        "url": "https://www.kibabo.co.ao/pt/cavalo-branco/vinho-tinto-cavalo-branco-seleccao-075l_p5327.html?id=225&cat=237&pc=18",
+        "price": {
+            "value": "8910",
+            "valueOriginal": "8910.00",
+            "currency": {
+                "description": "AOA",
+                "code": "AOA"
+            }
+        },
+        "featured_image": {
+            "alt": "Vinho tinto cavalo branco selecçao 0,75l",
+            "source": "https://www.kibabo.co.ao/pt/images_prods_static/SKU/30033351.jpg?1634550947"
+        }
+    },
+    {
+        "id": "4712",
+        "title": "VINHO TINTO DOM CAMPOS RESERVA 0,75L",
+        "description": "VINHO TINTO DOM CAMPOS RESERVA 0,75L",
+        "url": "https://www.kibabo.co.ao/pt/dom-campos/vinho-tinto-dom-campos-reserva-075l_p4712.html?id=225&cat=237&pc=18",
+        "price": {
+            "value": "9010",
+            "valueOriginal": "9010.00",
+            "currency": {
+                "description": "AOA",
+                "code": "AOA"
+            }
+        },
+        "featured_image": {
+            "alt": "Vinho tinto dom campos reserva 0,75l",
+            "source": "https://www.kibabo.co.ao/pt/images_prods_static/SKU/30031378.jpg?1603132935"
+        }
+    },
+    {
+        "id": "2634",
+        "title": "VINHO VERDE BRANCO LAGOSTA 0,75L",
+        "description": "VINHO VERDE BRANCO LAGOSTA 0,75L",
+        "url": "https://www.kibabo.co.ao/pt/*/vinho-verde-branco-lagosta-075l_p2634.html?id=225&cat=237&pc=18",
+        "price": {
+            "value": "9235",
+            "valueOriginal": "9235.00",
+            "currency": {
+                "description": "AOA",
+                "code": "AOA"
+            }
+        },
+        "featured_image": {
+            "alt": "Vinho verde branco lagosta 0,75l",
+            "source": "https://www.kibabo.co.ao/pt/images_prods_static/SKU/30024710.jpg?1634550771"
+        }
+    },
+    {
+        "id": "7531",
+        "title": "WHISKY CLAN MACGREGOR 0,75L",
+        "description": "WHISKY CLAN MACGREGOR 0,75L",
+        "url": "https://www.kibabo.co.ao/pt/macgregor/whisky-clan-macgregor-075l_p7531.html?id=225&cat=237&pc=18",
+        "price": {
+            "value": "9355",
+            "valueOriginal": "9355.00",
+            "currency": {
+                "description": "AOA",
+                "code": "AOA"
+            }
+        },
+        "featured_image": {
+            "alt": "Whisky clan macgregor 0,75l",
+            "source": "https://www.kibabo.co.ao/pt/images_prods_static/SKU/30010542.jpg?1641310132"
+        }
+    },
+    {
+        "id": "4703",
+        "title": "VINHO TINTO GRAO VASCO 0,75L",
+        "description": "VINHO TINTO GRAO VASCO 0,75L",
+        "url": "https://www.kibabo.co.ao/pt/grao-vasco/vinho-tinto-grao-vasco-075l_p4703.html?id=225&cat=237&pc=18",
+        "price": {
+            "value": "9600",
+            "valueOriginal": "9600.00",
+            "currency": {
+                "description": "AOA",
+                "code": "AOA"
+            }
+        },
+        "featured_image": {
+            "alt": "Vinho tinto grao vasco 0,75l",
+            "source": "https://www.kibabo.co.ao/pt/images_prods_static/SKU/30031369.jpg?1634550897"
+        }
+    },
+    {
+        "id": "2843",
+        "title": "LICOR BEEVOK CREME CHOCOLATE 0,75L",
+        "description": "LICOR BEEVOK CREME CHOCOLATE 0,75L",
+        "url": "https://www.kibabo.co.ao/pt/beevok/licor-beevok-creme-chocolate-075l_p2843.html?id=225&cat=237&pc=19",
+        "price": {
+            "value": "9800",
+            "valueOriginal": "9800.00",
+            "currency": {
+                "description": "AOA",
+                "code": "AOA"
+            }
+        },
+        "featured_image": {
+            "alt": "Licor beevok creme chocolate 0,75l",
+            "source": "https://www.kibabo.co.ao/pt/images_prods_static/SKU/30025634.jpg?1634550783"
+        }
+    },
+    {
+        "id": "5329",
+        "title": "VINHO BRANCO ESPORAO MONTE VELHO 0,75L",
+        "description": "VINHO BRANCO ESPORAO MONTE VELHO 0,75L",
+        "url": "https://www.kibabo.co.ao/pt/monte-velho/vinho-branco-esporao-monte-velho-075l_p5329.html?id=225&cat=237&pc=19",
+        "price": {
+            "value": "9980",
+            "valueOriginal": "9980.00",
+            "currency": {
+                "description": "AOA",
+                "code": "AOA"
+            }
+        },
+        "featured_image": {
+            "alt": "Vinho branco esporao monte velho 0,75l",
+            "source": "https://www.kibabo.co.ao/pt/images_prods_static/SKU/30033357.jpg?1634550948"
+        }
+    },
+    {
+        "id": "4705",
+        "title": "VINHO TINTO ALENTEJO VINHA DO MONTE 0,75L",
+        "description": "VINHO TINTO ALENTEJO VINHA DO MONTE 0,75L",
+        "url": "https://www.kibabo.co.ao/pt/vinha-do-monte/vinho-tinto-alentejo-vinha-do-monte-075l_p4705.html?id=225&cat=237&pc=19",
+        "price": {
+            "value": "10890",
+            "valueOriginal": "10890.00",
+            "currency": {
+                "description": "AOA",
+                "code": "AOA"
+            }
+        },
+        "featured_image": {
+            "alt": "Vinho tinto alentejo vinha do monte 0,75l",
+            "source": "https://www.kibabo.co.ao/pt/images_prods_static/SKU/30031371.jpg?1634550898"
+        }
+    },
+    {
+        "id": "4691",
+        "title": "VINHO PORTO CALEM VELHOTES TAWNY 0,75L",
+        "description": "VINHO PORTO CALEM VELHOTES TAWNY 0,75L",
+        "url": "https://www.kibabo.co.ao/pt/calem-velhotes-tawny/vinho-porto-calem-velhotes-tawny-075l_p4691.html?id=225&cat=237&pc=19",
+        "price": {
+            "value": "11225",
+            "valueOriginal": "11225.00",
+            "currency": {
+                "description": "AOA",
+                "code": "AOA"
+            }
+        },
+        "featured_image": {
+            "alt": "Vinho porto calem velhotes tawny 0,75l",
+            "source": "https://www.kibabo.co.ao/pt/images_prods_static/SKU/30031352.jpg?1634550896"
+        }
+    },
+    {
+        "id": "9608",
+        "title": "VINHO TINTO REGATEIRO JR 75CL",
+        "description": "VINHO TINTO REGATEIRO JR 75CL",
+        "url": "https://www.kibabo.co.ao/pt/regateiro/vinho-tinto-regateiro-jr-75cl_p9608.html?id=225&cat=237&pc=19",
+        "price": {
+            "value": "11485",
+            "valueOriginal": "11485.00",
+            "currency": {
+                "description": "AOA",
+                "code": "AOA"
+            }
+        },
+        "featured_image": {
+            "alt": "Vinho tinto regateiro jr 75cl",
+            "source": "https://www.kibabo.co.ao/pt/images_prods_static/SKU/30038728.jpg?1665572788"
+        }
+    },
+    {
+        "id": "10136",
+        "title": "VINHO TINTO JA PIAS BIB 3L",
+        "description": "VINHO TINTO JA PIAS BIB 3L",
+        "url": "https://www.kibabo.co.ao/pt/ja-pias/vinho-tinto-ja-pias-bib-3l_p10136.html?id=225&cat=237&pc=19",
+        "price": {
+            "value": "11760",
+            "valueOriginal": "11760.00",
+            "currency": {
+                "description": "AOA",
+                "code": "AOA"
+            }
+        },
+        "featured_image": {
+            "alt": "Vinho tinto ja pias bib 3l",
+            "source": "https://www.kibabo.co.ao/pt/images_prods_static/SKU/30038540.jpg?1638395899"
+        }
+    },
+    {
+        "id": "4860",
+        "title": "GIN BEEFEATER PINK 0,70L",
+        "description": "GIN BEEFEATER PINK 0,70L",
+        "url": "https://www.kibabo.co.ao/pt/beefeater/gin-beefeater-pink-070l_p4860.html?id=225&cat=237&pc=19",
+        "price": {
+            "value": "11880",
+            "valueOriginal": "11880.00",
+            "currency": {
+                "description": "AOA",
+                "code": "AOA"
+            }
+        },
+        "featured_image": {
+            "alt": "Gin beefeater pink 0,70l",
+            "source": "https://www.kibabo.co.ao/pt/images_prods_static/SKU/30031803.jpg?1638473462"
+        }
+    },
+    {
+        "id": "6144",
+        "title": "VINHO TINTO SANDERS 0,75L",
+        "description": "VINHO TINTO SANDERS 0,75L",
+        "url": "https://www.kibabo.co.ao/pt/sanders/vinho-tinto-sanders-075l_p6144.html?id=225&cat=237&pc=19",
+        "price": {
+            "value": "11880",
+            "valueOriginal": "11880.00",
+            "currency": {
+                "description": "AOA",
+                "code": "AOA"
+            }
+        },
+        "featured_image": {
+            "alt": "Vinho tinto sanders 0,75l",
+            "source": "https://www.kibabo.co.ao/pt/images_prods_static/SKU/30035554.jpg?1626341829"
+        }
+    },
+    {
+        "id": "4707",
+        "title": "VINHO TINTO ALENTEJO SOSSEGO 0,75L",
+        "description": "VINHO TINTO ALENTEJO SOSSEGO 0,75L",
+        "url": "https://www.kibabo.co.ao/pt/sossego/vinho-tinto-alentejo-sossego-075l_p4707.html?id=225&cat=237&pc=19",
+        "price": {
+            "value": "12475",
+            "valueOriginal": "12475.00",
+            "currency": {
+                "description": "AOA",
+                "code": "AOA"
+            }
+        },
+        "featured_image": {
+            "alt": "Vinho tinto alentejo sossego 0,75l",
+            "source": "https://www.kibabo.co.ao/pt/images_prods_static/SKU/30031373.jpg?1634550898"
+        }
+    },
+    {
+        "id": "6102",
+        "title": "ESPUMANTE MATEUS ROSE BRUTO 0,75L",
+        "description": "ESPUMANTE MATEUS ROSE BRUTO 0,75L",
+        "url": "https://www.kibabo.co.ao/pt/mateus/espumante-mateus-rose-bruto-075l_p6102.html?id=225&cat=237&pc=19",
+        "price": {
+            "value": "12870",
+            "valueOriginal": "12870.00",
+            "currency": {
+                "description": "AOA",
+                "code": "AOA"
+            }
+        },
+        "featured_image": {
+            "alt": "Espumante mateus rose bruto 0,75l",
+            "source": "https://www.kibabo.co.ao/pt/images_prods_static/SKU/30035391.jpg?1625155946"
+        }
+    },
+    {
+        "id": "7818",
+        "title": "VINHO TINTO FORTE BIB 5L",
+        "description": "VINHO TINTO FORTE BIB 5L",
+        "url": "https://www.kibabo.co.ao/pt/forte/vinho-tinto-forte-bib-5l_p7818.html?id=225&cat=237&pc=19",
+        "price": {
+            "value": "13035",
+            "valueOriginal": "13035.00",
+            "currency": {
+                "description": "AOA",
+                "code": "AOA"
+            }
+        },
+        "featured_image": {
+            "alt": "Vinho tinto forte bib 5l",
+            "source": "https://www.kibabo.co.ao/pt/images_prods_static/SKU/30032319.jpg?1650383828"
+        }
+    },
+    {
+        "id": "4863",
+        "title": "LICOR COCO MALIBU 0,70L",
+        "description": "LICOR COCO MALIBU 0,70L",
+        "url": "https://www.kibabo.co.ao/pt/beefeater/licor-coco-malibu-070l_p4863.html?id=225&cat=237&pc=19",
+        "price": {
+            "value": "13515",
+            "valueOriginal": "13515.00",
+            "currency": {
+                "description": "AOA",
+                "code": "AOA"
+            }
+        },
+        "featured_image": {
+            "alt": "Licor coco malibu 0,70l",
+            "source": "https://www.kibabo.co.ao/pt/images_prods_static/SKU/30031807.jpg?1634550912"
+        }
+    },
+    {
+        "id": "4900",
+        "title": "VODKA ERISTOFF BLACK 0,70L",
+        "description": "VODKA ERISTOFF BLACK 0,70L",
+        "url": "https://www.kibabo.co.ao/pt/eristoff/vodka-eristoff-black-070l_p4900.html?id=225&cat=237&pc=20",
+        "price": {
+            "value": "13860",
+            "valueOriginal": "13860.00",
+            "currency": {
+                "description": "AOA",
+                "code": "AOA"
+            }
+        },
+        "featured_image": {
+            "alt": "Vodka eristoff black 0,70l",
+            "source": "https://www.kibabo.co.ao/pt/images_prods_static/SKU/30031964.jpg?1604948672"
+        }
+    },
+    {
+        "id": "6918",
+        "title": "ESPUMANTE VASCO DA GAMA RESERVA BRUTO 0,75L",
+        "description": "ESPUMANTE VASCO DA GAMA RESERVA BRUTO 0,75L",
+        "url": "https://www.kibabo.co.ao/pt/vasco-da-gama/espumante-vasco-da-gama-reserva-bruto-075l_p6918.html?id=225&cat=237&pc=20",
+        "price": {
+            "value": "13860",
+            "valueOriginal": "13860.00",
+            "currency": {
+                "description": "AOA",
+                "code": "AOA"
+            }
+        },
+        "featured_image": {
+            "alt": "Espumante vasco da gama reserva bruto 0,75l",
+            "source": "https://www.kibabo.co.ao/pt/images_prods_static/SKU/30037431.jpg?1638529045"
+        }
+    },
+    {
+        "id": "5691",
+        "title": "VINHO TINTO LOLITA 2018 BIB 5L",
+        "description": "VINHO TINTO LOLITA 2018 BIB 5L",
+        "url": "https://www.kibabo.co.ao/pt/lolita/vinho-tinto-lolita-2018-bib-5l_p5691.html?id=225&cat=237&pc=20",
+        "price": {
+            "value": "15590",
+            "valueOriginal": "15590.00",
+            "currency": {
+                "description": "AOA",
+                "code": "AOA"
+            }
+        },
+        "featured_image": {
+            "alt": "Vinho tinto lolita 2018 bib 5l",
+            "source": "https://www.kibabo.co.ao/pt/images_prods_static/SKU/30034371.jpg?1634550969"
+        }
+    },
+    {
+        "id": "8810",
+        "title": "VINHO CASA DA LOUSA PORTO TAWNY 75CL",
+        "description": "VINHO CASA DA LOUSA PORTO TAWNY 75CL",
+        "url": "https://www.kibabo.co.ao/pt/casa-da-lousa/vinho-casa-da-lousa-porto-tawny-75cl_p8810.html?id=225&cat=237&pc=20",
+        "price": {
+            "value": "15840",
+            "valueOriginal": "15840.00",
+            "currency": {
+                "description": "AOA",
+                "code": "AOA"
+            }
+        },
+        "featured_image": {
+            "alt": "Vinho casa da lousa porto tawny 75cl",
+            "source": "https://www.kibabo.co.ao/pt/images_prods_static/SKU/30038554.jpg?1638398219"
+        }
+    },
+    {
+        "id": "10209",
+        "title": "VINHO TINTO ALENTEJO SERICAIA 0,75L",
+        "description": "VINHO TINTO ALENTEJO SERICAIA 0,75L",
+        "url": "https://www.kibabo.co.ao/pt/sericaia/vinho-tinto-alentejo-sericaia-075l_p10209.html?id=225&cat=237&pc=20",
+        "price": {
+            "value": "16435",
+            "valueOriginal": "16435.00",
+            "currency": {
+                "description": "AOA",
+                "code": "AOA"
+            }
+        },
+        "featured_image": {
+            "alt": "Vinho tinto alentejo sericaia 0,75l",
+            "source": "https://www.kibabo.co.ao/pt/images_prods_static/SKU/30038726.jpg?1665572788"
+        }
+    },
+    {
+        "id": "10137",
+        "title": "VINHO TINTO JA PIAS BIB 5L",
+        "description": "VINHO TINTO JA PIAS BIB 5L",
+        "url": "https://www.kibabo.co.ao/pt/ja-pias/vinho-tinto-ja-pias-bib-5l_p10137.html?id=225&cat=237&pc=20",
+        "price": {
+            "value": "16610",
+            "valueOriginal": "16610.00",
+            "currency": {
+                "description": "AOA",
+                "code": "AOA"
+            }
+        },
+        "featured_image": {
+            "alt": "Vinho tinto ja pias bib 5l",
+            "source": "https://www.kibabo.co.ao/pt/images_prods_static/SKU/30038541.jpg?1638395945"
+        }
+    },
+    {
+        "id": "1245",
+        "title": "WHISKY JOHNNIE WALKER RED 0,75L",
+        "description": "WHISKY JOHNNIE WALKER RED 0,75L",
+        "url": "https://www.kibabo.co.ao/pt/johnnie-walker/whisky-johnnie-walker-red-075l_p1245.html?id=225&cat=237&pc=20",
+        "price": {
+            "value": "17820",
+            "valueOriginal": "17820.00",
+            "currency": {
+                "description": "AOA",
+                "code": "AOA"
+            }
+        },
+        "featured_image": {
+            "alt": "Whisky johnnie walker red 0,75l",
+            "source": "https://www.kibabo.co.ao/pt/images_prods_static/SKU/30005659.jpg?1641309777"
+        }
+    },
+    {
+        "id": "9089",
+        "title": "WHISKY JAMESON 40% NRF 0,70L",
+        "description": "WHISKY JAMESON 40% NRF 0,70L",
+        "url": "https://www.kibabo.co.ao/pt/jameson/whisky-jameson-40-nrf-070l_p9089.html?id=225&cat=237&pc=20",
+        "price": {
+            "value": "18285",
+            "valueOriginal": "18285.00",
+            "currency": {
+                "description": "AOA",
+                "code": "AOA"
+            }
+        },
+        "featured_image": {
+            "alt": "Whisky jameson 40% nrf 0,70l",
+            "source": "https://www.kibabo.co.ao/pt/images_prods_static/SKU/30024608.jpg?1560357178"
+        }
+    },
+    {
+        "id": "3264",
+        "title": "WHISQUE J&B RARE 0,75L",
+        "description": "WHISQUE J&B RARE 0,75L",
+        "url": "https://www.kibabo.co.ao/pt/jb/whisque-jeb-rare-075l_p3264.html?id=225&cat=237&pc=20",
+        "price": {
+            "value": "19445",
+            "valueOriginal": "19445.00",
+            "currency": {
+                "description": "AOA",
+                "code": "AOA"
+            }
+        },
+        "featured_image": {
+            "alt": "Whisque j&b rare 0,75l",
+            "source": "https://www.kibabo.co.ao/pt/images_prods_static/SKU/30026927.jpg?1644477651"
+        }
+    },
+    {
+        "id": "10207",
+        "title": "VINHO TINTO PEDRA CANCELA CASTAS NATIVAS 0,75L",
+        "description": "VINHO TINTO PEDRA CANCELA CASTAS NATIVAS 0,75L",
+        "url": "https://www.kibabo.co.ao/pt/pedra-cancela/vinho-tinto-pedra-cancela-castas-nativas-075l_p10207.html?id=225&cat=237&pc=20",
+        "price": {
+            "value": "19800",
+            "valueOriginal": "19800.00",
+            "currency": {
+                "description": "AOA",
+                "code": "AOA"
+            }
+        },
+        "featured_image": {
+            "alt": "Vinho tinto pedra cancela castas nativas 0,75l",
+            "source": "https://www.kibabo.co.ao/pt/images_prods_static/SKU/30038720.jpg?1665572780"
+        }
+    },
+    {
+        "id": "2638",
+        "title": "VINHO TINTO CABEÇA TOIRO RESERVA 0,75L",
+        "description": "VINHO TINTO CABEÇA TOIRO RESERVA 0,75L",
+        "url": "https://www.kibabo.co.ao/pt/cabeca-toiro/vinho-tinto-cabeca-toiro-reserva-075l_p2638.html?id=225&cat=237&pc=20",
+        "price": {
+            "value": "22900",
+            "valueOriginal": "22900.00",
+            "currency": {
+                "description": "AOA",
+                "code": "AOA"
+            }
+        },
+        "featured_image": {
+            "alt": "Vinho tinto cabeça toiro reserva 0,75l",
+            "source": "https://www.kibabo.co.ao/pt/images_prods_static/SKU/30024716.jpg?1645615111"
+        }
+    },
+    {
+        "id": "1494",
+        "title": "WHISKY THE FAMOUS GROUSE 0,75L",
+        "description": "WHISKY THE FAMOUS GROUSE 0,75L",
+        "url": "https://www.kibabo.co.ao/pt/famous-grouse/whisky-the-famous-grouse-075l_p1494.html?id=225&cat=237&pc=20",
+        "price": {
+            "value": "23285",
+            "valueOriginal": "23285.00",
+            "currency": {
+                "description": "AOA",
+                "code": "AOA"
+            }
+        },
+        "featured_image": {
+            "alt": "Whisky the famous grouse 0,75l",
+            "source": "https://www.kibabo.co.ao/pt/images_prods_static/SKU/30010543.jpg?1641310133"
+        }
+    }
+]
