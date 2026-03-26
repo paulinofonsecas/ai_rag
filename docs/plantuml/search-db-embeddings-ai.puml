@@ -1,0 +1,59 @@
+@startuml search-db-embeddings-ai
+skinparam shadowing false
+
+title Search Flow - DB + Embeddings + IA
+
+autonumber
+
+actor Client
+participant "SearchController" as SearchController
+participant "SearchProductsUseCase" as SearchProductsUseCase
+participant "HybridSearchOrchestrator" as HybridSearchOrchestrator
+
+participant "PostgresFTSAdapter" as PostgresFTSAdapter
+participant "PgVectorAdapter" as PgVectorAdapter
+participant "EmbeddingAPIAdapter" as EmbeddingAPIAdapter
+participant "GeminiRerankerAdapter" as GeminiRerankerAdapter
+participant "RrfService" as RrfService
+
+database "PostgreSQL + pgvector" as PostgreSQL
+participant "Google Gemini (IA)" as Gemini
+
+Client -> SearchController: GET /search?q=...&limit=...
+SearchController -> SearchProductsUseCase: execute(query)
+SearchProductsUseCase -> HybridSearchOrchestrator: search(input)
+
+== Lexical branch (DB / FTS) ==
+HybridSearchOrchestrator -> PostgresFTSAdapter: lexicalSearch(query)
+PostgresFTSAdapter -> PostgreSQL: PostgreSQL FTS
+PostgreSQL --> PostgresFTSAdapter: lexicalResults
+PostgresFTSAdapter --> HybridSearchOrchestrator: lexicalResults
+
+== Semantic branch (Embeddings + pgvector) ==
+HybridSearchOrchestrator -> EmbeddingAPIAdapter: generateQueryEmbedding(query)
+EmbeddingAPIAdapter -> Gemini: embedContent(query)
+Gemini --> EmbeddingAPIAdapter: queryEmbedding
+EmbeddingAPIAdapter --> HybridSearchOrchestrator: queryEmbedding
+
+HybridSearchOrchestrator -> PgVectorAdapter: vectorSearch(queryEmbedding)
+PgVectorAdapter -> PostgreSQL: pgvector similarity search
+PostgreSQL --> PgVectorAdapter: semanticResults
+PgVectorAdapter --> HybridSearchOrchestrator: semanticResults
+
+HybridSearchOrchestrator -> RrfService: fuse(semanticResults, lexicalResults)
+RrfService --> HybridSearchOrchestrator: fusedCandidates
+
+alt rerank habilitado
+  HybridSearchOrchestrator -> GeminiRerankerAdapter: rerank(query, fusedCandidates)
+  GeminiRerankerAdapter -> Gemini: ranking por IA
+  Gemini --> GeminiRerankerAdapter: rerankedResults
+  GeminiRerankerAdapter --> HybridSearchOrchestrator: rerankedResults
+  HybridSearchOrchestrator --> SearchProductsUseCase: finalResults
+else rerank desabilitado
+  HybridSearchOrchestrator --> SearchProductsUseCase: fusedCandidates
+end
+
+SearchProductsUseCase --> SearchController: results
+SearchController --> Client: 200 OK + ranking final
+
+@enduml

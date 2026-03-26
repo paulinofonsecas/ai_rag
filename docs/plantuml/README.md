@@ -5,6 +5,8 @@ This folder contains PlantUML source files for system architecture and end-to-en
 ## Files
 - `system-architecture.puml`: high-level architecture (API, worker, queue, database, embedding provider)
 - `e2e-flows.puml`: request and async processing sequence diagrams
+- `search-db-embeddings-ai.puml`: detailed search sequence with DB FTS, pgvector, embeddings and AI reranking
+- `c4-model.puml`: C4-based diagrams (Level 1 Context, Level 2 Containers, Level 3 Components)
 
 ## How to View in VS Code
 1. Install extension: `jebbs.plantuml` (PlantUML).

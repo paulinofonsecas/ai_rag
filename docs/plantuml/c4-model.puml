@@ -1,0 +1,90 @@
+@startuml c4-context
+title C4 Level 1 - System Context - Hybrid Search Platform
+left to right direction
+skinparam shadowing false
+skinparam packageStyle rectangle
+
+actor "Client App\n(Person)" as client
+
+rectangle "Hybrid Search Platform\n(System)\nAPI + Worker for hybrid product search" as platform
+rectangle "Google Gemini API\n(External System)\nEmbeddings and reranking" as gemini
+database "PostgreSQL + pgvector\n(External DB)" as postgres
+rectangle "Redis + BullMQ\n(External Queue)" as redis
+
+client --> platform : Search products / ingest products
+platform --> postgres : Read/write product catalog and vectors
+platform --> redis : Publish/consume ingestion jobs
+platform --> gemini : Generate embeddings and rerank
+
+@enduml
+
+@startuml c4-containers
+title C4 Level 2 - Container Diagram - Hybrid Search Platform
+left to right direction
+skinparam shadowing false
+skinparam packageStyle rectangle
+
+actor "Client App\n(Person)" as client
+rectangle "Google Gemini API\n(External System)" as gemini
+database "PostgreSQL + pgvector\n(Container)" as postgres
+rectangle "Redis + BullMQ\n(Container)" as redis
+
+package "Hybrid Search Platform (System)" {
+  rectangle "API Container\nNestJS HTTP app\nControllers + Use Cases" as api
+  rectangle "Worker Container\nNestJS worker\nAsync ingestion processor" as worker
+}
+
+client --> api : HTTP /products and /search
+api --> postgres : Product writes and hybrid reads
+api --> redis : Enqueue ProductCreated events
+api --> gemini : Query embedding and rerank calls
+
+redis --> worker : Deliver ingestion jobs
+worker --> gemini : Product embedding calls
+worker --> postgres : Update stored embeddings
+
+@enduml
+
+@startuml c4-components-search
+title C4 Level 3 - Component Diagram - API Search Flow
+left to right direction
+skinparam shadowing false
+skinparam packageStyle rectangle
+
+actor "Client App" as client
+database "PostgreSQL + pgvector" as postgres
+rectangle "Google Gemini API" as gemini
+
+package "API Container (NestJS)" {
+  rectangle "SearchController\n(Component)" as searchController
+  rectangle "SearchProductsUseCase\n(Component)" as searchUseCase
+  rectangle "HybridSearchOrchestrator\n(Component)" as orchestrator
+  rectangle "PostgresFTSAdapter\n(Component)" as ftsAdapter
+  rectangle "PgVectorAdapter\n(Component)" as vectorAdapter
+  rectangle "EmbeddingAPIAdapter\n(Component)" as embeddingAdapter
+  rectangle "GeminiRerankerAdapter\n(Component)" as rerankerAdapter
+  rectangle "RrfService\n(Component)" as rrfService
+}
+
+client --> searchController : GET /search
+searchController --> searchUseCase : execute(query)
+searchUseCase --> orchestrator : search(input)
+
+orchestrator --> ftsAdapter : lexicalSearch(query)
+ftsAdapter --> postgres : FTS query
+
+orchestrator --> embeddingAdapter : generateQueryEmbedding(query)
+embeddingAdapter --> gemini : embedContent
+
+orchestrator --> vectorAdapter : vectorSearch(embedding)
+vectorAdapter --> postgres : similarity query
+
+orchestrator --> rrfService : fuse(lexical, semantic)
+orchestrator --> rerankerAdapter : rerank(query, candidates)
+rerankerAdapter --> gemini : rerank
+
+orchestrator --> searchUseCase : ranked results
+searchUseCase --> searchController : results
+searchController --> client : 200 OK
+
+@enduml
