@@ -1,6 +1,6 @@
 'use client';
 
-import { useEffect, useRef, useState } from 'react';
+import { useCallback, useEffect, useRef, useState } from 'react';
 
 // ── Types ──────────────────────────────────────────────────────────────────────
 
@@ -61,6 +61,7 @@ const INITIAL_STEPS: StepState[] = [
 
 type Props = {
     searchParams: URLSearchParams;
+    submitSignal?: number;
     onComplete: (result: SearchResult) => void;
     onError: (message: string) => void;
     disabled?: boolean;
@@ -68,7 +69,7 @@ type Props = {
 
 // ── Component ─────────────────────────────────────────────────────────────────
 
-export default function SearchProgressButton({ searchParams, onComplete, onError, disabled }: Props) {
+export default function SearchProgressButton({ searchParams, submitSignal, onComplete, onError, disabled }: Props) {
     const [phase, setPhase] = useState<'idle' | 'running' | 'done'>('idle');
     const [steps, setSteps] = useState<StepState[]>(INITIAL_STEPS);
     const [totalMs, setTotalMs] = useState<number>(0);
@@ -86,7 +87,7 @@ export default function SearchProgressButton({ searchParams, onComplete, onError
         });
     }
 
-    function handleClick() {
+    const startSearch = useCallback(() => {
         if (phase === 'running' || disabled) return;
 
         esRef.current?.close();
@@ -147,7 +148,15 @@ export default function SearchProgressButton({ searchParams, onComplete, onError
             es.close();
             onError('Falha na conexão com o servidor de busca.');
         };
-    }
+    }, [disabled, onComplete, onError, phase, searchParams]);
+
+    useEffect(() => {
+        if (!submitSignal) {
+            return;
+        }
+
+        startSearch();
+    }, [submitSignal, startSearch]);
 
     // ── Idle state ─────────────────────────────────────────────────────────────
     if (phase === 'idle') {
@@ -155,7 +164,7 @@ export default function SearchProgressButton({ searchParams, onComplete, onError
             <div className="md:col-span-2 flex flex-col gap-3">
                 <button
                     type="button"
-                    onClick={handleClick}
+                    onClick={startSearch}
                     disabled={disabled}
                     className="rounded-xl bg-sea px-4 py-2 text-sm font-semibold text-white transition hover:brightness-105 disabled:cursor-not-allowed disabled:opacity-60"
                 >

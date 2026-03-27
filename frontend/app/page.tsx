@@ -60,6 +60,7 @@ export default function HomePage() {
     const [rrfK, setRrfK] = useState(60);
     const [rerank, setRerank] = useState(true);
     const [rerankCandidates, setRerankCandidates] = useState(30);
+    const [searchSubmitSignal, setSearchSubmitSignal] = useState(0);
 
     const [searchResult, setSearchResult] = useState<SearchResponse | null>(null);
     const [errorMessage, setErrorMessage] = useState<string | null>(null);
@@ -163,6 +164,15 @@ export default function HomePage() {
         }
     }
 
+    function handleSearchSubmit(event: FormEvent<HTMLFormElement>) {
+        event.preventDefault();
+        if (query.trim().length < 2) {
+            return;
+        }
+
+        setSearchSubmitSignal((current) => current + 1);
+    }
+
     return (
         <main className="mx-auto w-full max-w-7xl p-4 md:p-8">
             {errorMessage ? (
@@ -205,9 +215,9 @@ export default function HomePage() {
                     <article className="rounded-3xl bg-mist p-5 shadow-soft md:p-6">
                         <h2 className="text-xl font-semibold text-ink">Busca Híbrida</h2>
                         <p className="mt-1 text-sm text-slate-600">
-                            Digite o que voce procura. Se quiser, use uma sugestao pronta.
+                            Digite o que voce procura.
                         </p>
-                        <form className="mt-4 grid grid-cols-1 gap-3 md:grid-cols-2">
+                        <form onSubmit={handleSearchSubmit} className="mt-4 grid grid-cols-1 gap-3 md:grid-cols-2">
                             <label className="md:col-span-2 flex flex-col gap-1 text-sm text-slate-700">
                                 O que voce quer encontrar?
                                 <input
@@ -284,6 +294,7 @@ export default function HomePage() {
 
                             <SearchProgressButton
                                 searchParams={searchParams}
+                                submitSignal={searchSubmitSignal}
                                 onComplete={(result: SearchResult) => {
                                     setErrorMessage(null);
                                     setSearchResult(result as unknown as SearchResponse);
