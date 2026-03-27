@@ -42,6 +42,13 @@ export type SearchResult = {
     items: unknown[];
 };
 
+type LastRunSummary = {
+    query: string;
+    count: number;
+    totalMs: number;
+    steps: StepState[];
+};
+
 // ── Config ─────────────────────────────────────────────────────────────────────
 
 const INITIAL_STEPS: StepState[] = [
@@ -65,12 +72,18 @@ export default function SearchProgressButton({ searchParams, onComplete, onError
     const [phase, setPhase] = useState<'idle' | 'running' | 'done'>('idle');
     const [steps, setSteps] = useState<StepState[]>(INITIAL_STEPS);
     const [totalMs, setTotalMs] = useState<number>(0);
+    const [lastRun, setLastRun] = useState<LastRunSummary | null>(null);
 
     const startedAtRef = useRef<number>(0);
     const esRef = useRef<EventSource | null>(null);
+    const stepsRef = useRef<StepState[]>(INITIAL_STEPS.map((step) => ({ ...step })));
 
     function updateStep(id: StepId, patch: Partial<StepState>) {
-        setSteps((prev) => prev.map((s) => (s.id === id ? { ...s, ...patch } : s)));
+        setSteps((prev) => {
+            const next = prev.map((s) => (s.id === id ? { ...s, ...patch } : s));
+            stepsRef.current = next;
+            return next;
+        });
     }
 
     function handleClick() {
@@ -78,7 +91,9 @@ export default function SearchProgressButton({ searchParams, onComplete, onError
 
         esRef.current?.close();
 
-        setSteps(INITIAL_STEPS.map((s) => ({ ...s })));
+        const resetSteps = INITIAL_STEPS.map((s) => ({ ...s }));
+        setSteps(resetSteps);
+        stepsRef.current = resetSteps;
         setPhase('running');
         startedAtRef.current = Date.now();
 
@@ -107,6 +122,12 @@ export default function SearchProgressButton({ searchParams, onComplete, onError
             } else if (data.type === 'done') {
                 const elapsed = Date.now() - startedAtRef.current;
                 setTotalMs(elapsed);
+                setLastRun({
+                    query: data.query,
+                    count: data.count,
+                    totalMs: elapsed,
+                    steps: stepsRef.current.map((step) => ({ ...step })),
+                });
                 setPhase('done');
                 es.close();
 
@@ -131,14 +152,46 @@ export default function SearchProgressButton({ searchParams, onComplete, onError
     // ── Idle state ─────────────────────────────────────────────────────────────
     if (phase === 'idle') {
         return (
-            <button
-                type="button"
-                onClick={handleClick}
-                disabled={disabled}
-                className="md:col-span-2 rounded-xl bg-sea px-4 py-2 text-sm font-semibold text-white transition hover:brightness-105 disabled:cursor-not-allowed disabled:opacity-60"
-            >
-                Buscar
-            </button>
+            <div className="md:col-span-2 flex flex-col gap-3">
+                <button
+                    type="button"
+                    onClick={handleClick}
+                    disabled={disabled}
+                    className="rounded-xl bg-sea px-4 py-2 text-sm font-semibold text-white transition hover:brightness-105 disabled:cursor-not-allowed disabled:opacity-60"
+                >
+                    Buscar
+                </button>
+
+                {lastRun ? (
+                    <div className="rounded-xl border border-slate-200 bg-white/80 overflow-hidden">
+                        <div className="flex items-center justify-between px-4 py-2.5 border-b border-slate-100">
+                            <span className="text-sm font-semibold text-ink">Resumo da ultima busca</span>
+                            <span className="text-xs text-slate-500 tabular-nums">
+                                {(lastRun.totalMs / 1000).toFixed(2)}s
+                            </span>
+                        </div>
+
+                        <div className="px-4 py-2 text-sm text-slate-700 border-b border-slate-100">
+                            <span className="font-medium text-ink">Query:</span> {lastRun.query}
+                            <span className="ml-3 inline-flex rounded-full bg-sea/10 px-2 py-0.5 text-xs font-semibold text-sea">
+                                {lastRun.count} itens
+                            </span>
+                        </div>
+
+                        <ul className="divide-y divide-slate-100">
+                            {lastRun.steps.map((step) => (
+                                <li key={step.id} className="flex items-center justify-between px-4 py-2.5 gap-3">
+                                    <div className="flex items-center gap-2.5 min-w-0">
+                                        <StepIcon status={step.status} />
+                                        <span className="text-sm text-slate-700 truncate">{step.label}</span>
+                                    </div>
+                                    <StepDuration step={step} />
+                                </li>
+                            ))}
+                        </ul>
+                    </div>
+                ) : null}
+            </div>
         );
     }
 
@@ -176,12 +229,12 @@ export default function SearchProgressButton({ searchParams, onComplete, onError
                                     step.status === 'running'
                                         ? 'font-semibold text-ink'
                                         : step.status === 'done'
-                                          ? 'text-slate-700'
-                                          : step.status === 'skipped'
-                                            ? 'text-slate-400 line-through'
-                                            : step.status === 'error'
-                                              ? 'text-red-600'
-                                              : 'text-slate-400',
+                                            ? 'text-slate-700'
+                                            : step.status === 'skipped'
+                                                ? 'text-slate-400 line-through'
+                                                : step.status === 'error'
+                                                    ? 'text-red-600'
+                                                    : 'text-slate-400',
                                 ].join(' ')}
                             >
                                 {step.label}

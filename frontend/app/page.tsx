@@ -54,7 +54,7 @@ export default function HomePage() {
     const [createdProduct, setCreatedProduct] = useState<CreatedProduct | null>(null);
     const [ingestBusy, setIngestBusy] = useState(false);
 
-    const [query, setQuery] = useState('cafe premium');
+    const [query, setQuery] = useState('');
     const [limit, setLimit] = useState(10);
     const [offset, setOffset] = useState(0);
     const [rrfK, setRrfK] = useState(60);
@@ -215,24 +215,9 @@ export default function HomePage() {
                                     value={query}
                                     onChange={(event) => setQuery(event.target.value)}
                                     className="rounded-xl border border-slate-300 bg-white px-3 py-2 text-base outline-none ring-sea/30 transition focus:ring"
-                                    placeholder="Ex.: cafe premium, macarrao integral, molho de tomate"
+                                    placeholder="Preciso de um cafe premium para acompanhar meu bolo de chocolate"
                                 />
                             </label>
-
-                            <div className="md:col-span-2 flex flex-wrap gap-2">
-                                {['cafe premium', 'arroz integral', 'molho pimenta preta', 'chocolate 70%'].map(
-                                    (preset) => (
-                                        <button
-                                            key={preset}
-                                            type="button"
-                                            onClick={() => setQuery(preset)}
-                                            className="rounded-full border border-sea/30 bg-white px-3 py-1 text-xs font-medium text-sea transition hover:bg-sea/10"
-                                        >
-                                            {preset}
-                                        </button>
-                                    ),
-                                )}
-                            </div>
 
                             <details className="md:col-span-2 rounded-xl border border-slate-200 bg-white/70 p-3">
                                 <summary className="cursor-pointer text-sm font-medium text-slate-700">

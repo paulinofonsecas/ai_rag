@@ -94,6 +94,7 @@ import { TOKENS } from 'src/infrastructure/tokens';
         TOKENS.EmbeddingService,
         TOKENS.SearchProductsUseCase,
         TOKENS.IngestProductUseCase,
+        PostgresModule,
         BullModule,
     ],
 })

@@ -1,7 +1,6 @@
 import { Logger } from '@nestjs/common';
 
-import { HybridSearchOrchestrator } from 'src/application/services/hybrid-search.orchestrator';
-import { OnStep } from 'src/application/services/hybrid-search.orchestrator';
+import { HybridSearchOrchestrator, OnStep } from 'src/application/services/hybrid-search.orchestrator';
 
 export type SearchProductsInput = {
     query: string;
