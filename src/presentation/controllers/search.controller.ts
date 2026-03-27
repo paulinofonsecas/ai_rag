@@ -235,6 +235,7 @@ export class SearchController {
                 name: item.product.name,
                 description: item.product.description,
                 category: item.product.category,
+                imageUrl: item.product.imageUrl ?? null,
                 scores: {
                     rrf: item.rrfScore ?? 0,
                     semantic: item.semanticScore ?? 0,

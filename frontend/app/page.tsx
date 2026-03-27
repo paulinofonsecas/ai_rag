@@ -20,6 +20,7 @@ type SearchItem = {
     name: string;
     description: string;
     category: string;
+    imageUrl: string | null;
     scores: {
         rrf: number;
         semantic: number | null;
@@ -386,30 +387,55 @@ export default function HomePage() {
                                 {searchResult?.items.map((item, index) => (
                                     <article
                                         key={item.id}
-                                        className="rounded-2xl border border-slate-200 bg-white px-4 py-3"
+                                        className="rounded-2xl border border-slate-200 bg-white overflow-hidden hover:shadow-md transition-shadow"
                                     >
-                                        <div className="flex flex-wrap items-center justify-between gap-2">
-                                            <h3 className="text-sm font-semibold text-ink">
-                                                {index + 1}. {item.name}
-                                            </h3>
-                                            <span className="rounded-full bg-mist px-3 py-1 text-xs font-semibold text-sea">
+                                        {/* Imagem do Produto */}
+                                        <div className="relative bg-slate-100 h-40 overflow-hidden">
+                                            {item.imageUrl ? (
+                                                <img
+                                                    src={item.imageUrl}
+                                                    alt={item.name}
+                                                    className="w-full h-full object-cover"
+                                                    onError={(e) => {
+                                                        const img = e.target as HTMLImageElement;
+                                                        img.style.display = 'none';
+                                                    }}
+                                                />
+                                            ) : null}
+                                            <div className="absolute top-2 left-2 bg-sea/90 text-white px-2 py-1 rounded-lg text-xs font-semibold">
+                                                #{index + 1}
+                                            </div>
+                                            <div className="absolute top-2 right-2 bg-slate-900/70 text-white px-2 py-1 rounded-lg text-xs font-semibold">
                                                 {item.category}
-                                            </span>
+                                            </div>
                                         </div>
-                                        <p className="mt-1 text-xs text-slate-600 line-clamp-2">{item.description}</p>
-                                        <div className="mt-2 flex flex-wrap gap-2 text-xs text-slate-600">
-                                            <span className="rounded-lg bg-slate-50 px-2 py-1">
-                                                RRF: {formatMaybeNumber(item.scores.rrf)}
-                                            </span>
-                                            <span className="rounded-lg bg-slate-50 px-2 py-1">
-                                                Semântico: {formatMaybeNumber(item.scores.semantic)}
-                                            </span>
-                                            <span className="rounded-lg bg-slate-50 px-2 py-1">
-                                                Lexical: {formatMaybeNumber(item.scores.lexical)}
-                                            </span>
-                                            <span className="rounded-lg bg-slate-50 px-2 py-1 break-all">
-                                                ID: {item.id}
-                                            </span>
+
+                                        {/* Conteúdo */}
+                                        <div className="p-4">
+                                            <h3 className="text-sm font-semibold text-ink line-clamp-2">
+                                                {item.name}
+                                            </h3>
+                                            <p className="mt-2 text-xs text-slate-600 line-clamp-3">
+                                                {item.description}
+                                            </p>
+
+                                            {/* Scores */}
+                                            <div className="mt-3 pt-3 border-t border-slate-100">
+                                                <div className="flex flex-wrap gap-1.5">
+                                                    <span className="inline-flex items-center gap-1 rounded-lg bg-sea/10 px-2 py-1 text-xs text-sea font-medium">
+                                                        RRF: {formatMaybeNumber(item.scores.rrf)}
+                                                    </span>
+                                                    <span className="inline-flex items-center gap-1 rounded-lg bg-amber-100 px-2 py-1 text-xs text-amber-900 font-medium">
+                                                        Sem: {formatMaybeNumber(item.scores.semantic)}
+                                                    </span>
+                                                    <span className="inline-flex items-center gap-1 rounded-lg bg-emerald-100 px-2 py-1 text-xs text-emerald-900 font-medium">
+                                                        Lex: {formatMaybeNumber(item.scores.lexical)}
+                                                    </span>
+                                                </div>
+                                                <p className="mt-2 text-xs text-slate-500 break-all font-mono">
+                                                    ID: {item.id}
+                                                </p>
+                                            </div>
                                         </div>
                                     </article>
                                 ))}
