@@ -3,3 +3,17 @@ dist/
 .env
 *.log
 coverage/
+
+# Frontend build artifacts
+frontend/.next/
+frontend/out/
+frontend/.vercel/
+*.tsbuildinfo
+
+# Environment files
+.env.*
+frontend/.env*
+
+# OS/editor noise
+.DS_Store
+Thumbs.db
