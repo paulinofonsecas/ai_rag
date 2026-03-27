@@ -3,6 +3,8 @@
 import Link from 'next/link';
 import { FormEvent, useMemo, useState } from 'react';
 
+import SearchProgressButton, { SearchResult } from './components/SearchProgressButton';
+
 type CreatedProduct = {
     id: string;
     name: string;
@@ -59,12 +61,23 @@ export default function HomePage() {
     const [rerank, setRerank] = useState(true);
     const [rerankCandidates, setRerankCandidates] = useState(30);
 
-    const [searchBusy, setSearchBusy] = useState(false);
     const [searchResult, setSearchResult] = useState<SearchResponse | null>(null);
     const [errorMessage, setErrorMessage] = useState<string | null>(null);
     const [exportBusy, setExportBusy] = useState(false);
 
     const hasSearchData = useMemo(() => (searchResult?.items?.length ?? 0) > 0, [searchResult]);
+    const searchParams = useMemo(
+        () =>
+            new URLSearchParams({
+                q: query,
+                limit: String(limit),
+                offset: String(offset),
+                rrfK: String(rrfK),
+                rerank: String(rerank),
+                rerankCandidates: String(rerankCandidates),
+            }),
+        [query, limit, offset, rrfK, rerank, rerankCandidates],
+    );
     const embeddingsMapHref = useMemo(() => {
         const ids = searchResult?.items?.map((item) => item.id) ?? [];
 
@@ -107,43 +120,6 @@ export default function HomePage() {
             setErrorMessage(message);
         } finally {
             setIngestBusy(false);
-        }
-    }
-
-    async function submitSearch(event: FormEvent<HTMLFormElement>) {
-        event.preventDefault();
-        setErrorMessage(null);
-        setSearchBusy(true);
-
-        try {
-            const searchParams = new URLSearchParams({
-                q: query,
-                limit: String(limit),
-                offset: String(offset),
-                rrfK: String(rrfK),
-                rerank: String(rerank),
-                rerankCandidates: String(rerankCandidates),
-            });
-
-            const response = await fetch(`/api/search?${searchParams.toString()}`, {
-                method: 'GET',
-                headers: {
-                    'x-correlation-id': crypto.randomUUID(),
-                },
-            });
-
-            if (!response.ok) {
-                const body = await response.text();
-                throw new Error(body || 'Falha na busca.');
-            }
-
-            const data = (await response.json()) as SearchResponse;
-            setSearchResult(data);
-        } catch (error) {
-            const message = error instanceof Error ? error.message : 'Erro inesperado na busca.';
-            setErrorMessage(message);
-        } finally {
-            setSearchBusy(false);
         }
     }
 
@@ -228,7 +204,7 @@ export default function HomePage() {
                     {/* Busca Híbrida */}
                     <article className="rounded-3xl bg-mist p-5 shadow-soft md:p-6">
                         <h2 className="text-xl font-semibold text-ink">Busca Híbrida</h2>
-                        <form onSubmit={submitSearch} className="mt-4 grid grid-cols-1 gap-3 md:grid-cols-2">
+                        <form className="mt-4 grid grid-cols-1 gap-3 md:grid-cols-2">
                             <input
                                 required
                                 value={query}
@@ -292,13 +268,14 @@ export default function HomePage() {
                                 Habilitar rerank com Gemini AI
                             </label>
 
-                            <button
-                                type="submit"
-                                disabled={searchBusy}
-                                className="md:col-span-2 rounded-xl bg-sea px-4 py-2 text-sm font-semibold text-white transition hover:brightness-105 disabled:cursor-not-allowed disabled:opacity-60"
-                            >
-                                {searchBusy ? 'Buscando...' : 'Buscar'}
-                            </button>
+                            <SearchProgressButton
+                                searchParams={searchParams}
+                                onComplete={(result: SearchResult) => {
+                                    setErrorMessage(null);
+                                    setSearchResult(result as unknown as SearchResponse);
+                                }}
+                                onError={(message: string) => setErrorMessage(message)}
+                            />
                         </form>
                     </article>
 
@@ -365,14 +342,6 @@ export default function HomePage() {
                                         {searchResult?.count ?? 0} itens
                                     </span>
                                 ) : null}
-                                <button
-                                    type="button"
-                                    onClick={exportEmbeddings}
-                                    disabled={exportBusy}
-                                    className="rounded-xl border border-slate-300 bg-white px-3 py-1 text-xs font-semibold text-slate-700 transition hover:bg-slate-50 disabled:cursor-not-allowed disabled:opacity-60"
-                                >
-                                    {exportBusy ? 'Exportando...' : 'Exportar TSV'}
-                                </button>
                                 <Link
                                     href={embeddingsMapHref}
                                     className="rounded-xl border border-sea/30 bg-sea/10 px-3 py-1 text-xs font-semibold text-sea transition hover:bg-sea/15"

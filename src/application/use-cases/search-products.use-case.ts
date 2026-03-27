@@ -1,6 +1,7 @@
 import { Logger } from '@nestjs/common';
 
 import { HybridSearchOrchestrator } from 'src/application/services/hybrid-search.orchestrator';
+import { OnStep } from 'src/application/services/hybrid-search.orchestrator';
 
 export type SearchProductsInput = {
     query: string;
@@ -16,7 +17,7 @@ export class SearchProductsUseCase {
 
     constructor(private readonly orchestrator: HybridSearchOrchestrator) { }
 
-    async execute(input: SearchProductsInput) {
+    async execute(input: SearchProductsInput, onStep?: OnStep) {
         const limit = input.limit ?? 10;
         const perMethodLimit = Math.min(100, Math.max(25, limit * 5));
 
@@ -41,6 +42,6 @@ export class SearchProductsUseCase {
             rerankCandidates: normalizedInput.rerankCandidates,
         });
 
-        return this.orchestrator.search(normalizedInput);
+        return this.orchestrator.search(normalizedInput, onStep);
     }
 }

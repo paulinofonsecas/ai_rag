@@ -17,6 +17,18 @@ export type SearchOrchestratorInput = {
     rerankCandidates: number;
 };
 
+export type StepId = 'embedding' | 'vector_search' | 'rerank';
+
+export type StepEvent = {
+    type: 'step';
+    step: StepId;
+    status: 'started' | 'completed' | 'skipped' | 'error';
+    durationMs?: number;
+    meta?: Record<string, unknown>;
+};
+
+export type OnStep = (event: StepEvent) => void;
+
 export class HybridSearchOrchestrator {
     constructor(
         private readonly repository: SearchRepository,
@@ -25,7 +37,7 @@ export class HybridSearchOrchestrator {
         private readonly logger = new Logger(HybridSearchOrchestrator.name),
     ) { }
 
-    async search(input: SearchOrchestratorInput): Promise<HybridSearchResult[]> {
+    async search(input: SearchOrchestratorInput, onStep?: OnStep): Promise<HybridSearchResult[]> {
         const startedAt = Date.now();
 
         this.logger.log({
@@ -39,7 +51,10 @@ export class HybridSearchOrchestrator {
         });
 
         try {
+            onStep?.({ type: 'step', step: 'embedding', status: 'started' });
+            const embeddingStart = Date.now();
             const embedding = await this.embeddingService.generateQueryEmbedding(input.query);
+            onStep?.({ type: 'step', step: 'embedding', status: 'completed', durationMs: Date.now() - embeddingStart });
 
             this.logger.log({
                 msg: 'ai-search.embedding_completed',
@@ -47,11 +62,20 @@ export class HybridSearchOrchestrator {
                 dimensions: embedding.length,
             });
 
+            onStep?.({ type: 'step', step: 'vector_search', status: 'started' });
+            const vsStart = Date.now();
             const semanticResults = await this.repository.vectorSearch(
                 embedding,
                 Math.max(input.perMethodLimit, input.rerankCandidates),
                 input.offset,
             );
+            onStep?.({
+                type: 'step',
+                step: 'vector_search',
+                status: 'completed',
+                durationMs: Date.now() - vsStart,
+                meta: { count: semanticResults.length },
+            });
 
             this.logger.log({
                 msg: 'ai-search.semantic_completed',
@@ -62,6 +86,7 @@ export class HybridSearchOrchestrator {
             const aiPrioritizedResults = semanticResults.map((item, i) => ({ ...item, semanticRank: i + 1 }));
 
             if (!input.rerank || semanticResults.length === 0) {
+                onStep?.({ type: 'step', step: 'rerank', status: 'skipped' });
                 const result = aiPrioritizedResults.slice(0, input.limit);
 
                 this.logger.log({
@@ -75,7 +100,16 @@ export class HybridSearchOrchestrator {
             }
 
             try {
+                onStep?.({ type: 'step', step: 'rerank', status: 'started' });
+                const rrStart = Date.now();
                 const reranked = await this.applyGeminiRerank(aiPrioritizedResults, input);
+                onStep?.({
+                    type: 'step',
+                    step: 'rerank',
+                    status: 'completed',
+                    durationMs: Date.now() - rrStart,
+                    meta: { count: reranked.length },
+                });
 
                 this.logger.log({
                     msg: 'ai-search.rerank_completed',
@@ -86,6 +120,7 @@ export class HybridSearchOrchestrator {
 
                 return reranked;
             } catch (error) {
+                onStep?.({ type: 'step', step: 'rerank', status: 'error' });
                 this.logger.error({
                     msg: 'ai-search.rerank_failed_fallback_semantic',
                     query: input.query,

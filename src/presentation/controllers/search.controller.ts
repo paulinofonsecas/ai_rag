@@ -4,11 +4,15 @@ import {
     Headers,
     Inject,
     Logger,
+    MessageEvent,
     Query,
     Response,
+    Sse,
 } from '@nestjs/common';
 import { Response as ExpressResponse } from 'express';
+import { Observable } from 'rxjs';
 
+import { OnStep } from 'src/application/services/hybrid-search.orchestrator';
 import { SearchProductsUseCase } from 'src/application/use-cases/search-products.use-case';
 import { SearchRepository } from 'src/domain/interfaces/search-repository.interface';
 import { TOKENS } from 'src/infrastructure/tokens';
@@ -56,7 +60,58 @@ export class SearchController {
             resultCount: results.length,
         });
 
-        const items = results
+        const items = this.mapResults(results, query.q);
+
+        return {
+            query: query.q,
+            count: items.length,
+            items,
+        };
+    }
+
+    @Sse('stream')
+    searchStream(@Query() query: SearchQueryDto): Observable<MessageEvent> {
+        return new Observable((subscriber) => {
+            const onStep: OnStep = (event) => subscriber.next({ data: event });
+
+            this.useCase
+                .execute(
+                    {
+                        query: query.q,
+                        limit: query.limit,
+                        offset: query.offset,
+                        rrfK: query.rrfK,
+                        rerank: query.rerank,
+                        rerankCandidates: query.rerankCandidates,
+                    },
+                    onStep,
+                )
+                .then((results) => {
+                    const items = this.mapResults(results, query.q);
+                    subscriber.next({
+                        data: {
+                            type: 'done',
+                            query: query.q,
+                            count: items.length,
+                            items,
+                        },
+                    });
+                    subscriber.complete();
+                })
+                .catch((err: unknown) => {
+                    subscriber.next({
+                        data: {
+                            type: 'error',
+                            message: err instanceof Error ? err.message : 'Unknown error',
+                        },
+                    });
+                    subscriber.complete();
+                });
+        });
+    }
+
+    private mapResults(results: Awaited<ReturnType<SearchProductsUseCase['execute']>>, queryStr: string) {
+        return results
             .map((item) => ({
                 id: item.product.id,
                 name: item.product.name,
@@ -75,24 +130,14 @@ export class SearchController {
             .sort((left, right) => {
                 const leftSemantic = left.ranks.semantic ?? Number.MAX_SAFE_INTEGER;
                 const rightSemantic = right.ranks.semantic ?? Number.MAX_SAFE_INTEGER;
-                if (leftSemantic !== rightSemantic) {
-                    return leftSemantic - rightSemantic;
-                }
+                if (leftSemantic !== rightSemantic) return leftSemantic - rightSemantic;
 
                 const leftLexical = left.ranks.lexical ?? Number.MAX_SAFE_INTEGER;
                 const rightLexical = right.ranks.lexical ?? Number.MAX_SAFE_INTEGER;
-                if (leftLexical !== rightLexical) {
-                    return leftLexical - rightLexical;
-                }
+                if (leftLexical !== rightLexical) return leftLexical - rightLexical;
 
                 return left.id.localeCompare(right.id);
             });
-
-        return {
-            query: query.q,
-            count: items.length,
-            items,
-        };
     }
 
     @Get('export-embeddings')
