@@ -4,6 +4,7 @@ import { ResultReranker } from 'src/domain/interfaces/reranker.interface';
 import { SearchRepository } from 'src/domain/interfaces/search-repository.interface';
 
 import { HybridSearchOrchestrator } from './hybrid-search.orchestrator';
+import { RrfService } from './rrf.service';
 
 describe('HybridSearchOrchestrator', () => {
     const now = new Date('2026-01-01T00:00:00.000Z');
@@ -13,6 +14,7 @@ describe('HybridSearchOrchestrator', () => {
     let repository: jest.Mocked<SearchRepository>;
     let embeddingService: jest.Mocked<EmbeddingService>;
     let reranker: jest.Mocked<ResultReranker>;
+    let rrfService: RrfService;
 
     beforeEach(() => {
         repository = {
@@ -31,13 +33,16 @@ describe('HybridSearchOrchestrator', () => {
         reranker = {
             rerank: jest.fn(),
         };
+
+        rrfService = new RrfService();
     });
 
-    it('returns semantic results when embedding succeeds', async () => {
+    it('returns fused results when embedding succeeds', async () => {
         repository.vectorSearch.mockResolvedValue([{ product: p2, rank: 1, score: 0.9 }]);
+        repository.lexicalSearch.mockResolvedValue([{ product: p2, rank: 1, score: 0.7 }]);
         embeddingService.generateQueryEmbedding.mockResolvedValue([0.1, 0.2]);
 
-        const orchestrator = new HybridSearchOrchestrator(repository, embeddingService, reranker);
+        const orchestrator = new HybridSearchOrchestrator(repository, embeddingService, reranker, rrfService);
         const result = await orchestrator.search({
             query: 'best gaming setup',
             limit: 10,
@@ -50,14 +55,16 @@ describe('HybridSearchOrchestrator', () => {
 
         expect(embeddingService.generateQueryEmbedding).toHaveBeenCalledWith('best gaming setup');
         expect(repository.vectorSearch).toHaveBeenCalledWith([0.1, 0.2], 25, 0);
+        expect(repository.lexicalSearch).toHaveBeenCalledWith('best gaming setup', 25, 0);
         expect(result).toHaveLength(1);
         expect(result[0].product.id).toBe('p2');
+        expect(result[0].rrfScore).toBeDefined();
     });
 
     it('returns empty array when embedding fails', async () => {
         embeddingService.generateQueryEmbedding.mockRejectedValue(new Error('provider down'));
 
-        const orchestrator = new HybridSearchOrchestrator(repository, embeddingService, reranker);
+        const orchestrator = new HybridSearchOrchestrator(repository, embeddingService, reranker, rrfService);
         const result = await orchestrator.search({
             query: 'wireless',
             limit: 1,
@@ -69,6 +76,7 @@ describe('HybridSearchOrchestrator', () => {
         });
 
         expect(repository.vectorSearch).not.toHaveBeenCalled();
+        expect(repository.lexicalSearch).not.toHaveBeenCalled();
         expect(result).toHaveLength(0);
     });
 
@@ -77,10 +85,14 @@ describe('HybridSearchOrchestrator', () => {
             { product: p1, rank: 1, score: 0.8 },
             { product: p2, rank: 2, score: 0.9 }
         ]);
+        repository.lexicalSearch.mockResolvedValue([
+            { product: p2, rank: 1, score: 0.95 },
+            { product: p1, rank: 2, score: 0.4 }
+        ]);
         embeddingService.generateQueryEmbedding.mockResolvedValue([0.1, 0.2]);
         reranker.rerank.mockResolvedValue(['p2', 'p1']);
 
-        const orchestrator = new HybridSearchOrchestrator(repository, embeddingService, reranker);
+        const orchestrator = new HybridSearchOrchestrator(repository, embeddingService, reranker, rrfService);
         const result = await orchestrator.search({
             query: 'best gaming setup',
             limit: 10,
@@ -101,10 +113,14 @@ describe('HybridSearchOrchestrator', () => {
             { product: p1, rank: 1, score: 0.8 },
             { product: p2, rank: 2, score: 0.9 }
         ]);
+        repository.lexicalSearch.mockResolvedValue([
+            { product: p1, rank: 1, score: 0.7 },
+            { product: p2, rank: 2, score: 0.6 }
+        ]);
         embeddingService.generateQueryEmbedding.mockResolvedValue([0.1, 0.2]);
         reranker.rerank.mockResolvedValue([]);
 
-        const orchestrator = new HybridSearchOrchestrator(repository, embeddingService, reranker);
+        const orchestrator = new HybridSearchOrchestrator(repository, embeddingService, reranker, rrfService);
         const result = await orchestrator.search({
             query: 'query sem correlacao',
             limit: 10,

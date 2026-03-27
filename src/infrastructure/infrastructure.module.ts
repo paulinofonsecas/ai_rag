@@ -67,12 +67,13 @@ import { TOKENS } from 'src/infrastructure/tokens';
         },
         {
             provide: TOKENS.HybridSearchOrchestrator,
-            inject: [TOKENS.SearchRepository, TOKENS.EmbeddingService, TOKENS.ResultReranker],
+            inject: [TOKENS.SearchRepository, TOKENS.EmbeddingService, TOKENS.ResultReranker, RrfService],
             useFactory: (
                 repository: HybridSearchRepositoryAdapter,
                 embeddingService: EmbeddingAPIAdapter,
                 reranker: GeminiRerankerAdapter,
-            ) => new HybridSearchOrchestrator(repository, embeddingService, reranker),
+                rrfService: RrfService,
+            ) => new HybridSearchOrchestrator(repository, embeddingService, reranker, rrfService),
         },
         {
             provide: TOKENS.SearchProductsUseCase,

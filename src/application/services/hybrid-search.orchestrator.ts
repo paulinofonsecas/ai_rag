@@ -1,5 +1,6 @@
 import { Logger } from '@nestjs/common';
 
+import { RrfService } from 'src/application/services/rrf.service';
 import { EmbeddingService } from 'src/domain/interfaces/embedding-service.interface';
 import { ResultReranker } from 'src/domain/interfaces/reranker.interface';
 import {
@@ -34,6 +35,7 @@ export class HybridSearchOrchestrator {
         private readonly repository: SearchRepository,
         private readonly embeddingService: EmbeddingService,
         private readonly reranker: ResultReranker,
+        private readonly rrfService: RrfService,
         private readonly logger = new Logger(HybridSearchOrchestrator.name),
     ) { }
 
@@ -64,28 +66,44 @@ export class HybridSearchOrchestrator {
 
             onStep?.({ type: 'step', step: 'vector_search', status: 'started' });
             const vsStart = Date.now();
-            const semanticResults = await this.repository.vectorSearch(
-                embedding,
-                Math.max(input.perMethodLimit, input.rerankCandidates),
-                input.offset,
-            );
+            const [semanticResults, lexicalResults] = await Promise.all([
+                this.repository.vectorSearch(
+                    embedding,
+                    Math.max(input.perMethodLimit, input.rerankCandidates),
+                    input.offset,
+                ),
+                this.repository.lexicalSearch(
+                    input.query,
+                    Math.max(input.perMethodLimit, input.rerankCandidates),
+                    input.offset,
+                ),
+            ]);
+
+            const fusedResults = this.rrfService.fuse(semanticResults, lexicalResults, input.rrfK);
+
             onStep?.({
                 type: 'step',
                 step: 'vector_search',
                 status: 'completed',
                 durationMs: Date.now() - vsStart,
-                meta: { count: semanticResults.length },
+                meta: {
+                    semanticCount: semanticResults.length,
+                    lexicalCount: lexicalResults.length,
+                    fusedCount: fusedResults.length,
+                },
             });
 
             this.logger.log({
                 msg: 'ai-search.semantic_completed',
                 query: input.query,
                 semanticCount: semanticResults.length,
+                lexicalCount: lexicalResults.length,
+                fusedCount: fusedResults.length,
             });
 
-            const aiPrioritizedResults = semanticResults.map((item, i) => ({ ...item, semanticRank: i + 1 }));
+            const aiPrioritizedResults = fusedResults;
 
-            if (!input.rerank || semanticResults.length === 0) {
+            if (!input.rerank || fusedResults.length === 0) {
                 onStep?.({ type: 'step', step: 'rerank', status: 'skipped' });
                 const result = aiPrioritizedResults.slice(0, input.limit);
 

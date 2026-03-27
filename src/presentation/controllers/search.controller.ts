@@ -12,21 +12,24 @@ import {
 import { Response as ExpressResponse } from 'express';
 import { Observable } from 'rxjs';
 
-import { OnStep } from 'src/application/services/hybrid-search.orchestrator';
+import { OnStep, StepEvent } from 'src/application/services/hybrid-search.orchestrator';
 import { SearchProductsUseCase } from 'src/application/use-cases/search-products.use-case';
 import { SearchRepository } from 'src/domain/interfaces/search-repository.interface';
+import { PostgresService } from 'src/infrastructure/database/postgres.service';
 import { TOKENS } from 'src/infrastructure/tokens';
 import { SearchQueryDto } from 'src/presentation/dto/search-query.dto';
 
 @Controller('search')
 export class SearchController {
     private readonly logger = new Logger(SearchController.name);
+    private analyticsTableReady = false;
 
     constructor(
         @Inject(TOKENS.SearchProductsUseCase)
         private readonly useCase: SearchProductsUseCase,
         @Inject(TOKENS.SearchRepository)
         private readonly searchRepository: SearchRepository,
+        private readonly postgresService: PostgresService,
     ) { }
 
     @Get()
@@ -60,7 +63,7 @@ export class SearchController {
             resultCount: results.length,
         });
 
-        const items = this.mapResults(results, query.q);
+        const items = this.mapResults(results);
 
         return {
             query: query.q,
@@ -70,9 +73,22 @@ export class SearchController {
     }
 
     @Sse('stream')
-    searchStream(@Query() query: SearchQueryDto): Observable<MessageEvent> {
+    searchStream(
+        @Query() query: SearchQueryDto,
+        @Headers('x-correlation-id') correlationId?: string,
+    ): Observable<MessageEvent> {
         return new Observable((subscriber) => {
-            const onStep: OnStep = (event) => subscriber.next({ data: event });
+            const startedAt = new Date();
+            const steps: Array<StepEvent & { at: string }> = [];
+            const correlation = correlationId ?? 'n/a';
+
+            const onStep: OnStep = (event) => {
+                steps.push({
+                    ...event,
+                    at: new Date().toISOString(),
+                });
+                subscriber.next({ data: event });
+            };
 
             this.useCase
                 .execute(
@@ -86,8 +102,19 @@ export class SearchController {
                     },
                     onStep,
                 )
-                .then((results) => {
-                    const items = this.mapResults(results, query.q);
+                .then(async (results) => {
+                    const items = this.mapResults(results);
+                    const completedAt = new Date();
+
+                    await this.persistSearchRun({
+                        correlationId: correlation,
+                        query: query.q,
+                        startedAt,
+                        completedAt,
+                        resultCount: items.length,
+                        steps,
+                    });
+
                     subscriber.next({
                         data: {
                             type: 'done',
@@ -98,7 +125,18 @@ export class SearchController {
                     });
                     subscriber.complete();
                 })
-                .catch((err: unknown) => {
+                .catch(async (err: unknown) => {
+                    const completedAt = new Date();
+                    await this.persistSearchRun({
+                        correlationId: correlation,
+                        query: query.q,
+                        startedAt,
+                        completedAt,
+                        resultCount: 0,
+                        steps,
+                        errorMessage: err instanceof Error ? err.message : 'Unknown error',
+                    });
+
                     subscriber.next({
                         data: {
                             type: 'error',
@@ -110,7 +148,87 @@ export class SearchController {
         });
     }
 
-    private mapResults(results: Awaited<ReturnType<SearchProductsUseCase['execute']>>, queryStr: string) {
+    private async persistSearchRun(input: {
+        correlationId: string;
+        query: string;
+        startedAt: Date;
+        completedAt: Date;
+        resultCount: number;
+        steps: Array<StepEvent & { at: string }>;
+        errorMessage?: string;
+    }) {
+        const totalMs = input.completedAt.getTime() - input.startedAt.getTime();
+
+        try {
+            await this.ensureAnalyticsTable();
+            await this.postgresService.query(
+                `
+                    INSERT INTO search_step_runs (
+                        correlation_id,
+                        query,
+                        started_at,
+                        completed_at,
+                        total_ms,
+                        result_count,
+                        steps,
+                        error_message
+                    )
+                    VALUES ($1, $2, $3, $4, $5, $6, $7::jsonb, $8)
+                `,
+                [
+                    input.correlationId,
+                    input.query,
+                    input.startedAt,
+                    input.completedAt,
+                    totalMs,
+                    input.resultCount,
+                    JSON.stringify(input.steps),
+                    input.errorMessage ?? null,
+                ],
+            );
+        } catch (error) {
+            this.logger.error({
+                msg: 'search.stream.persist_failed',
+                correlationId: input.correlationId,
+                error: error instanceof Error ? error.message : String(error),
+            });
+        }
+    }
+
+    private async ensureAnalyticsTable() {
+        if (this.analyticsTableReady) {
+            return;
+        }
+
+        await this.postgresService.query(`
+            CREATE TABLE IF NOT EXISTS search_step_runs (
+                id BIGSERIAL PRIMARY KEY,
+                correlation_id TEXT NOT NULL,
+                query TEXT NOT NULL,
+                started_at TIMESTAMPTZ NOT NULL,
+                completed_at TIMESTAMPTZ NOT NULL,
+                total_ms INTEGER NOT NULL,
+                result_count INTEGER NOT NULL,
+                steps JSONB NOT NULL,
+                error_message TEXT,
+                created_at TIMESTAMPTZ NOT NULL DEFAULT now()
+            )
+        `);
+
+        await this.postgresService.query(`
+            CREATE INDEX IF NOT EXISTS idx_search_step_runs_created_at
+            ON search_step_runs (created_at DESC)
+        `);
+
+        await this.postgresService.query(`
+            CREATE INDEX IF NOT EXISTS idx_search_step_runs_correlation_id
+            ON search_step_runs (correlation_id)
+        `);
+
+        this.analyticsTableReady = true;
+    }
+
+    private mapResults(results: Awaited<ReturnType<SearchProductsUseCase['execute']>>) {
         return results
             .map((item) => ({
                 id: item.product.id,
@@ -118,13 +236,13 @@ export class SearchController {
                 description: item.product.description,
                 category: item.product.category,
                 scores: {
-                    rrf: item.rrfScore,
-                    semantic: item.semanticScore,
-                    lexical: item.lexicalScore,
+                    rrf: item.rrfScore ?? 0,
+                    semantic: item.semanticScore ?? 0,
+                    lexical: item.lexicalScore ?? 0,
                 },
                 ranks: {
-                    semantic: item.semanticRank,
-                    lexical: item.lexicalRank,
+                    semantic: item.semanticRank ?? null,
+                    lexical: item.lexicalRank ?? null,
                 },
             }))
             .sort((left, right) => {

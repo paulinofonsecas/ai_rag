@@ -28,4 +28,23 @@ CREATE INDEX IF NOT EXISTS idx_products_search_vector
 CREATE INDEX IF NOT EXISTS idx_products_created_at
   ON products (created_at DESC);
 
+CREATE TABLE IF NOT EXISTS search_step_runs (
+  id BIGSERIAL PRIMARY KEY,
+  correlation_id TEXT NOT NULL,
+  query TEXT NOT NULL,
+  started_at TIMESTAMPTZ NOT NULL,
+  completed_at TIMESTAMPTZ NOT NULL,
+  total_ms INTEGER NOT NULL,
+  result_count INTEGER NOT NULL,
+  steps JSONB NOT NULL,
+  error_message TEXT,
+  created_at TIMESTAMPTZ NOT NULL DEFAULT now()
+);
+
+CREATE INDEX IF NOT EXISTS idx_search_step_runs_created_at
+  ON search_step_runs (created_at DESC);
+
+CREATE INDEX IF NOT EXISTS idx_search_step_runs_correlation_id
+  ON search_step_runs (correlation_id);
+
 COMMIT;

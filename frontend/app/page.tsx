@@ -204,69 +204,98 @@ export default function HomePage() {
                     {/* Busca Híbrida */}
                     <article className="rounded-3xl bg-mist p-5 shadow-soft md:p-6">
                         <h2 className="text-xl font-semibold text-ink">Busca Híbrida</h2>
+                        <p className="mt-1 text-sm text-slate-600">
+                            Digite o que voce procura. Se quiser, use uma sugestao pronta.
+                        </p>
                         <form className="mt-4 grid grid-cols-1 gap-3 md:grid-cols-2">
-                            <input
-                                required
-                                value={query}
-                                onChange={(event) => setQuery(event.target.value)}
-                                className="md:col-span-2 rounded-xl border border-slate-300 bg-white px-3 py-2 text-sm outline-none ring-sea/30 transition focus:ring"
-                                placeholder="Consulta"
-                            />
-
-                            <label className="flex flex-col gap-1 text-sm text-slate-600">
-                                Limit
+                            <label className="md:col-span-2 flex flex-col gap-1 text-sm text-slate-700">
+                                O que voce quer encontrar?
                                 <input
-                                    type="number"
-                                    min={1}
-                                    max={100}
-                                    value={limit}
-                                    onChange={(event) => setLimit(Number(event.target.value))}
-                                    className="rounded-xl border border-slate-300 bg-white px-3 py-2 text-sm outline-none ring-sea/30 transition focus:ring"
+                                    required
+                                    value={query}
+                                    onChange={(event) => setQuery(event.target.value)}
+                                    className="rounded-xl border border-slate-300 bg-white px-3 py-2 text-base outline-none ring-sea/30 transition focus:ring"
+                                    placeholder="Ex.: cafe premium, macarrao integral, molho de tomate"
                                 />
                             </label>
 
-                            <label className="flex flex-col gap-1 text-sm text-slate-600">
-                                Offset
-                                <input
-                                    type="number"
-                                    min={0}
-                                    value={offset}
-                                    onChange={(event) => setOffset(Number(event.target.value))}
-                                    className="rounded-xl border border-slate-300 bg-white px-3 py-2 text-sm outline-none ring-sea/30 transition focus:ring"
-                                />
-                            </label>
+                            <div className="md:col-span-2 flex flex-wrap gap-2">
+                                {['cafe premium', 'arroz integral', 'molho pimenta preta', 'chocolate 70%'].map(
+                                    (preset) => (
+                                        <button
+                                            key={preset}
+                                            type="button"
+                                            onClick={() => setQuery(preset)}
+                                            className="rounded-full border border-sea/30 bg-white px-3 py-1 text-xs font-medium text-sea transition hover:bg-sea/10"
+                                        >
+                                            {preset}
+                                        </button>
+                                    ),
+                                )}
+                            </div>
 
-                            <label className="flex flex-col gap-1 text-sm text-slate-600">
-                                RRF K
-                                <input
-                                    type="number"
-                                    min={1}
-                                    value={rrfK}
-                                    onChange={(event) => setRrfK(Number(event.target.value))}
-                                    className="rounded-xl border border-slate-300 bg-white px-3 py-2 text-sm outline-none ring-sea/30 transition focus:ring"
-                                />
-                            </label>
+                            <details className="md:col-span-2 rounded-xl border border-slate-200 bg-white/70 p-3">
+                                <summary className="cursor-pointer text-sm font-medium text-slate-700">
+                                    Configuracoes avancadas (opcional)
+                                </summary>
 
-                            <label className="flex flex-col gap-1 text-sm text-slate-600">
-                                Rerank Candidates
-                                <input
-                                    type="number"
-                                    min={1}
-                                    value={rerankCandidates}
-                                    onChange={(event) => setRerankCandidates(Number(event.target.value))}
-                                    className="rounded-xl border border-slate-300 bg-white px-3 py-2 text-sm outline-none ring-sea/30 transition focus:ring"
-                                />
-                            </label>
+                                <div className="mt-3 grid grid-cols-1 gap-3 md:grid-cols-2">
+                                    <label className="flex flex-col gap-1 text-sm text-slate-600">
+                                        Quantidade de resultados
+                                        <input
+                                            type="number"
+                                            min={1}
+                                            max={100}
+                                            value={limit}
+                                            onChange={(event) => setLimit(Number(event.target.value))}
+                                            className="rounded-xl border border-slate-300 bg-white px-3 py-2 text-sm outline-none ring-sea/30 transition focus:ring"
+                                        />
+                                    </label>
 
-                            <label className="md:col-span-2 flex items-center gap-2 text-sm font-medium text-slate-700">
-                                <input
-                                    type="checkbox"
-                                    checked={rerank}
-                                    onChange={(event) => setRerank(event.target.checked)}
-                                    className="h-4 w-4 rounded border-slate-300 text-sea focus:ring-sea"
-                                />
-                                Habilitar rerank com Gemini AI
-                            </label>
+                                    <label className="flex flex-col gap-1 text-sm text-slate-600">
+                                        Pular resultados (offset)
+                                        <input
+                                            type="number"
+                                            min={0}
+                                            value={offset}
+                                            onChange={(event) => setOffset(Number(event.target.value))}
+                                            className="rounded-xl border border-slate-300 bg-white px-3 py-2 text-sm outline-none ring-sea/30 transition focus:ring"
+                                        />
+                                    </label>
+
+                                    <label className="flex flex-col gap-1 text-sm text-slate-600">
+                                        Equilibrio RRF (padrao 60)
+                                        <input
+                                            type="number"
+                                            min={1}
+                                            value={rrfK}
+                                            onChange={(event) => setRrfK(Number(event.target.value))}
+                                            className="rounded-xl border border-slate-300 bg-white px-3 py-2 text-sm outline-none ring-sea/30 transition focus:ring"
+                                        />
+                                    </label>
+
+                                    <label className="flex flex-col gap-1 text-sm text-slate-600">
+                                        Itens para refinamento da IA
+                                        <input
+                                            type="number"
+                                            min={1}
+                                            value={rerankCandidates}
+                                            onChange={(event) => setRerankCandidates(Number(event.target.value))}
+                                            className="rounded-xl border border-slate-300 bg-white px-3 py-2 text-sm outline-none ring-sea/30 transition focus:ring"
+                                        />
+                                    </label>
+
+                                    <label className="md:col-span-2 flex items-center gap-2 text-sm font-medium text-slate-700">
+                                        <input
+                                            type="checkbox"
+                                            checked={rerank}
+                                            onChange={(event) => setRerank(event.target.checked)}
+                                            className="h-4 w-4 rounded border-slate-300 text-sea focus:ring-sea"
+                                        />
+                                        Usar IA para refinar a ordem dos resultados
+                                    </label>
+                                </div>
+                            </details>
 
                             <SearchProgressButton
                                 searchParams={searchParams}
@@ -275,6 +304,7 @@ export default function HomePage() {
                                     setSearchResult(result as unknown as SearchResponse);
                                 }}
                                 onError={(message: string) => setErrorMessage(message)}
+                                disabled={query.trim().length < 2}
                             />
                         </form>
                     </article>
