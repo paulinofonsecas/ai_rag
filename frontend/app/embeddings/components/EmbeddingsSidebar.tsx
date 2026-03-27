@@ -43,16 +43,7 @@ export function EmbeddingsSidebar({
             </div>
 
             <div className="mt-5 rounded-xl bg-slate-50 p-3 text-sm text-slate-700">
-                {selectedItem ? (
-                    <>
-                        <p className="font-semibold text-ink">{selectedItem.name}</p>
-                        <p className="mt-1 text-xs uppercase tracking-wide text-slate-500">{selectedItem.category}</p>
-                        <p className="mt-2 text-xs leading-relaxed text-slate-600">{selectedItem.description}</p>
-                        <p className="mt-2 break-all text-[11px] text-slate-500">ID: {selectedItem.id}</p>
-                    </>
-                ) : (
-                    <p className="text-xs text-slate-500">Clique em um ponto para ver detalhes do produto.</p>
-                )}
+                <p className="text-xs text-slate-500">Clique em um ponto para ver detalhes do produto.</p>
             </div>
         </aside>
     );

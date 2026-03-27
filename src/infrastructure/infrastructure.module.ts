@@ -12,6 +12,8 @@ import { HybridSearchRepositoryAdapter } from 'src/infrastructure/adapters/hybri
 import { PgVectorAdapter } from 'src/infrastructure/adapters/pgvector.adapter';
 import { PostgresFTSAdapter } from 'src/infrastructure/adapters/postgres-fts.adapter';
 import { ProductWriteAdapter } from 'src/infrastructure/adapters/product-write.adapter';
+import { ProductIngestionStatusRedisStream } from 'src/infrastructure/cache/product-ingestion-status.redis-stream';
+import { SearchHistoryRedisStore } from 'src/infrastructure/cache/search-history.redis-store';
 import { PostgresModule } from 'src/infrastructure/database/postgres.module';
 import {
     PRODUCT_INGESTION_QUEUE,
@@ -43,6 +45,8 @@ import { TOKENS } from 'src/infrastructure/tokens';
         ProductIngestionPublisher,
         EmbeddingAPIAdapter,
         GeminiRerankerAdapter,
+        SearchHistoryRedisStore,
+        ProductIngestionStatusRedisStream,
         RrfService,
         {
             provide: TOKENS.SearchRepository,
@@ -94,6 +98,8 @@ import { TOKENS } from 'src/infrastructure/tokens';
         TOKENS.EmbeddingService,
         TOKENS.SearchProductsUseCase,
         TOKENS.IngestProductUseCase,
+        SearchHistoryRedisStore,
+        ProductIngestionStatusRedisStream,
         PostgresModule,
         BullModule,
     ],

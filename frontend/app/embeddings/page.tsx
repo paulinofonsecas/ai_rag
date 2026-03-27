@@ -19,6 +19,42 @@ export default function EmbeddingsPage() {
     const [error, setError] = useState<string | null>(null);
 
     useEffect(() => {
+        const preventZoomWheel = (event: WheelEvent) => {
+            if (event.ctrlKey || event.metaKey) {
+                event.preventDefault();
+            }
+        };
+
+        const preventGesture = (event: Event) => {
+            event.preventDefault();
+        };
+
+        const preventZoomKeys = (event: KeyboardEvent) => {
+            if (!(event.ctrlKey || event.metaKey)) {
+                return;
+            }
+
+            if (event.key === '+' || event.key === '-' || event.key === '=' || event.key === '0') {
+                event.preventDefault();
+            }
+        };
+
+        document.addEventListener('wheel', preventZoomWheel, { passive: false });
+        document.addEventListener('gesturestart', preventGesture, { passive: false } as AddEventListenerOptions);
+        document.addEventListener('gesturechange', preventGesture, { passive: false } as AddEventListenerOptions);
+        document.addEventListener('gestureend', preventGesture, { passive: false } as AddEventListenerOptions);
+        document.addEventListener('keydown', preventZoomKeys);
+
+        return () => {
+            document.removeEventListener('wheel', preventZoomWheel);
+            document.removeEventListener('gesturestart', preventGesture as EventListener);
+            document.removeEventListener('gesturechange', preventGesture as EventListener);
+            document.removeEventListener('gestureend', preventGesture as EventListener);
+            document.removeEventListener('keydown', preventZoomKeys);
+        };
+    }, []);
+
+    useEffect(() => {
         let cancelled = false;
 
         async function loadEmbeddings() {

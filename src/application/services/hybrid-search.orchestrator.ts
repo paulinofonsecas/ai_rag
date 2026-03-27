@@ -90,6 +90,7 @@ export class HybridSearchOrchestrator {
                     semanticCount: semanticResults.length,
                     lexicalCount: lexicalResults.length,
                     fusedCount: fusedResults.length,
+                    preRerankResults: fusedResults.slice(0, Math.max(input.limit, input.rerankCandidates)),
                 },
             });
 

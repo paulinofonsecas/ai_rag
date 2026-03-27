@@ -1,5 +1,6 @@
 import { IngestProductUseCase } from 'src/application/use-cases/ingest-product.use-case';
 import { Product } from 'src/domain/entities/product.entity';
+import { ProductIngestionStatusRedisStream } from 'src/infrastructure/cache/product-ingestion-status.redis-stream';
 import { CreateProductDto } from 'src/presentation/dto/create-product.dto';
 
 import { ProductController } from './product.controller';
@@ -13,7 +14,14 @@ describe('ProductController', () => {
             execute: jest.fn().mockResolvedValue(product),
         } as unknown as jest.Mocked<IngestProductUseCase>;
 
-        const controller = new ProductController(useCase);
+        const statusStream: jest.Mocked<ProductIngestionStatusRedisStream> = {
+            publishStatus: jest.fn().mockResolvedValue(undefined),
+            getLatestStatus: jest.fn(),
+            subscribe: jest.fn(),
+            onModuleDestroy: jest.fn(),
+        } as unknown as jest.Mocked<ProductIngestionStatusRedisStream>;
+
+        const controller = new ProductController(useCase, statusStream);
 
         const body: CreateProductDto = {
             name: 'Mouse',
@@ -30,5 +38,6 @@ describe('ProductController', () => {
         });
         expect(output.id).toBe('p1');
         expect(output.status).toBe('queued_for_embedding');
+        expect(statusStream.publishStatus).toHaveBeenCalledTimes(1);
     });
 });

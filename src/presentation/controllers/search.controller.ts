@@ -15,14 +15,31 @@ import { Observable } from 'rxjs';
 import { OnStep, StepEvent } from 'src/application/services/hybrid-search.orchestrator';
 import { SearchProductsUseCase } from 'src/application/use-cases/search-products.use-case';
 import { SearchRepository } from 'src/domain/interfaces/search-repository.interface';
+import { SearchHistoryRedisStore } from 'src/infrastructure/cache/search-history.redis-store';
 import { PostgresService } from 'src/infrastructure/database/postgres.service';
 import { TOKENS } from 'src/infrastructure/tokens';
 import { SearchQueryDto } from 'src/presentation/dto/search-query.dto';
 
+type SearchItemDto = {
+    id: string;
+    name: string;
+    description: string;
+    category: string;
+    imageUrl: string | null;
+    scores: {
+        rrf: number;
+        semantic: number;
+        lexical: number;
+    };
+    ranks: {
+        semantic: number | null;
+        lexical: number | null;
+    };
+};
+
 @Controller('search')
 export class SearchController {
     private readonly logger = new Logger(SearchController.name);
-    private analyticsTableReady = false;
 
     constructor(
         @Inject(TOKENS.SearchProductsUseCase)
@@ -30,6 +47,7 @@ export class SearchController {
         @Inject(TOKENS.SearchRepository)
         private readonly searchRepository: SearchRepository,
         private readonly postgresService: PostgresService,
+        private readonly searchHistoryStore: SearchHistoryRedisStore,
     ) { }
 
     @Get()
@@ -81,13 +99,23 @@ export class SearchController {
             const startedAt = new Date();
             const steps: Array<StepEvent & { at: string }> = [];
             const correlation = correlationId ?? 'n/a';
+            let vectorItems: SearchItemDto[] = [];
 
             const onStep: OnStep = (event) => {
+                if (event.step === 'vector_search' && event.status === 'completed') {
+                    const preRerankResults = event.meta?.preRerankResults;
+                    if (Array.isArray(preRerankResults)) {
+                        vectorItems = this.mapResults(preRerankResults as Awaited<ReturnType<SearchProductsUseCase['execute']>>);
+                    }
+                }
+
+                const compactMeta = this.stripPreRerankMeta(event.meta);
                 steps.push({
                     ...event,
+                    meta: compactMeta,
                     at: new Date().toISOString(),
                 });
-                subscriber.next({ data: event });
+                subscriber.next({ data: { ...event, meta: compactMeta } });
             };
 
             this.useCase
@@ -121,6 +149,7 @@ export class SearchController {
                             query: query.q,
                             count: items.length,
                             items,
+                            vectorItems,
                         },
                     });
                     subscriber.complete();
@@ -160,32 +189,16 @@ export class SearchController {
         const totalMs = input.completedAt.getTime() - input.startedAt.getTime();
 
         try {
-            await this.ensureAnalyticsTable();
-            await this.postgresService.query(
-                `
-                    INSERT INTO search_step_runs (
-                        correlation_id,
-                        query,
-                        started_at,
-                        completed_at,
-                        total_ms,
-                        result_count,
-                        steps,
-                        error_message
-                    )
-                    VALUES ($1, $2, $3, $4, $5, $6, $7::jsonb, $8)
-                `,
-                [
-                    input.correlationId,
-                    input.query,
-                    input.startedAt,
-                    input.completedAt,
-                    totalMs,
-                    input.resultCount,
-                    JSON.stringify(input.steps),
-                    input.errorMessage ?? null,
-                ],
-            );
+            await this.searchHistoryStore.appendRun({
+                correlationId: input.correlationId,
+                query: input.query,
+                startedAt: input.startedAt.toISOString(),
+                completedAt: input.completedAt.toISOString(),
+                totalMs,
+                resultCount: input.resultCount,
+                steps: input.steps,
+                errorMessage: input.errorMessage,
+            });
         } catch (error) {
             this.logger.error({
                 msg: 'search.stream.persist_failed',
@@ -195,40 +208,7 @@ export class SearchController {
         }
     }
 
-    private async ensureAnalyticsTable() {
-        if (this.analyticsTableReady) {
-            return;
-        }
-
-        await this.postgresService.query(`
-            CREATE TABLE IF NOT EXISTS search_step_runs (
-                id BIGSERIAL PRIMARY KEY,
-                correlation_id TEXT NOT NULL,
-                query TEXT NOT NULL,
-                started_at TIMESTAMPTZ NOT NULL,
-                completed_at TIMESTAMPTZ NOT NULL,
-                total_ms INTEGER NOT NULL,
-                result_count INTEGER NOT NULL,
-                steps JSONB NOT NULL,
-                error_message TEXT,
-                created_at TIMESTAMPTZ NOT NULL DEFAULT now()
-            )
-        `);
-
-        await this.postgresService.query(`
-            CREATE INDEX IF NOT EXISTS idx_search_step_runs_created_at
-            ON search_step_runs (created_at DESC)
-        `);
-
-        await this.postgresService.query(`
-            CREATE INDEX IF NOT EXISTS idx_search_step_runs_correlation_id
-            ON search_step_runs (correlation_id)
-        `);
-
-        this.analyticsTableReady = true;
-    }
-
-    private mapResults(results: Awaited<ReturnType<SearchProductsUseCase['execute']>>) {
+    private mapResults(results: Awaited<ReturnType<SearchProductsUseCase['execute']>>): SearchItemDto[] {
         return results
             .map((item) => ({
                 id: item.product.id,
@@ -245,18 +225,16 @@ export class SearchController {
                     semantic: item.semanticRank ?? null,
                     lexical: item.lexicalRank ?? null,
                 },
-            }))
-            .sort((left, right) => {
-                const leftSemantic = left.ranks.semantic ?? Number.MAX_SAFE_INTEGER;
-                const rightSemantic = right.ranks.semantic ?? Number.MAX_SAFE_INTEGER;
-                if (leftSemantic !== rightSemantic) return leftSemantic - rightSemantic;
+            }));
+    }
 
-                const leftLexical = left.ranks.lexical ?? Number.MAX_SAFE_INTEGER;
-                const rightLexical = right.ranks.lexical ?? Number.MAX_SAFE_INTEGER;
-                if (leftLexical !== rightLexical) return leftLexical - rightLexical;
+    private stripPreRerankMeta(meta?: Record<string, unknown>): Record<string, unknown> | undefined {
+        if (!meta) {
+            return undefined;
+        }
 
-                return left.id.localeCompare(right.id);
-            });
+        const { preRerankResults: _ignored, ...rest } = meta;
+        return rest;
     }
 
     @Get('export-embeddings')

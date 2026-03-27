@@ -115,11 +115,16 @@ services:
     build:
       context: ./frontend
       dockerfile: Dockerfile
+      target: development
     container_name: hybrid-frontend
     environment:
       NODE_ENV: development
       NEXT_TELEMETRY_DISABLED: 1
       BACKEND_INTERNAL_URL: http://api:3000
+      CHOKIDAR_USEPOLLING: 'true'
+      CHOKIDAR_INTERVAL: '1000'
+      WATCHPACK_POLLING: 'true'
+      WATCHPACK_POLLING_INTERVAL: '1000'
     ports:
       - '3001:3000'
     volumes:
@@ -128,7 +133,25 @@ services:
     depends_on:
       api:
         condition: service_started
-    command: ['npm', 'run', 'dev']
+    command: ['npm', 'run', 'dev:watch']
+
+  frontend-production:
+    profiles: ['production']
+    build:
+      context: ./frontend
+      dockerfile: Dockerfile
+      target: production
+    container_name: hybrid-frontend-production
+    environment:
+      NODE_ENV: production
+      NEXT_TELEMETRY_DISABLED: 1
+      BACKEND_INTERNAL_URL: http://api:3000
+    ports:
+      - '3011:3000'
+    depends_on:
+      api:
+        condition: service_started
+    command: ['npm', 'run', 'start']
 
 volumes:
   postgres_data:

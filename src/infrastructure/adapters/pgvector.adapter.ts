@@ -10,6 +10,7 @@ type VectorSearchRow = {
     name: string;
     description: string;
     category: string;
+    image_url: string | null;
     embedding: number[] | null;
     created_at: Date;
     updated_at: Date;
@@ -31,6 +32,7 @@ export class PgVectorAdapter implements VectorSearchPort {
         p.name,
         p.description,
         p.category,
+        p.image_url,
         p.embedding,
         p.created_at,
         p.updated_at,

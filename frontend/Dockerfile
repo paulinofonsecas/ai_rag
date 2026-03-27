@@ -1,4 +1,4 @@
-FROM node:20-alpine
+FROM node:20-alpine AS base
 
 WORKDIR /app
 
@@ -19,8 +19,19 @@ RUN npm config set fetch-retries 5 \
       sleep 5; \
     done
 
+FROM base AS development
+
 COPY . .
 
 EXPOSE 3000
 
-CMD ["npm", "run", "dev"]
+CMD ["npm", "run", "dev:watch"]
+
+FROM base AS production
+
+COPY . .
+RUN npm run build
+
+EXPOSE 3000
+
+CMD ["npm", "run", "start"]

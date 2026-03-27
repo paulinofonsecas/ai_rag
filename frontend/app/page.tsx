@@ -1,7 +1,7 @@
 'use client';
 
 import Link from 'next/link';
-import { FormEvent, useMemo, useState } from 'react';
+import { FormEvent, useEffect, useMemo, useState } from 'react';
 
 import SearchProgressButton, { SearchResult } from './components/SearchProgressButton';
 
@@ -38,12 +38,80 @@ type SearchResponse = {
     items: SearchItem[];
 };
 
+type IngestionStatus = 'queued' | 'processing' | 'completed' | 'failed';
+
+type IngestionStatusEvent = {
+    type: 'status';
+    productId: string;
+    status: IngestionStatus;
+    at: string;
+    message?: string;
+};
+
 function formatMaybeNumber(value: number | null | undefined): string {
     if (value === null || value === undefined) {
         return '-';
     }
 
     return Number.isInteger(value) ? String(value) : value.toFixed(4);
+}
+
+function getCategoryBadgeStyle(category: string) {
+    let hash = 0;
+
+    for (let index = 0; index < category.length; index += 1) {
+        hash = category.charCodeAt(index) + ((hash << 5) - hash);
+    }
+
+    const hue = Math.abs(hash) % 360;
+
+    return {
+        backgroundColor: `hsla(${hue}, 85%, 92%, 0.95)`,
+        color: `hsl(${hue}, 55%, 28%)`,
+        borderColor: `hsla(${hue}, 70%, 55%, 0.35)`,
+    };
+}
+
+function ProductImage({
+    imageUrl,
+    name,
+    className,
+}: {
+    imageUrl: string | null;
+    name: string;
+    className?: string;
+}) {
+    const [failed, setFailed] = useState(false);
+    const [loaded, setLoaded] = useState(false);
+    const hasImage = Boolean(imageUrl) && !failed;
+
+    useEffect(() => {
+        setFailed(false);
+        setLoaded(false);
+    }, [imageUrl]);
+
+    return (
+        <div className={`relative bg-slate-100 overflow-hidden ${className ?? 'h-40'}`}>
+            {hasImage && !loaded ? (
+                <div className="absolute inset-0 animate-pulse bg-gradient-to-r from-slate-200 via-slate-100 to-slate-200" />
+            ) : null}
+
+            {hasImage ? (
+                <img
+                    src={imageUrl ?? ''}
+                    alt={name}
+                    className={`w-full h-full object-cover transition-opacity duration-300 ${loaded ? 'opacity-100' : 'opacity-0'}`}
+                    loading="lazy"
+                    onLoad={() => setLoaded(true)}
+                    onError={() => setFailed(true)}
+                />
+            ) : (
+                <div className="flex h-full w-full items-center justify-center text-xs font-medium text-slate-500">
+                    Sem imagem disponivel
+                </div>
+            )}
+        </div>
+    );
 }
 
 export default function HomePage() {
@@ -54,6 +122,7 @@ export default function HomePage() {
     });
     const [createdProduct, setCreatedProduct] = useState<CreatedProduct | null>(null);
     const [ingestBusy, setIngestBusy] = useState(false);
+    const [ingestionStatus, setIngestionStatus] = useState<IngestionStatusEvent | null>(null);
 
     const [query, setQuery] = useState('');
     const [limit, setLimit] = useState(10);
@@ -116,6 +185,13 @@ export default function HomePage() {
 
             const data = (await response.json()) as CreatedProduct;
             setCreatedProduct(data);
+            setIngestionStatus({
+                type: 'status',
+                productId: data.id,
+                status: 'queued',
+                at: new Date().toISOString(),
+                message: 'Produto enfileirado para gerar embedding.',
+            });
             setIngestForm({ name: '', description: '', category: '' });
         } catch (error) {
             const message = error instanceof Error ? error.message : 'Erro inesperado na ingestao.';
@@ -174,6 +250,56 @@ export default function HomePage() {
         setSearchSubmitSignal((current) => current + 1);
     }
 
+    function handleClearQuery() {
+        setQuery('');
+        setSearchResult(null);
+        setErrorMessage(null);
+    }
+
+    useEffect(() => {
+        if (!createdProduct?.id) {
+            return;
+        }
+
+        const stream = new EventSource(`/api/products/${createdProduct.id}/stream`);
+
+        stream.onmessage = (event: MessageEvent<string>) => {
+            try {
+                const data = JSON.parse(event.data) as IngestionStatusEvent;
+                if (data.type === 'status') {
+                    setIngestionStatus(data);
+                    if (data.status === 'completed' || data.status === 'failed') {
+                        stream.close();
+                    }
+                }
+            } catch {
+                // Ignore malformed SSE payloads.
+            }
+        };
+
+        stream.onerror = () => {
+            stream.close();
+        };
+
+        return () => {
+            stream.close();
+        };
+    }, [createdProduct?.id]);
+
+    const ingestStatusStyle = useMemo(() => {
+        const status = ingestionStatus?.status;
+        if (status === 'completed') {
+            return 'border-emerald-200 bg-emerald-50 text-emerald-700';
+        }
+        if (status === 'failed') {
+            return 'border-red-200 bg-red-50 text-red-700';
+        }
+        if (status === 'processing') {
+            return 'border-amber-200 bg-amber-50 text-amber-800';
+        }
+        return 'border-sky-200 bg-sky-50 text-sky-700';
+    }, [ingestionStatus?.status]);
+
     return (
         <main className="mx-auto w-full max-w-7xl p-4 md:p-8">
             {errorMessage ? (
@@ -221,18 +347,28 @@ export default function HomePage() {
                         <form onSubmit={handleSearchSubmit} className="mt-4 grid grid-cols-1 gap-3 md:grid-cols-2">
                             <label className="md:col-span-2 flex flex-col gap-1 text-sm text-slate-700">
                                 O que voce quer encontrar?
-                                <input
-                                    required
-                                    value={query}
-                                    onChange={(event) => setQuery(event.target.value)}
-                                    className="rounded-xl border border-slate-300 bg-white px-3 py-2 text-base outline-none ring-sea/30 transition focus:ring"
-                                    placeholder="Preciso de um cafe premium para acompanhar meu bolo de chocolate"
-                                />
+                                <div className="flex items-center gap-2">
+                                    <input
+                                        required
+                                        value={query}
+                                        onChange={(event) => setQuery(event.target.value)}
+                                        className="min-w-0 flex-1 rounded-xl border border-slate-300 bg-white px-3 py-2 text-base outline-none ring-sea/30 transition focus:ring"
+                                        placeholder="Preciso de um cafe premium para acompanhar meu bolo de chocolate"
+                                    />
+                                    <button
+                                        type="button"
+                                        onClick={handleClearQuery}
+                                        disabled={query.length === 0 && !searchResult && !errorMessage}
+                                        className="shrink-0 rounded-xl border border-slate-300 bg-white px-3 py-2 text-sm font-semibold text-slate-700 transition hover:bg-slate-50 disabled:cursor-not-allowed disabled:opacity-50"
+                                    >
+                                        Limpar
+                                    </button>
+                                </div>
                             </label>
 
                             <details className="md:col-span-2 rounded-xl border border-slate-200 bg-white/70 p-3">
                                 <summary className="cursor-pointer text-sm font-medium text-slate-700">
-                                    Configuracoes avancadas (opcional)
+                                    Configuracoes avancadas  (opcional)
                                 </summary>
 
                                 <div className="mt-3 grid grid-cols-1 gap-3 md:grid-cols-2">
@@ -307,7 +443,7 @@ export default function HomePage() {
                     </article>
 
                     {/* Cadastro de Produto */}
-                    {/* <article className="rounded-3xl bg-sand p-5 shadow-soft md:p-6">
+                    <article className="rounded-3xl bg-sand p-5 shadow-soft md:p-6">
                         <h2 className="text-xl font-semibold text-ink">Cadastro de Produto</h2>
                         <p className="mt-1 text-sm text-slate-600">
                             O produto é enfileirado para geração de embedding via pipeline assíncrono.
@@ -352,10 +488,18 @@ export default function HomePage() {
                                 <p className="font-semibold text-ink">Produto enviado para pipeline de embedding.</p>
                                 <p className="mt-1 break-all">ID: {createdProduct.id}</p>
                                 <p>Status: {createdProduct.status}</p>
+                                {ingestionStatus ? (
+                                    <div className={`mt-3 rounded-lg border px-3 py-2 text-xs font-medium ${ingestStatusStyle}`}>
+                                        <p>
+                                            Estado: <span className="font-semibold uppercase">{ingestionStatus.status}</span>
+                                        </p>
+                                        <p className="mt-1">{ingestionStatus.message ?? 'Aguardando atualizações...'}</p>
+                                    </div>
+                                ) : null}
                             </div>
                         ) : null}
 
-                    </article> */}
+                    </article>
                 </div>
 
                 {/* ── COLUNA DIREITA — Resultados ── */}
@@ -385,59 +529,64 @@ export default function HomePage() {
                         ) : (
                             <div className="mt-4 max-h-[calc(100vh-10rem)] overflow-y-auto space-y-3 pr-1">
                                 {searchResult?.items.map((item, index) => (
-                                    <article
-                                        key={item.id}
-                                        className="rounded-2xl border border-slate-200 bg-white overflow-hidden hover:shadow-md transition-shadow"
-                                    >
-                                        {/* Imagem do Produto */}
-                                        <div className="relative bg-slate-100 h-40 overflow-hidden">
-                                            {item.imageUrl ? (
-                                                <img
-                                                    src={item.imageUrl}
-                                                    alt={item.name}
-                                                    className="w-full h-full object-cover"
-                                                    onError={(e) => {
-                                                        const img = e.target as HTMLImageElement;
-                                                        img.style.display = 'none';
-                                                    }}
-                                                />
-                                            ) : null}
-                                            <div className="absolute top-2 left-2 bg-sea/90 text-white px-2 py-1 rounded-lg text-xs font-semibold">
-                                                #{index + 1}
-                                            </div>
-                                            <div className="absolute top-2 right-2 bg-slate-900/70 text-white px-2 py-1 rounded-lg text-xs font-semibold">
-                                                {item.category}
-                                            </div>
-                                        </div>
+                                    (() => {
+                                        const categoryBadgeStyle = getCategoryBadgeStyle(item.category);
 
-                                        {/* Conteúdo */}
-                                        <div className="p-4">
-                                            <h3 className="text-sm font-semibold text-ink line-clamp-2">
-                                                {item.name}
-                                            </h3>
-                                            <p className="mt-2 text-xs text-slate-600 line-clamp-3">
-                                                {item.description}
-                                            </p>
-
-                                            {/* Scores */}
-                                            <div className="mt-3 pt-3 border-t border-slate-100">
-                                                <div className="flex flex-wrap gap-1.5">
-                                                    <span className="inline-flex items-center gap-1 rounded-lg bg-sea/10 px-2 py-1 text-xs text-sea font-medium">
-                                                        RRF: {formatMaybeNumber(item.scores.rrf)}
-                                                    </span>
-                                                    <span className="inline-flex items-center gap-1 rounded-lg bg-amber-100 px-2 py-1 text-xs text-amber-900 font-medium">
-                                                        Sem: {formatMaybeNumber(item.scores.semantic)}
-                                                    </span>
-                                                    <span className="inline-flex items-center gap-1 rounded-lg bg-emerald-100 px-2 py-1 text-xs text-emerald-900 font-medium">
-                                                        Lex: {formatMaybeNumber(item.scores.lexical)}
-                                                    </span>
+                                        return (
+                                            <article
+                                                key={item.id}
+                                                className="rounded-2xl border border-slate-200 bg-white overflow-hidden hover:shadow-md transition-shadow flex items-start"
+                                            >
+                                                {/* Imagem do Produto */}
+                                                <div className="relative w-[30%] min-w-[120px] border-r border-slate-100 shrink-0">
+                                                    <ProductImage
+                                                        imageUrl={item.imageUrl}
+                                                        name={item.name}
+                                                        className="h-[180px] md:h-[220px]"
+                                                    />
+                                                    <div className="absolute top-2 left-2 bg-sea/90 text-white px-2 py-1 rounded-lg text-xs font-semibold">
+                                                        #{index + 1}
+                                                    </div>
                                                 </div>
-                                                <p className="mt-2 text-xs text-slate-500 break-all font-mono">
-                                                    ID: {item.id}
-                                                </p>
-                                            </div>
-                                        </div>
-                                    </article>
+
+                                                {/* Conteúdo */}
+                                                <div className="p-4 flex-1">
+                                                    <div className="flex items-start justify-between gap-3">
+                                                        <h3 className="text-sm font-semibold text-ink line-clamp-2">
+                                                            {item.name}
+                                                        </h3>
+                                                        <span
+                                                            className="shrink-0 rounded-full border px-2.5 py-1 text-[11px] font-semibold leading-none"
+                                                            style={categoryBadgeStyle}
+                                                        >
+                                                            {item.category}
+                                                        </span>
+                                                    </div>
+                                                    <p className="mt-2 text-xs text-slate-600 line-clamp-3">
+                                                        {item.description}
+                                                    </p>
+
+                                                    {/* Scores */}
+                                                    <div className="mt-3 pt-3 border-t border-slate-100">
+                                                        <div className="flex flex-wrap gap-1.5">
+                                                            <span className="inline-flex items-center gap-1 rounded-lg bg-sea/10 px-2 py-1 text-xs text-sea font-medium">
+                                                                RRF: {formatMaybeNumber(item.scores.rrf)}
+                                                            </span>
+                                                            <span className="inline-flex items-center gap-1 rounded-lg bg-amber-100 px-2 py-1 text-xs text-amber-900 font-medium">
+                                                                Sem: {formatMaybeNumber(item.scores.semantic)}
+                                                            </span>
+                                                            <span className="inline-flex items-center gap-1 rounded-lg bg-emerald-100 px-2 py-1 text-xs text-emerald-900 font-medium">
+                                                                Lex: {formatMaybeNumber(item.scores.lexical)}
+                                                            </span>
+                                                        </div>
+                                                        <p className="mt-2 text-xs text-slate-500 break-all font-mono">
+                                                            ID: {item.id}
+                                                        </p>
+                                                    </div>
+                                                </div>
+                                            </article>
+                                        );
+                                    })()
                                 ))}
                             </div>
                         )}

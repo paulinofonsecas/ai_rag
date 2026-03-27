@@ -40,6 +40,14 @@ Quick links:
 2. `docker compose up --build`
 3. Open frontend at `http://localhost:3001`
 
+### Frontend Runtime Modes (Docker)
+
+- Default startup is always development with watch/HMR:
+  - `docker compose up --build frontend`
+- Production profile is prepared and can be enabled when needed:
+  - `docker compose --profile production up --build frontend-production`
+  - Frontend production URL: `http://localhost:3011`
+
 ## Frontend (Next.js)
 
 - Location: `frontend/`

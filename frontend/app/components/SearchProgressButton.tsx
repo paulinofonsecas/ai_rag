@@ -26,7 +26,8 @@ type SseDoneEvent = {
     type: 'done';
     query: string;
     count: number;
-    items: unknown[];
+    items: SearchResultItem[];
+    vectorItems?: SearchResultItem[];
 };
 
 type SseErrorEvent = {
@@ -39,7 +40,22 @@ type SseEvent = SseStepEvent | SseDoneEvent | SseErrorEvent;
 export type SearchResult = {
     query: string;
     count: number;
-    items: unknown[];
+    items: SearchResultItem[];
+};
+
+type SearchResultItem = {
+    id: string;
+    name: string;
+    category: string;
+    scores: {
+        rrf: number;
+        semantic: number | null;
+        lexical: number | null;
+    };
+    ranks: {
+        semantic: number | null;
+        lexical: number | null;
+    };
 };
 
 type LastRunSummary = {
@@ -47,6 +63,8 @@ type LastRunSummary = {
     count: number;
     totalMs: number;
     steps: StepState[];
+    vectorItems: SearchResultItem[];
+    rerankedItems: SearchResultItem[];
 };
 
 // ── Config ─────────────────────────────────────────────────────────────────────
@@ -74,6 +92,7 @@ export default function SearchProgressButton({ searchParams, submitSignal, onCom
     const [steps, setSteps] = useState<StepState[]>(INITIAL_STEPS);
     const [totalMs, setTotalMs] = useState<number>(0);
     const [lastRun, setLastRun] = useState<LastRunSummary | null>(null);
+    const [selectedStepId, setSelectedStepId] = useState<StepId | null>(null);
 
     const startedAtRef = useRef<number>(0);
     const esRef = useRef<EventSource | null>(null);
@@ -95,6 +114,7 @@ export default function SearchProgressButton({ searchParams, submitSignal, onCom
         const resetSteps = INITIAL_STEPS.map((s) => ({ ...s }));
         setSteps(resetSteps);
         stepsRef.current = resetSteps;
+        setSelectedStepId(null);
         setPhase('running');
         startedAtRef.current = Date.now();
 
@@ -128,6 +148,8 @@ export default function SearchProgressButton({ searchParams, submitSignal, onCom
                     count: data.count,
                     totalMs: elapsed,
                     steps: stepsRef.current.map((step) => ({ ...step })),
+                    vectorItems: data.vectorItems ?? data.items,
+                    rerankedItems: data.items,
                 });
                 setPhase('done');
                 es.close();
@@ -189,12 +211,32 @@ export default function SearchProgressButton({ searchParams, submitSignal, onCom
 
                         <ul className="divide-y divide-slate-100">
                             {lastRun.steps.map((step) => (
-                                <li key={step.id} className="flex items-center justify-between px-4 py-2.5 gap-3">
-                                    <div className="flex items-center gap-2.5 min-w-0">
-                                        <StepIcon status={step.status} />
-                                        <span className="text-sm text-slate-700 truncate">{step.label}</span>
-                                    </div>
-                                    <StepDuration step={step} />
+                                <li key={step.id}>
+                                    <button
+                                        type="button"
+                                        onClick={() => setSelectedStepId((current) => (current === step.id ? null : step.id))}
+                                        aria-expanded={selectedStepId === step.id}
+                                        className="flex w-full items-center justify-between px-4 py-2.5 gap-3 text-left transition hover:bg-slate-50"
+                                    >
+                                        <div className="flex items-center gap-2.5 min-w-0">
+                                            <StepIcon status={step.status} />
+                                            <span className="text-sm text-slate-700 truncate">{step.label}</span>
+                                        </div>
+                                        <div className="flex items-center gap-2">
+                                            <StepDuration step={step} />
+                                            <span className="text-xs text-slate-400" aria-hidden="true">
+                                                {selectedStepId === step.id ? '▾' : '▸'}
+                                            </span>
+                                        </div>
+                                    </button>
+
+                                    {selectedStepId === step.id ? (
+                                        <StepItemsPanel
+                                            step={step}
+                                            vectorItems={lastRun.vectorItems}
+                                            rerankedItems={lastRun.rerankedItems}
+                                        />
+                                    ) : null}
                                 </li>
                             ))}
                         </ul>
@@ -280,6 +322,131 @@ function StepDuration({ step }: { step: StepState }) {
         return <span className="text-xs text-slate-300 shrink-0">—</span>;
     }
     return null;
+}
+
+function StepItemsPanel({
+    step,
+    vectorItems,
+    rerankedItems,
+}: {
+    step: StepState;
+    vectorItems: SearchResultItem[];
+    rerankedItems: SearchResultItem[];
+}) {
+    const pageSize = 5;
+    const [page, setPage] = useState(1);
+
+    useEffect(() => {
+        setPage(1);
+    }, [step.id, vectorItems.length, rerankedItems.length]);
+
+    if (step.id === 'embedding') {
+        return (
+            <div className="border-t border-slate-100 bg-slate-50 px-4 py-3 text-xs text-slate-600">
+                Esta etapa prepara o vetor da consulta e nao retorna itens diretamente.
+            </div>
+        );
+    }
+
+    const stageItems = getItemsForStep(step.id, vectorItems, rerankedItems);
+    const totalPages = Math.max(1, Math.ceil(stageItems.length / pageSize));
+    const currentPage = Math.min(page, totalPages);
+    const startIndex = (currentPage - 1) * pageSize;
+    const visibleItems = stageItems.slice(startIndex, startIndex + pageSize);
+
+    if (stageItems.length === 0) {
+        return (
+            <div className="border-t border-slate-100 bg-slate-50 px-4 py-3 text-xs text-slate-500">
+                Nenhum item disponivel para esta etapa.
+            </div>
+        );
+    }
+
+    return (
+        <div className="border-t border-slate-100 bg-slate-50 px-4 py-3">
+            <div className="mb-2 flex items-center justify-between gap-2">
+                <div className="text-xs font-semibold uppercase tracking-wide text-slate-500">
+                    {stageItems.length} itens
+                </div>
+                {totalPages > 1 ? (
+                    <div className="flex items-center gap-2">
+                        <button
+                            type="button"
+                            onClick={() => setPage((prev) => Math.max(1, prev - 1))}
+                            disabled={currentPage === 1}
+                            className="rounded border border-slate-300 px-2 py-0.5 text-[11px] font-semibold text-slate-700 disabled:cursor-not-allowed disabled:opacity-40"
+                        >
+                            Anterior
+                        </button>
+                        <span className="text-[11px] text-slate-500">{currentPage}/{totalPages}</span>
+                        <button
+                            type="button"
+                            onClick={() => setPage((prev) => Math.min(totalPages, prev + 1))}
+                            disabled={currentPage === totalPages}
+                            className="rounded border border-sea/30 bg-sea/10 px-2 py-0.5 text-[11px] font-semibold text-sea disabled:cursor-not-allowed disabled:opacity-40"
+                        >
+                            Proxima
+                        </button>
+                    </div>
+                ) : null}
+            </div>
+            <ul className="space-y-1.5">
+                {visibleItems.map((item, index) => (
+                    <li key={item.id} className="rounded-lg border border-slate-200 bg-white px-2.5 py-2">
+                        <div className="text-xs font-medium text-ink truncate">
+                            #{startIndex + index + 1} {item.name}
+                        </div>
+                        <div className="mt-1 flex flex-wrap items-center gap-1.5 text-[11px] text-slate-500">
+                            <span className="rounded bg-slate-100 px-1.5 py-0.5">{item.category}</span>
+                            {step.id === 'vector_search' ? (
+                                <>
+                                    <span className="rounded bg-sea/10 px-1.5 py-0.5 text-sea">
+                                        rank semantico: {item.ranks.semantic ?? '-'}
+                                    </span>
+                                    <span className="rounded bg-amber-100 px-1.5 py-0.5 text-amber-900">
+                                        score semantico: {formatScore(item.scores.semantic)}
+                                    </span>
+                                </>
+                            ) : (
+                                <span className="rounded bg-emerald-100 px-1.5 py-0.5 text-emerald-900">
+                                    score RRF: {formatScore(item.scores.rrf)}
+                                </span>
+                            )}
+                        </div>
+                    </li>
+                ))}
+            </ul>
+            {totalPages > 1 ? (
+                <div className="mt-2 text-[11px] text-slate-500">
+                    Mostrando {startIndex + 1}-{Math.min(startIndex + pageSize, stageItems.length)} de {stageItems.length}.
+                </div>
+            ) : null}
+        </div>
+    );
+}
+
+function getItemsForStep(
+    stepId: StepId,
+    vectorItems: SearchResultItem[],
+    rerankedItems: SearchResultItem[],
+): SearchResultItem[] {
+    if (stepId === 'vector_search') {
+        return [...vectorItems];
+    }
+
+    if (stepId === 'rerank') {
+        return [...rerankedItems];
+    }
+
+    return [];
+}
+
+function formatScore(score: number | null | undefined) {
+    if (score === null || score === undefined) {
+        return '-';
+    }
+
+    return Number.isInteger(score) ? String(score) : score.toFixed(4);
 }
 
 function Elapsed({ startedAt }: { startedAt: number }) {

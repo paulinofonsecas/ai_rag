@@ -1,5 +1,7 @@
 import { Logger } from '@nestjs/common';
 import { NestFactory } from '@nestjs/core';
+import { promises as fs } from 'fs';
+import * as path from 'path';
 
 import { PostgresService } from 'src/infrastructure/database/postgres.service';
 import { PlaygroundModule } from 'src/playground/playground.module';
@@ -11,7 +13,16 @@ type SeedArgs = {
 
 type ProductRow = {
     id: string;
+    name: string;
+    category: string;
     image_url: string | null;
+};
+
+type SourceRecord = {
+    title?: unknown;
+    featured_image?: {
+        source?: unknown;
+    };
 };
 
 function parseArgs(argv: string[]): SeedArgs {
@@ -49,9 +60,52 @@ function clampNumber(raw: string | undefined, fallback: number, min: number, max
     return Math.min(max, Math.max(min, Math.floor(parsed)));
 }
 
-function buildImageUrl(id: string): string {
-    // deterministic URL, stable for each product id
-    return `https://picsum.photos/seed/product-${id}/640/640`;
+function normalizeText(value: string): string {
+    return value.trim().toLowerCase().replace(/\s+/g, ' ');
+}
+
+function normalizeCategoryFromFile(fileName: string): string {
+    return fileName.replace(/\.json$/i, '').trim().toLowerCase();
+}
+
+function sourceKey(name: string, category: string): string {
+    return `${normalizeText(name)}::${normalizeText(category)}`;
+}
+
+async function loadImageSources(dataDir: string) {
+    const entries = await fs.readdir(dataDir, { withFileTypes: true });
+    const jsonFiles = entries
+        .filter((entry) => entry.isFile() && entry.name.toLowerCase().endsWith('.json'))
+        .map((entry) => entry.name)
+        .sort((left, right) => left.localeCompare(right));
+
+    const sourceByKey = new Map<string, string>();
+
+    for (const fileName of jsonFiles) {
+        const category = normalizeCategoryFromFile(fileName);
+        const fullPath = path.join(dataDir, fileName);
+        const raw = await fs.readFile(fullPath, 'utf8');
+        const parsed = JSON.parse(raw);
+
+        if (!Array.isArray(parsed)) {
+            continue;
+        }
+
+        for (const record of parsed as SourceRecord[]) {
+            const title = typeof record.title === 'string' ? record.title.trim() : '';
+            const source = typeof record.featured_image?.source === 'string'
+                ? record.featured_image.source.trim()
+                : '';
+
+            if (!title || !source) {
+                continue;
+            }
+
+            sourceByKey.set(sourceKey(title, category), source);
+        }
+    }
+
+    return sourceByKey;
 }
 
 async function ensureSchema(db: PostgresService) {
@@ -70,6 +124,8 @@ async function run() {
     try {
         const args = parseArgs(process.argv.slice(2));
         const db = app.get(PostgresService, { strict: false });
+        const dataDir = path.join(__dirname, 'dados');
+        const sourceByKey = await loadImageSources(dataDir);
 
         await ensureSchema(db);
 
@@ -77,17 +133,18 @@ async function run() {
             msg: 'seed.products-image.started',
             batchSize: args.batchSize,
             force: args.force,
+            sourceCount: sourceByKey.size,
         });
 
         const query = args.force
             ? `
-                SELECT id, image_url
+                SELECT id, name, category, image_url
                 FROM products
                 ORDER BY created_at DESC
                 LIMIT $1
               `
             : `
-                SELECT id, image_url
+                SELECT id, name, category, image_url
                 FROM products
                 WHERE image_url IS NULL OR btrim(image_url) = ''
                 ORDER BY created_at DESC
@@ -95,6 +152,7 @@ async function run() {
               `;
 
         let totalUpdated = 0;
+        let totalNoSource = 0;
 
         while (true) {
             const { rows } = await db.query<ProductRow>(query, [args.batchSize]);
@@ -102,8 +160,15 @@ async function run() {
                 break;
             }
 
+            let batchUpdated = 0;
+
             for (const row of rows) {
-                const imageUrl = buildImageUrl(row.id);
+                const imageUrl = sourceByKey.get(sourceKey(row.name, row.category));
+                if (!imageUrl) {
+                    totalNoSource += 1;
+                    continue;
+                }
+
                 await db.query(
                     `
                         UPDATE products
@@ -113,13 +178,16 @@ async function run() {
                     `,
                     [row.id, imageUrl],
                 );
+
+                batchUpdated += 1;
             }
 
-            totalUpdated += rows.length;
+            totalUpdated += batchUpdated;
             logger.log({
                 msg: 'seed.products-image.batch_updated',
-                batchUpdated: rows.length,
+                batchUpdated,
                 totalUpdated,
+                totalNoSource,
             });
 
             if (rows.length < args.batchSize) {
@@ -130,6 +198,7 @@ async function run() {
         logger.log({
             msg: 'seed.products-image.completed',
             totalUpdated,
+            totalNoSource,
             mode: args.force ? 'all' : 'only-missing',
         });
     } finally {

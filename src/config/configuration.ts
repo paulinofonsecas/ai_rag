@@ -13,6 +13,13 @@ export default () => ({
         port: Number(process.env.REDIS_PORT ?? 6379),
         password: process.env.REDIS_PASSWORD,
     },
+    history: {
+        redis: {
+            key: process.env.SEARCH_HISTORY_REDIS_KEY ?? 'search:history:runs',
+            ttlSeconds: Number(process.env.SEARCH_HISTORY_TTL_SECONDS ?? 60 * 60 * 24 * 7),
+            maxEntries: Number(process.env.SEARCH_HISTORY_MAX_ENTRIES ?? 500),
+        },
+    },
     embedding: {
         apiKey: process.env.EMBEDDING_API_KEY,
         model: process.env.EMBEDDING_MODEL ?? 'gemini-embedding-001',

@@ -5,6 +5,7 @@ import { Job } from 'bullmq';
 import { EmbeddingService } from 'src/domain/interfaces/embedding-service.interface';
 import { ProductCreatedEvent } from 'src/domain/interfaces/job-publisher.interface';
 import { SearchRepository } from 'src/domain/interfaces/search-repository.interface';
+import { ProductIngestionStatusRedisStream } from 'src/infrastructure/cache/product-ingestion-status.redis-stream';
 import {
     PRODUCT_INGESTION_QUEUE
 } from 'src/infrastructure/queue/product-ingestion.publisher';
@@ -19,6 +20,7 @@ export class ProductIngestionProcessor extends WorkerHost {
         private readonly repository: SearchRepository,
         @Inject(TOKENS.EmbeddingService)
         private readonly embeddingService: EmbeddingService,
+        private readonly statusStream: ProductIngestionStatusRedisStream,
     ) {
         super();
     }
@@ -29,9 +31,23 @@ export class ProductIngestionProcessor extends WorkerHost {
         const text = `${payload.name} ${payload.category} ${payload.description}`;
 
         try {
+            await this.statusStream.publishStatus({
+                productId: payload.productId,
+                status: 'processing',
+                at: new Date().toISOString(),
+                message: 'Gerando embedding do produto.',
+            });
+
             const embedding = await this.embeddingService.generateProductEmbedding(text);
 
             await this.repository.updateProductEmbedding(payload.productId, embedding);
+
+            await this.statusStream.publishStatus({
+                productId: payload.productId,
+                status: 'completed',
+                at: new Date().toISOString(),
+                message: 'Embedding gerado com sucesso.',
+            });
 
             this.logger.log({
                 msg: 'worker.product_ingested',
@@ -40,6 +56,13 @@ export class ProductIngestionProcessor extends WorkerHost {
                 latencyMs: Date.now() - start,
             });
         } catch (error) {
+            await this.statusStream.publishStatus({
+                productId: payload.productId,
+                status: 'failed',
+                at: new Date().toISOString(),
+                message: error instanceof Error ? error.message : 'Erro no processamento da ingestao.',
+            });
+
             this.logger.error({
                 msg: 'worker.product_ingest_failed',
                 productId: payload.productId,
