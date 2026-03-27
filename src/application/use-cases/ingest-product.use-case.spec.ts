@@ -12,6 +12,7 @@ describe('IngestProductUseCase', () => {
         const repository: jest.Mocked<SearchRepository> = {
             createProduct: jest.fn().mockResolvedValue(product),
             updateProductEmbedding: jest.fn(),
+            getAllProducts: jest.fn(),
             vectorSearch: jest.fn(),
             lexicalSearch: jest.fn(),
         };

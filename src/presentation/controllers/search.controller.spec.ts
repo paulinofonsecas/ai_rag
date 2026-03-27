@@ -22,7 +22,11 @@ describe('SearchController', () => {
             ]),
         } as unknown as jest.Mocked<SearchProductsUseCase>;
 
-        const controller = new SearchController(useCase);
+        const searchRepository = {
+            getAllProducts: jest.fn(),
+        } as any;
+
+        const controller = new SearchController(useCase, searchRepository);
 
         const query: SearchQueryDto = {
             q: 'headphones',
@@ -63,7 +67,11 @@ describe('SearchController', () => {
             ]),
         } as unknown as jest.Mocked<SearchProductsUseCase>;
 
-        const controller = new SearchController(useCase);
+        const searchRepository = {
+            getAllProducts: jest.fn(),
+        } as any;
+
+        const controller = new SearchController(useCase, searchRepository);
 
         const output = await controller.search({ q: 'coisas para ficar bebado' }, 'cid-999');
 

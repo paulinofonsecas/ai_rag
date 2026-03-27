@@ -38,6 +38,19 @@ Quick links:
 
 1. Set `EMBEDDING_API_KEY` in your environment
 2. `docker compose up --build`
+3. Open frontend at `http://localhost:3001`
+
+## Frontend (Next.js)
+
+- Location: `frontend/`
+- UI features:
+  - Product ingestion (`POST /products`)
+  - Hybrid search (`GET /search`)
+- In Docker, the frontend talks to the API via server-side proxy routes:
+  - `GET /api/search` -> backend `GET /search`
+  - `POST /api/products` -> backend `POST /products`
+
+This avoids browser CORS issues and keeps the API contract centralized.
 
 ## Useful Commands
 

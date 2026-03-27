@@ -26,6 +26,10 @@ export interface ProductWritePort {
     updateProductEmbedding(productId: string, embedding: number[]): Promise<void>;
 }
 
+export interface ProductReadPort {
+    getAllProducts(): Promise<Product[]>;
+}
+
 export interface VectorSearchPort {
     vectorSearch(queryEmbedding: number[], limit: number, offset: number): Promise<RankedSearchResult[]>;
 }
@@ -34,4 +38,4 @@ export interface LexicalSearchPort {
     lexicalSearch(query: string, limit: number, offset: number): Promise<RankedSearchResult[]>;
 }
 
-export interface SearchRepository extends ProductWritePort, VectorSearchPort, LexicalSearchPort { }
+export interface SearchRepository extends ProductWritePort, ProductReadPort, VectorSearchPort, LexicalSearchPort { }

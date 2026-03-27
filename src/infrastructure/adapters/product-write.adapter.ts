@@ -2,6 +2,7 @@ import { Injectable } from '@nestjs/common';
 
 import {
     CreateProductInput,
+    ProductReadPort,
     ProductWritePort,
 } from 'src/domain/interfaces/search-repository.interface';
 import { PostgresService } from 'src/infrastructure/database/postgres.service';
@@ -19,7 +20,7 @@ type ProductRow = {
 };
 
 @Injectable()
-export class ProductWriteAdapter implements ProductWritePort {
+export class ProductWriteAdapter implements ProductWritePort, ProductReadPort {
     constructor(private readonly postgres: PostgresService) { }
 
     async createProduct(input: CreateProductInput) {
@@ -47,5 +48,17 @@ export class ProductWriteAdapter implements ProductWritePort {
       `,
             [productId, queryVector],
         );
+    }
+
+    async getAllProducts() {
+        const { rows } = await this.postgres.query<ProductRow>(
+            `
+      SELECT id, name, description, category, embedding, created_at, updated_at
+      FROM products
+      ORDER BY created_at DESC
+      `,
+        );
+
+        return rows.map((row) => toProductEntity(row));
     }
 }

@@ -18,6 +18,7 @@ describe('HybridSearchOrchestrator', () => {
         repository = {
             createProduct: jest.fn(),
             updateProductEmbedding: jest.fn(),
+            getAllProducts: jest.fn(),
             vectorSearch: jest.fn(),
             lexicalSearch: jest.fn(),
         };

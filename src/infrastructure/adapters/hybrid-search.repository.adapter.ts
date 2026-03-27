@@ -3,6 +3,7 @@ import { Injectable } from '@nestjs/common';
 import {
     CreateProductInput,
     LexicalSearchPort,
+    ProductReadPort,
     ProductWritePort,
     SearchRepository,
     VectorSearchPort,
@@ -11,7 +12,7 @@ import {
 @Injectable()
 export class HybridSearchRepositoryAdapter implements SearchRepository {
     constructor(
-        private readonly productWrite: ProductWritePort,
+        private readonly productWrite: ProductWritePort & ProductReadPort,
         private readonly vectorPort: VectorSearchPort,
         private readonly lexicalPort: LexicalSearchPort,
     ) { }
@@ -30,5 +31,9 @@ export class HybridSearchRepositoryAdapter implements SearchRepository {
 
     lexicalSearch(query: string, limit: number, offset: number) {
         return this.lexicalPort.lexicalSearch(query, limit, offset);
+    }
+
+    getAllProducts() {
+        return this.productWrite.getAllProducts();
     }
 }
