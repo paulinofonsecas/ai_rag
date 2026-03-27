@@ -7,5 +7,6 @@ export class Product {
         public readonly createdAt: Date,
         public readonly updatedAt: Date,
         public readonly embedding?: number[],
+        public readonly imageUrl?: string,
     ) { }
 }

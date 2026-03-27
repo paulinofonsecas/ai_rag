@@ -14,6 +14,7 @@ type ProductRow = {
     name: string;
     description: string;
     category: string;
+    image_url: string | null;
     embedding: number[] | null;
     created_at: Date;
     updated_at: Date;
@@ -28,7 +29,7 @@ export class ProductWriteAdapter implements ProductWritePort, ProductReadPort {
             `
       INSERT INTO products (name, description, category)
       VALUES ($1, $2, $3)
-      RETURNING id, name, description, category, embedding, created_at, updated_at
+        RETURNING id, name, description, category, image_url, embedding, created_at, updated_at
       `,
             [input.name, input.description, input.category],
         );
@@ -53,7 +54,7 @@ export class ProductWriteAdapter implements ProductWritePort, ProductReadPort {
     async getAllProducts() {
         const { rows } = await this.postgres.query<ProductRow>(
             `
-      SELECT id, name, description, category, embedding, created_at, updated_at
+            SELECT id, name, description, category, image_url, embedding, created_at, updated_at
       FROM products
       ORDER BY created_at DESC
       `,

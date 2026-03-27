@@ -11,6 +11,7 @@
         "playground": "ts-node -r tsconfig-paths/register src/playground/cli.ts",
         "seed:products": "ts-node -r tsconfig-paths/register src/seeds/products.seed.ts",
         "seed:products:files": "ts-node -r tsconfig-paths/register src/seeds/products-files.seed.ts",
+        "seed:products:image": "ts-node -r tsconfig-paths/register src/seeds/products-image.subseed.ts",
         "lint": "eslint \"src/**/*.ts\"",
         "test": "jest --runInBand",
         "test:watch": "jest --watch",

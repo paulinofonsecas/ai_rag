@@ -5,6 +5,7 @@ type ProductRow = {
     name: string;
     description: string;
     category: string;
+    image_url?: string | null;
     embedding: number[] | string | null;
     created_at: Date;
     updated_at: Date;
@@ -34,6 +35,10 @@ const parseEmbedding = (embedding: number[] | string | null): number[] | undefin
 };
 
 export const toProductEntity = (row: ProductRow): Product => {
+    const imageUrl = typeof row.image_url === 'string' && row.image_url.trim().length > 0
+        ? row.image_url.trim()
+        : undefined;
+
     return new Product(
         row.id,
         row.name,
@@ -42,5 +47,6 @@ export const toProductEntity = (row: ProductRow): Product => {
         new Date(row.created_at),
         new Date(row.updated_at),
         parseEmbedding(row.embedding),
+        imageUrl,
     );
 };
