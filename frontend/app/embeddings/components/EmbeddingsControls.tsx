@@ -18,12 +18,12 @@ export function EmbeddingsControls({
     return (
         <div className="mb-3 space-y-3">
             <div className="flex flex-wrap items-center gap-3">
-                <label className="flex items-center gap-2 text-sm text-slate-700">
+                <label className="flex items-center gap-2 text-sm text-foreground">
                     Categoria
                     <select
                         value={selectedCategory}
                         onChange={(event) => onSelectedCategoryChange(event.target.value)}
-                        className="rounded-lg border border-slate-300 bg-white px-2 py-1 text-sm"
+                        className="rounded-md border border-input bg-background px-2 py-1 text-sm text-foreground"
                     >
                         <option value="all">Todas</option>
                         {categories.map((category) => (
@@ -34,7 +34,7 @@ export function EmbeddingsControls({
                     </select>
                 </label>
 
-                <label className="flex items-center gap-2 text-sm text-slate-700">
+                <label className="flex items-center gap-2 text-sm text-foreground">
                     Pontos
                     <input
                         type="range"
@@ -44,12 +44,12 @@ export function EmbeddingsControls({
                         value={sampleSize}
                         onChange={(event) => onSampleSizeChange(Number(event.target.value))}
                     />
-                    <span className="rounded bg-white px-2 py-1 text-xs font-semibold text-slate-700">{currentCount}</span>
+                    <span className="rounded-md border border-input bg-background px-2 py-1 text-xs font-semibold text-foreground">{currentCount}</span>
                 </label>
             </div>
 
-            <div className="rounded-xl border border-slate-200 bg-white/80 px-3 py-2 text-xs text-slate-600">
-                <p className="mb-1 font-semibold text-slate-700">Como navegar no mapa</p>
+            <div className="rounded-lg border border-border bg-muted/50 px-3 py-2 text-xs text-muted-foreground">
+                <p className="mb-1 font-semibold text-foreground">Como navegar no mapa</p>
                 <div className="flex flex-wrap items-center gap-x-4 gap-y-2">
                     <span className="inline-flex items-center gap-1.5">
                         <MouseIcon />
@@ -71,7 +71,7 @@ export function EmbeddingsControls({
 
 function MouseIcon() {
     return (
-        <svg width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true" className="text-slate-500">
+        <svg width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true" className="text-muted-foreground">
             <rect x="3.5" y="1.5" width="7" height="11" rx="3" stroke="currentColor" strokeWidth="1.2" />
             <line x1="7" y1="2.4" x2="7" y2="5.2" stroke="currentColor" strokeWidth="1.2" strokeLinecap="round" />
         </svg>
@@ -80,7 +80,7 @@ function MouseIcon() {
 
 function ZoomIcon() {
     return (
-        <svg width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true" className="text-slate-500">
+        <svg width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true" className="text-muted-foreground">
             <circle cx="6" cy="6" r="3.6" stroke="currentColor" strokeWidth="1.2" />
             <line x1="8.8" y1="8.8" x2="12" y2="12" stroke="currentColor" strokeWidth="1.2" strokeLinecap="round" />
             <line x1="6" y1="4.4" x2="6" y2="7.6" stroke="currentColor" strokeWidth="1" strokeLinecap="round" />
@@ -91,7 +91,7 @@ function ZoomIcon() {
 
 function TapIcon() {
     return (
-        <svg width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true" className="text-slate-500">
+        <svg width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true" className="text-muted-foreground">
             <circle cx="7" cy="7" r="2.1" stroke="currentColor" strokeWidth="1.2" />
             <circle cx="7" cy="7" r="4.1" stroke="currentColor" strokeWidth="1" strokeDasharray="1.5 1.5" />
         </svg>

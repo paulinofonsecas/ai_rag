@@ -153,13 +153,13 @@ export function EmbeddingsScatter({
     return (
         <div
             ref={containerRef}
-            className="relative overflow-hidden rounded-xl border border-slate-200 bg-[#f8fafc]"
+            className="relative overflow-hidden rounded-xl border border-border bg-muted/20"
         >
             {!loading && filteredItems.length > 0 ? (
                 <button
                     type="button"
                     onClick={toggleFullscreen}
-                    className="absolute right-3 top-3 z-30 inline-flex items-center gap-1.5 rounded-lg border border-slate-300 bg-white/90 px-2.5 py-1.5 text-[11px] font-semibold text-slate-700 shadow-sm transition hover:bg-white"
+                    className="absolute right-3 top-3 z-30 inline-flex items-center gap-1.5 rounded-lg border border-border bg-card/90 px-2.5 py-1.5 text-[11px] font-semibold text-foreground shadow-sm transition hover:bg-card"
                 >
                     <FullscreenIcon />
                     {isFullscreen ? 'Sair tela cheia' : 'Tela cheia'}
@@ -167,9 +167,9 @@ export function EmbeddingsScatter({
             ) : null}
 
             {loading ? (
-                <div className={`grid ${mapHeightClass} place-items-center text-sm text-slate-500`}>Carregando embeddings...</div>
+                <div className={`grid ${mapHeightClass} place-items-center text-sm text-muted-foreground`}>Carregando embeddings...</div>
             ) : filteredItems.length === 0 ? (
-                <div className={`grid ${mapHeightClass} place-items-center text-sm text-slate-500`}>Sem pontos para exibir.</div>
+                <div className={`grid ${mapHeightClass} place-items-center text-sm text-muted-foreground`}>Sem pontos para exibir.</div>
             ) : (
                 <>
                     <svg
@@ -377,22 +377,22 @@ export function EmbeddingsScatter({
                     {selectedPoint ? (
                         <div className="pointer-events-none absolute inset-0 z-20">
                             <div
-                                className="absolute w-[320px] max-w-[calc(100%-16px)] rounded-xl border border-sky-200 bg-[rgba(248,250,252,0.95)] p-3 shadow-lg"
+                                className="absolute w-[320px] max-w-[calc(100%-16px)] rounded-xl border border-border bg-card/95 p-3 shadow-lg"
                                 style={{
                                     left: `calc(${selectedPoint.leftPercent}% - 0px)`,
                                     top: `calc(${selectedPoint.topPercent}% - 0px)`,
                                 }}
                             >
-                                <p className="text-sm font-semibold text-ink">
+                                <p className="text-sm font-semibold text-foreground">
                                     {shortText(selectedPoint.item.name.toUpperCase(), 44)}
                                 </p>
-                                <p className="mt-1 text-[11px] font-semibold uppercase tracking-wide text-slate-500">
+                                <p className="mt-1 text-[11px] font-semibold uppercase tracking-wide text-muted-foreground">
                                     {shortText(selectedPoint.item.category.toUpperCase(), 32)}
                                 </p>
-                                <p className="mt-2 text-xs leading-relaxed text-slate-600">
+                                <p className="mt-2 text-xs leading-relaxed text-muted-foreground">
                                     {shortText(selectedPoint.item.description, 120)}
                                 </p>
-                                <p className="mt-2 break-all text-[10px] text-slate-500">
+                                <p className="mt-2 break-all text-[10px] text-muted-foreground">
                                     ID: {selectedPoint.item.id}
                                 </p>
                             </div>
@@ -406,7 +406,7 @@ export function EmbeddingsScatter({
 
 function FullscreenIcon() {
     return (
-        <svg width="12" height="12" viewBox="0 0 12 12" fill="none" aria-hidden="true" className="text-slate-600">
+        <svg width="12" height="12" viewBox="0 0 12 12" fill="none" aria-hidden="true" className="text-muted-foreground">
             <path d="M1.5 4V1.5H4" stroke="currentColor" strokeWidth="1.2" strokeLinecap="round" strokeLinejoin="round" />
             <path d="M8 1.5H10.5V4" stroke="currentColor" strokeWidth="1.2" strokeLinecap="round" strokeLinejoin="round" />
             <path d="M10.5 8V10.5H8" stroke="currentColor" strokeWidth="1.2" strokeLinecap="round" strokeLinejoin="round" />

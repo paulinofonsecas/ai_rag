@@ -1,17 +1,8 @@
 import type { Metadata } from 'next';
-import { DM_Sans, Space_Grotesk } from 'next/font/google';
+import { GeistSans } from 'geist/font/sans';
+import { GeistMono } from 'geist/font/mono';
 
 import './globals.css';
-
-const dmSans = DM_Sans({
-    subsets: ['latin'],
-    variable: '--font-body',
-});
-
-const spaceGrotesk = Space_Grotesk({
-    subsets: ['latin'],
-    variable: '--font-title',
-});
 
 export const metadata: Metadata = {
     title: 'Hybrid Search Console',
@@ -24,8 +15,8 @@ export default function RootLayout({
     children: React.ReactNode;
 }>) {
     return (
-        <html lang="pt-BR">
-            <body className={`${dmSans.variable} ${spaceGrotesk.variable}`}>{children}</body>
+        <html lang="pt-BR" className={`${GeistSans.variable} ${GeistMono.variable}`}>
+            <body>{children}</body>
         </html>
     );
 }

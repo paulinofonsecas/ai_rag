@@ -21,7 +21,7 @@ export default function DocsMarkdown({
 
             if (resolved.kind === 'page') {
                 return (
-                    <Link href={resolved.href} className="font-semibold text-sea underline decoration-sea/35 underline-offset-4 hover:text-coral">
+                    <Link href={resolved.href} className="font-medium text-foreground underline underline-offset-4 decoration-border hover:decoration-foreground transition-colors">
                         {children}
                     </Link>
                 );
@@ -35,19 +35,19 @@ export default function DocsMarkdown({
                     href={resolved.href}
                     target={isExternal ? '_blank' : undefined}
                     rel={isExternal ? 'noreferrer' : undefined}
-                    className="font-semibold text-sea underline decoration-sea/35 underline-offset-4 hover:text-coral"
+                    className="font-medium text-foreground underline underline-offset-4 decoration-border hover:decoration-foreground transition-colors"
                 >
                     {children}
                 </a>
             );
         },
         code: ({ children, ...props }) => (
-            <code {...props} className="rounded-lg bg-mist px-1.5 py-1 font-mono text-[0.92em] text-ink">
+            <code {...props} className="rounded-md border border-border bg-muted px-1.5 py-0.5 font-mono text-[0.92em] text-foreground">
                 {children}
             </code>
         ),
         pre: ({ children }) => (
-            <pre className="overflow-x-auto rounded-2xl border border-slate-200 bg-slate-950 px-4 py-4 text-sm text-slate-100 shadow-inner">
+            <pre className="overflow-x-auto rounded-lg border border-border bg-zinc-950 px-4 py-4 text-sm text-zinc-100 shadow-sm">
                 {children}
             </pre>
         ),
@@ -57,7 +57,7 @@ export default function DocsMarkdown({
             </div>
         ),
         blockquote: ({ children }) => (
-            <blockquote className="border-l-4 border-coral/45 bg-sand/60 px-4 py-3 text-slate-700">
+            <blockquote className="border-l-4 border-border bg-muted/50 px-4 py-3 text-muted-foreground">
                 {children}
             </blockquote>
         ),

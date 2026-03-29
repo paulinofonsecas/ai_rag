@@ -161,18 +161,18 @@ export default function EmbeddingsPage() {
 
     return (
         <main className="mx-auto w-full max-w-7xl p-4 md:p-8">
-            <section className="rounded-3xl bg-white/90 p-6 shadow-soft md:p-8">
+            <section className="rounded-xl border border-border bg-card p-6 shadow-sm md:p-8">
                 <div className="flex flex-wrap items-center justify-between gap-3">
                     <div>
-                        <p className="text-sm uppercase tracking-[0.2em] text-sea">ai_rag analytics</p>
-                        <h1 className="mt-2 text-3xl font-bold text-ink md:text-4xl">Embedding Map (PCA 2D)</h1>
-                        <p className="mt-2 text-sm text-slate-600 md:text-base">
+                        <p className="text-sm uppercase tracking-[0.2em] text-muted-foreground">ai_rag analytics</p>
+                        <h1 className="mt-2 text-3xl font-bold text-foreground md:text-4xl">Embedding Map (PCA 2D)</h1>
+                        <p className="mt-2 text-sm text-muted-foreground md:text-base">
                             Projecao em 2D dos vetores para inspecionar clusters por categoria e identificar outliers.
                         </p>
                     </div>
                     <Link
                         href="/"
-                        className="rounded-xl border border-slate-300 bg-white px-4 py-2 text-sm font-semibold text-slate-700 transition hover:bg-slate-50"
+                        className="rounded-lg border border-border bg-background px-4 py-2 text-sm font-semibold text-foreground transition hover:bg-muted"
                     >
                         Voltar ao console
                     </Link>
@@ -185,7 +185,7 @@ export default function EmbeddingsPage() {
                 ) : null}
 
                 <div className="mt-5 grid grid-cols-1 gap-4 lg:grid-cols-[2fr_1fr]">
-                    <div className="rounded-2xl border border-slate-200 bg-slate-50 p-3">
+                    <div className="rounded-lg border border-border bg-muted/50 p-3">
                         <EmbeddingsControls
                             categories={categories}
                             selectedCategory={selectedCategory}

@@ -188,43 +188,43 @@ export default function SearchProgressButton({ searchParams, submitSignal, onCom
                     type="button"
                     onClick={startSearch}
                     disabled={disabled}
-                    className="rounded-xl bg-sea px-4 py-2 text-sm font-semibold text-white transition hover:brightness-105 disabled:cursor-not-allowed disabled:opacity-60"
+                    className="inline-flex h-10 w-full items-center justify-center rounded-md bg-primary px-4 py-2 text-sm font-medium text-primary-foreground ring-offset-background transition-colors hover:bg-primary/90 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50"
                 >
                     Buscar
                 </button>
 
                 {lastRun ? (
-                    <div className="rounded-xl border border-slate-200 bg-white/80 overflow-hidden">
-                        <div className="flex items-center justify-between px-4 py-2.5 border-b border-slate-100">
-                            <span className="text-sm font-semibold text-ink">Resumo da ultima busca</span>
-                            <span className="text-xs text-slate-500 tabular-nums">
+                    <div className="rounded-lg border border-border bg-card overflow-hidden">
+                        <div className="flex items-center justify-between px-4 py-2.5 border-b border-border">
+                            <span className="text-sm font-semibold text-foreground">Resumo da ultima busca</span>
+                            <span className="text-xs text-muted-foreground tabular-nums">
                                 {(lastRun.totalMs / 1000).toFixed(2)}s
                             </span>
                         </div>
 
-                        <div className="px-4 py-2 text-sm text-slate-700 border-b border-slate-100">
-                            <span className="font-medium text-ink">Query:</span> {lastRun.query}
-                            <span className="ml-3 inline-flex rounded-full bg-sea/10 px-2 py-0.5 text-xs font-semibold text-sea">
+                        <div className="px-4 py-2 text-sm text-muted-foreground border-b border-border">
+                            <span className="font-medium text-foreground">Query:</span> {lastRun.query}
+                            <span className="ml-3 inline-flex rounded-full bg-secondary px-2 py-0.5 text-xs font-semibold text-secondary-foreground">
                                 {lastRun.count} itens
                             </span>
                         </div>
 
-                        <ul className="divide-y divide-slate-100">
+                        <ul className="divide-y divide-border">
                             {lastRun.steps.map((step) => (
                                 <li key={step.id}>
                                     <button
                                         type="button"
                                         onClick={() => setSelectedStepId((current) => (current === step.id ? null : step.id))}
                                         aria-expanded={selectedStepId === step.id}
-                                        className="flex w-full items-center justify-between px-4 py-2.5 gap-3 text-left transition hover:bg-slate-50"
+                                        className="flex w-full items-center justify-between px-4 py-2.5 gap-3 text-left transition hover:bg-muted/50"
                                     >
                                         <div className="flex items-center gap-2.5 min-w-0">
                                             <StepIcon status={step.status} />
-                                            <span className="text-sm text-slate-700 truncate">{step.label}</span>
+                                            <span className="text-sm text-foreground truncate">{step.label}</span>
                                         </div>
                                         <div className="flex items-center gap-2">
                                             <StepDuration step={step} />
-                                            <span className="text-xs text-slate-400" aria-hidden="true">
+                                            <span className="text-xs text-muted-foreground" aria-hidden="true">
                                                 {selectedStepId === step.id ? '▾' : '▸'}
                                             </span>
                                         </div>
@@ -249,8 +249,8 @@ export default function SearchProgressButton({ searchParams, submitSignal, onCom
     // ── Done state ─────────────────────────────────────────────────────────────
     if (phase === 'done') {
         return (
-            <div className="md:col-span-2 rounded-xl bg-emerald-50 border border-emerald-200 px-4 py-3 text-sm font-semibold text-emerald-700 flex items-center justify-center gap-2">
-                <CheckIcon />
+            <div className="md:col-span-2 rounded-lg border border-border bg-muted px-4 py-3 text-sm font-semibold text-foreground flex items-center justify-center gap-2">
+                <CheckIcon className="text-primary" />
                 Busca concluída em {(totalMs / 1000).toFixed(2)}s
             </div>
         );
@@ -258,18 +258,18 @@ export default function SearchProgressButton({ searchParams, submitSignal, onCom
 
     // ── Running state ──────────────────────────────────────────────────────────
     return (
-        <div className="md:col-span-2 rounded-xl border border-sea/20 bg-white overflow-hidden">
+        <div className="md:col-span-2 rounded-lg border border-border bg-card overflow-hidden">
             {/* Header */}
-            <div className="flex items-center justify-between px-4 py-2.5 bg-sea/5 border-b border-sea/10">
+            <div className="flex items-center justify-between px-4 py-2.5 bg-muted/50 border-b border-border">
                 <div className="flex items-center gap-2">
-                    <SpinnerIcon className="text-sea" />
-                    <span className="text-sm font-semibold text-sea">Processando busca…</span>
+                    <SpinnerIcon className="text-primary" />
+                    <span className="text-sm font-semibold text-foreground">Processando busca…</span>
                 </div>
                 <Elapsed startedAt={startedAtRef.current} />
             </div>
 
             {/* Steps */}
-            <ul className="divide-y divide-slate-100">
+            <ul className="divide-y divide-border">
                 {steps.map((step) => (
                     <li key={step.id} className="flex items-center justify-between px-4 py-2.5 gap-3">
                         <div className="flex items-center gap-2.5 min-w-0">
@@ -278,14 +278,14 @@ export default function SearchProgressButton({ searchParams, submitSignal, onCom
                                 className={[
                                     'text-sm truncate',
                                     step.status === 'running'
-                                        ? 'font-semibold text-ink'
+                                        ? 'font-semibold text-foreground'
                                         : step.status === 'done'
-                                            ? 'text-slate-700'
+                                            ? 'text-foreground'
                                             : step.status === 'skipped'
-                                                ? 'text-slate-400 line-through'
+                                                ? 'text-muted-foreground line-through'
                                                 : step.status === 'error'
-                                                    ? 'text-red-600'
-                                                    : 'text-slate-400',
+                                                    ? 'text-destructive'
+                                                    : 'text-muted-foreground',
                                 ].join(' ')}
                             >
                                 {step.label}
@@ -302,24 +302,24 @@ export default function SearchProgressButton({ searchParams, submitSignal, onCom
 // ── Sub-components ─────────────────────────────────────────────────────────────
 
 function StepIcon({ status }: { status: StepStatus }) {
-    if (status === 'running') return <SpinnerIcon className="text-sea shrink-0" />;
-    if (status === 'done') return <CheckIcon className="text-emerald-500 shrink-0" />;
-    if (status === 'skipped') return <SkipIcon className="text-slate-300 shrink-0" />;
-    if (status === 'error') return <ErrorIcon className="text-red-500 shrink-0" />;
+    if (status === 'running') return <SpinnerIcon className="text-primary shrink-0" />;
+    if (status === 'done') return <CheckIcon className="text-primary shrink-0" />;
+    if (status === 'skipped') return <SkipIcon className="text-muted-foreground shrink-0" />;
+    if (status === 'error') return <ErrorIcon className="text-destructive shrink-0" />;
     return <PendingDot />;
 }
 
 function StepDuration({ step }: { step: StepState }) {
     if (step.status === 'running') {
-        return <span className="text-xs text-slate-400 shrink-0 tabular-nums">…</span>;
+        return <span className="text-xs text-muted-foreground shrink-0 tabular-nums">…</span>;
     }
     if (step.status === 'done' && step.durationMs !== undefined) {
         return (
-            <span className="text-xs text-slate-500 shrink-0 tabular-nums">{step.durationMs}ms</span>
+            <span className="text-xs text-muted-foreground shrink-0 tabular-nums">{step.durationMs}ms</span>
         );
     }
     if (step.status === 'skipped') {
-        return <span className="text-xs text-slate-300 shrink-0">—</span>;
+        return <span className="text-xs text-muted-foreground shrink-0">—</span>;
     }
     return null;
 }
@@ -342,7 +342,7 @@ function StepItemsPanel({
 
     if (step.id === 'embedding') {
         return (
-            <div className="border-t border-slate-100 bg-slate-50 px-4 py-3 text-xs text-slate-600">
+            <div className="border-t border-border bg-muted/50 px-4 py-3 text-xs text-muted-foreground">
                 Esta etapa prepara o vetor da consulta e nao retorna itens diretamente.
             </div>
         );
@@ -356,16 +356,16 @@ function StepItemsPanel({
 
     if (stageItems.length === 0) {
         return (
-            <div className="border-t border-slate-100 bg-slate-50 px-4 py-3 text-xs text-slate-500">
+            <div className="border-t border-border bg-muted/50 px-4 py-3 text-xs text-muted-foreground">
                 Nenhum item disponivel para esta etapa.
             </div>
         );
     }
 
     return (
-        <div className="border-t border-slate-100 bg-slate-50 px-4 py-3">
+        <div className="border-t border-border bg-muted/50 px-4 py-3">
             <div className="mb-2 flex items-center justify-between gap-2">
-                <div className="text-xs font-semibold uppercase tracking-wide text-slate-500">
+                <div className="text-xs font-semibold uppercase tracking-wide text-muted-foreground">
                     {stageItems.length} itens
                 </div>
                 {totalPages > 1 ? (
@@ -374,16 +374,16 @@ function StepItemsPanel({
                             type="button"
                             onClick={() => setPage((prev) => Math.max(1, prev - 1))}
                             disabled={currentPage === 1}
-                            className="rounded border border-slate-300 px-2 py-0.5 text-[11px] font-semibold text-slate-700 disabled:cursor-not-allowed disabled:opacity-40"
+                            className="rounded border border-border px-2 py-0.5 text-[11px] font-semibold text-foreground disabled:cursor-not-allowed disabled:opacity-40"
                         >
                             Anterior
                         </button>
-                        <span className="text-[11px] text-slate-500">{currentPage}/{totalPages}</span>
+                        <span className="text-[11px] text-muted-foreground">{currentPage}/{totalPages}</span>
                         <button
                             type="button"
                             onClick={() => setPage((prev) => Math.min(totalPages, prev + 1))}
                             disabled={currentPage === totalPages}
-                            className="rounded border border-sea/30 bg-sea/10 px-2 py-0.5 text-[11px] font-semibold text-sea disabled:cursor-not-allowed disabled:opacity-40"
+                            className="rounded border border-primary/30 bg-primary/10 px-2 py-0.5 text-[11px] font-semibold text-primary disabled:cursor-not-allowed disabled:opacity-40"
                         >
                             Proxima
                         </button>
@@ -392,23 +392,23 @@ function StepItemsPanel({
             </div>
             <ul className="space-y-1.5">
                 {visibleItems.map((item, index) => (
-                    <li key={item.id} className="rounded-lg border border-slate-200 bg-white px-2.5 py-2">
-                        <div className="text-xs font-medium text-ink truncate">
+                    <li key={item.id} className="rounded-md border border-border bg-background px-2.5 py-2">
+                        <div className="text-xs font-medium text-foreground truncate">
                             #{startIndex + index + 1} {item.name}
                         </div>
-                        <div className="mt-1 flex flex-wrap items-center gap-1.5 text-[11px] text-slate-500">
-                            <span className="rounded bg-slate-100 px-1.5 py-0.5">{item.category}</span>
+                        <div className="mt-1 flex flex-wrap items-center gap-1.5 text-[11px] text-muted-foreground">
+                            <span className="rounded bg-muted px-1.5 py-0.5">{item.category}</span>
                             {step.id === 'vector_search' ? (
                                 <>
-                                    <span className="rounded bg-sea/10 px-1.5 py-0.5 text-sea">
+                                    <span className="rounded bg-secondary px-1.5 py-0.5 text-secondary-foreground">
                                         rank semantico: {item.ranks.semantic ?? '-'}
                                     </span>
-                                    <span className="rounded bg-amber-100 px-1.5 py-0.5 text-amber-900">
+                                    <span className="rounded bg-accent px-1.5 py-0.5 text-accent-foreground">
                                         score semantico: {formatScore(item.scores.semantic)}
                                     </span>
                                 </>
                             ) : (
-                                <span className="rounded bg-emerald-100 px-1.5 py-0.5 text-emerald-900">
+                                <span className="rounded bg-secondary px-1.5 py-0.5 text-secondary-foreground">
                                     score RRF: {formatScore(item.scores.rrf)}
                                 </span>
                             )}
@@ -417,7 +417,7 @@ function StepItemsPanel({
                 ))}
             </ul>
             {totalPages > 1 ? (
-                <div className="mt-2 text-[11px] text-slate-500">
+                <div className="mt-2 text-[11px] text-muted-foreground">
                     Mostrando {startIndex + 1}-{Math.min(startIndex + pageSize, stageItems.length)} de {stageItems.length}.
                 </div>
             ) : null}
@@ -460,7 +460,7 @@ function Elapsed({ startedAt }: { startedAt: number }) {
     const ms = Date.now() - startedAt;
     const label = ms < 1000 ? `${ms}ms` : `${(ms / 1000).toFixed(1)}s`;
 
-    return <span className="text-xs text-sea/70 tabular-nums font-medium">{label}</span>;
+    return <span className="text-xs text-muted-foreground tabular-nums font-medium">{label}</span>;
 }
 
 // ── Icons ──────────────────────────────────────────────────────────────────────
@@ -517,6 +517,6 @@ function ErrorIcon({ className = '' }: { className?: string }) {
 
 function PendingDot() {
     return <span className="h-4 w-4 shrink-0 flex items-center justify-center" aria-hidden="true">
-        <span className="block h-1.5 w-1.5 rounded-full bg-slate-300" />
+        <span className="block h-1.5 w-1.5 rounded-full bg-muted-foreground/40" />
     </span>;
 }

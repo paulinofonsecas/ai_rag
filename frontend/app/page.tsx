@@ -3,6 +3,13 @@
 import Link from 'next/link';
 import { FormEvent, useEffect, useMemo, useState } from 'react';
 
+import { Badge } from './components/ui/badge';
+import { Button } from './components/ui/button';
+import { Card, CardContent, CardHeader, CardTitle, CardDescription } from './components/ui/card';
+import { Input } from './components/ui/input';
+import { Label } from './components/ui/label';
+import { Separator } from './components/ui/separator';
+import { Textarea } from './components/ui/textarea';
 import SearchProgressButton, { SearchResult } from './components/SearchProgressButton';
 
 type CreatedProduct = {
@@ -91,9 +98,9 @@ function ProductImage({
     }, [imageUrl]);
 
     return (
-        <div className={`relative bg-slate-100 overflow-hidden ${className ?? 'h-40'}`}>
+        <div className={`relative bg-muted overflow-hidden ${className ?? 'h-40'}`}>
             {hasImage && !loaded ? (
-                <div className="absolute inset-0 animate-pulse bg-gradient-to-r from-slate-200 via-slate-100 to-slate-200" />
+                <div className="absolute inset-0 animate-pulse bg-gradient-to-r from-muted via-muted/50 to-muted" />
             ) : null}
 
             {hasImage ? (
@@ -106,7 +113,7 @@ function ProductImage({
                     onError={() => setFailed(true)}
                 />
             ) : (
-                <div className="flex h-full w-full items-center justify-center text-xs font-medium text-slate-500">
+                <div className="flex h-full w-full items-center justify-center text-xs font-medium text-muted-foreground">
                     Sem imagem disponivel
                 </div>
             )}
@@ -303,7 +310,7 @@ export default function HomePage() {
     return (
         <main className="mx-auto w-full max-w-7xl p-4 md:p-8">
             {errorMessage ? (
-                <div className="mb-6 rounded-2xl border border-red-200 bg-red-50 px-4 py-3 text-sm text-red-700">
+                <div className="mb-6 rounded-lg border border-destructive/30 bg-destructive/10 px-4 py-3 text-sm text-destructive">
                     {errorMessage}
                 </div>
             ) : null}
@@ -313,252 +320,239 @@ export default function HomePage() {
                 {/* ── COLUNA ESQUERDA ── */}
                 <div className="flex flex-col gap-6">
 
-                    {/* Informações com destaque de IA */}
-                    <section className="rounded-3xl bg-white/85 p-6 shadow-soft backdrop-blur-md md:p-8">
-                        <p className="text-sm uppercase tracking-[0.2em] text-sea">ai_rag interface</p>
-                        <h1 className="mt-2 text-3xl font-bold text-ink md:text-4xl">Hybrid Search Console</h1>
-                        <p className="mt-3 text-sm text-slate-600 md:text-base">
-                            Pipeline de busca híbrida com embeddings semânticos, FTS lexical e fusão RRF.
-                            O reranking é realizado pelo modelo <span className="font-semibold text-sea">Gemini</span> para
-                            máxima relevância contextual.
-                        </p>
-                        <div className="mt-5 flex flex-wrap gap-2">
-                            <span className="inline-flex items-center gap-1 rounded-full bg-sea/10 px-3 py-1 text-xs font-semibold text-sea">
-                                ✦ Embeddings semânticos
-                            </span>
-                            <span className="inline-flex items-center gap-1 rounded-full bg-sea/10 px-3 py-1 text-xs font-semibold text-sea">
-                                ✦ Reranking com Gemini AI
-                            </span>
-                            <span className="inline-flex items-center gap-1 rounded-full bg-coral/10 px-3 py-1 text-xs font-semibold text-coral">
-                                ✦ pgvector + FTS híbrido
-                            </span>
-                            <span className="inline-flex items-center gap-1 rounded-full bg-coral/10 px-3 py-1 text-xs font-semibold text-coral">
-                                ✦ Reciprocal Rank Fusion
-                            </span>
-                        </div>
-                        <div className="mt-5 flex flex-wrap gap-3">
-                            <Link
-                                href="/docs"
-                                className="inline-flex items-center justify-center rounded-2xl border border-sea/20 bg-sea px-4 py-2 text-sm font-semibold text-white transition hover:-translate-y-0.5 hover:brightness-105"
-                            >
-                                Abrir documentacao tecnica
-                            </Link>
-                            <Link
-                                href="/docs/pt-br"
-                                className="inline-flex items-center justify-center rounded-2xl border border-slate-300 bg-white px-4 py-2 text-sm font-semibold text-slate-700 transition hover:-translate-y-0.5 hover:bg-slate-50"
-                            >
-                                Ver indice PT-BR
-                            </Link>
-                        </div>
-                    </section>
+                    {/* Hero card */}
+                    <Card>
+                        <CardHeader className="pb-4">
+                            <p className="text-xs font-semibold uppercase tracking-widest text-muted-foreground">
+                                ai_rag interface
+                            </p>
+                            <CardTitle className="mt-1 text-3xl md:text-4xl">Hybrid Search Console</CardTitle>
+                            <CardDescription className="mt-2 text-sm md:text-base">
+                                Pipeline de busca híbrida com embeddings semânticos, FTS lexical e fusão RRF.
+                                O reranking é realizado pelo modelo{' '}
+                                <span className="font-semibold text-foreground">Gemini</span> para máxima relevância
+                                contextual.
+                            </CardDescription>
+                        </CardHeader>
+                        <CardContent className="pt-0">
+                            <div className="flex flex-wrap gap-2">
+                                <Badge variant="secondary">✦ Embeddings semânticos</Badge>
+                                <Badge variant="secondary">✦ Reranking com Gemini AI</Badge>
+                                <Badge variant="outline">✦ pgvector + FTS híbrido</Badge>
+                                <Badge variant="outline">✦ Reciprocal Rank Fusion</Badge>
+                            </div>
+                            <div className="mt-5 flex flex-wrap gap-3">
+                                <Button asChild>
+                                    <Link href="/docs">Abrir documentacao tecnica</Link>
+                                </Button>
+                                <Button variant="outline" asChild>
+                                    <Link href="/docs/pt-br">Ver indice PT-BR</Link>
+                                </Button>
+                            </div>
+                        </CardContent>
+                    </Card>
 
                     {/* Busca Híbrida */}
-                    <article className="rounded-3xl bg-mist p-5 shadow-soft md:p-6">
-                        <h2 className="text-xl font-semibold text-ink">Busca Híbrida</h2>
-                        <p className="mt-1 text-sm text-slate-600">
-                            Digite o que voce procura.
-                        </p>
-                        <form onSubmit={handleSearchSubmit} className="mt-4 grid grid-cols-1 gap-3 md:grid-cols-2">
-                            <label className="md:col-span-2 flex flex-col gap-1 text-sm text-slate-700">
-                                O que voce quer encontrar?
-                                <div className="flex items-center gap-2">
-                                    <input
-                                        required
-                                        value={query}
-                                        onChange={(event) => setQuery(event.target.value)}
-                                        className="min-w-0 flex-1 rounded-xl border border-slate-300 bg-white px-3 py-2 text-base outline-none ring-sea/30 transition focus:ring"
-                                        placeholder="Preciso de um cafe premium para acompanhar meu bolo de chocolate"
-                                    />
-                                    <button
-                                        type="button"
-                                        onClick={handleClearQuery}
-                                        disabled={query.length === 0 && !searchResult && !errorMessage}
-                                        className="shrink-0 rounded-xl border border-slate-300 bg-white px-3 py-2 text-sm font-semibold text-slate-700 transition hover:bg-slate-50 disabled:cursor-not-allowed disabled:opacity-50"
-                                    >
-                                        Limpar
-                                    </button>
+                    <Card>
+                        <CardHeader>
+                            <CardTitle className="text-xl">Busca Híbrida</CardTitle>
+                            <CardDescription>Digite o que voce procura.</CardDescription>
+                        </CardHeader>
+                        <CardContent>
+                            <form onSubmit={handleSearchSubmit} className="grid grid-cols-1 gap-4 md:grid-cols-2">
+                                <div className="md:col-span-2 flex flex-col gap-1.5">
+                                    <Label>O que voce quer encontrar?</Label>
+                                    <div className="flex items-center gap-2">
+                                        <Input
+                                            required
+                                            value={query}
+                                            onChange={(event) => setQuery(event.target.value)}
+                                            placeholder="Preciso de um cafe premium para acompanhar meu bolo de chocolate"
+                                        />
+                                        <Button
+                                            type="button"
+                                            variant="outline"
+                                            onClick={handleClearQuery}
+                                            disabled={query.length === 0 && !searchResult && !errorMessage}
+                                        >
+                                            Limpar
+                                        </Button>
+                                    </div>
                                 </div>
-                            </label>
 
-                            <details className="md:col-span-2 rounded-xl border border-slate-200 bg-white/70 p-3">
-                                <summary className="cursor-pointer text-sm font-medium text-slate-700">
-                                    Configuracoes avancadas  (opcional)
-                                </summary>
+                                <details className="md:col-span-2 rounded-lg border border-border bg-muted/30 p-3">
+                                    <summary className="cursor-pointer text-sm font-medium text-foreground">
+                                        Configuracoes avancadas (opcional)
+                                    </summary>
+                                    <div className="mt-3 grid grid-cols-1 gap-3 md:grid-cols-2">
+                                        <div className="flex flex-col gap-1.5">
+                                            <Label>Quantidade de resultados</Label>
+                                            <Input
+                                                type="number"
+                                                min={1}
+                                                max={100}
+                                                value={limit}
+                                                onChange={(event) => setLimit(Number(event.target.value))}
+                                            />
+                                        </div>
+                                        <div className="flex flex-col gap-1.5">
+                                            <Label>Pular resultados (offset)</Label>
+                                            <Input
+                                                type="number"
+                                                min={0}
+                                                value={offset}
+                                                onChange={(event) => setOffset(Number(event.target.value))}
+                                            />
+                                        </div>
+                                        <div className="flex flex-col gap-1.5">
+                                            <Label>Equilibrio RRF (padrao 60)</Label>
+                                            <Input
+                                                type="number"
+                                                min={1}
+                                                value={rrfK}
+                                                onChange={(event) => setRrfK(Number(event.target.value))}
+                                            />
+                                        </div>
+                                        <div className="flex flex-col gap-1.5">
+                                            <Label>Itens para refinamento da IA</Label>
+                                            <Input
+                                                type="number"
+                                                min={1}
+                                                value={rerankCandidates}
+                                                onChange={(event) => setRerankCandidates(Number(event.target.value))}
+                                            />
+                                        </div>
+                                        <label className="md:col-span-2 flex items-center gap-2 text-sm font-medium text-foreground">
+                                            <input
+                                                type="checkbox"
+                                                checked={rerank}
+                                                onChange={(event) => setRerank(event.target.checked)}
+                                                className="h-4 w-4 rounded border-input accent-primary"
+                                            />
+                                            Usar IA para refinar a ordem dos resultados
+                                        </label>
+                                    </div>
+                                </details>
 
-                                <div className="mt-3 grid grid-cols-1 gap-3 md:grid-cols-2">
-                                    <label className="flex flex-col gap-1 text-sm text-slate-600">
-                                        Quantidade de resultados
-                                        <input
-                                            type="number"
-                                            min={1}
-                                            max={100}
-                                            value={limit}
-                                            onChange={(event) => setLimit(Number(event.target.value))}
-                                            className="rounded-xl border border-slate-300 bg-white px-3 py-2 text-sm outline-none ring-sea/30 transition focus:ring"
-                                        />
-                                    </label>
-
-                                    <label className="flex flex-col gap-1 text-sm text-slate-600">
-                                        Pular resultados (offset)
-                                        <input
-                                            type="number"
-                                            min={0}
-                                            value={offset}
-                                            onChange={(event) => setOffset(Number(event.target.value))}
-                                            className="rounded-xl border border-slate-300 bg-white px-3 py-2 text-sm outline-none ring-sea/30 transition focus:ring"
-                                        />
-                                    </label>
-
-                                    <label className="flex flex-col gap-1 text-sm text-slate-600">
-                                        Equilibrio RRF (padrao 60)
-                                        <input
-                                            type="number"
-                                            min={1}
-                                            value={rrfK}
-                                            onChange={(event) => setRrfK(Number(event.target.value))}
-                                            className="rounded-xl border border-slate-300 bg-white px-3 py-2 text-sm outline-none ring-sea/30 transition focus:ring"
-                                        />
-                                    </label>
-
-                                    <label className="flex flex-col gap-1 text-sm text-slate-600">
-                                        Itens para refinamento da IA
-                                        <input
-                                            type="number"
-                                            min={1}
-                                            value={rerankCandidates}
-                                            onChange={(event) => setRerankCandidates(Number(event.target.value))}
-                                            className="rounded-xl border border-slate-300 bg-white px-3 py-2 text-sm outline-none ring-sea/30 transition focus:ring"
-                                        />
-                                    </label>
-
-                                    <label className="md:col-span-2 flex items-center gap-2 text-sm font-medium text-slate-700">
-                                        <input
-                                            type="checkbox"
-                                            checked={rerank}
-                                            onChange={(event) => setRerank(event.target.checked)}
-                                            className="h-4 w-4 rounded border-slate-300 text-sea focus:ring-sea"
-                                        />
-                                        Usar IA para refinar a ordem dos resultados
-                                    </label>
-                                </div>
-                            </details>
-
-                            <SearchProgressButton
-                                searchParams={searchParams}
-                                submitSignal={searchSubmitSignal}
-                                onComplete={(result: SearchResult) => {
-                                    setErrorMessage(null);
-                                    setSearchResult(result as unknown as SearchResponse);
-                                }}
-                                onError={(message: string) => setErrorMessage(message)}
-                                disabled={query.trim().length < 2}
-                            />
-                        </form>
-                    </article>
+                                <SearchProgressButton
+                                    searchParams={searchParams}
+                                    submitSignal={searchSubmitSignal}
+                                    onComplete={(result: SearchResult) => {
+                                        setErrorMessage(null);
+                                        setSearchResult(result as unknown as SearchResponse);
+                                    }}
+                                    onError={(message: string) => setErrorMessage(message)}
+                                    disabled={query.trim().length < 2}
+                                />
+                            </form>
+                        </CardContent>
+                    </Card>
 
                     {/* Cadastro de Produto */}
-                    <article className="rounded-3xl bg-sand p-5 shadow-soft md:p-6">
-                        <h2 className="text-xl font-semibold text-ink">Cadastro de Produto</h2>
-                        <p className="mt-1 text-sm text-slate-600">
-                            O produto é enfileirado para geração de embedding via pipeline assíncrono.
-                        </p>
-                        <form onSubmit={submitIngest} className="mt-4 flex flex-col gap-3">
-                            <input
-                                required
-                                value={ingestForm.name}
-                                onChange={(event) => setIngestForm((prev) => ({ ...prev, name: event.target.value }))}
-                                className="rounded-xl border border-slate-300 bg-white px-3 py-2 text-sm outline-none ring-sea/30 transition focus:ring"
-                                placeholder="Nome do produto"
-                            />
-                            <textarea
-                                required
-                                value={ingestForm.description}
-                                onChange={(event) =>
-                                    setIngestForm((prev) => ({ ...prev, description: event.target.value }))
-                                }
-                                className="min-h-24 rounded-xl border border-slate-300 bg-white px-3 py-2 text-sm outline-none ring-sea/30 transition focus:ring"
-                                placeholder="Descrição do produto"
-                            />
-                            <input
-                                required
-                                value={ingestForm.category}
-                                onChange={(event) =>
-                                    setIngestForm((prev) => ({ ...prev, category: event.target.value }))
-                                }
-                                className="rounded-xl border border-slate-300 bg-white px-3 py-2 text-sm outline-none ring-sea/30 transition focus:ring"
-                                placeholder="Categoria"
-                            />
-                            <button
-                                type="submit"
-                                disabled={ingestBusy}
-                                className="mt-1 rounded-xl bg-coral px-4 py-2 text-sm font-semibold text-white transition hover:brightness-105 disabled:cursor-not-allowed disabled:opacity-60"
-                            >
-                                {ingestBusy ? 'Enviando...' : 'Criar produto'}
-                            </button>
-                        </form>
+                    <Card>
+                        <CardHeader>
+                            <CardTitle className="text-xl">Cadastro de Produto</CardTitle>
+                            <CardDescription>
+                                O produto é enfileirado para geração de embedding via pipeline assíncrono.
+                            </CardDescription>
+                        </CardHeader>
+                        <CardContent>
+                            <form onSubmit={submitIngest} className="flex flex-col gap-3">
+                                <Input
+                                    required
+                                    value={ingestForm.name}
+                                    onChange={(event) =>
+                                        setIngestForm((prev) => ({ ...prev, name: event.target.value }))
+                                    }
+                                    placeholder="Nome do produto"
+                                />
+                                <Textarea
+                                    required
+                                    value={ingestForm.description}
+                                    onChange={(event) =>
+                                        setIngestForm((prev) => ({ ...prev, description: event.target.value }))
+                                    }
+                                    placeholder="Descrição do produto"
+                                    className="min-h-24"
+                                />
+                                <Input
+                                    required
+                                    value={ingestForm.category}
+                                    onChange={(event) =>
+                                        setIngestForm((prev) => ({ ...prev, category: event.target.value }))
+                                    }
+                                    placeholder="Categoria"
+                                />
+                                <Button type="submit" disabled={ingestBusy} className="mt-1">
+                                    {ingestBusy ? 'Enviando...' : 'Criar produto'}
+                                </Button>
+                            </form>
 
-                        {createdProduct ? (
-                            <div className="mt-4 rounded-xl bg-white/80 p-3 text-sm text-slate-700">
-                                <p className="font-semibold text-ink">Produto enviado para pipeline de embedding.</p>
-                                <p className="mt-1 break-all">ID: {createdProduct.id}</p>
-                                <p>Status: {createdProduct.status}</p>
-                                {ingestionStatus ? (
-                                    <div className={`mt-3 rounded-lg border px-3 py-2 text-xs font-medium ${ingestStatusStyle}`}>
-                                        <p>
-                                            Estado: <span className="font-semibold uppercase">{ingestionStatus.status}</span>
-                                        </p>
-                                        <p className="mt-1">{ingestionStatus.message ?? 'Aguardando atualizações...'}</p>
-                                    </div>
-                                ) : null}
-                            </div>
-                        ) : null}
-
-                    </article>
+                            {createdProduct ? (
+                                <div className="mt-4 rounded-lg border border-border bg-muted/40 p-3 text-sm text-foreground">
+                                    <p className="font-semibold">Produto enviado para pipeline de embedding.</p>
+                                    <p className="mt-1 break-all text-muted-foreground">ID: {createdProduct.id}</p>
+                                    <p className="text-muted-foreground">Status: {createdProduct.status}</p>
+                                    {ingestionStatus ? (
+                                        <div className={`mt-3 rounded-md border px-3 py-2 text-xs font-medium ${ingestStatusStyle}`}>
+                                            <p>
+                                                Estado:{' '}
+                                                <span className="font-semibold uppercase">
+                                                    {ingestionStatus.status}
+                                                </span>
+                                            </p>
+                                            <p className="mt-1">
+                                                {ingestionStatus.message ?? 'Aguardando atualizações...'}
+                                            </p>
+                                        </div>
+                                    ) : null}
+                                </div>
+                            ) : null}
+                        </CardContent>
+                    </Card>
                 </div>
 
                 {/* ── COLUNA DIREITA — Resultados ── */}
                 <div className="lg:sticky lg:top-8">
-                    <section className="rounded-3xl bg-white/85 p-5 shadow-soft md:p-6">
-                        <div className="flex items-center justify-between">
-                            <h2 className="text-xl font-semibold text-ink">Resultados</h2>
-                            <div className="flex items-center gap-2">
-                                {hasSearchData ? (
-                                    <span className="rounded-full bg-sea/10 px-3 py-1 text-xs font-semibold text-sea">
-                                        {searchResult?.count ?? 0} itens
-                                    </span>
-                                ) : null}
-                                <Link
-                                    href={embeddingsMapHref}
-                                    className="rounded-xl border border-sea/30 bg-sea/10 px-3 py-1 text-xs font-semibold text-sea transition hover:bg-sea/15"
-                                >
-                                    Visualizar Mapa
-                                </Link>
+                    <Card>
+                        <CardHeader>
+                            <div className="flex items-center justify-between">
+                                <CardTitle className="text-xl">Resultados</CardTitle>
+                                <div className="flex items-center gap-2">
+                                    {hasSearchData ? (
+                                        <Badge variant="secondary">
+                                            {searchResult?.count ?? 0} itens
+                                        </Badge>
+                                    ) : null}
+                                    <Button variant="outline" size="sm" asChild>
+                                        <Link href={embeddingsMapHref}>Visualizar Mapa</Link>
+                                    </Button>
+                                </div>
                             </div>
-                        </div>
-
-                        {!hasSearchData ? (
-                            <p className="mt-3 text-sm text-slate-500">
-                                Execute uma busca para visualizar ranking, scores e metadados.
-                            </p>
-                        ) : (
-                            <div className="mt-4 max-h-[calc(100vh-10rem)] overflow-y-auto space-y-3 pr-1">
-                                {searchResult?.items.map((item, index) => (
-                                    (() => {
+                        </CardHeader>
+                        <CardContent>
+                            {!hasSearchData ? (
+                                <p className="text-sm text-muted-foreground">
+                                    Execute uma busca para visualizar ranking, scores e metadados.
+                                </p>
+                            ) : (
+                                <div className="max-h-[calc(100vh-10rem)] overflow-y-auto space-y-3 pr-1">
+                                    {searchResult?.items.map((item, index) => {
                                         const categoryBadgeStyle = getCategoryBadgeStyle(item.category);
 
                                         return (
                                             <article
                                                 key={item.id}
-                                                className="rounded-2xl border border-slate-200 bg-white overflow-hidden hover:shadow-md transition-shadow flex items-start"
+                                                className="rounded-lg border border-border bg-card overflow-hidden hover:shadow-md transition-shadow flex items-start"
                                             >
-                                                {/* Imagem do Produto */}
-                                                <div className="relative w-[30%] min-w-[120px] border-r border-slate-100 shrink-0">
+                                                {/* Imagem */}
+                                                <div className="relative w-[30%] min-w-[120px] border-r border-border shrink-0">
                                                     <ProductImage
                                                         imageUrl={item.imageUrl}
                                                         name={item.name}
                                                         className="h-[180px] md:h-[220px]"
                                                     />
-                                                    <div className="absolute top-2 left-2 bg-sea/90 text-white px-2 py-1 rounded-lg text-xs font-semibold">
+                                                    <div className="absolute top-2 left-2 bg-primary text-primary-foreground px-2 py-1 rounded-md text-xs font-semibold">
                                                         #{index + 1}
                                                     </div>
                                                 </div>
@@ -566,7 +560,7 @@ export default function HomePage() {
                                                 {/* Conteúdo */}
                                                 <div className="p-4 flex-1">
                                                     <div className="flex items-start justify-between gap-3">
-                                                        <h3 className="text-sm font-semibold text-ink line-clamp-2">
+                                                        <h3 className="text-sm font-semibold text-foreground line-clamp-2">
                                                             {item.name}
                                                         </h3>
                                                         <span
@@ -576,35 +570,34 @@ export default function HomePage() {
                                                             {item.category}
                                                         </span>
                                                     </div>
-                                                    <p className="mt-2 text-xs text-slate-600 line-clamp-3">
+                                                    <p className="mt-2 text-xs text-muted-foreground line-clamp-3">
                                                         {item.description}
                                                     </p>
 
                                                     {/* Scores */}
-                                                    <div className="mt-3 pt-3 border-t border-slate-100">
-                                                        <div className="flex flex-wrap gap-1.5">
-                                                            <span className="inline-flex items-center gap-1 rounded-lg bg-sea/10 px-2 py-1 text-xs text-sea font-medium">
-                                                                RRF: {formatMaybeNumber(item.scores.rrf)}
-                                                            </span>
-                                                            <span className="inline-flex items-center gap-1 rounded-lg bg-amber-100 px-2 py-1 text-xs text-amber-900 font-medium">
-                                                                Sem: {formatMaybeNumber(item.scores.semantic)}
-                                                            </span>
-                                                            <span className="inline-flex items-center gap-1 rounded-lg bg-emerald-100 px-2 py-1 text-xs text-emerald-900 font-medium">
-                                                                Lex: {formatMaybeNumber(item.scores.lexical)}
-                                                            </span>
-                                                        </div>
-                                                        <p className="mt-2 text-xs text-slate-500 break-all font-mono">
-                                                            ID: {item.id}
-                                                        </p>
+                                                    <Separator className="mt-3 mb-3" />
+                                                    <div className="flex flex-wrap gap-1.5">
+                                                        <Badge variant="secondary" className="font-mono">
+                                                            RRF: {formatMaybeNumber(item.scores.rrf)}
+                                                        </Badge>
+                                                        <Badge variant="outline" className="font-mono">
+                                                            Sem: {formatMaybeNumber(item.scores.semantic)}
+                                                        </Badge>
+                                                        <Badge variant="outline" className="font-mono">
+                                                            Lex: {formatMaybeNumber(item.scores.lexical)}
+                                                        </Badge>
                                                     </div>
+                                                    <p className="mt-2 text-xs text-muted-foreground break-all font-mono">
+                                                        ID: {item.id}
+                                                    </p>
                                                 </div>
                                             </article>
                                         );
-                                    })()
-                                ))}
-                            </div>
-                        )}
-                    </section>
+                                    })}
+                                </div>
+                            )}
+                        </CardContent>
+                    </Card>
                 </div>
             </div>
         </main>
