@@ -124,5 +124,23 @@ describe('RrfService', () => {
 
         expect(withDefault[0].rrfScore).toBeCloseTo(withExplicit[0].rrfScore!);
     });
+
+    it('accumulates rrfScore when the same product appears twice in semanticResults', () => {
+        // Covers the if(existing) branch inside the semanticResults loop (duplicate product id)
+        const result = service.fuse(
+            [
+                { product: p1, rank: 1, score: 0.9 },
+                { product: p1, rank: 2, score: 0.7 },
+            ],
+            [],
+        );
+
+        expect(result).toHaveLength(1);
+        // rrfScore = 1/(60+1) + 1/(60+2)
+        expect(result[0].rrfScore).toBeCloseTo(1 / 61 + 1 / 62);
+        // semanticRank and semanticScore reflect the last occurrence
+        expect(result[0].semanticRank).toBe(2);
+        expect(result[0].semanticScore).toBe(0.7);
+    });
 });
 

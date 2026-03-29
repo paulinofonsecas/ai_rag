@@ -287,5 +287,45 @@ describe('HybridSearchOrchestrator', () => {
         expect(ids.filter((id) => id === 'p1')).toHaveLength(1);
         expect(ids).toContain('p2');
     });
+
+    it('falls back to fused slice when reranker throws a non-Error value', async () => {
+        // Covers the 'unknown_error' branch (error instanceof Error ? ... : 'unknown_error') in rerank catch
+        repository.vectorSearch.mockResolvedValue([{ product: p1, rank: 1, score: 0.8 }]);
+        repository.lexicalSearch.mockResolvedValue([]);
+        embeddingService.generateQueryEmbedding.mockResolvedValue([0.1, 0.2]);
+        reranker.rerank.mockRejectedValue('plain string error');
+
+        const orchestrator = new HybridSearchOrchestrator(repository, embeddingService, reranker, rrfService);
+        const result = await orchestrator.search({
+            query: 'headphones',
+            limit: 5,
+            offset: 0,
+            rrfK: 60,
+            perMethodLimit: 25,
+            rerank: true,
+            rerankCandidates: 25,
+        });
+
+        expect(result).toHaveLength(1);
+    });
+
+    it('returns empty array when embedding service throws a non-Error value', async () => {
+        // Covers the 'unknown_error' branch in the outer catch (ai-search.semantic_search_failed)
+        embeddingService.generateQueryEmbedding.mockRejectedValue('non-error rejection');
+
+        const orchestrator = new HybridSearchOrchestrator(repository, embeddingService, reranker, rrfService);
+        const result = await orchestrator.search({
+            query: 'wireless',
+            limit: 5,
+            offset: 0,
+            rrfK: 60,
+            perMethodLimit: 25,
+            rerank: true,
+            rerankCandidates: 25,
+        });
+
+        expect(repository.vectorSearch).not.toHaveBeenCalled();
+        expect(result).toEqual([]);
+    });
 });
 
