@@ -1,8 +1,8 @@
 FROM node:20-alpine AS base
 
-WORKDIR /app
+WORKDIR /app/frontend
 
-COPY package*.json ./
+COPY frontend/package*.json ./
 RUN npm config set fetch-retries 5 \
  && npm config set fetch-retry-factor 2 \
  && npm config set fetch-retry-mintimeout 20000 \
@@ -21,7 +21,12 @@ RUN npm config set fetch-retries 5 \
 
 FROM base AS development
 
-COPY . .
+WORKDIR /app
+
+COPY frontend ./frontend
+COPY docs ./docs
+
+WORKDIR /app/frontend
 
 EXPOSE 3000
 
@@ -29,7 +34,12 @@ CMD ["npm", "run", "dev:watch"]
 
 FROM base AS production
 
-COPY . .
+WORKDIR /app
+
+COPY frontend ./frontend
+COPY docs ./docs
+
+WORKDIR /app/frontend
 RUN npm run build
 
 EXPOSE 3000

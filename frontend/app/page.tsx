@@ -336,6 +336,20 @@ export default function HomePage() {
                                 ✦ Reciprocal Rank Fusion
                             </span>
                         </div>
+                        <div className="mt-5 flex flex-wrap gap-3">
+                            <Link
+                                href="/docs"
+                                className="inline-flex items-center justify-center rounded-2xl border border-sea/20 bg-sea px-4 py-2 text-sm font-semibold text-white transition hover:-translate-y-0.5 hover:brightness-105"
+                            >
+                                Abrir documentacao tecnica
+                            </Link>
+                            <Link
+                                href="/docs/pt-br"
+                                className="inline-flex items-center justify-center rounded-2xl border border-slate-300 bg-white px-4 py-2 text-sm font-semibold text-slate-700 transition hover:-translate-y-0.5 hover:bg-slate-50"
+                            >
+                                Ver indice PT-BR
+                            </Link>
+                        </div>
                     </section>
 
                     {/* Busca Híbrida */}

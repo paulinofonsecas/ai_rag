@@ -25,8 +25,10 @@ describe('SearchController', () => {
         const searchRepository = {
             getAllProducts: jest.fn(),
         } as any;
+        const postgresService = {} as any;
+        const searchHistoryStore = { append: jest.fn() } as any;
 
-        const controller = new SearchController(useCase, searchRepository);
+        const controller = new SearchController(useCase, searchRepository, postgresService, searchHistoryStore);
 
         const query: SearchQueryDto = {
             q: 'headphones',
@@ -61,17 +63,19 @@ describe('SearchController', () => {
 
         const useCase: jest.Mocked<SearchProductsUseCase> = {
             execute: jest.fn().mockResolvedValue([
-                { product: productA, semanticRank: 4 },
                 { product: productB, semanticRank: 1 },
                 { product: productC, semanticRank: 2 },
+                { product: productA, semanticRank: 4 },
             ]),
         } as unknown as jest.Mocked<SearchProductsUseCase>;
 
         const searchRepository = {
             getAllProducts: jest.fn(),
         } as any;
+        const postgresService = {} as any;
+        const searchHistoryStore = { append: jest.fn() } as any;
 
-        const controller = new SearchController(useCase, searchRepository);
+        const controller = new SearchController(useCase, searchRepository, postgresService, searchHistoryStore);
 
         const output = await controller.search({ q: 'coisas para ficar bebado' }, 'cid-999');
 

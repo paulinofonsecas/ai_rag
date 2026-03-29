@@ -12,14 +12,17 @@ describe('SearchProductsUseCase', () => {
 
         await useCase.execute({ query: 'headphones' });
 
-        expect(orchestrator.search).toHaveBeenCalledWith({
-            query: 'headphones',
-            limit: 10,
-            offset: 0,
-            rrfK: 60,
-            perMethodLimit: 50,
-            rerank: true,
-            rerankCandidates: 40,
-        });
+        expect(orchestrator.search).toHaveBeenCalledWith(
+            {
+                query: 'headphones',
+                limit: 10,
+                offset: 0,
+                rrfK: 60,
+                perMethodLimit: 50,
+                rerank: true,
+                rerankCandidates: 40,
+            },
+            undefined,
+        );
     });
 });

@@ -3,7 +3,7 @@ import { EmbeddingService } from 'src/domain/interfaces/embedding-service.interf
 import { ResultReranker } from 'src/domain/interfaces/reranker.interface';
 import { SearchRepository } from 'src/domain/interfaces/search-repository.interface';
 
-import { HybridSearchOrchestrator } from './hybrid-search.orchestrator';
+import { HybridSearchOrchestrator, OnStep, StepEvent } from './hybrid-search.orchestrator';
 import { RrfService } from './rrf.service';
 
 describe('HybridSearchOrchestrator', () => {
@@ -134,4 +134,158 @@ describe('HybridSearchOrchestrator', () => {
         expect(reranker.rerank).toHaveBeenCalledTimes(1);
         expect(result).toEqual([]);
     });
+
+    it('falls back to fused results (sliced to limit) when reranker throws', async () => {
+        repository.vectorSearch.mockResolvedValue([
+            { product: p1, rank: 1, score: 0.8 },
+            { product: p2, rank: 2, score: 0.7 },
+        ]);
+        repository.lexicalSearch.mockResolvedValue([
+            { product: p1, rank: 1, score: 0.9 },
+        ]);
+        embeddingService.generateQueryEmbedding.mockResolvedValue([0.1, 0.2]);
+        reranker.rerank.mockRejectedValue(new Error('reranker timeout'));
+
+        const orchestrator = new HybridSearchOrchestrator(repository, embeddingService, reranker, rrfService);
+        const result = await orchestrator.search({
+            query: 'headphones',
+            limit: 1,
+            offset: 0,
+            rrfK: 60,
+            perMethodLimit: 25,
+            rerank: true,
+            rerankCandidates: 25,
+        });
+
+        // Falls back to fused slice(0, limit=1)
+        expect(result).toHaveLength(1);
+        expect(reranker.rerank).toHaveBeenCalledTimes(1);
+    });
+
+    it('skips rerank step and returns sliced fused results when rerank=false', async () => {
+        repository.vectorSearch.mockResolvedValue([
+            { product: p1, rank: 1, score: 0.9 },
+            { product: p2, rank: 2, score: 0.8 },
+        ]);
+        repository.lexicalSearch.mockResolvedValue([
+            { product: p2, rank: 1, score: 0.95 },
+        ]);
+        embeddingService.generateQueryEmbedding.mockResolvedValue([0.5, 0.5]);
+
+        const orchestrator = new HybridSearchOrchestrator(repository, embeddingService, reranker, rrfService);
+        const result = await orchestrator.search({
+            query: 'test',
+            limit: 1,
+            offset: 0,
+            rrfK: 60,
+            perMethodLimit: 25,
+            rerank: false,
+            rerankCandidates: 25,
+        });
+
+        expect(reranker.rerank).not.toHaveBeenCalled();
+        expect(result).toHaveLength(1);
+    });
+
+    it('skips rerank and returns empty when fused results are empty', async () => {
+        repository.vectorSearch.mockResolvedValue([]);
+        repository.lexicalSearch.mockResolvedValue([]);
+        embeddingService.generateQueryEmbedding.mockResolvedValue([0.1, 0.2]);
+
+        const orchestrator = new HybridSearchOrchestrator(repository, embeddingService, reranker, rrfService);
+        const result = await orchestrator.search({
+            query: 'nothing',
+            limit: 10,
+            offset: 0,
+            rrfK: 60,
+            perMethodLimit: 25,
+            rerank: true,
+            rerankCandidates: 25,
+        });
+
+        expect(reranker.rerank).not.toHaveBeenCalled();
+        expect(result).toEqual([]);
+    });
+
+    it('fires onStep callbacks for embedding, vector_search, and rerank steps', async () => {
+        repository.vectorSearch.mockResolvedValue([{ product: p1, rank: 1, score: 0.9 }]);
+        repository.lexicalSearch.mockResolvedValue([{ product: p1, rank: 1, score: 0.8 }]);
+        embeddingService.generateQueryEmbedding.mockResolvedValue([0.1, 0.2]);
+        reranker.rerank.mockResolvedValue(['p1']);
+
+        const events: StepEvent[] = [];
+        const onStep: OnStep = (e) => events.push(e);
+
+        const orchestrator = new HybridSearchOrchestrator(repository, embeddingService, reranker, rrfService);
+        await orchestrator.search(
+            {
+                query: 'headphones',
+                limit: 10,
+                offset: 0,
+                rrfK: 60,
+                perMethodLimit: 25,
+                rerank: true,
+                rerankCandidates: 25,
+            },
+            onStep,
+        );
+
+        const steps = events.map((e) => `${e.step}:${e.status}`);
+        expect(steps).toContain('embedding:started');
+        expect(steps).toContain('embedding:completed');
+        expect(steps).toContain('vector_search:started');
+        expect(steps).toContain('vector_search:completed');
+        expect(steps).toContain('rerank:started');
+        expect(steps).toContain('rerank:completed');
+    });
+
+    it('fires rerank:skipped onStep when rerank=false', async () => {
+        repository.vectorSearch.mockResolvedValue([{ product: p1, rank: 1, score: 0.9 }]);
+        repository.lexicalSearch.mockResolvedValue([]);
+        embeddingService.generateQueryEmbedding.mockResolvedValue([0.1, 0.2]);
+
+        const events: StepEvent[] = [];
+        const orchestrator = new HybridSearchOrchestrator(repository, embeddingService, reranker, rrfService);
+        await orchestrator.search(
+            {
+                query: 'test',
+                limit: 10,
+                offset: 0,
+                rrfK: 60,
+                perMethodLimit: 25,
+                rerank: false,
+                rerankCandidates: 25,
+            },
+            (e) => events.push(e),
+        );
+
+        expect(events.some((e) => e.step === 'rerank' && e.status === 'skipped')).toBe(true);
+    });
+
+    it('deduplicates ids returned by the reranker', async () => {
+        repository.vectorSearch.mockResolvedValue([
+            { product: p1, rank: 1, score: 0.9 },
+            { product: p2, rank: 2, score: 0.8 },
+        ]);
+        repository.lexicalSearch.mockResolvedValue([]);
+        embeddingService.generateQueryEmbedding.mockResolvedValue([0.1, 0.2]);
+        // Reranker returns p1 twice — should be deduplicated
+        reranker.rerank.mockResolvedValue(['p1', 'p1', 'p2']);
+
+        const orchestrator = new HybridSearchOrchestrator(repository, embeddingService, reranker, rrfService);
+        const result = await orchestrator.search({
+            query: 'headphones',
+            limit: 10,
+            offset: 0,
+            rrfK: 60,
+            perMethodLimit: 25,
+            rerank: true,
+            rerankCandidates: 25,
+        });
+
+        const ids = result.map((r) => r.product.id);
+        expect(ids.filter((id) => id === 'p1')).toHaveLength(1);
+        expect(ids).toContain('p2');
+    });
 });
+

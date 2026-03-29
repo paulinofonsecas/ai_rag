@@ -113,8 +113,8 @@ services:
 
   frontend:
     build:
-      context: ./frontend
-      dockerfile: Dockerfile
+      context: .
+      dockerfile: frontend/Dockerfile
       target: development
     container_name: hybrid-frontend
     environment:
@@ -128,8 +128,9 @@ services:
     ports:
       - '3001:3000'
     volumes:
-      - ./frontend:/app
-      - /app/node_modules
+      - ./frontend:/app/frontend
+      - ./docs:/app/docs:ro
+      - /app/frontend/node_modules
     depends_on:
       api:
         condition: service_started
@@ -138,8 +139,8 @@ services:
   frontend-production:
     profiles: ['production']
     build:
-      context: ./frontend
-      dockerfile: Dockerfile
+      context: .
+      dockerfile: frontend/Dockerfile
       target: production
     container_name: hybrid-frontend-production
     environment:

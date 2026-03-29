@@ -3,6 +3,7 @@
 ## 1. Visão Geral
 - [Arquitetura](./arquitetura.md)
 - [Busca Híbrida e RRF](./busca-hibrida.md)
+- [Estudo Técnico: IA na Pesquisa de Produtos](./estudo-tecnico-ia-pesquisa-produtos.md)
 
 ## 2. Execução e Ambiente
 - [Ambiente e Setup](./setup.md)
