@@ -3,14 +3,14 @@
 import Link from 'next/link';
 import { FormEvent, useEffect, useMemo, useState } from 'react';
 
+import SearchProgressButton, { SearchResult } from './components/SearchProgressButton';
 import { Badge } from './components/ui/badge';
 import { Button } from './components/ui/button';
-import { Card, CardContent, CardHeader, CardTitle, CardDescription } from './components/ui/card';
+import { Card, CardContent, CardDescription, CardHeader, CardTitle } from './components/ui/card';
 import { Input } from './components/ui/input';
 import { Label } from './components/ui/label';
 import { Separator } from './components/ui/separator';
 import { Textarea } from './components/ui/textarea';
-import SearchProgressButton, { SearchResult } from './components/SearchProgressButton';
 
 type CreatedProduct = {
     id: string;
