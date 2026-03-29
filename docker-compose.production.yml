@@ -1,0 +1,121 @@
+version: '3'
+services:
+  postgres:
+    image: pgvector/pgvector:pg16
+    container_name: hybrid-postgres
+    environment:
+      POSTGRES_DB: hybrid_search
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+    ports:
+      - '5432:5432'
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+      - ./sql/001_init_hybrid_search.sql:/docker-entrypoint-initdb.d/001_init_hybrid_search.sql:ro
+    healthcheck:
+      test: ['CMD-SHELL', 'pg_isready -U postgres -d hybrid_search']
+      interval: 5s
+      timeout: 5s
+      retries: 20
+
+  redis:
+    image: redis:7-alpine
+    container_name: hybrid-redis
+    ports:
+      - '6379:6379'
+    healthcheck:
+      test: ['CMD', 'redis-cli', 'ping']
+      interval: 5s
+      timeout: 5s
+      retries: 20
+
+  api:
+    build:
+      context: .
+      dockerfile: Dockerfile
+      target: runtime
+    container_name: hybrid-api
+    environment:
+      NODE_ENV: production
+      PORT: 3000
+      DB_HOST: postgres
+      DB_PORT: 5432
+      DB_NAME: hybrid_search
+      DB_USER: postgres
+      DB_PASSWORD: postgres
+      REDIS_HOST: redis
+      REDIS_PORT: 6379
+      EMBEDDING_API_KEY: ${EMBEDDING_API_KEY:-local-dev-key}
+      EMBEDDING_MODEL: ${EMBEDDING_MODEL:-gemini-embedding-001}
+      EMBEDDING_DIMENSIONS: ${EMBEDDING_DIMENSIONS:-1536}
+      EMBEDDING_MAX_RETRIES: ${EMBEDDING_MAX_RETRIES:-6}
+      EMBEDDING_BACKOFF_MS: ${EMBEDDING_BACKOFF_MS:-1000}
+      EMBEDDING_COOLDOWN_MS: ${EMBEDDING_COOLDOWN_MS:-15000}
+      RERANK_MODEL: ${RERANK_MODEL:-gemini-2.5-flash}
+      RERANK_MAX_CANDIDATES: ${RERANK_MAX_CANDIDATES:-40}
+      RERANK_MAX_RETRIES: ${RERANK_MAX_RETRIES:-2}
+      RERANK_BACKOFF_MS: ${RERANK_BACKOFF_MS:-400}
+      RERANK_COOLDOWN_MS: ${RERANK_COOLDOWN_MS:-10000}
+      RERANK_CACHE_TTL_MS: ${RERANK_CACHE_TTL_MS:-30000}
+    ports:
+      - '3000:3000'
+    depends_on:
+      postgres:
+        condition: service_healthy
+      redis:
+        condition: service_healthy
+    command: ['npm', 'run', 'start:prod']
+
+  worker:
+    build:
+      context: .
+      dockerfile: Dockerfile
+      target: runtime
+    container_name: hybrid-worker
+    environment:
+      NODE_ENV: production
+      DB_HOST: postgres
+      DB_PORT: 5432
+      DB_NAME: hybrid_search
+      DB_USER: postgres
+      DB_PASSWORD: postgres
+      REDIS_HOST: redis
+      REDIS_PORT: 6379
+      EMBEDDING_API_KEY: ${EMBEDDING_API_KEY:-local-dev-key}
+      EMBEDDING_MODEL: ${EMBEDDING_MODEL:-gemini-embedding-001}
+      EMBEDDING_DIMENSIONS: ${EMBEDDING_DIMENSIONS:-1536}
+      EMBEDDING_MAX_RETRIES: ${EMBEDDING_MAX_RETRIES:-6}
+      EMBEDDING_BACKOFF_MS: ${EMBEDDING_BACKOFF_MS:-1000}
+      EMBEDDING_COOLDOWN_MS: ${EMBEDDING_COOLDOWN_MS:-15000}
+      RERANK_MODEL: ${RERANK_MODEL:-gemini-2.5-flash}
+      RERANK_MAX_CANDIDATES: ${RERANK_MAX_CANDIDATES:-40}
+      RERANK_MAX_RETRIES: ${RERANK_MAX_RETRIES:-2}
+      RERANK_BACKOFF_MS: ${RERANK_BACKOFF_MS:-400}
+      RERANK_COOLDOWN_MS: ${RERANK_COOLDOWN_MS:-10000}
+      RERANK_CACHE_TTL_MS: ${RERANK_CACHE_TTL_MS:-30000}
+    depends_on:
+      postgres:
+        condition: service_healthy
+      redis:
+        condition: service_healthy
+    command: ['npm', 'run', 'start:worker:prod']
+
+  frontend:
+    build:
+      context: .
+      dockerfile: frontend/Dockerfile
+      target: production
+    container_name: hybrid-frontend
+    environment:
+      NODE_ENV: production
+      NEXT_TELEMETRY_DISABLED: 1
+      BACKEND_INTERNAL_URL: http://api:3000
+    ports:
+      - '80:3000'
+    depends_on:
+      api:
+        condition: service_started
+    command: ['npm', 'run', 'start']
+
+volumes:
+  postgres_data:
