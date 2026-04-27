@@ -54,3 +54,32 @@ CREATE INDEX IF NOT EXISTS idx_search_step_runs_correlation_id
   ON search_step_runs (correlation_id);
 
 COMMIT;
+-- Chat sessions
+CREATE TABLE IF NOT EXISTS chat_sessions (
+  id UUID PRIMARY KEY DEFAULT gen_random_uuid(),
+  user_id UUID,
+  started_at TIMESTAMPTZ NOT NULL DEFAULT now(),
+  ended_at TIMESTAMPTZ,
+  metadata JSONB
+);
+
+-- Messages
+CREATE TABLE IF NOT EXISTS messages (
+  id UUID PRIMARY KEY DEFAULT gen_random_uuid(),
+  chat_session_id UUID REFERENCES chat_sessions(id) ON DELETE CASCADE,
+  sender TEXT NOT NULL,
+  content TEXT NOT NULL,
+  sent_at TIMESTAMPTZ NOT NULL DEFAULT now(),
+  message_type TEXT DEFAULT 'user',
+  product_id UUID REFERENCES products(id),
+  artifact_id UUID REFERENCES artifacts(id)
+);
+
+-- Artifacts (e.g., summaries, recommendations)
+CREATE TABLE IF NOT EXISTS artifacts (
+  id UUID PRIMARY KEY DEFAULT gen_random_uuid(),
+  type TEXT NOT NULL,
+  data JSONB NOT NULL,
+  created_at TIMESTAMPTZ NOT NULL DEFAULT now(),
+  message_id UUID
+);

@@ -1,47 +1,30 @@
+
 import { Logger } from '@nestjs/common';
-
-import { RrfService } from 'src/application/services/rrf.service';
-import { EmbeddingService } from 'src/domain/interfaces/embedding-service.interface';
-import { ResultReranker } from 'src/domain/interfaces/reranker.interface';
-import {
-    HybridSearchResult,
-    SearchRepository,
-} from 'src/domain/interfaces/search-repository.interface';
-
-export type SearchOrchestratorInput = {
-    query: string;
-    limit: number;
-    offset: number;
-    rrfK: number;
-    perMethodLimit: number;
-    rerank: boolean;
-    rerankCandidates: number;
-};
-
-export type StepId = 'embedding' | 'vector_search' | 'rerank';
-
-export type StepEvent = {
-    type: 'step';
-    step: StepId;
-    status: 'started' | 'completed' | 'skipped' | 'error';
-    durationMs?: number;
-    meta?: Record<string, unknown>;
-};
-
-export type OnStep = (event: StepEvent) => void;
+import { HybridSearchResult } from 'src/domain/interfaces/search-repository.interface';
+import type { SearchOrchestratorInput } from './hybrid-search.types';
+import { OnStep } from './hybrid-search.steps';
+import { EmbeddingStep } from './embedding.step';
+import { VectorSearchStep, VectorSearchInput } from './vector-search.step';
+import { RerankStep, RerankInput } from './rerank.step';
 
 export class HybridSearchOrchestrator {
+    private readonly logger = new Logger(HybridSearchOrchestrator.name);
+    private readonly embeddingStep: EmbeddingStep;
+    private readonly vectorSearchStep: VectorSearchStep;
+    private readonly rerankStep: RerankStep;
+
     constructor(
-        private readonly repository: SearchRepository,
-        private readonly embeddingService: EmbeddingService,
-        private readonly reranker: ResultReranker,
-        private readonly rrfService: RrfService,
-        private readonly logger = new Logger(HybridSearchOrchestrator.name),
-    ) { }
+        embeddingStep: EmbeddingStep,
+        vectorSearchStep: VectorSearchStep,
+        rerankStep: RerankStep,
+    ) {
+        this.embeddingStep = embeddingStep;
+        this.vectorSearchStep = vectorSearchStep;
+        this.rerankStep = rerankStep;
+    }
 
     async search(input: SearchOrchestratorInput, onStep?: OnStep): Promise<HybridSearchResult[]> {
         const startedAt = Date.now();
-
         this.logger.log({
             msg: 'ai-search.started',
             query: input.query,
@@ -51,92 +34,53 @@ export class HybridSearchOrchestrator {
             rerank: input.rerank,
             rerankCandidates: input.rerankCandidates,
         });
-
         try {
-            onStep?.({ type: 'step', step: 'embedding', status: 'started' });
-            const embeddingStart = Date.now();
-            const embedding = await this.embeddingService.generateQueryEmbedding(input.query);
-            onStep?.({ type: 'step', step: 'embedding', status: 'completed', durationMs: Date.now() - embeddingStart });
-
+            // Embedding step
+            const embedding = await this.embeddingStep.execute({ query: input.query }, onStep);
             this.logger.log({
                 msg: 'ai-search.embedding_completed',
                 query: input.query,
                 dimensions: embedding.length,
             });
-
-            onStep?.({ type: 'step', step: 'vector_search', status: 'started' });
-            const vsStart = Date.now();
-            const [semanticResults, lexicalResults] = await Promise.all([
-                this.repository.vectorSearch(
-                    embedding,
-                    Math.max(input.perMethodLimit, input.rerankCandidates),
-                    input.offset,
-                ),
-                this.repository.lexicalSearch(
-                    input.query,
-                    Math.max(input.perMethodLimit, input.rerankCandidates),
-                    input.offset,
-                ),
-            ]);
-
-            const fusedResults = this.rrfService.fuse(semanticResults, lexicalResults, input.rrfK);
-
-            onStep?.({
-                type: 'step',
-                step: 'vector_search',
-                status: 'completed',
-                durationMs: Date.now() - vsStart,
-                meta: {
-                    semanticCount: semanticResults.length,
-                    lexicalCount: lexicalResults.length,
-                    fusedCount: fusedResults.length,
-                    preRerankResults: fusedResults.slice(0, Math.max(input.limit, input.rerankCandidates)),
-                },
-            });
-
+            // Vector search step
+            const fusedResults = await this.vectorSearchStep.execute({
+                query: input.query,
+                embedding,
+                perMethodLimit: input.perMethodLimit ?? 10,
+                rerankCandidates: input.rerankCandidates ?? 10,
+                offset: input.offset ?? 0,
+                rrfK: input.rrfK ?? 60,
+            }, onStep);
             this.logger.log({
                 msg: 'ai-search.semantic_completed',
                 query: input.query,
-                semanticCount: semanticResults.length,
-                lexicalCount: lexicalResults.length,
                 fusedCount: fusedResults.length,
             });
-
-            const aiPrioritizedResults = fusedResults;
-
             if (!input.rerank || fusedResults.length === 0) {
                 onStep?.({ type: 'step', step: 'rerank', status: 'skipped' });
-                const result = aiPrioritizedResults.slice(0, input.limit);
-
+                const result = fusedResults.slice(0, input.limit);
                 this.logger.log({
                     msg: 'ai-search.returned_without_rerank',
                     query: input.query,
                     resultCount: result.length,
                     latencyMs: Date.now() - startedAt,
                 });
-
                 return result;
             }
-
+            // Rerank step
             try {
-                onStep?.({ type: 'step', step: 'rerank', status: 'started' });
-                const rrStart = Date.now();
-                const reranked = await this.applyGeminiRerank(aiPrioritizedResults, input);
-                onStep?.({
-                    type: 'step',
-                    step: 'rerank',
-                    status: 'completed',
-                    durationMs: Date.now() - rrStart,
-                    meta: { count: reranked.length },
-                });
-
+                const reranked = await this.rerankStep.execute({
+                    query: input.query,
+                    candidates: fusedResults,
+                    limit: input.limit,
+                    rerankCandidates: input.rerankCandidates ?? 10,
+                }, onStep);
                 this.logger.log({
                     msg: 'ai-search.rerank_completed',
                     query: input.query,
                     rerankedCount: reranked.length,
                     latencyMs: Date.now() - startedAt,
                 });
-
                 return reranked;
             } catch (error) {
                 onStep?.({ type: 'step', step: 'rerank', status: 'error' });
@@ -145,8 +89,7 @@ export class HybridSearchOrchestrator {
                     query: input.query,
                     error: error instanceof Error ? error.message : 'unknown_error',
                 });
-
-                return aiPrioritizedResults.slice(0, input.limit);
+                return fusedResults.slice(0, input.limit);
             }
         } catch (error) {
             this.logger.error({
@@ -155,49 +98,9 @@ export class HybridSearchOrchestrator {
                 error: error instanceof Error ? error.message : 'unknown_error',
                 latencyMs: Date.now() - startedAt,
             });
-
             return [];
         }
-    }
-
-    private async applyGeminiRerank(
-        semanticResults: HybridSearchResult[],
-        input: SearchOrchestratorInput,
-    ): Promise<HybridSearchResult[]> {
-        const candidates = semanticResults.slice(0, Math.max(input.limit, input.rerankCandidates));
-
-        this.logger.log({
-            msg: 'ai-search.rerank_started',
-            query: input.query,
-            candidateCount: candidates.length,
-        });
-
-        const rerankedIds = await this.reranker.rerank(input.query, candidates);
-
-        if (rerankedIds.length === 0) {
-            this.logger.log({
-                msg: 'ai-search.rerank_filtered_all',
-                query: input.query,
-                candidateCount: candidates.length,
-            });
-
-            return [];
-        }
-
-        const byId = new Map(semanticResults.map((item) => [item.product.id, item]));
-        const rerankedItems: HybridSearchResult[] = [];
-        const used = new Set<string>();
-
-        for (const id of rerankedIds) {
-            const item = byId.get(id);
-            if (!item || used.has(id)) {
-                continue;
-            }
-
-            used.add(id);
-            rerankedItems.push(item);
-        }
-
-        return rerankedItems.slice(0, input.limit);
     }
 }
+export { OnStep };
+

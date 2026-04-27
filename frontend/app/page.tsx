@@ -132,7 +132,7 @@ export default function HomePage() {
     const [ingestionStatus, setIngestionStatus] = useState<IngestionStatusEvent | null>(null);
 
     const [query, setQuery] = useState('');
-    const [limit, setLimit] = useState(10);
+    const [limit, setLimit] = useState(50);
     const [offset, setOffset] = useState(0);
     const [rrfK, setRrfK] = useState(60);
     const [rerank, setRerank] = useState(true);

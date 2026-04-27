@@ -140,13 +140,14 @@ async function run() {
             ? `
                 SELECT id, name, category, image_url
                 FROM products
+                WHERE image_url ILIKE '%picsum%' OR image_url IS NULL
                 ORDER BY created_at DESC
                 LIMIT $1
               `
             : `
                 SELECT id, name, category, image_url
                 FROM products
-                WHERE image_url IS NULL OR btrim(image_url) = ''
+                WHERE image_url ILIKE '%picsum%'
                 ORDER BY created_at DESC
                 LIMIT $1
               `;
